@@ -16,8 +16,22 @@ public class CurePatientsQuestStep : QuestStep
     }
 
     private void patientSaved(){
-        if (patientsSaved < patientsToBeSaved) patientsSaved++;
+        if (patientsSaved < patientsToBeSaved){
+            patientsSaved++;
+            updateState();
+        }
 
         if (patientsSaved >= patientsToBeSaved) FinishQuestStep();
+    }
+
+    private void updateState(){
+        string state = patientsSaved.ToString();
+        changeState(state);
+    }
+
+    protected override void setQuestStepState(string state)
+    {
+        this.patientsSaved = System.Int32.Parse(state);
+        updateState();
     }
 }

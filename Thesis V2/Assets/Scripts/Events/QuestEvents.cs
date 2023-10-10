@@ -25,4 +25,10 @@ public class QuestEvents
     public void questStateChange(Quest quest){
         if (onQuestStateChange != null) onQuestStateChange(quest);
     }
+
+    public event Action<string, int, QuestStepState> onQuestStepStateChange;
+
+    public void questStepStateChange(string id, int stepIndex, QuestStepState questStepState){
+        if (onQuestStepStateChange != null) onQuestStepStateChange(id, stepIndex, questStepState);
+    }
 }
