@@ -9,11 +9,11 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] public GameObject cloth;
 
-    // [SerializeField] DialogueAction dialogueAction;
+    [SerializeField] DialogueAction dialogueAction;
 
     private void OnTriggerEnter(Collider collider){
         if (collider.tag == "NPC"){
-            // dialogueAction.playerInRange = true;
+            dialogueAction.playerInRange = true;
             collider.GetComponent<DialogueAction>().playerInRange = true;
         }
     }
