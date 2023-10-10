@@ -19,15 +19,21 @@ public class UnitTargetManager : MonoBehaviour
 
     // =====================================================================================================
     // =====================================================================================================
-
+    [Header("Teleporters")]
     [SerializeField] private GameObject[] FirstFloorTeleps;
     [SerializeField] private GameObject[] SecondFloorTeleps;
-    [SerializeField] private GameObject[] RandomTargets;
+
+    [Header("Chairs")]
     [SerializeField] private GameObject[] canteenChairs;
-    [SerializeField] private GameObject canteenFood;
     [SerializeField] private GameObject[] classroomChairs;
 
+    [Header("Beds")]
     [SerializeField] private GameObject[] beds;
+
+    [Header("General")]
+    [SerializeField] private GameObject[] RandomTargets;
+    [SerializeField] private GameObject canteenFood;
+
 
     public GameObject getAnyGameObjectTarget(int floor){
         switch (Random.Range(0, 5)){

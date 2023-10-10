@@ -133,7 +133,7 @@ public class Unit : MonoBehaviour {
 					}
 				}
 
-				// TODO: Add lock for when target has been changed
+				// TODO: Add lock for when target has been changed while laying down or sitting down
 				Quaternion targetRotation = Quaternion.LookRotation (path.lookPoints [pathIndex] - transform.position);
 				transform.rotation = Quaternion.Lerp (transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
 				transform.Translate (Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
