@@ -12,14 +12,13 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] DialogueAction dialogueAction;
 
     private void OnTriggerEnter(Collider collider){
-        if (collider.tag == "NPC"){
-            dialogueAction.playerInRange = true;
+        if (collider.tag == "npc"){
             collider.GetComponent<DialogueAction>().playerInRange = true;
         }
     }
 
     private void OnTriggerExit(Collider collider){
-        if (collider.tag == "NPC"){
+        if (collider.tag == "npc"){
             collider.GetComponent<DialogueAction>().playerInRange = false;
         }
     }

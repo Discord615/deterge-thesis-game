@@ -1,0 +1,2 @@
+EXTERNAL startQuest()
+EXTERNAL finishQuest()

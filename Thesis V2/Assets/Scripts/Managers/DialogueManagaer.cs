@@ -20,6 +20,10 @@ public class DialogueManagaer : MonoBehaviour
 
     private static DialogueManagaer instance;
 
+    public bool inkStart = false, inkFinish = false;
+
+    private InkExternalFunctions inkExternalFunctions;
+
     private void Awake(){
         if (instance != null){
             Debug.LogError("There are more than one instance of Dialogue Manager");
@@ -34,6 +38,8 @@ public class DialogueManagaer : MonoBehaviour
     private void Start(){
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+
+        inkExternalFunctions = new InkExternalFunctions();
 
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
@@ -58,11 +64,15 @@ public class DialogueManagaer : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
+        inkExternalFunctions.Bind(currentStory);
+
         ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode(){
         yield return new WaitForSeconds(0.2f);
+
+        inkExternalFunctions.Unbind(currentStory);
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
