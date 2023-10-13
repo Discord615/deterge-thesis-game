@@ -65,6 +65,14 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void ContextActionPressed(InputAction.CallbackContext context){
+        if (context.performed){
+            contextActionPressed = true;
+        } else if (context.canceled){
+            contextActionPressed = false;
+        }
+    }
+
     public Vector2 GetMovePressed(){
         return moveDirection;
     }
