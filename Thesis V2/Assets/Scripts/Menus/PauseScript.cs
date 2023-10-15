@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PauseScript : MonoBehaviour
 {
     [SerializeField] private GameObject pauseOverlay;
+    [SerializeField] private GameObject[] pauseMenuChoices;
     bool overlayBool;
     
     private void Start() {
@@ -14,15 +16,36 @@ public class PauseScript : MonoBehaviour
 
     private void Update() {
         if (InputManager.getInstance().GetEscapedPressed()){
-            if (!overlayBool){
-                pauseOverlay.SetActive(true);
-                Time.timeScale = 0;
-                overlayBool = true;
-            } else {
-                pauseOverlay.SetActive(false);
-                Time.timeScale = 1;
-                overlayBool = false;
-            }
+            togglePauseMenu();
         }
+    }
+
+    // TODO: Add settings and return to main menu
+
+    public void resume(){
+        togglePauseMenu();
+    }
+
+    public void quit(){
+        Application.Quit();
+    }
+
+    private void togglePauseMenu(){
+        if (!overlayBool){
+            pauseOverlay.SetActive(true);
+            Time.timeScale = 0;
+            StartCoroutine(SelectFirstChoice());
+            overlayBool = true;
+        } else {
+            pauseOverlay.SetActive(false);
+            Time.timeScale = 1;
+            overlayBool = false;
+        }
+    }
+
+    private IEnumerator SelectFirstChoice(){
+        EventSystem.current.SetSelectedGameObject(null);
+        yield return new WaitForEndOfFrame();
+        EventSystem.current.SetSelectedGameObject(pauseMenuChoices[0].gameObject);
     }
 }

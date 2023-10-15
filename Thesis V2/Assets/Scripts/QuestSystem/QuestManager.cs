@@ -6,10 +6,14 @@ public class QuestManager : MonoBehaviour
 {
     [Header("Config")]
     [SerializeField] private bool loadQuestState = true;
+    [SerializeField] private string fileName;
+    [SerializeField] private GameObject PlayerPosition;
 
     private Dictionary<string, Quest> questMap;
+    private FileDataHandler fileDataHandler;
 
     private void Awake() {
+        fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         questMap = createQuestMap();
     }
 
@@ -96,11 +100,13 @@ public class QuestManager : MonoBehaviour
         QuestInfoSO[] allQuest = Resources.LoadAll<QuestInfoSO>("Quests");
 
         Dictionary<string, Quest> idToQuestMap = new Dictionary<string, Quest>();
+
+        PlayerPosition.transform.position = fileDataHandler.loadPlayerPos();
         
         foreach (QuestInfoSO questInfo in allQuest){
             if (idToQuestMap.ContainsKey(questInfo.id)) Debug.LogWarning("Duplicate ID for " + questInfo.id + " exists");
 
-            idToQuestMap.Add(questInfo.id, loadQuest(questInfo));
+            idToQuestMap.Add(questInfo.id, fileDataHandler.load(questInfo, loadQuestState));
         }
 
         return idToQuestMap;
@@ -114,43 +120,7 @@ public class QuestManager : MonoBehaviour
 
     private void OnApplicationQuit() {
         foreach (Quest quest in questMap.Values){
-            saveQuest(quest);
+            fileDataHandler.save(quest, PlayerPosition.transform.position);
         }
-    }
-
-    private void saveQuest(Quest quest){
-        try
-        {
-            QuestData questData = quest.getQuestData();
-            string serializedData = JsonUtility.ToJson(questData);
-            PlayerPrefs.SetString(quest.info.id, serializedData);
-
-            // TODO: save in file
-        }
-        catch (System.Exception)
-        {
-            Debug.LogError("Failed to save quest");
-        }
-    }
-
-    private Quest loadQuest(QuestInfoSO questInfo){
-        Quest quest = null;
-
-        try
-        {
-            if (PlayerPrefs.HasKey(questInfo.id) && loadQuestState){
-                string serializedData = PlayerPrefs.GetString(questInfo.id);
-                QuestData questData = JsonUtility.FromJson<QuestData>(serializedData);
-                quest = new Quest(questInfo, questData.state, questData.questStepIndex, questData.questStepStates);
-            } else {
-                quest = new Quest(questInfo);
-            }
-        }
-        catch (System.Exception)
-        {
-            Debug.LogError("Failed to load save file");
-        }
-
-        return quest;
     }
 }
