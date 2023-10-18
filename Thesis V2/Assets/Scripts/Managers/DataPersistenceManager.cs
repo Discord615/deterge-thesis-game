@@ -18,7 +18,11 @@ public class DataPersistenceManager : MonoBehaviour {
 
     public void SaveQuestData(Quest quest){
         foreach (quest in questMap.Values){
-            fileDataHandler.save(quest, PlayerPosition.transform.position);
+            fileDataHandler.saveQuestData(quest, PlayerPosition.transform.position);
         }
+    }
+
+    public Quest loadQuestData(QuestInfoSO questInfo, bool loadQuestState){
+        return fileDataHandler.loadQuestData(questInfo, loadQuestState);
     }
 }

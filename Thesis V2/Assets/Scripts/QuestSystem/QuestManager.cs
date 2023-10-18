@@ -104,7 +104,7 @@ public class QuestManager : MonoBehaviour
         foreach (QuestInfoSO questInfo in allQuest){
             if (idToQuestMap.ContainsKey(questInfo.id)) Debug.LogWarning("Duplicate ID for " + questInfo.id + " exists");
 
-            idToQuestMap.Add(questInfo.id, fileDataHandler.load(questInfo, loadQuestState)); // TODO: change loading call because fileDatahandler is not handled by this anymore
+            idToQuestMap.Add(questInfo.id, DataPersistenceManager.instance.loadQuestData()); // TODO: change loading call because fileDatahandler is not handled by this anymore
         }
 
         return idToQuestMap;
