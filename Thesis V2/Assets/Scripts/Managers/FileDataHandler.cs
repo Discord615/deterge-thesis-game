@@ -48,33 +48,7 @@ public class FileDataHandler
         return quest;
     }
 
-    public Vector3 loadPlayerPos(){
-        string fullPath = System.IO.Path.Combine(filePath, fileName);
-        Vector3 playerPos = new Vector3(0, 1.16f, 0);
-
-        if (File.Exists(fullPath)){
-            try
-            {
-                string dataToLoad = "";
-
-                using(FileStream stream = new FileStream(fullPath, FileMode.Open)){
-                    using (StreamReader reader = new StreamReader(stream)){
-                        dataToLoad = reader.ReadToEnd();
-                    }
-                }
-                QuestData questData = JsonUtility.FromJson<QuestData>(dataToLoad);
-                playerPos = questData.playerPosition;
-            }
-            catch (System.Exception)
-            {
-                Debug.LogError("Failed to load save file");
-            }
-        }
-
-        return playerPos;
-    }
-
-    public void save(Quest quest, Vector3 PlayerPosition){
+    public void save(Quest quest){
         string fullPath = System.IO.Path.Combine(filePath, fileName);
         try
         {
@@ -92,6 +66,52 @@ public class FileDataHandler
         catch (System.Exception)
         {
             Debug.LogError("Failed to save quest");
+        }
+    }
+
+    public GameData Load(){
+        string fullPath = System.IO.Path.Combine(filePath, fileName);
+        GameData loadedData = null;
+
+        if (File.Exists(fullPath)){
+            try
+            {
+                string dataToLoad = "";
+
+                using(FileStream stream = new FileStream(fullPath, FileMode.Open)){
+                    using (StreamReader reader = new StreamReader(stream)){
+                        dataToLoad = reader.ReadToEnd();
+                    }
+                }
+
+                loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
+            }
+            catch (System.Exception)
+            {
+                Debug.LogWarning("Failed to load data");
+            }
+            retrun loadedData;
+        }
+    }
+
+    public void Save(GameData data){
+        string fullPath = System.IO.Path.Combine(filePath, fileName);
+
+        try
+        {
+            Directory.CreateDirectory(System.IO.Path.GetDirectoryName(fullPath));
+
+            string dataToStore = JsonUtility.ToJson(data, true);
+
+            using (FileStream stream = new FileStream(fullPath, FileMode.Create)){
+                using (StreamWriter writer = new StreamWriter(stream)){
+                    writer.Write(dataToStore);
+                }
+            }
+        }
+        catch (System.Exception)
+        {
+            Debug.LogWarning("Failed to save data");
         }
     }
 }

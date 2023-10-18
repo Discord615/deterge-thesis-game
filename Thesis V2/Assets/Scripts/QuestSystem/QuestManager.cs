@@ -100,8 +100,6 @@ public class QuestManager : MonoBehaviour
         QuestInfoSO[] allQuest = Resources.LoadAll<QuestInfoSO>("Quests");
 
         Dictionary<string, Quest> idToQuestMap = new Dictionary<string, Quest>();
-
-        PlayerPosition.transform.position = fileDataHandler.loadPlayerPos();
         
         foreach (QuestInfoSO questInfo in allQuest){
             if (idToQuestMap.ContainsKey(questInfo.id)) Debug.LogWarning("Duplicate ID for " + questInfo.id + " exists");
@@ -120,7 +118,7 @@ public class QuestManager : MonoBehaviour
 
     private void OnApplicationQuit() {
         foreach (Quest quest in questMap.Values){
-            fileDataHandler.save(quest, PlayerPosition.transform.position);
+            fileDataHandler.save(quest);
         }
     }
 }

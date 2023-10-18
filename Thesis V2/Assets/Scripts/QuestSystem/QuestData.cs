@@ -14,6 +14,5 @@ public class QuestData
         this.state = state;
         this.questStepIndex = questStepIndex;
         this.questStepStates = questStepStates;
-        this.playerPosition = new Vector3(0, 1.16f, 0);
     }
 }
