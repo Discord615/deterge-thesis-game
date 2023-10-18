@@ -10,8 +10,10 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private GameObject PlayerPosition;
 
     private Dictionary<string, Quest> questMap;
+    private FileDataHandler fileDataHandler;
 
     private void Awake() {
+        fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         questMap = createQuestMap();
     }
 
@@ -104,7 +106,7 @@ public class QuestManager : MonoBehaviour
         foreach (QuestInfoSO questInfo in allQuest){
             if (idToQuestMap.ContainsKey(questInfo.id)) Debug.LogWarning("Duplicate ID for " + questInfo.id + " exists");
 
-            idToQuestMap.Add(questInfo.id, fileDataHandler.load(questInfo, loadQuestState)); // TODO: change loading call because fileDatahandler is not handled by this anymore
+            idToQuestMap.Add(questInfo.id, fileDataHandler.load(questInfo, loadQuestState));
         }
 
         return idToQuestMap;
@@ -117,6 +119,8 @@ public class QuestManager : MonoBehaviour
     }
 
     private void OnApplicationQuit() {
-        DataPersistenceManager.instance.SaveQuestData(Quest);
+        foreach (Quest quest in questMap.Values){
+            fileDataHandler.save(quest, PlayerPosition.transform.position);
+        }
     }
 }
