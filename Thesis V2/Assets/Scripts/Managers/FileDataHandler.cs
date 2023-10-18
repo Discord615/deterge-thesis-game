@@ -14,7 +14,7 @@ public class FileDataHandler
         this.fileName = fileName;
     }
 
-    public Quest loadQuestData(QuestInfoSO questInfo, bool loadQuestState){
+    public Quest load(QuestInfoSO questInfo, bool loadQuestState){
         string fullPath = System.IO.Path.Combine(filePath, fileName);
 
         Quest quest = null;
@@ -74,7 +74,7 @@ public class FileDataHandler
         return playerPos;
     }
 
-    public void saveQuestData(Quest quest){
+    public void save(Quest quest, Vector3 PlayerPosition){
         string fullPath = System.IO.Path.Combine(filePath, fileName);
         try
         {
