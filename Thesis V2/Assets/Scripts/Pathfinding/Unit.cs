@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Unit : MonoBehaviour {
+public class Unit : MonoBehaviour, IDataPersistence {
+
+	[SerializeField] private string id;
+
+	[ContextMenu("Generate guid for id")]
+	private void GenerateGuid(){
+		id = System.Guid.NewGuid().ToString();
+	}
 
 	const float minPathUpdateTime = .2f;
 	const float pathUpdateMoveThreshold = .5f;
@@ -36,6 +43,35 @@ public class Unit : MonoBehaviour {
 		unitRotation.eulerAngles = new Vector3(0, unitRotation.eulerAngles.y, 0);
 
 		transform.rotation = unitRotation;
+	}
+
+	public void LoadData(GameData data){
+		Vector3 position = new Vector3();
+
+		data.NPCposition.TryGetValue(id, out position);
+
+		transform.position = position;
+
+		data.NPCTargetMap.TryGetValue(id, out target);
+
+		data.NPCFloorMap.TryGetValue(id, out floor);
+	}
+
+	public void SaveData(ref GameData data){
+		if (data.NPCposition.ContainsKey(id)){
+			data.NPCposition.Remove(id);
+		}
+		data.NPCposition.Add(id, transform.position);
+
+		if (data.NPCTargetMap.ContainsKey(id)){
+			data.NPCTargetMap.Remove(id);
+		}
+		data.NPCTargetMap.Add(id, target);
+
+		if (data.NPCFloorMap.ContainsKey(id)){
+			data.NPCFloorMap.Remove(id);
+		}
+		data.NPCFloorMap.Add(id, floor);
 	}
 
 	public void OnPathFound(Vector3[] waypoints, bool pathSuccessful) {

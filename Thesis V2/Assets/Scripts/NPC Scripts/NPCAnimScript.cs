@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCAnimScript : MonoBehaviour
+public class NPCAnimScript : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private string id;
+
+    [ContextMenu("Generate guid for id")]
+	private void GenerateGuid(){
+		id = System.Guid.NewGuid().ToString();
+	}
+
     Animator animator;
 
     [SerializeField] float speed;
@@ -43,5 +50,30 @@ public class NPCAnimScript : MonoBehaviour
         }
 
         animator.SetFloat("Speed", speed);
+    }
+
+    public void LoadData(GameData data){
+        data.NPCIsLayingDownMap.TryGetValue(id, out isLayingDown);
+
+        data.NPCIsSickMap.TryGetValue(id, out isSick);
+
+        data.NPCIsSittingMap.TryGetValue(id, out isSitting);
+    }
+
+    public void SaveData(ref GameData data){
+        if (data.NPCIsLayingDownMap.ContainsKey(id)){
+            data.NPCIsLayingDownMap.Remove(id);
+        }
+        data.NPCIsLayingDownMap.Add(id, isLayingDown);
+
+        if (data.NPCIsSickMap.ContainsKey(id)){
+            data.NPCIsSickMap.Remove(id);
+        }
+        data.NPCIsSickMap.Add(id, isSick);
+
+        if (data.NPCIsSittingMap.ContainsKey(id)){
+            data.NPCIsSittingMap.Remove(id);
+        }
+        data.NPCIsSittingMap.Add(id, isSitting);
     }
 }
