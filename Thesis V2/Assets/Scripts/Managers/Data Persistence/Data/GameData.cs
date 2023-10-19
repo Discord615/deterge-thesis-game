@@ -10,6 +10,7 @@ public class GameData {
     public SerializableDictionary<string, bool> NPCIsLayingDownMap;
     public SerializableDictionary<string, bool> NPCIsSickMap;
     public SerializableDictionary<string, bool> NPCIsSittingMap;
+    public SerializableDictionary<string, Vector3> NPCposition;
 
     // Player Variables
     public Vector3 playerPosition;
@@ -19,7 +20,8 @@ public class GameData {
         this.NPCTargetMap = new SerializableDictionary<string, Transform>();
         this.NPCFloorMap = new SerializableDictionary<string, int>();
         this.NPCIsLayingDownMap = new SerializableDictionary<string, bool>();
-        this.NPCIsSickMap = new SerializableDictionary<string, bool>()
-        this.NPCIsSittingMap = new SerializableDictionary<string, bool>()
+        this.NPCIsSickMap = new SerializableDictionary<string, bool>();
+        this.NPCIsSittingMap = new SerializableDictionary<string, bool>();
+        this.NPCposition = new SerializableDictionary<string, Vector3>();
     }
 }

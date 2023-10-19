@@ -46,14 +46,23 @@ public class Unit : MonoBehaviour, IDataPersistence {
 	}
 
 	public void LoadData(GameData data){
+		Vector3 position = new Vector3();
+
+		data.NPCposition.TryGetValue(id, out position);
+
+		transform.position = position;
+
 		data.NPCTargetMap.TryGetValue(id, out target);
-		this.target = target;
 
 		data.NPCFloorMap.TryGetValue(id, out floor);
-		this.floor = floor;
 	}
 
 	public void SaveData(ref GameData data){
+		if (data.NPCposition.ContainsKey(id)){
+			data.NPCposition.Remove(id);
+		}
+		data.NPCposition.Add(id, transform.position);
+
 		if (data.NPCTargetMap.ContainsKey(id)){
 			data.NPCTargetMap.Remove(id);
 		}

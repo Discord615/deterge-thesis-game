@@ -5,9 +5,7 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     [Header("Config")]
-    [SerializeField] private bool loadQuestState = true;
     [SerializeField] private string fileName;
-    [SerializeField] private GameObject PlayerPosition;
 
     private Dictionary<string, Quest> questMap;
     private FileDataHandler fileDataHandler;
@@ -104,7 +102,7 @@ public class QuestManager : MonoBehaviour
         foreach (QuestInfoSO questInfo in allQuest){
             if (idToQuestMap.ContainsKey(questInfo.id)) Debug.LogWarning("Duplicate ID for " + questInfo.id + " exists");
 
-            idToQuestMap.Add(questInfo.id, fileDataHandler.load(questInfo, loadQuestState));
+            idToQuestMap.Add(questInfo.id, fileDataHandler.load(questInfo));
         }
 
         return idToQuestMap;

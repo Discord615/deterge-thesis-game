@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections.Generic;
 
 public class DataPersistenceManager : MonoBehaviour {
     [Header("File Storage Config")]
@@ -29,7 +30,7 @@ public class DataPersistenceManager : MonoBehaviour {
     }
 
     public void LoadGame(){
-        this.gameData = dataHandler.load;
+        this.gameData = dataHandler.Load();
 
         if (this.gameData == null) NewGame();
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
@@ -43,6 +44,8 @@ public class DataPersistenceManager : MonoBehaviour {
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
+
+        dataHandler.Save(gameData);
     }
 
     private void OnApplicationQuit() {
@@ -50,7 +53,7 @@ public class DataPersistenceManager : MonoBehaviour {
     }
 
     private List<IDataPersistence> FindAllIDataPersistenceObjects(){
-        IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsofType<MonoBehaviour>().ofType<IDataPersistence>();
+        IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
 
         return new List<IDataPersistence>(dataPersistenceObjects);
     }

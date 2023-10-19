@@ -14,15 +14,10 @@ public class FileDataHandler
         this.fileName = fileName;
     }
 
-    public Quest load(QuestInfoSO questInfo, bool loadQuestState){
+    public Quest load(QuestInfoSO questInfo){
         string fullPath = System.IO.Path.Combine(filePath, fileName);
 
         Quest quest = null;
-
-        if (!loadQuestState) {
-            quest = new Quest(questInfo);
-            return quest;
-        }
 
         if (File.Exists(fullPath)){
             try
@@ -55,7 +50,6 @@ public class FileDataHandler
             Directory.CreateDirectory(System.IO.Path.GetDirectoryName(fullPath));
 
             QuestData questData = quest.getQuestData();
-            questData.playerPosition = PlayerPosition;
             string serializedData = JsonUtility.ToJson(questData, true);
             using (FileStream stream = new FileStream(fullPath, FileMode.Create)){
                 using (StreamWriter writer = new StreamWriter(stream)){
@@ -90,8 +84,8 @@ public class FileDataHandler
             {
                 Debug.LogWarning("Failed to load data");
             }
-            retrun loadedData;
         }
+            return loadedData;
     }
 
     public void Save(GameData data){

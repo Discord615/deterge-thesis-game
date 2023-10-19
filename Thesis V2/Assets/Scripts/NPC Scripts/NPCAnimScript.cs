@@ -54,13 +54,10 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data){
         data.NPCIsLayingDownMap.TryGetValue(id, out isLayingDown);
-        this.isLayingDown = isLayingDown;
 
         data.NPCIsSickMap.TryGetValue(id, out isSick);
-        this.isSick = isSick;
 
         data.NPCIsSittingMap.TryGetValue(id, out isSitting);
-        this.isSitting = isSitting;
     }
 
     public void SaveData(ref GameData data){
