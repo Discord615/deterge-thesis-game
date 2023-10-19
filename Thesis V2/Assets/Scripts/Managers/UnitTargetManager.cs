@@ -6,14 +6,17 @@ public class UnitTargetManager : MonoBehaviour
 {
     private static UnitTargetManager instance;
 
-    private void Awake() {
-        if (instance != null) {
+    private void Awake()
+    {
+        if (instance != null)
+        {
             Debug.LogError("Error: There seems to be an existing instance of Unit Target Manager");
         }
         instance = this;
     }
 
-    public static UnitTargetManager GetInstance(){
+    public static UnitTargetManager GetInstance()
+    {
         return instance;
     }
 
@@ -31,28 +34,40 @@ public class UnitTargetManager : MonoBehaviour
     [SerializeField] private GameObject[] beds;
 
     [Header("General")]
-    [SerializeField] private GameObject[] RandomTargets;
+    [SerializeField] private GameObject[] FirstFloorRandomTargets;
+    [SerializeField] private GameObject[] SecondFloorRandomTargets;
     [SerializeField] private GameObject canteenFood;
 
 
-    public GameObject getAnyGameObjectTarget(int floor){
-        switch (Random.Range(0, 5)){
+    public GameObject getAnyGameObjectTarget(int floor) // TODO: If target is key places for virus then add a randomizer for getting sick that depends on where they got it
+    {
+        GameObject target = null;
+        switch (Random.Range(0, 4))
+        {
             case 0:
-                return getTeleportTarget(floor);
-            
+                target = getTeleportTarget(floor);
+                break;
+
             case 1:
-                return getRandomTarget();
+                target = getRandomTarget(floor);
+                break;
 
-            // TODO: Add other targets
-            // TODO: If target is key places for virus then add a randomizer for getting sick that depends on where they got it
+            case 2:
+                target = getClassroomChairTarget(floor);
+                break;
 
-            default:
-                return null;
+            case 3:
+                target = getCanteenChairTarget(floor);
+                break;
         }
+
+        return target;
     }
 
-    public GameObject getTeleportTarget(int floor){
-        switch (floor){
+    public GameObject getTeleportTarget(int floor)
+    {
+        switch (floor)
+        {
             case 1:
                 return FirstFloorTeleps[Random.Range(0, FirstFloorTeleps.Length)];
             case 2:
@@ -61,7 +76,52 @@ public class UnitTargetManager : MonoBehaviour
         return null;
     }
 
-    public GameObject getRandomTarget(){
-        return RandomTargets[Random.Range(0, RandomTargets.Length)];
+    public GameObject getCanteenChairTarget(int floor)
+    {
+        GameObject target = null;
+        if (floor != 1) target = getAnyGameObjectTarget(floor);
+
+        target = canteenChairs[Random.Range(0, canteenChairs.Length)];
+
+        return target;
+    }
+
+    public GameObject getClassroomChairTarget(int floor)
+    {
+        GameObject target = null;
+
+        if (floor != 2) target = getAnyGameObjectTarget(floor);
+
+        target = classroomChairs[Random.Range(0, classroomChairs.Length)];
+
+        return target;
+    }
+
+    public GameObject getBedTarget(int floor)
+    {
+        GameObject target = null;
+
+        foreach (GameObject bed in beds)
+        {
+            if (bed.GetComponent<LayDown>().occupied) continue;
+
+            target = bed;
+            break;
+        }
+
+        return target; // Returns null if no bed was available
+    }
+
+    public GameObject getRandomTarget(int floor)
+    {
+        switch (floor)
+        {
+            case 1:
+                return FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)];
+
+            case 2:
+                return SecondFloorRandomTargets[Random.Range(0, SecondFloorRandomTargets.Length)];
+        }
+        return null;
     }
 }
