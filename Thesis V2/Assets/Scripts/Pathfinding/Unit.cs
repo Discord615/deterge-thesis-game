@@ -31,7 +31,6 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 	void Start()
 	{
-		if (target == null) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
 		animScript = GetComponent<NPCAnimScript>();
 		oldTarget = target;
 		StartCoroutine(UpdatePath());
@@ -39,6 +38,8 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 	private void Update()
 	{
+		if (target == null) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
+
 		if (!animScript.isLayingDown)
 		{
 			transform.localPosition = new Vector3(transform.localPosition.x, 1, transform.localPosition.z);

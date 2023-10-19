@@ -13,6 +13,7 @@ public class NPC_teleport_script : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (!other.tag.Equals("teleporter")) return;
         if (other.gameObject == NPCTarget.target.gameObject){
             wantToTeleport = true;
         } else{
