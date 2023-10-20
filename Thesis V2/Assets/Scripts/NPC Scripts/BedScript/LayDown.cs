@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class LayDown : MonoBehaviour // TODO: LayDown Script - CLEAN UP CODE!!!!
 {
     public bool occupied = false;
