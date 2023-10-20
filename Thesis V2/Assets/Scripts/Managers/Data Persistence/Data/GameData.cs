@@ -23,7 +23,7 @@ public class GameData {
         this.NPCIsSittingMap = new SerializableDictionary<string, bool>();
 
         // ! These two causes issues because it initializes to either null or 0
-        // this.NPCFloorMap = new SerializableDictionary<string, int>();
-        // this.NPCposition = new SerializableDictionary<string, Vector3>();
+        this.NPCFloorMap = new SerializableDictionary<string, int>();
+        this.NPCposition = new SerializableDictionary<string, Vector3>();
     }
 }

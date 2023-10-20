@@ -21,7 +21,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 	public float turnSpeed = 3f;
 	public float turnDst = 5f;
 	public float stoppingDst = 2f;
-	public int floor = 1;
+	public int floor;
 
 	Path path;
 
@@ -56,6 +56,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 	{
 		// Load Unit Floor
 		data.NPCFloorMap.TryGetValue(id, out floor);
+		if (floor == 0) floor = 1;
 
 		// Load Unit Target
 		data.NPCTargetMap.TryGetValue(id, out target);
@@ -63,7 +64,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 		// Load NPC position
 		Vector3 position;
 		data.NPCposition.TryGetValue(id, out position);
-		this.transform.position = position;
+		if (position != Vector3.zero) this.transform.position = position;
 	}
 
 	public void SaveData(ref GameData data)
@@ -196,6 +197,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 					if (speedPercent < 0.01f)
 					{
 						followingPath = false;
+						target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
 						Debug.Log("Completed path");
 					}
 				}
