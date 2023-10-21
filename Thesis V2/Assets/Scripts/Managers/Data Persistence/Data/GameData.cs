@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class GameData {
-    // NPC Variables
+    // * NPC Variables
     public SerializableDictionary<string, Transform> NPCTargetMap;
     public SerializableDictionary<string, int> NPCFloorMap;
     public SerializableDictionary<string, bool> NPCIsLayingDownMap;
@@ -13,8 +13,13 @@ public class GameData {
     public SerializableDictionary<string, Vector3> NPCposition;
     public float timerData;
 
-    // Player Variables
+    // * Player Variables
     public Vector3 playerPosition;
+
+    // * Item Variables
+    public int gloveUsesData;
+    public int alcoholUsesData;
+    public int maskUsesData;
 
     public GameData(){
         this.playerPosition = Vector3.zero;
@@ -25,6 +30,10 @@ public class GameData {
         this.NPCIsSittingMap = new SerializableDictionary<string, bool>();
 
         this.timerData = 3600f;
+
+        this.gloveUsesData = 0;
+        this.alcoholUsesData = 0;
+        this.maskUsesData = 0;
 
         // ! These two causes issues because it initializes to either null or 0
         this.NPCFloorMap = new SerializableDictionary<string, int>();

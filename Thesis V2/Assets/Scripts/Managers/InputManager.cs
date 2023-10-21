@@ -12,6 +12,9 @@ public class InputManager : MonoBehaviour
     private bool runPressed = false;
     private bool escapePressed = false;
     private bool spacePressed = false;
+    private bool alcoholPressed = false;
+    private bool glovePressed = false;
+    private bool maskPressed = false;
     private static InputManager instance;
 
     private void Awake() {
@@ -23,6 +26,30 @@ public class InputManager : MonoBehaviour
 
     public static InputManager getInstance(){
         return instance;
+    }
+
+    public void AlcoholPressed(InputAction.CallbackContext context){
+        if (context.performed){
+            alcoholPressed = true;
+        } else if (context.canceled){
+            alcoholPressed = false;
+        }
+    }
+
+    public void GlovePressed(InputAction.CallbackContext context){
+        if (context.performed){
+            glovePressed = true;
+        } else if (context.canceled){
+            glovePressed = false;
+        }
+    }
+
+    public void MaskPressed(InputAction.CallbackContext context){
+        if (context.performed){
+            maskPressed = true;
+        } else if (context.canceled){
+            maskPressed = false;
+        }
     }
 
     public void SpacePressed(InputAction.CallbackContext context){
@@ -71,6 +98,24 @@ public class InputManager : MonoBehaviour
         } else if (context.canceled){
             contextActionPressed = false;
         }
+    }
+
+    public bool getAlcoholPressed(){
+        bool result = alcoholPressed;
+        alcoholPressed = false;
+        return result;
+    }
+
+    public bool getGlovePressed(){
+        bool result = glovePressed;
+        glovePressed = false;
+        return result;
+    }
+
+    public bool getMaskPressed(){
+        bool result = maskPressed;
+        maskPressed = false;
+        return result;
     }
 
     public Vector2 GetMovePressed(){
