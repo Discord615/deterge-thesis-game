@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class LayDown : MonoBehaviour // TODO: LayDown Script - CLEAN UP CODE!!!!
 {
-    bool occupied = false;
+    public bool occupied = false;
     GameObject occupant = null;
     Vector3 previousPosition;
 

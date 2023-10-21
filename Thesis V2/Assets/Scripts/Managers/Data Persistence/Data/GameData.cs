@@ -18,10 +18,12 @@ public class GameData {
     public GameData(){
         this.playerPosition = Vector3.zero;
         this.NPCTargetMap = new SerializableDictionary<string, Transform>();
-        this.NPCFloorMap = new SerializableDictionary<string, int>();
         this.NPCIsLayingDownMap = new SerializableDictionary<string, bool>();
         this.NPCIsSickMap = new SerializableDictionary<string, bool>();
         this.NPCIsSittingMap = new SerializableDictionary<string, bool>();
+
+        // ! These two causes issues because it initializes to either null or 0
+        this.NPCFloorMap = new SerializableDictionary<string, int>();
         this.NPCposition = new SerializableDictionary<string, Vector3>();
     }
 }
