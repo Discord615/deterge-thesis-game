@@ -197,7 +197,21 @@ public class Unit : MonoBehaviour, IDataPersistence
 					if (speedPercent < 0.01f)
 					{
 						followingPath = false;
-						target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
+						if (animScript.isSick && floor == 1 && !animScript.isLayingDown)
+						{
+							try
+							{
+								target = UnitTargetManager.GetInstance().getBedTarget(floor).transform;
+							}
+							catch (System.Exception)
+							{
+								target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
+							}
+						}
+						else
+						{
+							target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
+						}
 						Debug.Log("Completed path");
 					}
 				}

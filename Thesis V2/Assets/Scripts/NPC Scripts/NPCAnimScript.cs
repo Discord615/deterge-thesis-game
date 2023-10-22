@@ -7,9 +7,10 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
     [SerializeField] private string id;
 
     [ContextMenu("Generate guid for id")]
-	private void GenerateGuid(){
-		id = System.Guid.NewGuid().ToString();
-	}
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
 
     Animator animator;
 
@@ -25,24 +26,31 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
 
     [Header("Chair Variables")]
     public bool wantToSit = false; // TODO: Anim - Should base off of the target name/tag. If Chair then wantToSit = false
-    public bool isSitting = false; 
-    
+    public bool isSitting = false;
 
-    private void Start() {
+
+    private void Start()
+    {
         animator = gameObject.GetComponent<Animator>();
     }
 
-    private void Update() {
-        if (!stopped){
-            if (slowDown){
-                if (speed < 0.05f){
+    private void Update()
+    {
+        if (!stopped)
+        {
+            if (slowDown)
+            {
+                if (speed < 0.05f)
+                {
                     speed = 0;
                     stopped = true;
                     slowDown = false;
                 }
 
                 speed -= deccelarationSpeed * Time.deltaTime;
-            } else {
+            }
+            else
+            {
                 speed += accelarationSpeed * Time.deltaTime;
             }
 
@@ -52,7 +60,8 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
         animator.SetFloat("Speed", speed);
     }
 
-    public void LoadData(GameData data){
+    public void LoadData(GameData data)
+    {
         data.NPCIsLayingDownMap.TryGetValue(id, out isLayingDown);
 
         data.NPCIsSickMap.TryGetValue(id, out isSick);
@@ -60,18 +69,22 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
         data.NPCIsSittingMap.TryGetValue(id, out isSitting);
     }
 
-    public void SaveData(ref GameData data){
-        if (data.NPCIsLayingDownMap.ContainsKey(id)){
+    public void SaveData(ref GameData data)
+    {
+        if (data.NPCIsLayingDownMap.ContainsKey(id))
+        {
             data.NPCIsLayingDownMap.Remove(id);
         }
         data.NPCIsLayingDownMap.Add(id, isLayingDown);
 
-        if (data.NPCIsSickMap.ContainsKey(id)){
+        if (data.NPCIsSickMap.ContainsKey(id))
+        {
             data.NPCIsSickMap.Remove(id);
         }
         data.NPCIsSickMap.Add(id, isSick);
 
-        if (data.NPCIsSittingMap.ContainsKey(id)){
+        if (data.NPCIsSittingMap.ContainsKey(id))
+        {
             data.NPCIsSittingMap.Remove(id);
         }
         data.NPCIsSittingMap.Add(id, isSitting);
