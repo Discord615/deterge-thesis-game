@@ -36,28 +36,31 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
 
     private void Update()
     {
-        if (!stopped)
-        {
-            if (slowDown)
-            {
-                if (speed < 0.05f)
-                {
-                    speed = 0;
-                    stopped = true;
-                    slowDown = false;
-                }
-
-                speed -= deccelarationSpeed * Time.deltaTime;
-            }
-            else
-            {
-                speed += accelarationSpeed * Time.deltaTime;
-            }
-
-            if (speed > 1f) speed = 1f;
-        }
+        updateSpeed();
 
         animator.SetFloat("Speed", speed);
+    }
+
+    private void updateSpeed() // ! Untested
+    {
+        if (stopped) return;
+
+        if (!slowDown)
+        {
+            speed += accelarationSpeed * Time.deltaTime;
+            return;
+        }
+
+        speed -= deccelarationSpeed * Time.deltaTime;
+
+        if (speed < 0.05f)
+        {
+            speed = 0;
+            stopped = true;
+            slowDown = false;
+        }
+
+        if (speed > 1f) speed = 1f;
     }
 
     public void LoadData(GameData data)

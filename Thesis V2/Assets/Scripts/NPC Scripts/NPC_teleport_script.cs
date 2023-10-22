@@ -8,16 +8,19 @@ public class NPC_teleport_script : MonoBehaviour
 
     private Unit NPCTarget;
 
-    private void Start() {
+    private void Start()
+    {
         NPCTarget = gameObject.GetComponent<Unit>();
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
         if (!other.tag.Equals("teleporter")) return;
-        if (other.gameObject == NPCTarget.target.gameObject){
-            wantToTeleport = true;
-        } else{
+        if (other.gameObject != NPCTarget.target.gameObject)
+        {
             wantToTeleport = false;
+            return;
         }
+        wantToTeleport = true;
     }
 }
