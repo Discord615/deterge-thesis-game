@@ -4,7 +4,7 @@ using System.Collections;
 public class Unit : MonoBehaviour, IDataPersistence
 {
 
-	[SerializeField] private string id;
+	[SerializeField] public string id { get; private set; }
 
 	[ContextMenu("Generate guid for id")]
 	private void GenerateGuid()
@@ -63,8 +63,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 		// Load NPC position
 		Vector3 position;
-		data.NPCposition.TryGetValue(id, out position);
-		if (position != Vector3.zero) this.transform.position = position;
+		if (data.NPCposition.TryGetValue(id, out position)) this.transform.position = position;
 	}
 
 	public void SaveData(ref GameData data)

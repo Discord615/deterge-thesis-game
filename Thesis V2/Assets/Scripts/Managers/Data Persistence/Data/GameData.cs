@@ -11,6 +11,8 @@ public class GameData {
     public SerializableDictionary<string, bool> NPCIsSickMap;
     public SerializableDictionary<string, bool> NPCIsSittingMap;
     public SerializableDictionary<string, Vector3> NPCposition;
+    public SerializableDictionary<string, TextAsset> inkJsonData;
+
     public float timerData;
 
     // * Player Variables
@@ -38,5 +40,9 @@ public class GameData {
         // ! These two causes issues because it initializes to either null or 0
         this.NPCFloorMap = new SerializableDictionary<string, int>();
         this.NPCposition = new SerializableDictionary<string, Vector3>();
+        
+
+        // ! Untested
+        this.inkJsonData = new SerializableDictionary<string, TextAsset>();
     }
 }
