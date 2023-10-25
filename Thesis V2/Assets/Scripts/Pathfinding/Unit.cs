@@ -4,7 +4,7 @@ using System.Collections;
 public class Unit : MonoBehaviour, IDataPersistence
 {
 
-	[SerializeField] public string id { get; private set; }
+	[SerializeField] private string id;
 
 	[ContextMenu("Generate guid for id")]
 	private void GenerateGuid()
@@ -55,8 +55,9 @@ public class Unit : MonoBehaviour, IDataPersistence
 	public void LoadData(GameData data) // ? Subject to change because I can't tell what TryGetValue returns if id does not exist
 	{
 		// Load Unit Floor
-		data.NPCFloorMap.TryGetValue(id, out floor);
-		if (floor == 0) floor = 1;
+		if (!data.NPCFloorMap.TryGetValue(id, out floor)){
+			floor = 1;
+		}
 
 		// Load Unit Target
 		data.NPCTargetMap.TryGetValue(id, out target);

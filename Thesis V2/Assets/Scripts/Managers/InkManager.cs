@@ -18,8 +18,8 @@ public class InkManager : MonoBehaviour
 
     public TextAsset[] canteenLadyQuestInks;
 
-    private TextAsset[] maleRandomInks;
-    private TextAsset[] femaleRandomInks;
+    [SerializeField] private TextAsset[] maleRandomInks;
+    [SerializeField] private TextAsset[] femaleRandomInks;
 
     public TextAsset[] virusInks;   // * 0 = Typhoid
                                     // * 1 = Tuberculosis
