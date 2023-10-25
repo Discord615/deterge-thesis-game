@@ -8,9 +8,9 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject visualCue;
 
     [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJson;
+    [SerializeField] public TextAsset inkJson;
 
-    [SerializeField] private bool isMale;
+    [SerializeField] public bool isMale;
 
     public bool playerInRange;
 

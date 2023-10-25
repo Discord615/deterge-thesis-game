@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthManager : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void fullRestore()
     {
-        healthBar.value = healthBar.value.max;
+        healthBar.value = healthBar.maxValue;
         InventoryManager.instance.alcoholRemainingUses = 2;
         InventoryManager.instance.gloveRemainingUses = 3;
         InventoryManager.instance.maskRemainingUses = 3;

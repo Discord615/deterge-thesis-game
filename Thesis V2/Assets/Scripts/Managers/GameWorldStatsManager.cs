@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameWorldStatsManager : MonoBehaviour, IDataPersistence
 {
-    public GameWorldStatsManager instance { get; private set; }
+    public static GameWorldStatsManager instance { get; private set; }
 
     private void Awake()
     {

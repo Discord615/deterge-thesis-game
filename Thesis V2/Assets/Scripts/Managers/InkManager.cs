@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class InkManager : MonoBehaviour
 {
-    public InkManager instance { get; private set; }
+    public static InkManager instance { get; private set; }
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class InkManager : MonoBehaviour
         instance = this;
     }
 
-    // TODO: Add more jsons for each virus convo for patients
+    // TODO: Add more inks for quest givers
 
     public TextAsset[] canteenLadyQuestInks;
 
@@ -50,8 +50,6 @@ public class InkManager : MonoBehaviour
 
     public TextAsset getVirusDialogue()
     {
-        TextAsset output = null;
-
         List<TextAsset> listOfActiveViruses = new List<TextAsset>();
 
         if (GameWorldStatsManager.instance.tyhpoidIsActive)

@@ -6,14 +6,14 @@ using System;
 
 public class InventoryManager : MonoBehaviour, IDataPersistence
 {
-    public InventoryManager instance { get; private set; }
+    public static InventoryManager instance { get; private set; }
 
     [SerializeField] private TextMeshProUGUI gloveText;
     [SerializeField] private TextMeshProUGUI alcoholText;
     [SerializeField] private TextMeshProUGUI maskText;
-    private int gloveRemainingUses;
-    private int alcoholRemainingUses;
-    private int maskRemainingUses;
+    public int gloveRemainingUses;
+    public int alcoholRemainingUses;
+    public int maskRemainingUses;
 
     public bool glovesInUse = false;
     public bool maskInUse = false;
