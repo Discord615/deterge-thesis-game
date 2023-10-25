@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class GameData {
+public class GameData
+{
     // * NPC Variables
     public SerializableDictionary<string, Transform> NPCTargetMap;
     public SerializableDictionary<string, int> NPCFloorMap;
@@ -23,7 +24,12 @@ public class GameData {
     public int alcoholUsesData;
     public int maskUsesData;
 
-    public GameData(){
+    // * Virus Variables
+    public bool tyhpoidIsActive;
+    public bool tuberculosisIsActive;
+
+    public GameData()
+    {
         this.playerPosition = Vector3.zero;
 
         this.NPCTargetMap = new SerializableDictionary<string, Transform>();
@@ -37,10 +43,13 @@ public class GameData {
         this.alcoholUsesData = 0;
         this.maskUsesData = 0;
 
+        this.tyhpoidIsActive = false;
+        this.tuberculosisIsActive = false;
+
         // ! These two causes issues because it initializes to either null or 0
         this.NPCFloorMap = new SerializableDictionary<string, int>();
         this.NPCposition = new SerializableDictionary<string, Vector3>();
-        
+
 
         // ! Untested
         this.inkJsonData = new SerializableDictionary<string, TextAsset>();
