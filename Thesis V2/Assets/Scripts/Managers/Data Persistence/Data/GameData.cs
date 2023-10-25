@@ -27,6 +27,10 @@ public class GameData
     // * Virus Variables
     public bool tyhpoidIsActive;
     public bool tuberculosisIsActive;
+    public bool dengueIsActive;
+    public bool influenzaIsActive;
+    public bool coronaIsActive;
+    public bool rabiesIsActive;
 
     public GameData()
     {
@@ -45,6 +49,10 @@ public class GameData
 
         this.tyhpoidIsActive = false;
         this.tuberculosisIsActive = false;
+        this.dengueIsActive = false;
+        this.influenzaIsActive = false;
+        this.coronaIsActive = false;
+        this.rabiesIsActive = false;
 
         // ! These two causes issues because it initializes to either null or 0
         this.NPCFloorMap = new SerializableDictionary<string, int>();

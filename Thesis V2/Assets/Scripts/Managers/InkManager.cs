@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class InkManager : MonoBehaviour
 {
@@ -22,7 +23,10 @@ public class InkManager : MonoBehaviour
 
     public TextAsset[] virusInks;   // * 0 = Typhoid
                                     // * 1 = Tuberculosis
-                                    // * and so on..
+                                    // * 2 = Dengue
+                                    // * 3 = Influenza
+                                    // * 4 = CoronaVirus
+                                    // * 5 = Rabies
 
 
     public TextAsset getRandomInk(bool isMale)
@@ -60,8 +64,22 @@ public class InkManager : MonoBehaviour
             listOfActiveViruses.Add(virusInks[1]);
         }
 
-        // ! add the other viruses
+        if (GameWorldStatsManager.instance.dengueIsActive){
+            listOfActiveViruses.Add(virusInks[2]);
+        }
 
-        return listOfActiveViruses[Random.Range(0, listOfActiveViruses.Length)];
+        if (GameWorldStatsManager.instance.influenzaIsActive){
+            listOfActiveViruses.Add(virusInks[3]);
+        }
+
+        if (GameWorldStatsManager.instance.coronaIsActive){
+            listOfActiveViruses.Add(virusInks[4]);
+        }
+
+        if (GameWorldStatsManager.instance.rabiesIsActive){
+            listOfActiveViruses.Add(virusInks[5]);
+        }
+
+        return listOfActiveViruses[Random.Range(0, listOfActiveViruses.Count)];
     }
 }
