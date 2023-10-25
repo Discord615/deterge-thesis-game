@@ -53,6 +53,7 @@ public class LayDown : MonoBehaviour
     {
         animator.SetTrigger("LayDown");
         npc.GetComponent<NPCAnimScript>().isLayingDown = true;
+        npc.GetComponent<DialogueAction>().inkJson = InkManager.instance.getVirusDialogue();
 
         previousPosition = npc.transform.position;
         npc.transform.position = new Vector3(transform.position.x, -1, transform.position.z);
@@ -66,6 +67,7 @@ public class LayDown : MonoBehaviour
     {
         animator.SetTrigger("StandUp");
         npc.GetComponent<NPCAnimScript>().isLayingDown = false;
+        npc.GetComponent<DialogueAction>().inkJson = InkManager.instance.getRandomInk(npc.GetComponent<DialogueAction>().isMale);
 
         npc.transform.position = previousPosition;
 
