@@ -55,7 +55,8 @@ public class Unit : MonoBehaviour, IDataPersistence
 	public void LoadData(GameData data) // ? Subject to change because I can't tell what TryGetValue returns if id does not exist
 	{
 		// Load Unit Floor
-		if (!data.NPCFloorMap.TryGetValue(id, out floor)){
+		if (!data.NPCFloorMap.TryGetValue(id, out floor))
+		{
 			floor = 1;
 		}
 
@@ -182,7 +183,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 				}
 			}
 
-			if (followingPath)
+			if (followingPath && !animScript.isLayingDown && !animScript.isSitting) // TODO: Test if sitting and laying down condition works properly
 			{
 
 				animScript.slowDown = false;
@@ -216,7 +217,6 @@ public class Unit : MonoBehaviour, IDataPersistence
 					}
 				}
 
-				// TODO: Add lock for when target has been changed while laying down or sitting down
 				Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
 				transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
 				transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
