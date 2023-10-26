@@ -59,7 +59,7 @@ public class GameData
         this.NPCposition = new SerializableDictionary<string, Vector3>();
 
 
-        // ! Untested
+        // ! To Fix more properly
         this.inkJsonData = new SerializableDictionary<string, TextAsset>();
     }
 }
