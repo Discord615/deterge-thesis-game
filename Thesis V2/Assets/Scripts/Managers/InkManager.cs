@@ -16,17 +16,22 @@ public class InkManager : MonoBehaviour
 
     // TODO: Add more inks for quest givers
 
+    [Header("Quest Dialogues")]
     public TextAsset[] canteenLadyQuestInks;
 
+
+    [Header("Gendered Ink Dialogues")]
     [SerializeField] private TextAsset[] maleRandomInks;
     [SerializeField] private TextAsset[] femaleRandomInks;
 
-    public TextAsset[] virusInks;   // * 0 = Typhoid
-                                    // * 1 = Tuberculosis
-                                    // * 2 = Dengue
-                                    // * 3 = Influenza
-                                    // * 4 = CoronaVirus
-                                    // * 5 = Rabies
+
+    [Header("Virus Ink Dialogue Files")]
+    [SerializeField] private TextAsset[] TyphoidInks;
+    [SerializeField] private TextAsset[] TuberCulosisInks;
+    [SerializeField] private TextAsset[] DengueInks;
+    [SerializeField] private TextAsset[] InfluenzaInks;
+    [SerializeField] private TextAsset[] CoronaInks;
+    [SerializeField] private TextAsset[] RabiesInks;
 
 
     public TextAsset getRandomInk(bool isMale)
@@ -54,28 +59,32 @@ public class InkManager : MonoBehaviour
 
         if (GameWorldStatsManager.instance.tyhpoidIsActive)
         {
-            listOfActiveViruses.Add(virusInks[0]);
+            listOfActiveViruses.Add(TyphoidInks[Random.Range(0, 3)]);
         }
 
         if (GameWorldStatsManager.instance.tuberculosisIsActive)
         {
-            listOfActiveViruses.Add(virusInks[1]);
+            listOfActiveViruses.Add(TuberCulosisInks[Random.Range(0, 3)]);
         }
 
-        if (GameWorldStatsManager.instance.dengueIsActive){
-            listOfActiveViruses.Add(virusInks[2]);
+        if (GameWorldStatsManager.instance.dengueIsActive)
+        {
+            listOfActiveViruses.Add(DengueInks[Random.Range(0, 3)]);
         }
 
-        if (GameWorldStatsManager.instance.influenzaIsActive){
-            listOfActiveViruses.Add(virusInks[3]);
+        if (GameWorldStatsManager.instance.influenzaIsActive)
+        {
+            listOfActiveViruses.Add(DengueInks[Random.Range(0, 3)]);
         }
 
-        if (GameWorldStatsManager.instance.coronaIsActive){
-            listOfActiveViruses.Add(virusInks[4]);
+        if (GameWorldStatsManager.instance.coronaIsActive)
+        {
+            listOfActiveViruses.Add(CoronaInks[Random.Range(0, 3)]);
         }
 
-        if (GameWorldStatsManager.instance.rabiesIsActive){
-            listOfActiveViruses.Add(virusInks[5]);
+        if (GameWorldStatsManager.instance.rabiesIsActive)
+        {
+            listOfActiveViruses.Add(RabiesInks[Random.Range(0, 3)]);
         }
 
         return listOfActiveViruses[Random.Range(0, listOfActiveViruses.Count)];
