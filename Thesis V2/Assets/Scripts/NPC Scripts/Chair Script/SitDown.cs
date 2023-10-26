@@ -54,7 +54,7 @@ public class SitDown : MonoBehaviour
         Transform newTarget;
         while (true){
             try{
-                newTarget = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor).transform;
+                newTarget = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc).transform;
                 break;
             }
             catch (System.Exception){

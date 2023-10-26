@@ -202,7 +202,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 						{
 							try
 							{
-								target = UnitTargetManager.GetInstance().getBedTarget(floor).transform;
+								target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject).transform;
 							}
 							catch (System.Exception)
 							{

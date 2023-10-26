@@ -10,12 +10,6 @@ public class LayDown : MonoBehaviour
     GameObject occupant = null;
     Vector3 previousPosition;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag != "npc") return;
-        if (occupied) getNewTarget(other.gameObject);
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.tag != "npc") return;
@@ -23,41 +17,22 @@ public class LayDown : MonoBehaviour
         bool npcLayingDown = other.GetComponent<NPCAnimScript>().isLayingDown;
         bool npcIsSick = other.GetComponent<NPCAnimScript>().isSick;
 
-        if (other.tag != "npc") return;
         if (!(npcIsSick ^ (npcLayingDown && occupied))) return;
         if (npcLayingDown != occupied) return;
         if (npcIsSick) layDownTrigger(other.GetComponent<Animator>(), other.gameObject);
         else standUpTrigger(other.GetComponent<Animator>(), other.gameObject);
     }
 
-    private void getNewTarget(GameObject npc)
-    {
-        Transform newTarget;
-        while (true)
-        {
-            try
-            {
-                newTarget = UnitTargetManager.GetInstance().getBedTarget(npc.GetComponent<Unit>().floor).transform;
-                break;
-            }
-            catch (System.Exception)
-            {
-                continue;
-            }
-        }
-
-        npc.GetComponent<Unit>().target = newTarget;
-    }
-
     private void layDownTrigger(Animator animator, GameObject npc)
     {
         animator.SetTrigger("LayDown");
         npc.GetComponent<NPCAnimScript>().isLayingDown = true;
-        npc.GetComponent<DialogueAction>().inkJson = InkManager.instance.getVirusDialogue();
+        // npc.GetComponent<DialogueAction>().inkJson = InkManager.instance.getVirusDialogue();
 
+        npc.GetComponent<CapsuleCollider>().enabled = false;
         previousPosition = npc.transform.position;
-        npc.transform.position = new Vector3(transform.position.x, -1, transform.position.z);
-        npc.transform.forward = new Vector3(-1, 0, 0);
+        npc.transform.position = new Vector3(transform.position.x, 0, transform.position.z + 2);
+        npc.transform.forward = transform.forward;
 
         occupant = npc;
         occupied = true;
@@ -70,10 +45,11 @@ public class LayDown : MonoBehaviour
         npc.GetComponent<DialogueAction>().inkJson = InkManager.instance.getRandomInk(npc.GetComponent<DialogueAction>().isMale);
 
         npc.transform.position = previousPosition;
+        npc.GetComponent<CapsuleCollider>().enabled = true;
 
         occupant = null;
         occupied = false;
 
-        getNewTarget(npc);
+        npc.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc).transform;
     }
 }

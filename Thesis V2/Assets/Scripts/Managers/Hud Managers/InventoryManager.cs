@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEditor.Experimental.GraphView;
 
 public class InventoryManager : MonoBehaviour, IDataPersistence
 {
@@ -26,6 +27,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         {
             Debug.LogError("More than one instance of Inventory Manager exists in the current scene");
         }
+        instance = this;
     }
 
     private void Update()
@@ -64,6 +66,10 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         }
 
         glovesInUse = glovesInUse ? false : true;
+
+        gloveText.color = glovesInUse ? Color.black : Color.white;
+
+        StartCoroutine(itemUsed(gloveText));
     }
 
     public void toggleMask()
@@ -76,6 +82,10 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         }
 
         maskInUse = maskInUse ? false : true;
+
+        maskText.color = maskInUse ? Color.black : Color.white;
+
+        StartCoroutine(itemUsed(maskText));
     }
 
     public bool useAlcohol()
@@ -89,19 +99,30 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
         // TODO
         alcoholRemainingUses--;
+        StartCoroutine(itemUsed(alcoholText));
 
         return true;
     }
 
     private IEnumerator cannotUse(TextMeshProUGUI textOut)
     {
+        Color prevColor = textOut.color;
         textOut.color = Color.red;
         yield return new WaitForSeconds(0.4f);
-        textOut.color = Color.white;
+        textOut.color = prevColor;
+    }
+
+    private IEnumerator itemUsed(TextMeshProUGUI textOut){
+        Color prevColor = textOut.color;
+        textOut.color = Color.green;
+        yield return new WaitForSeconds(0.4f);
+        if (prevColor.Equals(Color.green)) prevColor = Color.black;
+        textOut.color = prevColor;
     }
 
     public void LoadData(GameData data)
     {
+        itemsAreAvailable = data.itemsAreAvailableData;
         gloveRemainingUses = data.gloveUsesData;
         alcoholRemainingUses = data.alcoholUsesData;
         maskRemainingUses = data.maskUsesData;
@@ -109,6 +130,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
+        data.itemsAreAvailableData = itemsAreAvailable;
         data.gloveUsesData = gloveRemainingUses;
         data.alcoholUsesData = alcoholRemainingUses;
         data.maskUsesData = maskRemainingUses;

@@ -84,7 +84,7 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
 
         if (floor != 1)
         {
-            return getAnyGameObjectTarget(floor);
+            return getAnyGameObjectTarget(floor, NPC);
         }
 
         getSick(NPC);
@@ -100,7 +100,7 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
 
         if (floor != 2)
         {
-            return getAnyGameObjectTarget(floor);
+            return getAnyGameObjectTarget(floor, NPC);
         }
 
         getSick(NPC);
@@ -110,13 +110,13 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
         return target;
     }
 
-    public GameObject getBedTarget(int floor)
+    public GameObject getBedTarget(int floor, GameObject NPC)
     {
         GameObject target = null;
 
         if (floor != 1)
         {
-            return getAnyGameObjectTarget(floor);
+            return getAnyGameObjectTarget(floor, NPC);
         }
 
         foreach (GameObject bed in beds)
@@ -127,7 +127,11 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
             break;
         }
 
-        return target; // Returns null if no bed was available
+        if (target == null){
+            target = getAnyGameObjectTarget(floor, NPC);
+        }
+
+        return target;
     }
 
     public GameObject getRandomTarget(int floor)
@@ -137,9 +141,11 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
         {
             case 1:
                 target = FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)];
+                break;
 
             case 2:
                 target = SecondFloorRandomTargets[Random.Range(0, SecondFloorRandomTargets.Length)];
+                break;
         }
         return target;
     }
@@ -148,7 +154,7 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
     {
         if (floor != 1)
         {
-            return getAnyGameObjectTarget(floor);
+            return getAnyGameObjectTarget(floor, NPC);
         }
 
         getSick(NPC);
@@ -158,7 +164,7 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
 
     public void getSick(GameObject NPC)
     {
-        if (!NPC.GetComponent<NPCAnimScript>().isSick && !NPC.GetComponent<NPCAnimeScript>().isLayingDown)
+        if (!NPC.GetComponent<NPCAnimScript>().isSick && !NPC.GetComponent<NPCAnimScript>().isLayingDown)
         {
             int chanceOfGettingSick = Random.Range(0, 10);
 

@@ -42,7 +42,7 @@ public class TeleportTrigger : MonoBehaviour
                 teleportee = collider.gameObject;
                 
                 collider.GetComponent<Unit>().floor = floorNumber == 1 ? 2 : 1;
-                collider.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floorNumber).transform;
+                collider.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floorNumber, collider.gameObject).transform;
             }
         }
     }

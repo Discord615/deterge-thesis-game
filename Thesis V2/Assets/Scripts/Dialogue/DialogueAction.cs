@@ -29,12 +29,16 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
     }
 
     void Update(){
-        if (!(playerInRange && !DialogueManagaer.GetInstance().dialogueIsPlaying)){
+        if (!playerInRange){
             visualCue.SetActive(false);
             return;
-        } 
+        }
 
         visualCue.SetActive(true);
+
+        if (!InputManager.getInstance().GetInteractPressed()) {
+            return;
+        }
 
         DialogueManagaer.GetInstance().EnterDialogueMode(inkJson);
     }

@@ -20,6 +20,7 @@ public class GameData
     public Vector3 playerPosition;
 
     // * Item Variables
+    public bool itemsAreAvailableData;
     public int gloveUsesData;
     public int alcoholUsesData;
     public int maskUsesData;
@@ -43,6 +44,7 @@ public class GameData
 
         this.timerData = 3600f;
 
+        this.itemsAreAvailableData = false;
         this.gloveUsesData = 0;
         this.alcoholUsesData = 0;
         this.maskUsesData = 0;
