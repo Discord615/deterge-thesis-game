@@ -38,7 +38,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 	private void Update()
 	{
-		if (target == null) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
+		if (target == null) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform;
 
 		if (!animScript.isLayingDown)
 		{
@@ -198,7 +198,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 					if (speedPercent < 0.01f)
 					{
 						followingPath = false;
-						if (animScript.isSick && floor == 1 && !animScript.isLayingDown)
+						if (animScript.isSick && !animScript.isLayingDown)
 						{
 							try
 							{
@@ -206,12 +206,12 @@ public class Unit : MonoBehaviour, IDataPersistence
 							}
 							catch (System.Exception)
 							{
-								target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
+								target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform;
 							}
 						}
 						else
 						{
-							target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
+							target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform;
 						}
 						Debug.Log("Completed path");
 					}
