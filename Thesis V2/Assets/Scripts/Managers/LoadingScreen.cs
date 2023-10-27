@@ -10,6 +10,7 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private Slider loadingBarFill;
 
     public void LoadScene(int sceneId){
+        Time.timeScale = 1;
         StartCoroutine(LoadSceneAsync(sceneId));
     }
 
@@ -17,11 +18,19 @@ public class LoadingScreen : MonoBehaviour
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
 
         loadingScreenPanel.SetActive(true);
+        operation.allowSceneActivation = false;
+
+        float progressValue = 0;
 
         while (!operation.isDone){
-            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
+            progressValue = Mathf.MoveTowards(progressValue, operation.progress, Time.deltaTime);
 
             loadingBarFill.value = progressValue;
+
+            if (progressValue >= 0.9f){
+                progressValue = 1;
+                operation.allowSceneActivation = true;
+            }
 
             yield return null;
         }

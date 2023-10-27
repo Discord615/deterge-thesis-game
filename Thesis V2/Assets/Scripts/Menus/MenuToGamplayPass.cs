@@ -18,4 +18,8 @@ public class MenuToGamplayPass : MonoBehaviour
     public void createNewGame(bool shouldWeStartNewGame){
         startNewGame = shouldWeStartNewGame;
     }
+
+    public void exit(){
+        Application.Quit();
+    }
 }
