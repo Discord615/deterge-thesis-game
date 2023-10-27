@@ -22,6 +22,7 @@ public class DataPersistenceManager : MonoBehaviour {
     private void Start() {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistenceObjects = FindAllIDataPersistenceObjects();
+
         LoadGame();
     }
 
@@ -30,9 +31,10 @@ public class DataPersistenceManager : MonoBehaviour {
     }
 
     public void LoadGame(){
-        this.gameData = dataHandler.Load();
+        if (!MenuToGamplayPass.instance.startNewGame) this.gameData = dataHandler.Load();
 
-        if (this.gameData == null) NewGame();
+        if (this.gameData == null || MenuToGamplayPass.instance.startNewGame) NewGame();
+
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.LoadData(gameData);
