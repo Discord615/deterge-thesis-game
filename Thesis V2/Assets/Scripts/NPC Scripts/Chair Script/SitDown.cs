@@ -8,6 +8,7 @@ public class SitDown : MonoBehaviour
     private GameObject occupant = null;
     public bool occupied = false;
     private Vector3 prevPos;
+    [SerializeField] private GameObject chairSitPos;
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag != "npc") return;
@@ -31,8 +32,8 @@ public class SitDown : MonoBehaviour
         npc.GetComponent<NPCAnimScript>().isSitting = true;
 
         prevPos = npc.transform.position;
-        npc.transform.position = gameObject.transform.position;
-        npc.transform.forward = gameObject.transform.forward;
+        npc.transform.position = chairSitPos.transform.position;
+        npc.transform.forward = chairSitPos.transform.forward;
 
         occupant = npc;
         occupied = true;

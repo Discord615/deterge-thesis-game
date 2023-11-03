@@ -25,13 +25,13 @@ public class keyGenerator : MonoBehaviour{
         if (win) {
             timer.stopTimer = true;
             keySequenceOutput.text = "Treatment Successful";
-            GameEventsManager.miscEvents.sequenceCompleted();
+            GameEventsManager.instance.miscEvents.sequenceCompleted();
             return;
         }
 
         if (timer.timeOut){
             keySequenceOutput.text = "Treatment Unsuccessful";
-            GameEventsManager.miscEvents.sequenceFailed();
+            GameEventsManager.instance.miscEvents.sequenceFailed();
             return;
         }
             

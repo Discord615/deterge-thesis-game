@@ -13,12 +13,12 @@ public class MiscEvents
     public static event Action onSequenceCompleted;
 
     public void sequenceCompleted(){
-        onSequenceCompleted?.invoke();
+        onSequenceCompleted?.Invoke();
     }
 
     public static event Action onSequenceFailed;
 
     public void sequenceFailed(){
-        onSequenceFailed?.invoke();
+        onSequenceFailed?.Invoke();
     }
 }
