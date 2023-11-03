@@ -8,10 +8,15 @@ public class SitDown : MonoBehaviour
     private GameObject occupant = null;
     public bool occupied = false;
     private Vector3 prevPos;
-    [SerializeField] private GameObject chairSitPos;
+    private GameObject chairSitPos;
+
+    private void Start() {
+        chairSitPos = transform.parent.gameObject;
+    }
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag != "npc") return;
+        if (!other.GetComponent<Unit>().target.gameObject.Equals(gameObject)) return;
         if (occupied){
             getNewTarget(other.gameObject);
             return;
@@ -21,6 +26,7 @@ public class SitDown : MonoBehaviour
 
     private void OnTriggerStay(Collider other) {
         if (other.tag != "npc") return;
+        if (!other.GetComponent<Unit>().target.gameObject.Equals(gameObject)) return;
         if (!(other.GetComponent<NPCAnimScript>().wantToSit ^ (other.GetComponent<NPCAnimScript>().isSitting && occupied))) return;
         if (other.GetComponent<NPCAnimScript>().isSitting != occupied) return;
         if (other.GetComponent<NPCAnimScript>().wantToSit) sitDownTrigger(other.GetComponent<Animator>(), other.gameObject);
@@ -37,6 +43,8 @@ public class SitDown : MonoBehaviour
 
         occupant = npc;
         occupied = true;
+
+        StartCoroutine(sittingDuration(npc));
     }
 
     private void standUpTrigger(Animator animator, GameObject npc){
@@ -64,5 +72,10 @@ public class SitDown : MonoBehaviour
         }
 
         npc.GetComponent<Unit>().target = newTarget;
+    }
+
+    private IEnumerator sittingDuration(GameObject npc){
+        yield return new WaitForSeconds(Random.Range(3, 10));
+        npc.GetComponent<NPCAnimScript>().wantToSit = false;
     }
 }
