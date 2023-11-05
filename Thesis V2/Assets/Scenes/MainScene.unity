@@ -361,7 +361,7 @@ MonoBehaviour:
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
-  isSick: 0
+  isSick: 1
   isLayingDown: 0
   slowDown: 0
   stopped: 0
@@ -1993,6 +1993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupied: 0
+  visualCue: {fileID: 729756169}
 --- !u!65 &180110500
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2546,12 +2547,30 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 2021c1f7620a7104e85e075f6185540f, type: 3}
   - {fileID: 4900000, guid: d8492f40af66e1946b78d4bf2706e13f, type: 3}
   - {fileID: 4900000, guid: ef54c4f1bb460d2468f49334c6a868a2, type: 3}
-  TyphoidInks: []
-  TuberCulosisInks: []
-  DengueInks: []
-  InfluenzaInks: []
-  CoronaInks: []
-  RabiesInks: []
+  TyphoidInks:
+  - {fileID: 4900000, guid: c6906be65800d3e48b29395500f36381, type: 3}
+  - {fileID: 4900000, guid: 682f17ff02b42cd4193356fc337fece0, type: 3}
+  - {fileID: 4900000, guid: efe35fd09a93d8341a9f0cfad69cfae0, type: 3}
+  TuberCulosisInks:
+  - {fileID: 4900000, guid: a17c3abb20ef2c547a5f8b80b8ed4e59, type: 3}
+  - {fileID: 4900000, guid: 571da26ad3c21164da00752b9bfcd8f7, type: 3}
+  - {fileID: 4900000, guid: 983df1cc0fabd5844a5bcbc74789372f, type: 3}
+  DengueInks:
+  - {fileID: 4900000, guid: 74622fe6217fb2a4984599c465881f09, type: 3}
+  - {fileID: 4900000, guid: 2f77f8820994ed943ac65e8877cdc6ec, type: 3}
+  - {fileID: 4900000, guid: 393a37e7c0d5e8644b3d64443757d4bf, type: 3}
+  InfluenzaInks:
+  - {fileID: 4900000, guid: 27aa62e6f79961a4fba32b26526741a6, type: 3}
+  - {fileID: 4900000, guid: a6f85c6aca8b9e94cbb79b8751fd91f0, type: 3}
+  - {fileID: 4900000, guid: 2381c57164d78dc459c4bb6181e4d8df, type: 3}
+  CoronaInks:
+  - {fileID: 4900000, guid: 1b2ee8d55b4308f49a7c3503ae587b55, type: 3}
+  - {fileID: 4900000, guid: 5d28da8cd2a4c1945b73d004c58bfbe1, type: 3}
+  - {fileID: 4900000, guid: 5986eb6cad66a124dade59b75ad05eb8, type: 3}
+  RabiesInks:
+  - {fileID: 4900000, guid: a88d89d7a4a431b4096a498f91e6e87d, type: 3}
+  - {fileID: 4900000, guid: cb26dd62e84af6148905d35a1b630e2c, type: 3}
+  - {fileID: 4900000, guid: 0574e31d23ce30f4a9fe021dc5d81b2b, type: 3}
 --- !u!1 &261078717 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8529418040563549292, guid: 170c07212ce13274db6ab223852bee3a,
@@ -4001,8 +4020,8 @@ RectTransform:
   m_Father: {fileID: 135882206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4913,7 +4932,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5349,6 +5368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupied: 0
+  visualCue: {fileID: 729756169}
 --- !u!65 &572437482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5495,6 +5515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupied: 0
+  visualCue: {fileID: 729756169}
 --- !u!65 &608278910
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5970,6 +5991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupied: 0
+  visualCue: {fileID: 729756169}
 --- !u!65 &660933751
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9381,7 +9403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1004602569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15042,6 +15064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupied: 0
+  visualCue: {fileID: 729756169}
 --- !u!65 &1582865682
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15121,6 +15144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupied: 0
+  visualCue: {fileID: 729756169}
 --- !u!65 &1606670637
 BoxCollider:
   m_ObjectHideFlags: 0

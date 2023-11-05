@@ -15,15 +15,8 @@ public class LayDown : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag != "npc") return;
-
-        bool npcLayingDown = other.GetComponent<NPCAnimScript>().isLayingDown;
-        bool npcIsSick = other.GetComponent<NPCAnimScript>().isSick;
-
-        if (!(npcIsSick ^ (npcLayingDown && occupied))) return;
-        if (npcLayingDown != occupied) return;
-        if (npcIsSick) layDownTrigger(other.GetComponent<Animator>(), other.gameObject);
-        else standUpTrigger(other.GetComponent<Animator>(), other.gameObject);
+        NPCAnimBehavior(other.gameObject);
+        EnterDialogue(other.gameObject);
     }
 
     private void layDownTrigger(Animator animator, GameObject npc)
@@ -63,21 +56,34 @@ public class LayDown : MonoBehaviour
         visualCue.SetActive(occupied);
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (!other.tag.Equals("Player")) return;
-
-        if (!visualCue.active) return;
-
-        if (!InputManager.getInstance().GetInteractPressed()) return;
-
-        DialogueManagaer.GetInstance().EnterDialogueMode(virusJson);
-    }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.tag.Equals("Player")) return;
 
         visualCue.SetActive(false);
+    }
+
+    private void NPCAnimBehavior(GameObject other){
+        if (other.tag != "npc") return;
+
+        bool npcLayingDown = other.GetComponent<NPCAnimScript>().isLayingDown;
+        bool npcIsSick = other.GetComponent<NPCAnimScript>().isSick;
+
+        if (!(npcIsSick ^ (npcLayingDown && occupied))) return;
+        if (npcLayingDown != occupied) return;
+        if (npcIsSick && !npcLayingDown) layDownTrigger(other.GetComponent<Animator>(), other.gameObject);
+        else if (!npcIsSick) standUpTrigger(other.GetComponent<Animator>(), other.gameObject);
+    }
+
+    private void EnterDialogue(GameObject other)
+    {
+        if (!other.tag.Equals("Player")) return;
+
+        if (!visualCue.activeSelf) return;
+
+        if (!InputManager.getInstance().GetInteractPressed()) return;
+
+        DialogueManagaer.GetInstance().EnterDialogueMode(virusJson);
     }
 }

@@ -32,7 +32,6 @@ public class Unit : MonoBehaviour, IDataPersistence
 	void Start()
 	{
 		animScript = GetComponent<NPCAnimScript>();
-		oldTarget = target;
 		StartCoroutine(UpdatePath());
 	}
 
@@ -134,9 +133,8 @@ public class Unit : MonoBehaviour, IDataPersistence
 			// print (((target.position - targetPosOld).sqrMagnitude) + "    " + sqrMoveThreshold);
 			if (!gameObject.GetComponent<NPCAnimScript>().isLayingDown || !gameObject.GetComponent<NPCAnimScript>().isSitting)
 			{
-				if (((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) || oldTarget != target || wallReached)
+				if (((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) || oldTarget == target || wallReached)
 				{
-					if (oldTarget != target) oldTarget = target;
 					if (wallReached) wallReached = false;
 
 					switch (floor)
@@ -197,6 +195,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 					if (speedPercent < 0.01f)
 					{
+						if (oldTarget != target) oldTarget = target;
 						followingPath = false;
 						if (animScript.isSick && !animScript.isLayingDown)
 						{

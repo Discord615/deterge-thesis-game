@@ -32,7 +32,7 @@ public class AssigningBottleWithMeds : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             List<int> medIndexes = new List<int>() { 0, 1, 2 };
-            int medIndex = medIndexes[Random.Next(0, medIndexes.Count)];
+            int medIndex = medIndexes[Random.Range(0, medIndexes.Count)];
 
             switch (i)
             {

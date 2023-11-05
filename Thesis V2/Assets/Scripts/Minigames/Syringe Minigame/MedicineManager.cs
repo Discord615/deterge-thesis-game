@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class MedicineManager : MonoBehaviour
 {
@@ -14,39 +15,41 @@ public class MedicineManager : MonoBehaviour
         instance = this;
     }
 
-    private IDictionary<string, string[]> medsDictionary = new IDictionary<string, string[]>();
+    private Dictionary<string, string[]> medsDictionary = new Dictionary<string, string[]>();
 
-    medsDictionary.Add("Typhoid", new string[] {
-        // Nothing to add yet.
-        // TODO: consult wayen for specific medications
-    });
+    private void Start() {
+        medsDictionary.Add("Typhoid", new string[] {
+            // Nothing to add yet.
+            // TODO: consult wayen for specific medications
+        });
 
-medsDictionary.Add("Tuberculosis", new string[] {
-        "Isoniazid",
-        "Rifampin",
-        "Pyrazinamide",
-        "Ethambutol",
-        "Streptomycin"
-    });
+        medsDictionary.Add("Tuberculosis", new string[] {
+            "Isoniazid",
+            "Rifampin",
+            "Pyrazinamide",
+            "Ethambutol",
+            "Streptomycin"
+        });
 
-// ! UP FOR DISCUSSION
-// medsDictionary.Add("Rabies", new string[] {});
+        // ! UP FOR DISCUSSION
+        // medsDictionary.Add("Rabies", new string[] {});
 
-medsDictionary.Add("Dengue", new string[] {
-        "Paracetamol" // ? Add more?
-    });
+        medsDictionary.Add("Dengue", new string[] {
+            "Paracetamol" // ? Add more?
+        });
 
-medsDictionary.Add("Covid", new string[] {
-        "molnupiravir",
-        "remdesivir"
-    });
+        medsDictionary.Add("Covid", new string[] {
+            "molnupiravir",
+            "remdesivir"
+        });
 
-medsDictionary.Add("Influenza", new string[] {
-        "Oseltamivir Phosphate",
-        "Zanamivir",
-        "Peramivir",
-        "Baloxavir Marboxil"
-    });
+        medsDictionary.Add("Influenza", new string[] {
+            "Oseltamivir Phosphate",
+            "Zanamivir",
+            "Peramivir",
+            "Baloxavir Marboxil"
+        });
+    }
 
 public void getBottleNames(string mainVirus, out string[] mainVirusMeds, out string[] secondVirusMeds, out string[] thirdVirusMeds)
 {
@@ -57,18 +60,20 @@ public void getBottleNames(string mainVirus, out string[] mainVirusMeds, out str
     {
         int dictionaryIndex = Random.Range(0, medsDictionary.Count);
 
-        if (mainVirus.Equals(medsDictionary[dictionaryIndex].Key)) continue;
+        if (mainVirus.Equals(medsDictionary.ElementAt(dictionaryIndex).Key)) continue;
 
-        secondVirusMeds = medsDictionary[dictionaryIndex];
+        secondVirusMeds = medsDictionary.ElementAt(dictionaryIndex).Value;
+        break;
     }
 
     while (true)
     {
         int dictionaryIndex = Random.Range(0, medsDictionary.Count);
 
-        if (mainVirus.Equals(medsDictionary[dictionaryIndex].Key)) continue;
+        if (mainVirus.Equals(medsDictionary.ElementAt(dictionaryIndex).Key)) continue;
 
-        thirdVirusMeds = medsDictionary[dictionaryIndex];
+        thirdVirusMeds = medsDictionary.ElementAt(dictionaryIndex).Value;
+        break;
     }
 }
 }
