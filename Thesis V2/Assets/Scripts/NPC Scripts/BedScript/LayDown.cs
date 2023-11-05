@@ -10,6 +10,9 @@ public class LayDown : MonoBehaviour
     GameObject occupant = null;
     Vector3 previousPosition;
 
+    private TextAsset virusJson;
+    [SerializeField] private GameObject visualCue;
+
     private void OnTriggerStay(Collider other)
     {
         if (other.tag != "npc") return;
@@ -27,7 +30,6 @@ public class LayDown : MonoBehaviour
     {
         animator.SetTrigger("LayDown");
         npc.GetComponent<NPCAnimScript>().isLayingDown = true;
-        // npc.GetComponent<DialogueAction>().inkJson = InkManager.instance.getVirusDialogue();
 
         npc.GetComponent<CapsuleCollider>().enabled = false;
         previousPosition = npc.transform.position;
@@ -36,6 +38,7 @@ public class LayDown : MonoBehaviour
 
         occupant = npc;
         occupied = true;
+        virusJson = InkManager.instance.getVirusDialogue();
     }
 
     private void standUpTrigger(Animator animator, GameObject npc)
@@ -51,5 +54,30 @@ public class LayDown : MonoBehaviour
         occupied = false;
 
         npc.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc).transform;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.tag.Equals("Player")) return;
+
+        visualCue.SetActive(occupied);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.tag.Equals("Player")) return;
+
+        if (!visualCue.active) return;
+
+        if (!InputManager.getInstance().GetInteractPressed()) return;
+
+        DialogueManagaer.GetInstance().EnterDialogueMode(virusJson);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.tag.Equals("Player")) return;
+
+        visualCue.SetActive(false);
     }
 }
