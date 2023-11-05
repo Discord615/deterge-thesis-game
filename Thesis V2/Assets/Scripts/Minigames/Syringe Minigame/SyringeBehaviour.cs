@@ -20,11 +20,13 @@ public class SyringeBehaviour : MonoBehaviour
     private bool stop = false;
     private bool finished = false;
 
-    private void Update(){
+    private void Update()
+    {
         SyringeValueChanger();
     }
 
-    void SyringeValueChanger(){
+    void SyringeValueChanger()
+    {
         bool press = InputManager.getInstance().getSpacePressedHold();
         if (currentSyringeSpeed >= maxSyringeSpeed - 0.05f) currentSyringeSpeed = maxSyringeSpeed;
 
@@ -33,9 +35,12 @@ public class SyringeBehaviour : MonoBehaviour
         textValue.text = Mathf.CeilToInt(syringeValue).ToString() + " mg";
         syringe.value = syringeValue;
 
-        if (!press && stop) finished = true; // TODO: Add win or lose event
+        if (!press && stop) finished = true;    // TODO: Add win or lose event
+                                                // TODO: From BottleBehavior.cs add a check if medicine passed is correct which triggers a win event.
+                                                // TODO: if medicine is incorrect then trigger lose event.
 
-        if (press && !finished){
+        if (press && !finished)
+        {
             if (!stop) stop = true;
             currentSyringeSpeed += acceleration * Time.deltaTime * 0.5f;
             syringeValue += currentSyringeSpeed * Time.deltaTime;
