@@ -119,9 +119,6 @@ public class Unit : MonoBehaviour, IDataPersistence
 			case 2:
 				PathRequestManager2.RequestPath(new PathRequest2(transform.position, target.position, OnPathFound));
 				break;
-			case 3:
-				PathRequestManager3.RequestPath(new PathRequest3(transform.position, target.position, OnPathFound));
-				break;
 		}
 
 		float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;
@@ -144,9 +141,6 @@ public class Unit : MonoBehaviour, IDataPersistence
 							break;
 						case 2:
 							PathRequestManager2.RequestPath(new PathRequest2(transform.position, target.position, OnPathFound));
-							break;
-						case 3:
-							PathRequestManager3.RequestPath(new PathRequest3(transform.position, target.position, OnPathFound));
 							break;
 					}
 

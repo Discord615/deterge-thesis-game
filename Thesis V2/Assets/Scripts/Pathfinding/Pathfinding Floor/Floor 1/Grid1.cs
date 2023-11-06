@@ -21,6 +21,8 @@ public class Grid1 : MonoBehaviour {
 	int penaltyMin = int.MaxValue;
 	int penaltyMax = int.MinValue;
 
+	bool walkable;
+
 	void Awake() {
 		nodeDiameter = nodeRadius*2;
 		gridSizeX = Mathf.RoundToInt(gridWorldSize.x/nodeDiameter);
@@ -34,14 +36,14 @@ public class Grid1 : MonoBehaviour {
 		CreateGrid();
 	}
 
-	void FixedUpdate(){
-		CreateGrid();
-	}
-
 	public int MaxSize {
 		get {
 			return gridSizeX * gridSizeY;
 		}
+	}
+
+	private void Update() {
+		CreateGrid();
 	}
 
 	void CreateGrid() {
@@ -51,10 +53,8 @@ public class Grid1 : MonoBehaviour {
 		for (int x = 0; x < gridSizeX; x ++) {
 			for (int y = 0; y < gridSizeY; y ++) {
 				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-				bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius,unwalkableMask));
-
+				walkable = !Physics.CheckSphere(worldPoint,nodeRadius,unwalkableMask);
 				int movementPenalty = 0;
-
 
 				Ray ray = new Ray(worldPoint + Vector3.up * 50, Vector3.down);
 				RaycastHit hit;
@@ -66,13 +66,11 @@ public class Grid1 : MonoBehaviour {
 					movementPenalty += obstacleProximityPenalty;
 				}
 
-
 				grid[x,y] = new Node(walkable,worldPoint, x,y, movementPenalty);
 			}
 		}
 
 		BlurPenaltyMap (3);
-
 	}
 
 	void BlurPenaltyMap(int blurSize) {
