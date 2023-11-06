@@ -49,7 +49,7 @@ public class GameData
         this.alcoholUsesData = 0;
         this.maskUsesData = 0;
 
-        this.tyhpoidIsActive = false;
+        this.tyhpoidIsActive = true;
         this.tuberculosisIsActive = false;
         this.dengueIsActive = false;
         this.influenzaIsActive = false;
