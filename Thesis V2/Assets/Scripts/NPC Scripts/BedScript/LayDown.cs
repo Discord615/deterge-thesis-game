@@ -64,7 +64,8 @@ public class LayDown : MonoBehaviour
         visualCue.SetActive(false);
     }
 
-    private void NPCAnimBehavior(GameObject other){
+    private void NPCAnimBehavior(GameObject other)
+    {
         if (other.tag != "npc") return;
 
         bool npcLayingDown = other.GetComponent<NPCAnimScript>().isLayingDown;
@@ -80,7 +81,7 @@ public class LayDown : MonoBehaviour
     {
         if (!other.tag.Equals("Player")) return;
 
-        if (!visualCue.activeSelf) return;
+        if (!visualCue.activeInHierarchy) return;
 
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
