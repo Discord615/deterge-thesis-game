@@ -25,13 +25,13 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
     [Header("FirstFloor")]
     [SerializeField] private GameObject[] FirstFloorRandomTargets;
     [SerializeField] private GameObject[] FirstFloorTeleps;
-    [SerializeField] private GameObject[] classroomChairs;
     [SerializeField] private GameObject[] gymnasiumTargets;
+    [SerializeField] private GameObject[] canteenChairs;
 
     [Header("SecondFloor")]
     [SerializeField] private GameObject[] SecondFloorRandomTargets;
     [SerializeField] private GameObject[] SecondFloorTeleps;
-    [SerializeField] private GameObject[] canteenChairs;
+    [SerializeField] private GameObject[] classroomChairs;
 
     [Header("Beds")]
     [SerializeField] private GameObject[] beds;
@@ -39,82 +39,52 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
 
     public GameObject getAnyGameObjectTarget(int floor, GameObject NPC)
     {
-        GameObject target = null;
-
-        while (true)
-        {
-            int randomNum = Random.Range(0, 5);
-            switch (randomNum)
-            {
-                case 0:
-                    target = getTeleportTarget(floor);
-                    break;
-
-                case 1:
-                    target = getRandomTarget(floor);
-                    break;
-
-                case 2:
-                    target = getClassroomChairTarget(floor, NPC);
-                    break;
-
-                case 3:
-                    if (floor == 1) target = getCanteenChairTarget(floor, NPC);
-                    break;
-
-                case 4:
-                    if (floor == 1) target = getGymTargets(floor, NPC);
-                    break;
-            }
-
-            if (target != null) break;
-        }
-
-        return target;
-    }
-
-    public GameObject getTeleportTarget(int floor)
-    {
         switch (floor)
         {
             case 1:
-                return FirstFloorTeleps[Random.Range(0, FirstFloorTeleps.Length)];
+                return getAnyFirstFloorTargets();
+
             case 2:
-                return SecondFloorTeleps[Random.Range(0, SecondFloorTeleps.Length)];
+                return getAnySecondFloorTargets();
         }
+
         return null;
     }
 
-    public GameObject getCanteenChairTarget(int floor, GameObject NPC)
-    {
-        GameObject target = null;
-
-        if (floor != 1)
+    private GameObject getAnyFirstFloorTargets(){
+        switch (Random.Range(0, 4))
         {
-            return getAnyGameObjectTarget(floor, NPC);
+            case 0:
+                return gymnasiumTargets[Random.Range(0, gymnasiumTargets.Length)];
+
+            case 1:
+                return canteenChairs[Random.Range(0, canteenChairs.Length)];
+
+            case 2:
+                return FirstFloorTeleps[Random.Range(0, FirstFloorTeleps.Length)];
+
+            case 3:
+                return FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)];
         }
 
-        getSick(NPC);
-
-        target = canteenChairs[Random.Range(0, canteenChairs.Length)];
-
-        return target;
+        return null;
     }
 
-    public GameObject getClassroomChairTarget(int floor, GameObject NPC)
-    {
-        GameObject target = null;
-
-        if (floor != 2)
+    private GameObject getAnySecondFloorTargets(){
+        switch (Random.Range(0, 3))
         {
-            return getAnyGameObjectTarget(floor, NPC);
+            case 0:
+                return classroomChairs[Random.Range(0, classroomChairs.Length)];
+
+            case 1:
+                return SecondFloorTeleps[Random.Range(0, SecondFloorTeleps.Length)];
+                
+            case 2:
+                return SecondFloorRandomTargets[Random.Range(0, SecondFloorRandomTargets.Length)];
+
         }
 
-        getSick(NPC);
-
-        target = classroomChairs[Random.Range(0, classroomChairs.Length)];
-
-        return target;
+        return null;
     }
 
     public GameObject getBedTarget(int floor, GameObject NPC)
@@ -139,34 +109,6 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
         }
 
         return target;
-    }
-
-    public GameObject getRandomTarget(int floor)
-    {
-        GameObject target = null;
-        switch (floor)
-        {
-            case 1:
-                target = FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)];
-                break;
-
-            case 2:
-                target = SecondFloorRandomTargets[Random.Range(0, SecondFloorRandomTargets.Length)];
-                break;
-        }
-        return target;
-    }
-
-    public GameObject getGymTargets(int floor, GameObject NPC)
-    {
-        if (floor != 1)
-        {
-            return getAnyGameObjectTarget(floor, NPC);
-        }
-
-        getSick(NPC);
-
-        return gymnasiumTargets[Random.Range(0, gymnasiumTargets.Length)];
     }
 
     public void getSick(GameObject NPC)

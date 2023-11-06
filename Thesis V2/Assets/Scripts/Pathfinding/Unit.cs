@@ -54,10 +54,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 	public void LoadData(GameData data) // ? Subject to change because I can't tell what TryGetValue returns if id does not exist
 	{
 		// Load Unit Floor
-		if (!data.NPCFloorMap.TryGetValue(id, out floor))
-		{
-			floor = 1;
-		}
+		if (!data.NPCFloorMap.TryGetValue(id, out floor)) floor = 1;
 
 		// Load Unit Target
 		data.NPCTargetMap.TryGetValue(id, out target);

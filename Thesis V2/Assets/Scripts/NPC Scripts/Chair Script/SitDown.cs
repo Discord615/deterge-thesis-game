@@ -37,7 +37,7 @@ public class SitDown : MonoBehaviour
         animator.SetTrigger("SitDown");
         npc.GetComponent<NPCAnimScript>().isSitting = true;
 
-        prevPos = npc.transform.position;
+        prevPos = new Vector3(0, npc.transform.position.y, 0);
         npc.transform.position = chairSitPos.transform.position;
         npc.transform.forward = chairSitPos.transform.forward;
 
@@ -51,7 +51,8 @@ public class SitDown : MonoBehaviour
         animator.SetTrigger("StandUp");
         npc.GetComponent<NPCAnimScript>().isSitting = false;
 
-        npc.transform.position = prevPos;
+        npc.transform.position -= npc.transform.forward * 10;
+        npc.transform.position = new Vector3(npc.transform.position.x, prevPos.y, npc.transform.position.z);
 
         occupant = null;
         occupied = false;
