@@ -31,9 +31,7 @@ public class TeleportTrigger : MonoBehaviour
             teleportAvailable = true;
             teleportee = collider.gameObject;
         }
-    }
 
-    private void OnTriggerStay(Collider collider) {
         if (collider.tag == "npc"){
             int floorNumber = collider.GetComponent<Unit>().floor;
 

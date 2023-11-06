@@ -37,30 +37,37 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
     [SerializeField] private GameObject[] beds;
 
 
-    public GameObject getAnyGameObjectTarget(int floor, GameObject NPC) // TODO: If target is key places for virus then add a randomizer for getting sick that depends on where they got it
+    public GameObject getAnyGameObjectTarget(int floor, GameObject NPC)
     {
         GameObject target = null;
-        switch (Random.Range(0, 5))
+
+        while (true)
         {
-            case 0:
-                target = getTeleportTarget(floor);
-                break;
+            int randomNum = Random.Range(0, 5);
+            switch (randomNum)
+            {
+                case 0:
+                    target = getTeleportTarget(floor);
+                    break;
 
-            case 1:
-                target = getRandomTarget(floor);
-                break;
+                case 1:
+                    target = getRandomTarget(floor);
+                    break;
 
-            case 2:
-                target = getClassroomChairTarget(floor, NPC);
-                break;
+                case 2:
+                    target = getClassroomChairTarget(floor, NPC);
+                    break;
 
-            case 3:
-                target = getCanteenChairTarget(floor, NPC);
-                break;
+                case 3:
+                    if (floor == 1) target = getCanteenChairTarget(floor, NPC);
+                    break;
 
-            case 4:
-                target = getGymTargets(floor, NPC);
-                break;
+                case 4:
+                    if (floor == 1) target = getGymTargets(floor, NPC);
+                    break;
+            }
+
+            if (target != null) break;
         }
 
         return target;
@@ -166,7 +173,7 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
     {
         if (!NPC.GetComponent<NPCAnimScript>().isSick && !NPC.GetComponent<NPCAnimScript>().isLayingDown)
         {
-            int chanceOfGettingSick = Random.Range(0, 10);
+            int chanceOfGettingSick = Random.Range(0, 30);
 
             if (chanceOfGettingSick == 9) NPC.GetComponent<NPCAnimScript>().isSick = true;
         }
