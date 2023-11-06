@@ -80,7 +80,7 @@ public class LayDown : MonoBehaviour
     {
         if (!other.tag.Equals("Player")) return;
 
-        if (!visualCue.activeSelf) return;
+        if (!visualCue.activeInHierarchy) return;
 
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
