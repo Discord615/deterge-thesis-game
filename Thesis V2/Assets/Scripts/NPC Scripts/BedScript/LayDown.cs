@@ -19,15 +19,15 @@ public class LayDown : MonoBehaviour
         EnterDialogue(other.gameObject);
     }
 
-    private void layDownTrigger(Animator animator, GameObject npc)
+    private void layDownTrigger(Animator animator, GameObject npc, GameObject bed)
     {
         animator.SetTrigger("LayDown");
         npc.GetComponent<NPCAnimScript>().isLayingDown = true;
 
         npc.GetComponent<CapsuleCollider>().enabled = false;
-        previousPosition = npc.transform.position;
-        npc.transform.position = new Vector3(transform.position.x, 0, transform.position.z + 2);
-        npc.transform.forward = transform.forward;
+        previousPosition = new Vector3(0, npc.transform.position.y, 0);
+        npc.transform.position = new Vector3(bed.transform.position.x, 1, bed.transform.position.z + 2);
+        npc.transform.forward = bed.transform.forward;
 
         occupant = npc;
         occupied = true;
@@ -37,10 +37,12 @@ public class LayDown : MonoBehaviour
     private void standUpTrigger(Animator animator, GameObject npc)
     {
         animator.SetTrigger("StandUp");
+        npc.transform.position += npc.transform.forward * 11;
+        npc.transform.position = new Vector3(npc.transform.position.x, previousPosition.y, npc.transform.position.z);
+
         npc.GetComponent<NPCAnimScript>().isLayingDown = false;
         npc.GetComponent<DialogueAction>().inkJson = InkManager.instance.getRandomInk(npc.GetComponent<DialogueAction>().isMale);
 
-        npc.transform.position = previousPosition;
         npc.GetComponent<CapsuleCollider>().enabled = true;
 
         occupant = null;
@@ -67,13 +69,16 @@ public class LayDown : MonoBehaviour
     private void NPCAnimBehavior(GameObject other)
     {
         if (other.tag != "npc") return;
+        if (!other.GetComponent<Unit>().target.Equals(gameObject.transform)) return;
+
+        GameObject bed = gameObject;
 
         bool npcLayingDown = other.GetComponent<NPCAnimScript>().isLayingDown;
         bool npcIsSick = other.GetComponent<NPCAnimScript>().isSick;
 
         if (!(npcIsSick ^ (npcLayingDown && occupied))) return;
         if (npcLayingDown != occupied) return;
-        if (npcIsSick && !npcLayingDown) layDownTrigger(other.GetComponent<Animator>(), other.gameObject);
+        if (npcIsSick && !npcLayingDown) layDownTrigger(other.GetComponent<Animator>(), other.gameObject, bed);
         else if (!npcIsSick) standUpTrigger(other.GetComponent<Animator>(), other.gameObject);
     }
 
