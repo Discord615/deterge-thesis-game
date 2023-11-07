@@ -36,6 +36,9 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
     [Header("Beds")]
     [SerializeField] private GameObject[] beds;
 
+    [Header("TESTING")]
+    [SerializeField] private bool allowTeleporting = true;
+
 
     public GameObject getAnyGameObjectTarget(int floor, GameObject NPC)
     {
@@ -52,7 +55,10 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
     }
 
     private GameObject getAnyFirstFloorTargets(){
-        switch (Random.Range(0, 4))
+        int randomSwitchCase = Random.Range(0, 4);
+        if (!allowTeleporting && randomSwitchCase == 2) randomSwitchCase++;
+
+        switch (randomSwitchCase)
         {
             case 0:
                 return gymnasiumTargets[Random.Range(0, gymnasiumTargets.Length)];

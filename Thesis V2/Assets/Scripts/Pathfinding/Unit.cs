@@ -29,8 +29,11 @@ public class Unit : MonoBehaviour, IDataPersistence
 	Quaternion unitRotation;
 	NPCAnimScript animScript;
 
+	private Rigidbody unitRB;
+
 	void Start()
 	{
+		unitRB = GetComponent<Rigidbody>();
 		animScript = GetComponent<NPCAnimScript>();
 		StartCoroutine(UpdatePath());
 	}
@@ -208,8 +211,10 @@ public class Unit : MonoBehaviour, IDataPersistence
 				}
 
 				Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
-				transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
-				transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
+				unitRB.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed));
+
+				unitRB.MovePosition(transform.position + (transform.forward * speed * speedPercent * Time.deltaTime));
+				// transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
 			}
 
 			yield return null;
