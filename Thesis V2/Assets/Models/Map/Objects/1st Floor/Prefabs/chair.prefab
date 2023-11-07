@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8529418039028430711}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0.0145, z: 0.0506}
+  m_LocalPosition: {x: -0.0019, y: 0.0097, z: 0.0506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76,8 +76,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.04, y: 0.05654347, z: 0.038621403}
-  m_Center: {x: 0, y: 0.027572403, z: 0.0027572538}
+  m_Size: {x: 0.03924722, y: 0.056543473, z: 0.08486415}
+  m_Center: {x: -0.00037640266, y: 0.027572399, z: -0.020364117}
 --- !u!114 &8529418040563549282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupied: 0
-  chairSitPos: {fileID: 8529418039028430711}
 --- !u!1 &8836059538648263477
 GameObject:
   m_ObjectHideFlags: 0

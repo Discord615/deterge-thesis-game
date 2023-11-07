@@ -40,7 +40,24 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 	private void Update()
 	{
-		if (target == null) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform;
+		if ((target == null || animScript.stopped || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown) {
+			if (animScript.isSick)
+			{
+				try
+				{
+					target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject).transform;
+				}
+				catch (System.Exception)
+				{
+					target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform;
+				}
+			}
+			else
+			{
+				target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform;
+			}
+			animScript.stopped = false;
+		}
 
 		if (!animScript.isLayingDown)
 		{
@@ -155,7 +172,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 		bool followingPath = true;
 		int pathIndex = 0;
-		transform.LookAt(path.lookPoints[0]);
+		if (!animScript.isSitting) transform.LookAt(path.lookPoints[0]);
 
 		float speedPercent = 1;
 
@@ -191,27 +208,16 @@ public class Unit : MonoBehaviour, IDataPersistence
 					{
 						if (oldTarget != target) oldTarget = target;
 						followingPath = false;
-						if (animScript.isSick && !animScript.isLayingDown)
-						{
-							try
-							{
-								target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject).transform;
-							}
-							catch (System.Exception)
-							{
-								target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform;
-							}
-						}
-						else
-						{
-							target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform;
-						}
 						Debug.Log("Completed path");
+						animScript.stopped = true;
 					}
 				}
 
-				Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
-				unitRB.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed));
+				if (!animScript.isSitting)
+				{
+					Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
+					unitRB.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed));
+				}
 
 				unitRB.MovePosition(transform.position + (transform.forward * speed * speedPercent * Time.deltaTime));
 				// transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);

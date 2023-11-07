@@ -41,9 +41,11 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
         animator.SetFloat("Speed", speed);
     }
 
-    private void updateSpeed() // ! Untested
+    private void updateSpeed()
     {
         if (stopped) return;
+
+        if (speed > 1f) speed = 1f;
 
         if (!slowDown)
         {
@@ -59,8 +61,6 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
             stopped = true;
             slowDown = false;
         }
-
-        if (speed > 1f) speed = 1f;
     }
 
     public void LoadData(GameData data)

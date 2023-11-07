@@ -24,7 +24,7 @@ public class LayDown : MonoBehaviour
         animator.SetTrigger("LayDown");
         npc.GetComponent<NPCAnimScript>().isLayingDown = true;
 
-        npc.GetComponent<CapsuleCollider>().enabled = false;
+        npc.GetComponent<BoxCollider>().enabled = false;
         previousPosition = new Vector3(0, npc.transform.position.y, 0);
         npc.transform.position = new Vector3(bed.transform.position.x, 1, bed.transform.position.z + 2);
         npc.transform.forward = bed.transform.forward;

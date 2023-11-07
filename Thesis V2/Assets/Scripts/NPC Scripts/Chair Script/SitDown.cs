@@ -30,7 +30,6 @@ public class SitDown : MonoBehaviour
         if (!(other.GetComponent<NPCAnimScript>().wantToSit ^ (other.GetComponent<NPCAnimScript>().isSitting && occupied))) return;
         if (other.GetComponent<NPCAnimScript>().isSitting != occupied) return;
         if (other.GetComponent<NPCAnimScript>().wantToSit) sitDownTrigger(other.GetComponent<Animator>(), other.gameObject);
-        else standUpTrigger(other.GetComponent<Animator>(), other.gameObject);
     }
 
     private void sitDownTrigger(Animator animator, GameObject npc){
@@ -51,7 +50,7 @@ public class SitDown : MonoBehaviour
         animator.SetTrigger("StandUp");
         npc.GetComponent<NPCAnimScript>().isSitting = false;
 
-        npc.transform.position -= npc.transform.forward * 10;
+        npc.transform.position -= npc.transform.forward * 6;
         npc.transform.position = new Vector3(npc.transform.position.x, prevPos.y, npc.transform.position.z);
 
         occupant = null;
@@ -78,5 +77,6 @@ public class SitDown : MonoBehaviour
     private IEnumerator sittingDuration(GameObject npc){
         yield return new WaitForSeconds(Random.Range(3, 10));
         npc.GetComponent<NPCAnimScript>().wantToSit = false;
+        standUpTrigger(npc.GetComponent<Animator>(), npc);
     }
 }

@@ -84,46 +84,18 @@ public class Pathfinding1 : MonoBehaviour {
 		
 	}
 	
-	Vector3[] SimplifyPath(List<Node> path) {
-		if (path.Count < 1)
-            {
-                return new Vector3[0];
-            }
-
-            List<Vector3> pathWayPoints = new List<Vector3>
-            {
-                // Don't forget to add last point 
-                path[0].worldPosition
-            };
-
-            for (int i = 1; i < path.Count - 1; i++)
-            {
-                Vector2 furuteDirection = new Vector2(path[i + 1].gridX - path[i].gridX, path[i + 1].gridY - path[i].gridY);
-                Vector2 directionPrevious = new Vector2(path[i].gridX - path[i - 1].gridX, path[i].gridY - path[i - 1].gridY);
-
-                if (furuteDirection != directionPrevious)
-                {
-                    // We add worldPosition, but not the actual node
-                    pathWayPoints.Add(path[i].worldPosition);
-                }
-            }
-
-            pathWayPoints.Add(path[path.Count - 1].worldPosition);
-
-            return pathWayPoints.ToArray();
-
-		// ! Possible Zombie Code
-		// List<Vector3> waypoints = new List<Vector3>();
-		// Vector2 directionOld = Vector2.zero;
+	Vector3[] SimplifyPath(List<Node> path) {		
+		List<Vector3> waypoints = new List<Vector3>();
+		Vector2 directionOld = Vector2.zero;
 		
-		// for (int i = 1; i < path.Count; i ++) {
-		// 	Vector2 directionNew = new Vector2(path[i-1].gridX - path[i].gridX,path[i-1].gridY - path[i].gridY);
-		// 	if (directionNew != directionOld) {
-		// 		waypoints.Add(path[i].worldPosition);
-		// 	}
-		// 	directionOld = directionNew;
-		// }
-		// return waypoints.ToArray();
+		for (int i = 1; i < path.Count; i ++) {
+			Vector2 directionNew = new Vector2(path[i-1].gridX - path[i].gridX,path[i-1].gridY - path[i].gridY);
+			if (directionNew != directionOld) {
+				waypoints.Add(path[i].worldPosition);
+			}
+			directionOld = directionNew;
+		}
+		return waypoints.ToArray();
 	}
 	
 	int GetDistance(Node nodeA, Node nodeB) {
