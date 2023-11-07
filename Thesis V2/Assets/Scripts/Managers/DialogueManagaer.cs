@@ -80,7 +80,6 @@ public class DialogueManagaer : MonoBehaviour
     }
 
     private void ContinueStory(){
-        Debug.Log("Continued");
         if (currentStory.canContinue){
             dialogueText.text = currentStory.Continue();
             DisplayChoices();

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class AssigningBottleWithMeds : MonoBehaviour
 {
@@ -15,19 +16,27 @@ public class AssigningBottleWithMeds : MonoBehaviour
     }
 
     [SerializeField] private GameObject[] medicineBottles;
+    [SerializeField] private TextMeshProUGUI dosage;
+    public float dosageValue;
 
     private string[] mainVirusMeds;
     private string[] secondVirusMeds;
     private string[] thirdVirusMeds;
 
-    public void getMeds(string virus)
+    private void getMeds(string virus)
     {
         MedicineManager.instance.getBottleNames(virus, out mainVirusMeds, out secondVirusMeds, out thirdVirusMeds);
     }
 
-    private void setBottleNames(string virus)
+    private void randomDosage(){
+        dosageValue = Random.Range(10, 101);
+        dosage.text = dosageValue.ToString();
+    }
+
+    public void setBottleNames(string virus)
     {
         getMeds(virus);
+        randomDosage();
 
         for (int i = 0; i < 3; i++)
         {

@@ -17,6 +17,12 @@ public class PlayerAnim : MonoBehaviour
     
 
     private void Update(){
+        if (movement.syringeMinigame.activeInHierarchy) {
+            StoppingBlend();
+            animator.SetFloat("Blend", blendValue);
+            return;
+        }
+
         maxSpeed = InputManager.getInstance().GetRunPressed() ? 2 : 1;
 
         if (movement.moveDirection != Vector2.zero && !DialogueManagaer.GetInstance().dialogueIsPlaying) {

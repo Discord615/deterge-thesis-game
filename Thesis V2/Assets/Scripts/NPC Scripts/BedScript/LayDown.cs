@@ -10,12 +10,15 @@ public class LayDown : MonoBehaviour
     GameObject occupant = null;
     Vector3 previousPosition;
 
-    private TextAsset virusJson;
+    [SerializeField] private TextAsset virusJson;
     [SerializeField] private GameObject visualCue;
 
     private void OnTriggerStay(Collider other)
     {
         NPCAnimBehavior(other.gameObject);
+
+        if (other.tag.Equals("Player")) visualCue.SetActive(true);
+        
         EnterDialogue(other.gameObject);
     }
 
@@ -55,7 +58,9 @@ public class LayDown : MonoBehaviour
     {
         if (!other.tag.Equals("Player")) return;
 
-        visualCue.SetActive(occupied);
+        if (!occupied) return;
+
+        visualCue.SetActive(true);
     }
 
 

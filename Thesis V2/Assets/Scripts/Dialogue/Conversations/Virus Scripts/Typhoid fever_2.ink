@@ -1,4 +1,5 @@
 // Typhoid fever:
+INCLUDE globalInkFunctions.ink
 -> student
 
 === student ===
@@ -18,6 +19,10 @@ I've had a persistent high fever and stomach discomfort
                     +++[I'll conduct tests and provide treatment]
                             Thanks doc!
                     -> DONE
+                    
+    + [Administer Medicine]
+    ~ administerMeds("Typhoid")
+    -> DONE
                     
     + [End Convo]
     -> END

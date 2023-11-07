@@ -17,11 +17,14 @@ public class SyringeBehaviour : MonoBehaviour
     [SerializeField] private float currentSyringeSpeed = 0f;
     [SerializeField] private float maxSyringeSpeed = 100f;
 
+    public string medBottleLabel;
+
     private bool stop = false;
     private bool finished = false;
 
     private void Update()
     {
+        if (medBottleLabel == null) return;
         SyringeValueChanger();
     }
 
@@ -46,5 +49,25 @@ public class SyringeBehaviour : MonoBehaviour
             syringeValue += currentSyringeSpeed * Time.deltaTime;
             currentSyringeSpeed += acceleration * Time.deltaTime * 0.5f;
         }
+    }
+
+    private void checkCorrection(){
+        // TODO: check if medicine name is one of the medicines needed for the virus.
+        float dosageValue = AssigningBottleWithMeds.instance.dosageValue;
+        float marginOfError = 15f;
+        if (dosageValue + marginOfError >= syringeValue || dosageValue - marginOfError <= syringeValue){
+            // TODO: Win
+            return;
+        }
+
+        // TODO: Lose
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        medBottleLabel = other.GetComponent<BottleBehavior>().medLabel;
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        medBottleLabel = null;
     }
 }

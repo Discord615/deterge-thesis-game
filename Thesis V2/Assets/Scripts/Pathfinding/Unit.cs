@@ -208,7 +208,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 					{
 						if (oldTarget != target) oldTarget = target;
 						followingPath = false;
-						Debug.Log("Completed path");
+						// Debug.Log("Completed path");
 						animScript.stopped = true;
 					}
 				}

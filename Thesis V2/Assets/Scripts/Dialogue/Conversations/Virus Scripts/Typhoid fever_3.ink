@@ -1,4 +1,5 @@
 // Typhoid fever:
+INCLUDE globalInkFunctions.ink
 -> student
 
 === student ===
@@ -18,6 +19,10 @@ Doc, I have a high fever and severe fatigue
                     +++[I'll conduct tests and provide treatment]
                             Thanks doc!
                     -> DONE
+                    
+    + [Administer Medicine]
+    ~ administerMeds("Typhoid")
+    -> DONE
                     
     + [End Convo]
     -> END

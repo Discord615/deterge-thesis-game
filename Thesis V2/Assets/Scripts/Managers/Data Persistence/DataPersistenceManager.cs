@@ -12,6 +12,9 @@ public class DataPersistenceManager : MonoBehaviour {
 
     public DataPersistenceManager instance { get; private set; }
 
+
+    [SerializeField] private bool forTestingNewGame = true;
+
     private void Awake() {
         if (instance != null){
             Debug.LogError("More than one instance of Data Persistence Manager was found");
@@ -31,9 +34,11 @@ public class DataPersistenceManager : MonoBehaviour {
     }
 
     public void LoadGame(){
-        if (!MenuToGamplayPass.instance.startNewGame) this.gameData = dataHandler.Load();
+        // ? !MenuToGamplayPass.instance.startNewGame
+        if (forTestingNewGame) this.gameData = dataHandler.Load();
 
-        if (this.gameData == null || MenuToGamplayPass.instance.startNewGame) NewGame();
+        // ? MenuToGamplayPass.instance.startNewGame
+        if (this.gameData == null || forTestingNewGame) NewGame();
 
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {

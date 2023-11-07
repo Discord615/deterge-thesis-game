@@ -13,6 +13,12 @@ public class InkExternalFunctions
             DialogueManagaer.GetInstance().inkStart = false;
             DialogueManagaer.GetInstance().inkFinish = true;
         });
+
+        story.BindExternalFunction("administerMeds", (string mainVirus) => {
+            MinigameManager.instance.playerHud.SetActive(false);
+            MinigameManager.instance.syringeGame.SetActive(true);
+            AssigningBottleWithMeds.instance.setBottleNames(mainVirus);
+        });
     }
 
     public void Unbind(Story story){

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Ink.Parsed;
 
 public class InkManager : MonoBehaviour
 {
@@ -36,11 +37,8 @@ public class InkManager : MonoBehaviour
 
     public TextAsset getRandomInk(bool isMale)
     {
-        TextAsset output;
-        if (isMale) output = getMaleInk();
-        else output = getFemaleInk();
-
-        return output;
+        if (isMale) return getMaleInk();
+        return getFemaleInk();
     }
 
     private TextAsset getMaleInk()

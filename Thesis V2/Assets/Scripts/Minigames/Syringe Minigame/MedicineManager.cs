@@ -19,8 +19,10 @@ public class MedicineManager : MonoBehaviour
 
     private void Start() {
         medsDictionary.Add("Typhoid", new string[] {
-            // Nothing to add yet.
-            // TODO: consult wayen for specific medications
+            "Fluoroquinolones",
+            "Cephalosporins",
+            "Macrolides",
+            "Carbapenems"
         });
 
         medsDictionary.Add("Tuberculosis", new string[] {

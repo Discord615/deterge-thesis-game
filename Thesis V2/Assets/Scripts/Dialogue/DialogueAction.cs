@@ -12,8 +12,6 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
     [SerializeField] public bool isMale;
 
-    [SerializeField] private Transform player;
-
     [SerializeField] private string id;
 
     [ContextMenu("Generate guid for id")]
@@ -51,13 +49,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        TextAsset output;
-        if (data.inkJsonData.TryGetValue(id, out output))
-        {
-            this.inkJson = output;
-        }
-        else
-        {
+        if (!data.inkJsonData.TryGetValue(id, out inkJson)) {
             this.inkJson = InkManager.instance.getRandomInk(isMale);
         }
     }

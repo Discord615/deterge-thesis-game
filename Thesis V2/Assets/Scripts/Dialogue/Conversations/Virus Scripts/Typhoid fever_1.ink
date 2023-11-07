@@ -1,4 +1,5 @@
 // Typhoid fever:
+INCLUDE globalInkFunctions.ink
 
 -> student
 
@@ -16,11 +17,15 @@ Doc, I have a high fever and abdominal pain
                         ++++ [Monitor your symptoms]
                             I'll monitor my symptom
                             -> DONE
-                    -> DONE   
+                    -> DONE
                     +++ [I'll conduct some tests to rule out infections]
                             Thanks doc!
                             
                     -> DONE
+                    
+    + [Administer Medicine]
+    ~ administerMeds("Typhoid")
+    -> DONE
                     
     + [End Convo]
     -> END
