@@ -26,7 +26,7 @@ public class Pathfinding2 : MonoBehaviour {
 		startNode.parent = startNode;
 		
 		
-		if (startNode.walkable && targetNode.walkable) {
+		if (targetNode.walkable) {
 			Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
 			HashSet<Node> closedSet = new HashSet<Node>();
 			openSet.Add(startNode);
