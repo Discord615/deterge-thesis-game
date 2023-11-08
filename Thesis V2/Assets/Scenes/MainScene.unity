@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -408,7 +408,7 @@ MonoBehaviour:
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
-  isSick: 0
+  isSick: 1
   isLayingDown: 0
   slowDown: 0
   stopped: 0
@@ -4656,6 +4656,7 @@ GameObject:
   - component: {fileID: 319237824}
   - component: {fileID: 319237823}
   - component: {fileID: 319237822}
+  - component: {fileID: 319237826}
   m_Layer: 5
   m_Name: Bottle (2)
   m_TagString: Untagged
@@ -4762,6 +4763,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319237820}
   m_CullTransparentMesh: 1
+--- !u!50 &319237826
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319237820}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &322100388 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 548421501422101968, guid: 8a9df8bb331783d45a6feb5102376513,
@@ -5617,8 +5639,8 @@ RectTransform:
   m_Father: {fileID: 135882206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7215,7 +7237,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7627,16 +7649,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 39957935}
-  - {fileID: 529631554}
-  - {fileID: 1999862499}
-  - {fileID: 541896056}
-  - {fileID: 1138418473}
-  - {fileID: 1532641993}
-  - {fileID: 1718447965}
-  - {fileID: 1562454698}
-  - {fileID: 1374511901}
+  m_Children: []
   m_Father: {fileID: 9448027}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9130,7 +9143,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 531543144}
+    m_TransformParent: {fileID: 1907519037}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c316c29e98edc541b8460de737af5af,
         type: 3}
@@ -9516,7 +9529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &640248170
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10264,7 +10277,7 @@ MonoBehaviour:
   m_PointAction: {fileID: 0}
   m_MoveAction: {fileID: -7919707521239875781, guid: 4ee186e023b1df24a94ca56633ce3230,
     type: 3}
-  m_SubmitAction: {fileID: 1201567899812625461, guid: 4ee186e023b1df24a94ca56633ce3230,
+  m_SubmitAction: {fileID: -949808672610005533, guid: 4ee186e023b1df24a94ca56633ce3230,
     type: 3}
   m_CancelAction: {fileID: 0}
   m_LeftClickAction: {fileID: 0}
@@ -14394,7 +14407,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 531543144}
+    m_TransformParent: {fileID: 1907519037}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c316c29e98edc541b8460de737af5af,
         type: 3}
@@ -16739,18 +16752,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1157635053}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: ContextActionPressed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1157635053}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
         m_MethodName: SpacePressed
         m_Mode: 0
         m_Arguments:
@@ -17292,7 +17293,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 531543144}
+    m_TransformParent: {fileID: 1907519037}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c316c29e98edc541b8460de737af5af,
         type: 3}
@@ -17977,7 +17978,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 531543144}
+    m_TransformParent: {fileID: 1907519037}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c316c29e98edc541b8460de737af5af,
         type: 3}
@@ -20110,7 +20111,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 531543144}
+    m_TransformParent: {fileID: 1907519037}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c316c29e98edc541b8460de737af5af,
         type: 3}
@@ -20237,7 +20238,6 @@ GameObject:
   - component: {fileID: 1419281003}
   - component: {fileID: 1419281007}
   - component: {fileID: 1419281006}
-  - component: {fileID: 1419281005}
   - component: {fileID: 1419281004}
   - component: {fileID: 1419281009}
   - component: {fileID: 1419281008}
@@ -20286,27 +20286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syringe: {fileID: 1874643762}
-  moveSpeed: 8.5
---- !u!114 &1419281005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419281002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4128ef55af2d7842b42160c7d4c8139, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syringe: {fileID: 1874643764}
-  textValue: {fileID: 943746022}
-  syringeValue: 0
-  maxSyringeValue: 100
-  acceleration: 60
-  currentSyringeSpeed: 0
-  maxSyringeSpeed: 100
-  medBottleLabel: 
+  moveSpeed: 5
 --- !u!114 &1419281006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20373,8 +20353,10 @@ MonoBehaviour:
   - {fileID: 1856024503}
   - {fileID: 2009451315}
   - {fileID: 319237820}
-  dosage: {fileID: 0}
+  dosage: {fileID: 2087627359}
   dosageValue: 0
+  npcPatient: {fileID: 0}
+  mainVirusMeds: []
 --- !u!1 &1423821838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8326240574725425764, guid: d1ab6c965cbb2c64ca07edc4da69d338,
@@ -24527,7 +24509,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 531543144}
+    m_TransformParent: {fileID: 1907519037}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c316c29e98edc541b8460de737af5af,
         type: 3}
@@ -25093,7 +25075,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 531543144}
+    m_TransformParent: {fileID: 1907519037}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c316c29e98edc541b8460de737af5af,
         type: 3}
@@ -25538,7 +25520,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 531543144}
+    m_TransformParent: {fileID: 1907519037}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c316c29e98edc541b8460de737af5af,
         type: 3}
@@ -25829,6 +25811,7 @@ GameObject:
   - component: {fileID: 1856024507}
   - component: {fileID: 1856024506}
   - component: {fileID: 1856024505}
+  - component: {fileID: 1856024509}
   m_Layer: 5
   m_Name: Bottle
   m_TagString: Untagged
@@ -25935,6 +25918,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856024503}
   m_CullTransparentMesh: 1
+--- !u!50 &1856024509
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856024503}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1869458053
 GameObject:
   m_ObjectHideFlags: 0
@@ -25983,6 +25987,7 @@ GameObject:
   - component: {fileID: 1874643763}
   - component: {fileID: 1874643764}
   - component: {fileID: 1874643765}
+  - component: {fileID: 1874643766}
   m_Layer: 5
   m_Name: Syringe
   m_TagString: Untagged
@@ -25999,7 +26004,7 @@ RectTransform:
   m_GameObject: {fileID: 1874643762}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
+  m_LocalScale: {x: 1.5300001, y: 1.5300001, z: 1.5300001}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1551788564}
@@ -26010,7 +26015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 281.33}
+  m_AnchoredPosition: {x: 0, y: 134.85}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874643764
@@ -26077,7 +26082,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -65.30592, y: -0.000024795532}
+  m_Offset: {x: -53.344154, y: -0.000024795532}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -26088,8 +26093,28 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 106.625244, y: 25.986687}
+  m_Size: {x: 82.701706, y: 25.986687}
   m_EdgeRadius: 0
+--- !u!114 &1874643766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874643762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4128ef55af2d7842b42160c7d4c8139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syringe: {fileID: 1874643764}
+  textValue: {fileID: 943746022}
+  syringeValue: 0
+  maxSyringeValue: 100
+  acceleration: 40
+  currentSyringeSpeed: 0
+  maxSyringeSpeed: 60
+  medBottleLabel: 
 --- !u!1 &1882634012 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2579956955534607298, guid: d1ab6c965cbb2c64ca07edc4da69d338,
@@ -26315,7 +26340,16 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 39957935}
+  - {fileID: 529631554}
+  - {fileID: 1999862499}
+  - {fileID: 541896056}
+  - {fileID: 1138418473}
+  - {fileID: 1532641993}
+  - {fileID: 1718447965}
+  - {fileID: 1562454698}
+  - {fileID: 1374511901}
   m_Father: {fileID: 9448027}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27593,6 +27627,7 @@ GameObject:
   - component: {fileID: 2009451319}
   - component: {fileID: 2009451318}
   - component: {fileID: 2009451317}
+  - component: {fileID: 2009451321}
   m_Layer: 5
   m_Name: Bottle (1)
   m_TagString: Untagged
@@ -27699,6 +27734,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009451315}
   m_CullTransparentMesh: 1
+--- !u!50 &2009451321
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009451315}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &2013578386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8202231369454367119, guid: 170c07212ce13274db6ab223852bee3a,
@@ -28283,7 +28339,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 531543144}
+    m_TransformParent: {fileID: 1907519037}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c316c29e98edc541b8460de737af5af,
         type: 3}
