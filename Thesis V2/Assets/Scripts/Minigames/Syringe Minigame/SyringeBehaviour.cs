@@ -6,6 +6,17 @@ using TMPro;
 
 public class SyringeBehaviour : MonoBehaviour
 {
+    public static SyringeBehaviour instance { get; private set; }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("More than one instance of Syringe Behavior Exists in current scene");
+        }
+        instance = this;
+    }
+
     [Header("Objects")]
     [SerializeField] private Slider syringe;
     [SerializeField] private TextMeshProUGUI textValue;
@@ -22,10 +33,28 @@ public class SyringeBehaviour : MonoBehaviour
     private bool stop = false;
     private bool finished = false;
 
+    private void OnEnable()
+    {
+        GameEventsManager.instance.miscEvents.onPatientSaved += patientSaved;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.instance.miscEvents.onPatientSaved -= patientSaved;
+    }
+
     private void Update()
     {
         if (medBottleLabel == null) return;
         SyringeValueChanger();
+    }
+
+    public void resetValues()
+    {
+        currentSyringeSpeed = 0f;
+        stop = false;
+        finished = false;
+        syringeValue = 0f;
     }
 
     void SyringeValueChanger()
@@ -38,9 +67,11 @@ public class SyringeBehaviour : MonoBehaviour
         textValue.text = Mathf.CeilToInt(syringeValue).ToString() + " mg";
         syringe.value = syringeValue;
 
-        if (!press && stop) finished = true;    // TODO: Add win or lose event
-                                                // TODO: From BottleBehavior.cs add a check if medicine passed is correct which triggers a win event.
-                                                // TODO: if medicine is incorrect then trigger lose event.
+        if (!press && stop)
+        {
+            finished = true;
+            checkCorrection();
+        }
 
         if (press && !finished)
         {
@@ -51,23 +82,58 @@ public class SyringeBehaviour : MonoBehaviour
         }
     }
 
-    private void checkCorrection(){
-        // TODO: check if medicine name is one of the medicines needed for the virus.
+    private void checkCorrection()
+    {
         float dosageValue = AssigningBottleWithMeds.instance.dosageValue;
         float marginOfError = 15f;
-        if (dosageValue + marginOfError >= syringeValue || dosageValue - marginOfError <= syringeValue){
-            // TODO: Win
+        if (!(dosageValue - marginOfError <= syringeValue && dosageValue + marginOfError >= syringeValue))
+        {
+            Lose();
             return;
         }
 
-        // TODO: Lose
+        if (!isMedCorrect())
+        {
+            Lose();
+            return;
+        }
+
+        patientSaved();
+
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private bool isMedCorrect()
+    {
+        foreach (string medName in AssigningBottleWithMeds.instance.mainVirusMeds)
+        {
+            if (medName.Equals(medBottleLabel)) return true;
+        }
+        return false;
+    }
+
+    private void Lose()
+    {
+        // TODO: start other minigame
+        MinigameManager.instance.syringeGame.SetActive(false);
+        MinigameManager.instance.playerHud.SetActive(true); // ? would be replaced by another minigame
+    }
+
+    private void patientSaved()
+    {
+        PlayerHealthManager.instance.reduceHealth();
+        AssigningBottleWithMeds.instance.npcPatient.GetComponent<NPCAnimScript>().isSick = false;
+        MinigameManager.instance.syringeGame.SetActive(false);
+        MinigameManager.instance.playerHud.SetActive(true);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other.GetComponent<BottleBehavior>().medLabel);
         medBottleLabel = other.GetComponent<BottleBehavior>().medLabel;
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
+    private void OnTriggerExit2D(Collider2D other)
+    {
         medBottleLabel = null;
     }
 }

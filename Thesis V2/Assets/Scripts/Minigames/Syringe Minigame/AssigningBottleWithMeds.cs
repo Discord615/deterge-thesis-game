@@ -19,7 +19,9 @@ public class AssigningBottleWithMeds : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dosage;
     public float dosageValue;
 
-    private string[] mainVirusMeds;
+    public GameObject npcPatient;
+
+    public string[] mainVirusMeds;
     private string[] secondVirusMeds;
     private string[] thirdVirusMeds;
 
@@ -28,7 +30,8 @@ public class AssigningBottleWithMeds : MonoBehaviour
         MedicineManager.instance.getBottleNames(virus, out mainVirusMeds, out secondVirusMeds, out thirdVirusMeds);
     }
 
-    private void randomDosage(){
+    private void randomDosage()
+    {
         dosageValue = Random.Range(10, 101);
         dosage.text = dosageValue.ToString();
     }
@@ -38,10 +41,11 @@ public class AssigningBottleWithMeds : MonoBehaviour
         getMeds(virus);
         randomDosage();
 
+        List<int> medIndexes = new List<int>() { 0, 1, 2 };
         for (int i = 0; i < 3; i++)
         {
-            List<int> medIndexes = new List<int>() { 0, 1, 2 };
             int medIndex = medIndexes[Random.Range(0, medIndexes.Count)];
+            Debug.Log(medIndex);
 
             switch (i)
             {
@@ -50,15 +54,18 @@ public class AssigningBottleWithMeds : MonoBehaviour
                     break;
 
                 case 1:
-                    medicineBottles[medIndex].GetComponent<BottleBehavior>().medLabel = secondVirusMeds[Random.Range(0, mainVirusMeds.Length)];
+                    medicineBottles[medIndex].GetComponent<BottleBehavior>().medLabel = secondVirusMeds[Random.Range(0, secondVirusMeds.Length)];
                     break;
 
                 case 2:
-                    medicineBottles[medIndex].GetComponent<BottleBehavior>().medLabel = thirdVirusMeds[Random.Range(0, mainVirusMeds.Length)];
+                    medicineBottles[medIndex].GetComponent<BottleBehavior>().medLabel = thirdVirusMeds[Random.Range(0, thirdVirusMeds.Length)];
                     break;
             }
 
-            medIndexes.RemoveAt(medIndex);
+            if (medIndexes.Count >= 2)
+            {
+                medIndexes.RemoveAt(medIndex);
+            }
         }
     }
 }

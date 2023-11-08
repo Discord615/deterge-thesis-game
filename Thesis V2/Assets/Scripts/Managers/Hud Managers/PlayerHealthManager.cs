@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerHealthManager : MonoBehaviour
 {
-    public PlayerHealthManager instance { get; private set; }
+    public static PlayerHealthManager instance { get; private set; }
 
     [SerializeField] private Slider healthBar;
 
@@ -39,7 +39,13 @@ public class PlayerHealthManager : MonoBehaviour
         }
     }
 
-    public void reduceHealthWithGloves()
+    public void reduceHealth()
+    {
+        reduceHealthWithGloves();
+        reduceHealthWithMask();
+    }
+
+    private void reduceHealthWithGloves()
     {
         float reductionValue = 10;
 
@@ -52,7 +58,7 @@ public class PlayerHealthManager : MonoBehaviour
         healthBar.value -= reductionValue;
     }
 
-    public void reduceHealthWithMask()
+    private void reduceHealthWithMask()
     {
         float reductionValue = 15;
 

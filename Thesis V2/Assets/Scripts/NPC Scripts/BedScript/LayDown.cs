@@ -18,7 +18,7 @@ public class LayDown : MonoBehaviour
         NPCAnimBehavior(other.gameObject);
 
         if (other.tag.Equals("Player")) visualCue.SetActive(true);
-        
+
         EnterDialogue(other.gameObject);
     }
 
@@ -91,10 +91,11 @@ public class LayDown : MonoBehaviour
     {
         if (!other.tag.Equals("Player")) return;
 
-        if (!visualCue.activeInHierarchy) return;
+        // if (!visualCue.activeInHierarchy) return;
 
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
+        AssigningBottleWithMeds.instance.npcPatient = occupant;
         DialogueManagaer.GetInstance().EnterDialogueMode(virusJson);
     }
 }
