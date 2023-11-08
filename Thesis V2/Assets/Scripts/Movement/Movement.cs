@@ -15,9 +15,6 @@ public class Movement : MonoBehaviour, IDataPersistence
     [SerializeField] private Rigidbody playerBody;
     [SerializeField] private PlayerAnim playerAnim;
 
-    [Header("Minigames")]
-    public GameObject syringeMinigame;
-
 
     public Vector2 moveDirection { get; private set; } = Vector2.zero;
 
@@ -28,7 +25,8 @@ public class Movement : MonoBehaviour, IDataPersistence
 
         if (TeleportManager.GetInstance().goingToTeleport) return;
 
-        if (syringeMinigame.activeInHierarchy) return;
+        if (MinigameManager.instance.syringeGame.activeInHierarchy) return;
+        if (MinigameManager.instance.onBeatGame.activeInHierarchy) return;
 
         rotate();
         playerBody.velocity = MoveRelativeToCamera() * ((InputManager.getInstance().GetRunPressed() ? 2.5f : 1) * moveSpeed);

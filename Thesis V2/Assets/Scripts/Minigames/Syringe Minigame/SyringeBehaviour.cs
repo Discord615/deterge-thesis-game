@@ -33,16 +33,6 @@ public class SyringeBehaviour : MonoBehaviour
     private bool stop = false;
     private bool finished = false;
 
-    private void OnEnable()
-    {
-        GameEventsManager.instance.miscEvents.onPatientSaved += patientSaved;
-    }
-
-    private void OnDisable()
-    {
-        GameEventsManager.instance.miscEvents.onPatientSaved -= patientSaved;
-    }
-
     private void Update()
     {
         if (medBottleLabel == null) return;
@@ -98,7 +88,7 @@ public class SyringeBehaviour : MonoBehaviour
             return;
         }
 
-        patientSaved();
+        GameEventsManager.instance.miscEvents.patientSaved();
 
     }
 
@@ -113,17 +103,9 @@ public class SyringeBehaviour : MonoBehaviour
 
     private void Lose()
     {
-        // TODO: start other minigame
         MinigameManager.instance.syringeGame.SetActive(false);
-        MinigameManager.instance.playerHud.SetActive(true); // ? would be replaced by another minigame
-    }
 
-    private void patientSaved()
-    {
-        PlayerHealthManager.instance.reduceHealth();
-        GameObject.Find(AssigningBottleWithMeds.instance.npcPatient).GetComponent<NPCAnimScript>().isSick = false;
-        MinigameManager.instance.syringeGame.SetActive(false);
-        MinigameManager.instance.playerHud.SetActive(true);
+        MinigameManager.instance.onBeatGame.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

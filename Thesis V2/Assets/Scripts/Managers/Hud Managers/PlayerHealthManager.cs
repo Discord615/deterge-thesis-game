@@ -78,4 +78,8 @@ public class PlayerHealthManager : MonoBehaviour
         InventoryManager.instance.gloveRemainingUses = 3;
         InventoryManager.instance.maskRemainingUses = 3;
     }
+
+    public void healthRestore(){
+        healthBar.value = healthBar.maxValue;
+    }
 }

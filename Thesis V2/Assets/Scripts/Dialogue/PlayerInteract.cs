@@ -9,16 +9,16 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] public GameObject cloth;
 
-    [SerializeField] DialogueAction dialogueAction;
+    // [SerializeField] DialogueAction dialogueAction;
 
     private void OnTriggerEnter(Collider collider){
-        if (collider.tag == "npc"){
+        if (collider.tag.Equals("npc")){
             collider.GetComponent<DialogueAction>().playerInRange = true;
         }
     }
 
     private void OnTriggerExit(Collider collider){
-        if (collider.tag == "npc"){
+        if (collider.tag.Equals("npc")){
             collider.GetComponent<DialogueAction>().playerInRange = false;
         }
     }

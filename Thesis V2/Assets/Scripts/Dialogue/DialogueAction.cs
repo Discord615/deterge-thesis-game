@@ -31,7 +31,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
     {
         if (gameObject.GetComponent<NPCAnimScript>().isSick || gameObject.GetComponent<NPCAnimScript>().isLayingDown) return;
 
-        if (!playerInRange)
+        if (!playerInRange) // ! Forces Visual Cue to be off
         {
             visualCue.SetActive(false);
             return;

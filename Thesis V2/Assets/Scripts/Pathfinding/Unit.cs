@@ -80,7 +80,8 @@ public class Unit : MonoBehaviour, IDataPersistence
 		// Load Unit Target
 		Vector3 targetOut;
 		if (data.NPCTargetMap.TryGetValue(id, out targetOut)){
-			target = targetOut;
+			if (targetOut == Vector3.zero) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform.position;
+			else target = targetOut;
 		}
 
 		// Load NPC position

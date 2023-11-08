@@ -11,7 +11,7 @@ public class HeartTempo : MonoBehaviour
     private bool updateBeat = true;
     [SerializeField] private float targetScale = 2.7f;
     [SerializeField] private float maxScale = 3f;
-    float scaleChange = 0.001f;
+    float scaleChange = 0.1f;
 
     float heartZScale;
     private void Start() {

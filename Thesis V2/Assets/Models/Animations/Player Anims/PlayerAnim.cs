@@ -17,7 +17,7 @@ public class PlayerAnim : MonoBehaviour
     
 
     private void Update(){
-        if (movement.syringeMinigame.activeInHierarchy) {
+        if (MinigameManager.instance.syringeGame.activeInHierarchy || MinigameManager.instance.onBeatGame.activeInHierarchy) {
             StoppingBlend();
             animator.SetFloat("Blend", blendValue);
             return;

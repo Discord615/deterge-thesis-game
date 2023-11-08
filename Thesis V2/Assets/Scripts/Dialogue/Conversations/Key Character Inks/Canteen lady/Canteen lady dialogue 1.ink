@@ -1,4 +1,5 @@
 // Canteen lady dialogue 1
+INCLUDE globalInkFunctions.ink
 
 -> cafeteriaStaff
 
@@ -10,6 +11,7 @@ Good morning! Welcome to the cafeteria.
             ++[Request to inspect the kitchen for safety]
             - Hold on! Are you saying my kitchen is involved? Unbelievable.
                 +++[Apologize and explain the purpose of the inspection]
+                    ~ startQuest()
                     Fine! If you can prove our kitchen is unsafe, we'll allow an inspection.
                     -> DONE
                         

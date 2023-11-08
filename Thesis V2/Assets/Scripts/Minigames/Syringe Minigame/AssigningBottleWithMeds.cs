@@ -20,6 +20,7 @@ public class AssigningBottleWithMeds : MonoBehaviour
     public float dosageValue;
 
     public string npcPatient;
+    public GameObject bed;
 
     public string[] mainVirusMeds;
     private string[] secondVirusMeds;

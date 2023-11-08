@@ -15,11 +15,13 @@ public class MinigameManager : MonoBehaviour
 
     [Header("Minigame GameObjects")]
     public GameObject syringeGame;
+    public GameObject onBeatGame;
 
     [Header("Game HUD")]
     public GameObject playerHud;
 
     private void Start() {
         syringeGame.SetActive(false);
+        onBeatGame.SetActive(false);
     }
 }

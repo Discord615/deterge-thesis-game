@@ -98,6 +98,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
         visualCue.SetActive(true);
         // if (!visualCue.activeInHierarchy) return;
         AssigningBottleWithMeds.instance.npcPatient = occupantName;
+        AssigningBottleWithMeds.instance.bed = gameObject;
         if (!InputManager.getInstance().GetInteractPressed()) return;
         if (!occupied) return;
 
