@@ -121,7 +121,7 @@ public class SyringeBehaviour : MonoBehaviour
     private void patientSaved()
     {
         PlayerHealthManager.instance.reduceHealth();
-        AssigningBottleWithMeds.instance.npcPatient.GetComponent<NPCAnimScript>().isSick = false;
+        GameObject.Find(AssigningBottleWithMeds.instance.npcPatient).GetComponent<NPCAnimScript>().isSick = false;
         MinigameManager.instance.syringeGame.SetActive(false);
         MinigameManager.instance.playerHud.SetActive(true);
     }

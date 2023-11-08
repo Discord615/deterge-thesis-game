@@ -12,11 +12,21 @@ public class LayDown : MonoBehaviour, IDataPersistence
     }
 
     public bool occupied = false;
-    GameObject occupant;
+    string occupantName;
     Vector3 previousPosition;
 
     [SerializeField] private TextAsset virusJson;
     [SerializeField] private GameObject visualCue;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("Player"))
+        {
+            if (!occupied) return;
+
+            visualCue.SetActive(true);
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -24,6 +34,14 @@ public class LayDown : MonoBehaviour, IDataPersistence
 
         EnterDialogue(other.gameObject);
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.tag.Equals("Player")) return;
+
+        visualCue.SetActive(false);
+    }
+
 
     private void layDownTrigger(Animator animator, GameObject npc, GameObject bed)
     {
@@ -35,7 +53,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
         npc.transform.position = new Vector3(bed.transform.position.x, 1, bed.transform.position.z + 2);
         npc.transform.forward = bed.transform.forward;
 
-        occupant = npc;
+        occupantName = npc.name;
         occupied = true;
         virusJson = InkManager.instance.getVirusDialogue();
     }
@@ -51,47 +69,17 @@ public class LayDown : MonoBehaviour, IDataPersistence
 
         npc.GetComponent<CapsuleCollider>().enabled = true;
 
-        occupant = null;
+        occupantName = "";
         occupied = false;
 
-        npc.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc).transform;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag.Equals("Player"))
-        {
-            if (!occupied) return;
-
-            visualCue.SetActive(true);
-        }
-
-        if (other.tag.Equals("npc"))
-        {
-            if (occupant != null) return;
-
-            if (occupant != other.gameObject) return;
-
-            if (other.GetComponent<NPCAnimScript>().isLayingDown)
-                other.GetComponent<NPCAnimScript>().isLayingDown = false;
-
-            NPCAnimBehavior(other.gameObject);
-        }
-    }
-
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.tag.Equals("Player")) return;
-
-        visualCue.SetActive(false);
+        npc.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc).transform.position;
     }
 
     private void NPCAnimBehavior(GameObject other)
     {
         if (other.tag != "npc") return;
 
-        if (!other.GetComponent<Unit>().target.Equals(transform)) return;
+        if (!other.GetComponent<Unit>().target.Equals(transform.position)) return;
 
         GameObject bed = gameObject;
 
@@ -109,7 +97,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
         if (!other.tag.Equals("Player")) return;
         visualCue.SetActive(true);
         // if (!visualCue.activeInHierarchy) return;
-        AssigningBottleWithMeds.instance.npcPatient = occupant;
+        AssigningBottleWithMeds.instance.npcPatient = occupantName;
         if (!InputManager.getInstance().GetInteractPressed()) return;
         if (!occupied) return;
 
@@ -122,6 +110,13 @@ public class LayDown : MonoBehaviour, IDataPersistence
         {
             virusJson = null;
         }
+
+        string occupantOutPut;
+        if (data.occupantLDNameData.TryGetValue(id, out occupantOutPut)){
+            if (occupantOutPut == "") return;
+            GameObject.Find(occupantOutPut).GetComponent<NPCAnimScript>().isLayingDown = false;
+            layDownTrigger(GameObject.Find(occupantOutPut).GetComponent<Animator>(), GameObject.Find(occupantOutPut), this.gameObject);
+        }
     }
 
     public void SaveData(ref GameData data)
@@ -131,5 +126,10 @@ public class LayDown : MonoBehaviour, IDataPersistence
             data.virusJsonData.Remove(id);
         }
         data.virusJsonData.Add(id, virusJson);
+
+        if (data.occupantLDNameData.ContainsKey(id)){
+            data.occupantLDNameData.Remove(id);
+        }
+        data.occupantLDNameData.Add(id, occupantName);
     }
 }

@@ -12,9 +12,7 @@ public class DataPersistenceManager : MonoBehaviour
     private FileDataHandler dataHandler;
 
     public DataPersistenceManager instance { get; private set; }
-
-
-    [SerializeField] private bool forTestingNewGame = true;
+    
 
     private void Awake()
     {

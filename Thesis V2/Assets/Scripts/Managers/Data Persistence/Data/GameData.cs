@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameData
 {
     // * NPC Variables
-    public SerializableDictionary<string, Transform> NPCTargetMap;
+    public SerializableDictionary<string, Vector3> NPCTargetMap;
     public SerializableDictionary<string, int> NPCFloorMap;
     public SerializableDictionary<string, bool> NPCIsLayingDownMap;
     public SerializableDictionary<string, bool> NPCIsSickMap;
@@ -40,12 +40,13 @@ public class GameData
 
     // * LayDown Variables
     public SerializableDictionary<string, TextAsset> virusJsonData;
+    public SerializableDictionary<string, string> occupantLDNameData;
 
     public GameData()
     {
         this.playerPosition = Vector3.zero;
 
-        this.NPCTargetMap = new SerializableDictionary<string, Transform>();
+        this.NPCTargetMap = new SerializableDictionary<string, Vector3>();
         this.NPCIsLayingDownMap = new SerializableDictionary<string, bool>();
         this.NPCIsSickMap = new SerializableDictionary<string, bool>();
         this.NPCIsSittingMap = new SerializableDictionary<string, bool>();
@@ -69,6 +70,7 @@ public class GameData
         this.occupiedData = new SerializableDictionary<string, bool>();
 
         this.virusJsonData = new SerializableDictionary<string, TextAsset>();
+        this.occupantLDNameData = new SerializableDictionary<string, string>();
 
         // ! These two causes issues because it initializes to either null or 0
         this.NPCFloorMap = new SerializableDictionary<string, int>();

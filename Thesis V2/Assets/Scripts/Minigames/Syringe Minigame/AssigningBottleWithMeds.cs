@@ -19,7 +19,7 @@ public class AssigningBottleWithMeds : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dosage;
     public float dosageValue;
 
-    public GameObject npcPatient;
+    public string npcPatient;
 
     public string[] mainVirusMeds;
     private string[] secondVirusMeds;
@@ -42,30 +42,36 @@ public class AssigningBottleWithMeds : MonoBehaviour
         randomDosage();
 
         List<int> medIndexes = new List<int>() { 0, 1, 2 };
+        List<int> shuffledMedIndexes = ShuffleIntList(medIndexes);
         for (int i = 0; i < 3; i++)
         {
-            int medIndex = medIndexes[Random.Range(0, medIndexes.Count)];
-            Debug.Log(medIndex);
-
             switch (i)
             {
                 case 0:
-                    medicineBottles[medIndex].GetComponent<BottleBehavior>().medLabel = mainVirusMeds[Random.Range(0, mainVirusMeds.Length)];
+                    medicineBottles[shuffledMedIndexes[i]].GetComponent<BottleBehavior>().medLabel = mainVirusMeds[Random.Range(0, mainVirusMeds.Length)];
                     break;
 
                 case 1:
-                    medicineBottles[medIndex].GetComponent<BottleBehavior>().medLabel = secondVirusMeds[Random.Range(0, secondVirusMeds.Length)];
+                    medicineBottles[shuffledMedIndexes[i]].GetComponent<BottleBehavior>().medLabel = secondVirusMeds[Random.Range(0, secondVirusMeds.Length)];
                     break;
 
                 case 2:
-                    medicineBottles[medIndex].GetComponent<BottleBehavior>().medLabel = thirdVirusMeds[Random.Range(0, thirdVirusMeds.Length)];
+                    medicineBottles[shuffledMedIndexes[i]].GetComponent<BottleBehavior>().medLabel = thirdVirusMeds[Random.Range(0, thirdVirusMeds.Length)];
                     break;
-            }
-
-            if (medIndexes.Count >= 2)
-            {
-                medIndexes.RemoveAt(medIndex);
             }
         }
     }
+
+    public List<int> ShuffleIntList(List<int> list)
+{
+    List<int> newShuffledList = new List<int>();
+    int listcCount = list.Count;
+    for (int i = 0; i < listcCount; i++)
+    {
+        int randomElementInList = Random.Range(0, list.Count);
+        newShuffledList.Add(list[randomElementInList]);
+        list.Remove(list[randomElementInList]);
+    }
+    return newShuffledList;
+}
 }

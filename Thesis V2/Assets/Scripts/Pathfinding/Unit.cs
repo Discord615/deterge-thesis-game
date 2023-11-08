@@ -15,8 +15,8 @@ public class Unit : MonoBehaviour, IDataPersistence
 	const float minPathUpdateTime = .2f;
 	const float pathUpdateMoveThreshold = .5f;
 
-	public Transform target;
-	private Transform oldTarget;
+	public Vector3 target;
+	private Vector3 oldTarget;
 	public float speed = 3.5f;
 	public float turnSpeed = 3f;
 	public float turnDst = 5f;
@@ -35,6 +35,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 	{
 		unitRB = GetComponent<Rigidbody>();
 		animScript = GetComponent<NPCAnimScript>();
+
 		StartCoroutine(UpdatePath());
 	}
 
@@ -45,18 +46,18 @@ public class Unit : MonoBehaviour, IDataPersistence
 			{
 				try
 				{
-					target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject).transform;
+					target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject).transform.position;
 				}
 				catch (System.Exception)
 				{
-					target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform;
+					target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform.position;
 				}
 			}
 			else
 			{
-				target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform;
+				target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform.position;
+				animScript.stopped = false;
 			}
-			animScript.stopped = false;
 		}
 
 		if (!animScript.isLayingDown)
@@ -77,7 +78,10 @@ public class Unit : MonoBehaviour, IDataPersistence
 		if (!data.NPCFloorMap.TryGetValue(id, out floor)) floor = 1;
 
 		// Load Unit Target
-		data.NPCTargetMap.TryGetValue(id, out target);
+		Vector3 targetOut;
+		if (data.NPCTargetMap.TryGetValue(id, out targetOut)){
+			target = targetOut;
+		}
 
 		// Load NPC position
 		Vector3 position;
@@ -131,15 +135,15 @@ public class Unit : MonoBehaviour, IDataPersistence
 		{
 
 			case 1:
-				PathRequestManager1.RequestPath(new PathRequest1(transform.position, target.position, OnPathFound));
+				PathRequestManager1.RequestPath(new PathRequest1(transform.position, target, OnPathFound));
 				break;
 			case 2:
-				PathRequestManager2.RequestPath(new PathRequest2(transform.position, target.position, OnPathFound));
+				PathRequestManager2.RequestPath(new PathRequest2(transform.position, target, OnPathFound));
 				break;
 		}
 
 		float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;
-		Vector3 targetPosOld = target.position;
+		Vector3 targetPosOld = target;
 
 		while (true)
 		{
@@ -147,21 +151,21 @@ public class Unit : MonoBehaviour, IDataPersistence
 			// print (((target.position - targetPosOld).sqrMagnitude) + "    " + sqrMoveThreshold);
 			if (!gameObject.GetComponent<NPCAnimScript>().isLayingDown || !gameObject.GetComponent<NPCAnimScript>().isSitting)
 			{
-				if (((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) || oldTarget == target || wallReached)
+				if (((target - targetPosOld).sqrMagnitude > sqrMoveThreshold) || oldTarget == target || wallReached)
 				{
 					if (wallReached) wallReached = false;
 
 					switch (floor)
 					{
 						case 1:
-							PathRequestManager1.RequestPath(new PathRequest1(transform.position, target.position, OnPathFound));
+							PathRequestManager1.RequestPath(new PathRequest1(transform.position, target, OnPathFound));
 							break;
 						case 2:
-							PathRequestManager2.RequestPath(new PathRequest2(transform.position, target.position, OnPathFound));
+							PathRequestManager2.RequestPath(new PathRequest2(transform.position, target, OnPathFound));
 							break;
 					}
 
-					targetPosOld = target.position;
+					targetPosOld = target;
 				}
 			}
 		}

@@ -56,9 +56,14 @@ public class DialogueManagaer : MonoBehaviour
 
     private void Update()
     {
+
         if (!dialogueIsPlaying)
         {
             return;
+        }
+
+        if (MinigameManager.instance.syringeGame.activeInHierarchy){
+            StartCoroutine(ExitDialogueMode());
         }
 
         if (InputManager.getInstance().GetContextActionPressed())

@@ -22,7 +22,7 @@ public class SitDown : MonoBehaviour, IDataPersistence
         if (other == null) return;
         if (other.tag != "npc") return;
         if (other.GetComponent<Unit>().target == null) return;
-        if (!other.GetComponent<Unit>().target.gameObject.Equals(gameObject)) return;
+        if (!other.GetComponent<Unit>().target.Equals(transform.position)) return;
         if (occupied)
         {
             getNewTarget(other.gameObject);
@@ -39,7 +39,7 @@ public class SitDown : MonoBehaviour, IDataPersistence
             if (!other.GetComponent<NPCAnimScript>().isSitting) return;
             standUpTrigger(other.GetComponent<Animator>(), other.gameObject);
         }
-        if (!other.GetComponent<Unit>().target.gameObject.Equals(gameObject)) return;
+        if (!other.GetComponent<Unit>().target.Equals(transform.position)) return;
         if (!(other.GetComponent<NPCAnimScript>().wantToSit ^ (other.GetComponent<NPCAnimScript>().isSitting && occupied))) return;
         if (other.GetComponent<NPCAnimScript>().isSitting != occupied) return;
         if (other.GetComponent<NPCAnimScript>().wantToSit) sitDownTrigger(other.GetComponent<Animator>(), other.gameObject);
@@ -90,7 +90,7 @@ public class SitDown : MonoBehaviour, IDataPersistence
             }
         }
 
-        npc.GetComponent<Unit>().target = newTarget;
+        npc.GetComponent<Unit>().target = newTarget.position;
     }
 
     private IEnumerator sittingDuration(GameObject npc)
