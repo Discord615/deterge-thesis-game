@@ -93,12 +93,15 @@ public class DialogueManagaer : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            string nextLine = currentStory.Continue();
 
-            if (dialogueText.text.Equals("") && !currentStory.canContinue)
+            if (nextLine.Equals("") && !currentStory.canContinue)
                 StartCoroutine(ExitDialogueMode());
             else
+            {
+                dialogueText.text = nextLine;
                 DisplayChoices();
+            }
         }
         else
         {

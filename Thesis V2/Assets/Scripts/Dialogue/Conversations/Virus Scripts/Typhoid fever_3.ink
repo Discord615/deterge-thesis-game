@@ -22,7 +22,7 @@ Doc, I have a high fever and severe fatigue
                     
     + [Administer Medicine]
     ~ administerMeds("Typhoid")
-    -> DONE
+    -> END
                     
     + [End Convo]
     -> END

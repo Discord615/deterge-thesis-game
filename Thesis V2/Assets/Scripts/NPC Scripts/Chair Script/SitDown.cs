@@ -3,42 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class SitDown : MonoBehaviour
+public class SitDown : MonoBehaviour, IDataPersistence
 {
-    private GameObject occupant = null;
-    public bool occupied = false;
-    private Vector3 prevPos;
-    private GameObject chairSitPos;
+    [SerializeField] private string id;
 
-    private void Start() {
-        chairSitPos = transform.parent.gameObject;
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private GameObject occupant;
+    public bool occupied = false;
+    private Vector3 prevPos;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other == null) return;
         if (other.tag != "npc") return;
+        if (other.GetComponent<Unit>().target == null) return;
         if (!other.GetComponent<Unit>().target.gameObject.Equals(gameObject)) return;
-        if (occupied){
+        if (occupied)
+        {
             getNewTarget(other.gameObject);
             return;
         }
         other.GetComponent<NPCAnimScript>().wantToSit = true;
     }
 
-    private void OnTriggerStay(Collider other) {
+    private void OnTriggerStay(Collider other)
+    {
         if (other.tag != "npc") return;
+        if (other.GetComponent<Unit>().target == null)
+        {
+            if (!other.GetComponent<NPCAnimScript>().isSitting) return;
+            standUpTrigger(other.GetComponent<Animator>(), other.gameObject);
+        }
         if (!other.GetComponent<Unit>().target.gameObject.Equals(gameObject)) return;
         if (!(other.GetComponent<NPCAnimScript>().wantToSit ^ (other.GetComponent<NPCAnimScript>().isSitting && occupied))) return;
         if (other.GetComponent<NPCAnimScript>().isSitting != occupied) return;
         if (other.GetComponent<NPCAnimScript>().wantToSit) sitDownTrigger(other.GetComponent<Animator>(), other.gameObject);
     }
 
-    private void sitDownTrigger(Animator animator, GameObject npc){
+    private void sitDownTrigger(Animator animator, GameObject npc)
+    {
         animator.SetTrigger("SitDown");
         npc.GetComponent<NPCAnimScript>().isSitting = true;
 
         prevPos = new Vector3(0, npc.transform.position.y, 0);
-        npc.transform.position = chairSitPos.transform.position;
-        npc.transform.forward = chairSitPos.transform.forward;
+        npc.transform.position = gameObject.transform.GetChild(0).position;
+        npc.transform.forward = gameObject.transform.GetChild(0).forward;
 
         occupant = npc;
         occupied = true;
@@ -46,7 +60,8 @@ public class SitDown : MonoBehaviour
         StartCoroutine(sittingDuration(npc));
     }
 
-    private void standUpTrigger(Animator animator, GameObject npc){
+    private void standUpTrigger(Animator animator, GameObject npc)
+    {
         animator.SetTrigger("StandUp");
         npc.GetComponent<NPCAnimScript>().isSitting = false;
 
@@ -59,14 +74,18 @@ public class SitDown : MonoBehaviour
         getNewTarget(npc);
     }
 
-    private void getNewTarget(GameObject npc){
+    private void getNewTarget(GameObject npc)
+    {
         Transform newTarget;
-        while (true){
-            try{
+        while (true)
+        {
+            try
+            {
                 newTarget = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc).transform;
                 break;
             }
-            catch (System.Exception){
+            catch (System.Exception)
+            {
                 continue;
             }
         }
@@ -74,9 +93,38 @@ public class SitDown : MonoBehaviour
         npc.GetComponent<Unit>().target = newTarget;
     }
 
-    private IEnumerator sittingDuration(GameObject npc){
+    private IEnumerator sittingDuration(GameObject npc)
+    {
         yield return new WaitForSeconds(Random.Range(3, 10));
         npc.GetComponent<NPCAnimScript>().wantToSit = false;
         standUpTrigger(npc.GetComponent<Animator>(), npc);
+    }
+
+    public void LoadData(GameData data)
+    {
+        Transform occupantTransform;
+        data.occupantData.TryGetValue(id, out occupantTransform);
+        if (occupantTransform != null)
+        {
+            occupant = occupantTransform.gameObject;
+        }
+
+        data.occupiedData.TryGetValue(id, out occupied);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.occupantData.ContainsKey(id))
+        {
+            data.occupantData.Remove(id);
+        }
+        if (occupant != null)
+            data.occupantData.Add(id, occupant.transform);
+
+        if (data.occupiedData.ContainsKey(id))
+        {
+            data.occupiedData.Remove(id);
+        }
+        data.occupiedData.Add(id, occupied);
     }
 }

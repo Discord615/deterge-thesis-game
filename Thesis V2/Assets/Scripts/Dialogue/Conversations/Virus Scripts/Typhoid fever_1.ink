@@ -25,7 +25,7 @@ Doc, I have a high fever and abdominal pain
                     
     + [Administer Medicine]
     ~ administerMeds("Typhoid")
-    -> DONE
+    -> END
                     
     + [End Convo]
     -> END

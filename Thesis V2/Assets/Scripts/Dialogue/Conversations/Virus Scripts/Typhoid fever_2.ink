@@ -22,7 +22,7 @@ I've had a persistent high fever and stomach discomfort
                     
     + [Administer Medicine]
     ~ administerMeds("Typhoid")
-    -> DONE
+    -> END
                     
     + [End Convo]
     -> END

@@ -1,13 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class LayDown : MonoBehaviour
+public class LayDown : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private string id;
+
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
     public bool occupied = false;
-    GameObject occupant = null;
+    GameObject occupant;
     Vector3 previousPosition;
 
     [SerializeField] private TextAsset virusJson;
@@ -16,8 +21,6 @@ public class LayDown : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         NPCAnimBehavior(other.gameObject);
-
-        if (other.tag.Equals("Player")) visualCue.SetActive(true);
 
         EnterDialogue(other.gameObject);
     }
@@ -56,11 +59,24 @@ public class LayDown : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.tag.Equals("Player")) return;
+        if (other.tag.Equals("Player"))
+        {
+            if (!occupied) return;
 
-        if (!occupied) return;
+            visualCue.SetActive(true);
+        }
 
-        visualCue.SetActive(true);
+        if (other.tag.Equals("npc"))
+        {
+            if (occupant != null) return;
+
+            if (occupant != other.gameObject) return;
+
+            if (other.GetComponent<NPCAnimScript>().isLayingDown)
+                other.GetComponent<NPCAnimScript>().isLayingDown = false;
+
+            NPCAnimBehavior(other.gameObject);
+        }
     }
 
 
@@ -74,7 +90,8 @@ public class LayDown : MonoBehaviour
     private void NPCAnimBehavior(GameObject other)
     {
         if (other.tag != "npc") return;
-        if (!other.GetComponent<Unit>().target.Equals(gameObject.transform)) return;
+
+        if (!other.GetComponent<Unit>().target.Equals(transform)) return;
 
         GameObject bed = gameObject;
 
@@ -90,12 +107,29 @@ public class LayDown : MonoBehaviour
     private void EnterDialogue(GameObject other)
     {
         if (!other.tag.Equals("Player")) return;
-
+        visualCue.SetActive(true);
         // if (!visualCue.activeInHierarchy) return;
-
-        if (!InputManager.getInstance().GetInteractPressed()) return;
-
         AssigningBottleWithMeds.instance.npcPatient = occupant;
+        if (!InputManager.getInstance().GetInteractPressed()) return;
+        if (!occupied) return;
+
         DialogueManagaer.GetInstance().EnterDialogueMode(virusJson);
+    }
+
+    public void LoadData(GameData data)
+    {
+        if (data.virusJsonData.TryGetValue(id, out virusJson))
+        {
+            virusJson = null;
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.virusJsonData.ContainsKey(id))
+        {
+            data.virusJsonData.Remove(id);
+        }
+        data.virusJsonData.Add(id, virusJson);
     }
 }

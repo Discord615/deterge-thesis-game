@@ -15,146 +15,216 @@ public class InputManager : MonoBehaviour
     private bool alcoholPressed = false;
     private bool glovePressed = false;
     private bool maskPressed = false;
+    private bool encyclopediaPressed = false;
     private static InputManager instance;
 
-    private void Awake() {
-        if(instance != null){
+    private void Awake()
+    {
+        if (instance != null)
+        {
             Debug.LogError("Found more than one instance of Input Manager in the scene");
         }
         instance = this;
     }
 
-    public static InputManager getInstance(){
+    public static InputManager getInstance()
+    {
         return instance;
     }
 
-    public void AlcoholPressed(InputAction.CallbackContext context){
-        if (context.performed){
+    public void EncyclopediaPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            encyclopediaPressed = true;
+        }
+        else
+        {
+            encyclopediaPressed = false;
+        }
+    }
+
+    public void AlcoholPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             alcoholPressed = true;
-        } else if (context.canceled){
+        }
+        else if (context.canceled)
+        {
             alcoholPressed = false;
         }
     }
 
-    public void GlovePressed(InputAction.CallbackContext context){
-        if (context.performed){
+    public void GlovePressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             glovePressed = true;
-        } else if (context.canceled){
+        }
+        else if (context.canceled)
+        {
             glovePressed = false;
         }
     }
 
-    public void MaskPressed(InputAction.CallbackContext context){
-        if (context.performed){
+    public void MaskPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             maskPressed = true;
-        } else if (context.canceled){
+        }
+        else if (context.canceled)
+        {
             maskPressed = false;
         }
     }
 
-    public void SpacePressed(InputAction.CallbackContext context){
-        if (context.performed){
+    public void SpacePressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             spacePressed = true;
-        } else if (context.canceled){
+        }
+        else if (context.canceled)
+        {
             spacePressed = false;
         }
     }
 
-    public void InteractPressed(InputAction.CallbackContext context){
-        if (context.performed){
+    public void InteractPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             interactPressed = true;
-        } else if(context.canceled){
+        }
+        else if (context.canceled)
+        {
             interactPressed = false;
         }
     }
 
-    public void RunPressed(InputAction.CallbackContext context){
-        if(context.performed){
+    public void RunPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             runPressed = true;
-        } else if(context.canceled){
+        }
+        else if (context.canceled)
+        {
             runPressed = false;
         }
     }
 
-    public void EscapePressed(InputAction.CallbackContext context){
-        if (context.performed){
+    public void EscapePressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             escapePressed = true;
-        } else if (context.canceled){
+        }
+        else if (context.canceled)
+        {
             escapePressed = false;
         }
     }
 
-    public void MovePressed(InputAction.CallbackContext context){
-        if(context.performed){
+    public void MovePressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             moveDirection = context.ReadValue<Vector2>();
-        } else if(context.canceled){
+        }
+        else if (context.canceled)
+        {
             moveDirection = context.ReadValue<Vector2>();
         }
     }
 
-    public void ContextActionPressed(InputAction.CallbackContext context){
-        if (context.performed){
+    public void ContextActionPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             contextActionPressed = true;
-        } else if (context.canceled){
+        }
+        else if (context.canceled)
+        {
             contextActionPressed = false;
         }
     }
 
-    public bool getAlcoholPressed(){
+    public bool getEncyclopediaPressed()
+    {
+        bool result = encyclopediaPressed;
+        encyclopediaPressed = false;
+        return result;
+    }
+
+    public bool getAlcoholPressed()
+    {
         bool result = alcoholPressed;
         alcoholPressed = false;
         return result;
     }
 
-    public bool getGlovePressed(){
+    public bool getGlovePressed()
+    {
         bool result = glovePressed;
         glovePressed = false;
         return result;
     }
 
-    public bool getMaskPressed(){
+    public bool getMaskPressed()
+    {
         bool result = maskPressed;
         maskPressed = false;
         return result;
     }
 
-    public Vector2 GetMovePressed(){
+    public Vector2 GetMovePressed()
+    {
         return moveDirection;
     }
 
-    public Vector2 GetMovePressImpulse(){
+    public Vector2 GetMovePressImpulse()
+    {
         Vector2 result = moveDirection;
         moveDirection = Vector2.zero;
         return result;
     }
 
-    public bool GetInteractPressed(){
+    public bool GetInteractPressed()
+    {
         bool result = interactPressed;
         interactPressed = false;
         return result;
     }
 
-    public bool GetContextActionPressed(){
+    public bool GetContextActionPressed()
+    {
         bool result = contextActionPressed;
         contextActionPressed = false;
         return result;
     }
 
-    public bool GetRunPressed(){
+    public bool GetRunPressed()
+    {
         return runPressed;
     }
 
-    public bool GetEscapedPressed(){
+    public bool GetEscapedPressed()
+    {
         bool result = escapePressed;
         escapePressed = false;
         return result;
     }
 
-    public bool getSpacePressedHold(){
+    public bool getSpacePressedHold()
+    {
         return spacePressed;
     }
 
-    public bool getSpacePressedImpulse(){
+    public bool getSpacePressedImpulse()
+    {
         bool result = spacePressed;
         spacePressed = false;
         return result;

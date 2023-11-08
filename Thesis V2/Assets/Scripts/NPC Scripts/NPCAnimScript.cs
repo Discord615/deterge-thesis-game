@@ -25,7 +25,7 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
     public bool stopped = false;
 
     [Header("Chair Variables")]
-    public bool wantToSit = false; // TODO: Anim - Should base off of the target name/tag. If Chair then wantToSit = false
+    public bool wantToSit = false;
     public bool isSitting = false;
 
 
@@ -70,6 +70,8 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
         data.NPCIsSickMap.TryGetValue(id, out isSick);
 
         data.NPCIsSittingMap.TryGetValue(id, out isSitting);
+
+        data.NPCWantToSitMap.TryGetValue(id, out wantToSit);
     }
 
     public void SaveData(ref GameData data)
@@ -91,5 +93,11 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
             data.NPCIsSittingMap.Remove(id);
         }
         data.NPCIsSittingMap.Add(id, isSitting);
+
+        if (data.NPCWantToSitMap.ContainsKey(id))
+        {
+            data.NPCWantToSitMap.Remove(id);
+        }
+        data.NPCWantToSitMap.Add(id, wantToSit);
     }
 }

@@ -11,6 +11,7 @@ public class GameData
     public SerializableDictionary<string, bool> NPCIsLayingDownMap;
     public SerializableDictionary<string, bool> NPCIsSickMap;
     public SerializableDictionary<string, bool> NPCIsSittingMap;
+    public SerializableDictionary<string, bool> NPCWantToSitMap;
     public SerializableDictionary<string, Vector3> NPCposition;
     public SerializableDictionary<string, TextAsset> inkJsonData;
 
@@ -33,6 +34,13 @@ public class GameData
     public bool coronaIsActive;
     public bool rabiesIsActive;
 
+    // * SitDown Variables
+    public SerializableDictionary<string, Transform> occupantData;
+    public SerializableDictionary<string, bool> occupiedData;
+
+    // * LayDown Variables
+    public SerializableDictionary<string, TextAsset> virusJsonData;
+
     public GameData()
     {
         this.playerPosition = Vector3.zero;
@@ -41,6 +49,7 @@ public class GameData
         this.NPCIsLayingDownMap = new SerializableDictionary<string, bool>();
         this.NPCIsSickMap = new SerializableDictionary<string, bool>();
         this.NPCIsSittingMap = new SerializableDictionary<string, bool>();
+        this.NPCWantToSitMap = new SerializableDictionary<string, bool>();
 
         this.timerData = 3600f;
 
@@ -55,6 +64,11 @@ public class GameData
         this.influenzaIsActive = false;
         this.coronaIsActive = false;
         this.rabiesIsActive = false;
+
+        this.occupantData = new SerializableDictionary<string, Transform>();
+        this.occupiedData = new SerializableDictionary<string, bool>();
+
+        this.virusJsonData = new SerializableDictionary<string, TextAsset>();
 
         // ! These two causes issues because it initializes to either null or 0
         this.NPCFloorMap = new SerializableDictionary<string, int>();

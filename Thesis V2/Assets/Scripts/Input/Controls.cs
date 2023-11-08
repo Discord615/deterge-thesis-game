@@ -107,6 +107,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Encyclopedia"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2fbe264-98e9-4a2a-9d83-866ae78d563c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -307,6 +316,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Space"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f29972f-5029-4b77-a38b-50ae924a4f0a"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Encyclopedia"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -324,6 +344,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_GloveBind = m_Player.FindAction("GloveBind", throwIfNotFound: true);
         m_Player_MaskBind = m_Player.FindAction("MaskBind", throwIfNotFound: true);
         m_Player_Space = m_Player.FindAction("Space", throwIfNotFound: true);
+        m_Player_Encyclopedia = m_Player.FindAction("Encyclopedia", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -394,6 +415,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_GloveBind;
     private readonly InputAction m_Player_MaskBind;
     private readonly InputAction m_Player_Space;
+    private readonly InputAction m_Player_Encyclopedia;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -407,6 +429,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @GloveBind => m_Wrapper.m_Player_GloveBind;
         public InputAction @MaskBind => m_Wrapper.m_Player_MaskBind;
         public InputAction @Space => m_Wrapper.m_Player_Space;
+        public InputAction @Encyclopedia => m_Wrapper.m_Player_Encyclopedia;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -443,6 +466,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Space.started += instance.OnSpace;
             @Space.performed += instance.OnSpace;
             @Space.canceled += instance.OnSpace;
+            @Encyclopedia.started += instance.OnEncyclopedia;
+            @Encyclopedia.performed += instance.OnEncyclopedia;
+            @Encyclopedia.canceled += instance.OnEncyclopedia;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -474,6 +500,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Space.started -= instance.OnSpace;
             @Space.performed -= instance.OnSpace;
             @Space.canceled -= instance.OnSpace;
+            @Encyclopedia.started -= instance.OnEncyclopedia;
+            @Encyclopedia.performed -= instance.OnEncyclopedia;
+            @Encyclopedia.canceled -= instance.OnEncyclopedia;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -502,5 +531,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnGloveBind(InputAction.CallbackContext context);
         void OnMaskBind(InputAction.CallbackContext context);
         void OnSpace(InputAction.CallbackContext context);
+        void OnEncyclopedia(InputAction.CallbackContext context);
     }
 }
