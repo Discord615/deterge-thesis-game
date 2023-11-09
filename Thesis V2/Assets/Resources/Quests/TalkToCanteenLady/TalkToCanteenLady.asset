@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e7df891c47e8fa40adda3a328b693b6, type: 3}
-  m_Name: CurePatientQuest
+  m_Name: TalkToCanteenLady
   m_EditorClassIdentifier: 
-  <id>k__BackingField: CurePatientQuest
-  displayName: Cure Patients
-  questPrerequisites:
-  - {fileID: 11400000, guid: 3ad6a0101a84a3b4ea44f3f717700a58, type: 2}
-  questStepPrefabs:
-  - {fileID: 5085480678664313490, guid: c2f35db65af66ac4cb1a3e05cfe73322, type: 3}
+  <id>k__BackingField: TalkToCanteenLady
+  displayName: Talk To Canteen Lady
+  questPrerequisites: []
+  questStepPrefabs: []

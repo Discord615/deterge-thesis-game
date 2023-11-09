@@ -49,8 +49,15 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        if (!data.inkJsonData.TryGetValue(id, out inkJson)) {
+        TextAsset inkJsonOut;
+        if (!data.inkJsonData.TryGetValue(id, out inkJsonOut))
+        {
+            if (inkJson != null) return;
             this.inkJson = InkManager.instance.getRandomInk(isMale);
+        }
+        else
+        {
+            inkJson = inkJsonOut;
         }
     }
 
