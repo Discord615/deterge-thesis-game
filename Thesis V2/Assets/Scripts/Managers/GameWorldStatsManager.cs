@@ -13,6 +13,7 @@ public class GameWorldStatsManager : MonoBehaviour, IDataPersistence
         instance = this;
     }
 
+    public bool isNewGame;
     public bool tyhpoidIsActive = false;
     public bool tuberculosisIsActive = false;
     public bool dengueIsActive = false;

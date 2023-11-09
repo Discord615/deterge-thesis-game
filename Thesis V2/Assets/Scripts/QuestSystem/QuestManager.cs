@@ -38,6 +38,12 @@ public class QuestManager : MonoBehaviour
     {
         foreach (Quest quest in questMap.Values)
         {
+            if (quest.info.id.Equals("TalkToCanteenLady") && MenuToGamplayPass.instance.startNewGame)
+            {
+                quest.instantiateCurrentQuestStep(this.transform);
+                Debug.Log(quest.state);
+            }
+
             if (quest.state == QuestState.IN_PROGRESS)
             {
                 quest.instantiateCurrentQuestStep(this.transform);
@@ -60,6 +66,7 @@ public class QuestManager : MonoBehaviour
 
         foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites)
         {
+            Debug.Log(getQuestById(prerequisiteQuestInfo.id).state);
             if (getQuestById(prerequisiteQuestInfo.id).state != QuestState.FINISHED) meetsRequirements = false;
         }
 

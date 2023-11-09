@@ -10,7 +10,8 @@ public class Quest
     public int currentQuestStepIndex;
     private QuestStepState[] questStepStates;
 
-    public Quest(QuestInfoSO questInfo){
+    public Quest(QuestInfoSO questInfo)
+    {
         this.info = questInfo;
         this.state = QuestState.REQUIREMENTS_NOT_MET;
         this.currentQuestStepIndex = 0;
@@ -22,34 +23,41 @@ public class Quest
         }
     }
 
-    public Quest(QuestInfoSO questInfo, QuestState questState, int currentQuestStepIndex, QuestStepState[] questStepStates){
+    public Quest(QuestInfoSO questInfo, QuestState questState, int currentQuestStepIndex, QuestStepState[] questStepStates)
+    {
         this.info = questInfo;
         this.state = questState;
         this.currentQuestStepIndex = currentQuestStepIndex;
         this.questStepStates = questStepStates;
 
-        if (this.questStepStates.Length != this.info.questStepPrefabs.Length){
-            Debug.Log("Quest state prefabs and Quest step states have different lengths");
+        if (this.questStepStates.Length != this.info.questStepPrefabs.Length)
+        {
+            Debug.LogError("Quest state prefabs and Quest step states have different lengths");
         }
     }
 
-    public void moveToNextStep(){
+    public void moveToNextStep()
+    {
         currentQuestStepIndex++;
     }
 
-    public bool currentStepExists(){
+    public bool currentStepExists()
+    {
         return currentQuestStepIndex < info.questStepPrefabs.Length;
     }
 
-    public void instantiateCurrentQuestStep(Transform parentTransform){
+    public void instantiateCurrentQuestStep(Transform parentTransform)
+    {
         GameObject questStepPrefab = getCurrentQuestStepPrefab();
-        if (questStepPrefab != null){
+        if (questStepPrefab != null)
+        {
             QuestStep questStep = Object.Instantiate<GameObject>(questStepPrefab, parentTransform).GetComponent<QuestStep>();
             questStep.initializeQuestStep(info.id, currentQuestStepIndex, questStepStates[currentQuestStepIndex].state);
         }
     }
 
-    private GameObject getCurrentQuestStepPrefab(){
+    private GameObject getCurrentQuestStepPrefab()
+    {
         GameObject questStepPrefab = null;
         if (currentStepExists()) questStepPrefab = info.questStepPrefabs[currentQuestStepIndex];
         else Debug.LogWarning("CurrentQuestStepIndex was out of range");
@@ -57,15 +65,20 @@ public class Quest
         return questStepPrefab;
     }
 
-    public void storeQuestStepState(QuestStepState questStepState, int stepIndex){
-        if (stepIndex < questStepStates.Length){
+    public void storeQuestStepState(QuestStepState questStepState, int stepIndex)
+    {
+        if (stepIndex < questStepStates.Length)
+        {
             questStepStates[stepIndex].state = questStepState.state;
-        } else {
+        }
+        else
+        {
             Debug.LogWarning("Step index was out of range");
         }
     }
 
-    public QuestData getQuestData(){
+    public QuestData getQuestData()
+    {
         return new QuestData(state, currentQuestStepIndex, questStepStates);
     }
 }

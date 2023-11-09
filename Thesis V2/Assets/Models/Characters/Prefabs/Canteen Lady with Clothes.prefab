@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 1971138164451286462}
   - component: {fileID: 1971138164451286460}
   - component: {fileID: 1971138164451286434}
+  - component: {fileID: 629845206929970755}
   - component: {fileID: 1971138164451286433}
   - component: {fileID: 1971138164451286432}
   m_Layer: 0
@@ -408,6 +409,19 @@ MonoBehaviour:
   isMale: 0
   id: 9dd30f60-fdca-4038-ba60-f702ebddfa44
   playerInRange: 0
+--- !u!114 &629845206929970755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701105455613599291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInfoForPoint: {fileID: 11400000, guid: 3ad6a0101a84a3b4ea44f3f717700a58, type: 2}
 --- !u!114 &1971138164451286433
 MonoBehaviour:
   m_ObjectHideFlags: 0

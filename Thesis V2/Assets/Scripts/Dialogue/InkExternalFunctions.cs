@@ -30,5 +30,6 @@ public class InkExternalFunctions
     {
         story.UnbindExternalFunction("startQuest");
         story.UnbindExternalFunction("finishQuest");
+        story.UnbindExternalFunction("administerMeds");
     }
 }

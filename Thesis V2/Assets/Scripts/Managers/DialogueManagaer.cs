@@ -62,7 +62,8 @@ public class DialogueManagaer : MonoBehaviour
             return;
         }
 
-        if (MinigameManager.instance.syringeGame.activeInHierarchy){
+        if (MinigameManager.instance.syringeGame.activeInHierarchy)
+        {
             StartCoroutine(ExitDialogueMode());
         }
 

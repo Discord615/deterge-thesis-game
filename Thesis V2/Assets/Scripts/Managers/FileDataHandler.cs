@@ -9,23 +9,28 @@ public class FileDataHandler
     private string fileName;
     private string filePath;
 
-    public FileDataHandler(string filePath, string fileName){
+    public FileDataHandler(string filePath, string fileName)
+    {
         this.filePath = filePath;
         this.fileName = fileName;
     }
 
-    public Quest load(QuestInfoSO questInfo){
+    public Quest load(QuestInfoSO questInfo)
+    {
         string fullPath = System.IO.Path.Combine(filePath, fileName);
 
         Quest quest = null;
 
-        if (File.Exists(fullPath)){
+        if (File.Exists(fullPath))
+        {
             try
             {
                 string dataToLoad = "";
 
-                using(FileStream stream = new FileStream(fullPath, FileMode.Open)){
-                    using (StreamReader reader = new StreamReader(stream)){
+                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
                         dataToLoad = reader.ReadToEnd();
                     }
                 }
@@ -36,14 +41,17 @@ public class FileDataHandler
             {
                 Debug.LogError("Failed to load save file");
             }
-        } else {
+        }
+        else
+        {
             quest = new Quest(questInfo);
         }
 
         return quest;
     }
 
-    public void save(Quest quest){
+    public void save(Quest quest)
+    {
         string fullPath = System.IO.Path.Combine(filePath, fileName);
         try
         {
@@ -51,8 +59,10 @@ public class FileDataHandler
 
             QuestData questData = quest.getQuestData();
             string serializedData = JsonUtility.ToJson(questData, true);
-            using (FileStream stream = new FileStream(fullPath, FileMode.Create)){
-                using (StreamWriter writer = new StreamWriter(stream)){
+            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
                     writer.Write(serializedData);
                 }
             }
@@ -63,17 +73,21 @@ public class FileDataHandler
         }
     }
 
-    public GameData Load(){
+    public GameData Load()
+    {
         string fullPath = System.IO.Path.Combine(filePath, fileName);
         GameData loadedData = null;
 
-        if (File.Exists(fullPath)){
+        if (File.Exists(fullPath))
+        {
             try
             {
                 string dataToLoad = "";
 
-                using(FileStream stream = new FileStream(fullPath, FileMode.Open)){
-                    using (StreamReader reader = new StreamReader(stream)){
+                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
                         dataToLoad = reader.ReadToEnd();
                     }
                 }
@@ -85,10 +99,11 @@ public class FileDataHandler
                 Debug.LogWarning("Failed to load data");
             }
         }
-            return loadedData;
+        return loadedData;
     }
 
-    public void Save(GameData data){
+    public void Save(GameData data)
+    {
         string fullPath = System.IO.Path.Combine(filePath, fileName);
 
         try
@@ -97,8 +112,10 @@ public class FileDataHandler
 
             string dataToStore = JsonUtility.ToJson(data, true);
 
-            using (FileStream stream = new FileStream(fullPath, FileMode.Create)){
-                using (StreamWriter writer = new StreamWriter(stream)){
+            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
                     writer.Write(dataToStore);
                 }
             }

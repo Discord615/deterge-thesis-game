@@ -15,4 +15,5 @@ MonoBehaviour:
   <id>k__BackingField: TalkToCanteenLady
   displayName: Talk To Canteen Lady
   questPrerequisites: []
-  questStepPrefabs: []
+  questStepPrefabs:
+  - {fileID: 7281895204461708123, guid: 6736068d83dbd8245bec03461769039e, type: 3}

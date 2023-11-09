@@ -12,7 +12,7 @@ public class DataPersistenceManager : MonoBehaviour
     private FileDataHandler dataHandler;
 
     public DataPersistenceManager instance { get; private set; }
-    
+
 
     private void Awake()
     {
@@ -33,14 +33,15 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
+        GameWorldStatsManager.instance.isNewGame = true;
         this.gameData = new GameData();
     }
 
     public void LoadGame()
     {
+        GameWorldStatsManager.instance.isNewGame = false;
         // ? forTestingNewGame - for testing game boolean
         if (!MenuToGamplayPass.instance.startNewGame) this.gameData = dataHandler.Load();
-
         // ? forTestingNewGame
         if (this.gameData == null || MenuToGamplayPass.instance.startNewGame) NewGame();
 
@@ -52,6 +53,8 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
+
+
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(ref gameData);
