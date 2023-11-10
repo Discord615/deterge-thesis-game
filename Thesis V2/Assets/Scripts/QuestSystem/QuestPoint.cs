@@ -21,7 +21,6 @@ public class QuestPoint : MonoBehaviour
 
     GameObject questObject;
     public bool iconIsDestroyed = false;
-    // bool startUpdatingIconText = false;
 
     private void Awake()
     {
@@ -43,7 +42,7 @@ public class QuestPoint : MonoBehaviour
 
         Debug.Log(string.Format("{0} : {1}", questInfoForPoint.displayName, currentQuestState));
 
-        if (!(DialogueManagaer.GetInstance().dialogueIsPlaying || BypassDialogue)) return;
+        if (!(DialogueManagaer.instance.dialogueIsPlaying || BypassDialogue)) return;
 
         if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
         {
@@ -59,7 +58,6 @@ public class QuestPoint : MonoBehaviour
     private void ShowQuestIcon(QuestState currentQuestState)
     {
         questObject = Instantiate(QuestIconPrefab, transform.position, Quaternion.identity, transform);
-        // startUpdatingIconText = true;
     }
 
     private void SetQuestIconText(QuestState currentQuestState, bool startPoint, bool finishPoint)
@@ -70,10 +68,7 @@ public class QuestPoint : MonoBehaviour
         switch (currentQuestState)
         {
             case QuestState.REQUIREMENTS_NOT_MET:
-                // if (startPoint){
-                //     questObject.GetComponent<TextMeshPro>().text = "!";
-                //     questObject.GetComponent<TextMeshPro>().color = Color.grey;
-                // }
+
             break;
 
             case QuestState.CAN_START:
@@ -113,7 +108,7 @@ public class QuestPoint : MonoBehaviour
             currentQuestState = quest.state;
 
             if (!iconIsDestroyed)
-            SetQuestIconText(currentQuestState, startPoint, finishPoint);
+                SetQuestIconText(currentQuestState, startPoint, finishPoint);
         }
     }
 }

@@ -43,7 +43,10 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
 
     private void updateSpeed()
     {
-        if (stopped) return;
+        if (stopped) {
+            speed = 0;
+            return;
+        }
 
         if (speed > 1f) speed = 1f;
 

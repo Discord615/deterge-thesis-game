@@ -102,7 +102,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
         if (!InputManager.getInstance().GetInteractPressed()) return;
         if (!occupied) return;
 
-        DialogueManagaer.GetInstance().EnterDialogueMode(virusJson);
+        DialogueManagaer.instance.EnterDialogueMode(virusJson);
     }
 
     public void LoadData(GameData data)

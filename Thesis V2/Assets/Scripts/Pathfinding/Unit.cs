@@ -41,7 +41,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 	private void Update()
 	{
-		if ((target == null || animScript.stopped || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown) {
+		if ((target == null || (animScript.stopped && !DialogueManagaer.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown) {
 			if (animScript.isSick)
 			{
 				try
@@ -220,13 +220,19 @@ public class Unit : MonoBehaviour, IDataPersistence
 					}
 				}
 
-				if (!animScript.isSitting)
+				if (!animScript.isSitting && !((gameObject == PlayerInteracting.instance.NPC) && DialogueManagaer.instance.dialogueIsPlaying))
 				{
 					Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
 					unitRB.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed));
 				}
 
-				unitRB.MovePosition(transform.position + (transform.forward * speed * speedPercent * Time.deltaTime));
+				if (!((gameObject == PlayerInteracting.instance.NPC) && DialogueManagaer.instance.dialogueIsPlaying))
+					unitRB.MovePosition(transform.position + (transform.forward * speed * speedPercent * Time.deltaTime));
+				else {
+					animScript.stopped = true;
+					transform.position = transform.position;
+					transform.LookAt(GameObject.Find("Player").transform);
+				}
 				// transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
 			}
 

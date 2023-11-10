@@ -10,7 +10,7 @@ public class DialogueManagaer : MonoBehaviour
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    public CanvasGroup objectivePanel;
+    
     [SerializeField] private GameObject objectiveOutput;
 
     [Header("Choices")]
@@ -18,13 +18,13 @@ public class DialogueManagaer : MonoBehaviour
     private TextMeshProUGUI[] choicesText;
 
     private Story currentStory;
-    public bool dialogueIsPlaying { get; private set; }
-
-    private static DialogueManagaer instance;
-
-    public bool inkStart = false, inkFinish = false;
+    
+    public static DialogueManagaer instance { get; private set; }
 
     private InkExternalFunctions inkExternalFunctions;
+
+    public CanvasGroup objectivePanel;
+    public bool dialogueIsPlaying { get; private set; }
 
     private void Awake()
     {
@@ -33,11 +33,6 @@ public class DialogueManagaer : MonoBehaviour
             Debug.LogError("There are more than one instance of Dialogue Manager");
         }
         instance = this;
-    }
-
-    public static DialogueManagaer GetInstance()
-    {
-        return instance;
     }
 
     private void Start()
@@ -86,7 +81,7 @@ public class DialogueManagaer : MonoBehaviour
     }
 
     private IEnumerator ExitDialogueMode()
-    {
+    {   
         yield return new WaitForSeconds(0.2f);
 
         inkExternalFunctions.Unbind(currentStory);

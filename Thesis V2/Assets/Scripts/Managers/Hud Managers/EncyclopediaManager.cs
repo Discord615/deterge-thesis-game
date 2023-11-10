@@ -21,6 +21,6 @@ public class EncyclopediaManager : MonoBehaviour
     {
         if (!InputManager.getInstance().getEncyclopediaPressed()) return;
 
-        DialogueManagaer.GetInstance().EnterDialogueMode(encyclopediaInk);
+        DialogueManagaer.instance.EnterDialogueMode(encyclopediaInk);
     }
 }

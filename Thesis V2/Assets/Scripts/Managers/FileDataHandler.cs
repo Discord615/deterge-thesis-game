@@ -67,7 +67,7 @@ public class FileDataHandler
                 }
             }
         }
-        catch (System.Exception)
+        catch (Exception)
         {
             Debug.LogError("Failed to save quest");
         }
@@ -94,7 +94,7 @@ public class FileDataHandler
 
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 Debug.LogWarning("Failed to load data");
             }
@@ -120,7 +120,7 @@ public class FileDataHandler
                 }
             }
         }
-        catch (System.Exception)
+        catch (Exception)
         {
             Debug.LogWarning("Failed to save data");
         }

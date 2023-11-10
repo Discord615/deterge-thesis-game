@@ -15,12 +15,6 @@ public class InkManager : MonoBehaviour
         instance = this;
     }
 
-    // TODO: Add more inks for quest givers
-
-    [Header("Quest Dialogues")]
-    public TextAsset[] canteenLadyQuestInks;
-
-
     [Header("Gendered Ink Dialogues")]
     [SerializeField] private TextAsset[] maleRandomInks;
     [SerializeField] private TextAsset[] femaleRandomInks;

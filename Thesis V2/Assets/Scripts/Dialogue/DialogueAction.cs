@@ -30,6 +30,8 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
     void Update()
     {
+        if (inkJson == null) inkJson = InkManager.instance.getRandomInk(isMale);
+
         if (gameObject.GetComponent<NPCAnimScript>().isSick || gameObject.GetComponent<NPCAnimScript>().isLayingDown) return;
 
         if (!interactCue.activeInHierarchy) return;
@@ -39,7 +41,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
             return;
         }
 
-        DialogueManagaer.GetInstance().EnterDialogueMode(inkJson);
+        DialogueManagaer.instance.EnterDialogueMode(inkJson);
     }
 
     private void OnTriggerEnter(Collider other) {

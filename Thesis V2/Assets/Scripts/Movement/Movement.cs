@@ -21,13 +21,18 @@ public class Movement : MonoBehaviour, IDataPersistence
     void Update(){
         moveDirection = InputManager.getInstance().GetMovePressed();
 
-        if (DialogueManagaer.GetInstance().dialogueIsPlaying) return;
+        if (DialogueManagaer.instance.dialogueIsPlaying) return;
 
         if (TeleportManager.GetInstance().goingToTeleport) return;
 
         if (MinigameManager.instance.syringeGame.activeInHierarchy) return;
         if (MinigameManager.instance.onBeatGame.activeInHierarchy) return;
 
+        // ! player character wont stop moving after opening dialogue
+        if (DialogueManagaer.instance.dialogueIsPlaying){
+            playerBody.isKinematic = true;
+            return;
+        } else playerBody.isKinematic = false;
         rotate();
         playerBody.velocity = MoveRelativeToCamera() * ((InputManager.getInstance().GetRunPressed() ? 2.5f : 1) * moveSpeed);
     }

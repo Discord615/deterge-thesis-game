@@ -3695,9 +3695,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07bd10baa41d863439bf3f4db2553e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canteenLadyQuestInks:
-  - {fileID: 4900000, guid: 16e33ff6fe60076418bcc60231c90186, type: 3}
-  - {fileID: 4900000, guid: 44008b3788db37547b794b6e7c3d1425, type: 3}
   maleRandomInks:
   - {fileID: 4900000, guid: 85c19fd4aa18b944199e9b02c11ac9fc, type: 3}
   - {fileID: 4900000, guid: c9db2daae2b29214c9e80c5870665d66, type: 3}
@@ -5572,6 +5569,19 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 514043618}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &374683925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374683916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0b3531d2378c14597d5665a3059db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPC: {fileID: 0}
 --- !u!1 &374785836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -592725754474584042, guid: d1ab6c965cbb2c64ca07edc4da69d338,
@@ -6433,7 +6443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9451a531c0b1a08419c08e39059a705a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayGridGizmos: 1
+  displayGridGizmos: 0
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 8
@@ -7728,7 +7738,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a0f2785d9a4e21048ab0d8d2ec883888,
         type: 3}
       propertyPath: m_Name
-      value: Player with clothes
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a0f2785d9a4e21048ab0d8d2ec883888,
         type: 3}
@@ -13853,7 +13863,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1699700742}
   dialogueText: {fileID: 1033827108}
-  objectivePanel: {fileID: 83509346}
   objectiveOutput: {fileID: 1254852879}
   choices:
   - {fileID: 1517742075}
@@ -13863,8 +13872,7 @@ MonoBehaviour:
   - {fileID: 977137990}
   - {fileID: 1492583014}
   - {fileID: 745127635}
-  inkStart: 0
-  inkFinish: 0
+  objectivePanel: {fileID: 83509346}
 --- !u!1 &941240244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9033045307129349903, guid: 53cce23e235fad84d8e8faae9d1f72e6,
@@ -17479,7 +17487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222acc4ee88c1b6438bd4275700d0121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayGridGizmos: 1
+  displayGridGizmos: 0
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 8
@@ -20474,6 +20482,7 @@ MonoBehaviour:
   BypassDialogue: 1
   QuestIconPrefab: {fileID: 3370280237613383058, guid: f3d765a8500ff55448365d3c747b6755,
     type: 3}
+  iconIsDestroyed: 0
 --- !u!114 &1360067795
 MonoBehaviour:
   m_ObjectHideFlags: 0
