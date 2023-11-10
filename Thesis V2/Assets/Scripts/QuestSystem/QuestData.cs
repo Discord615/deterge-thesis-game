@@ -5,13 +5,22 @@ using UnityEngine;
 [System.Serializable]
 public class QuestData
 {
-    public QuestState state;
-    public int questStepIndex;
-    public QuestStepState[] questStepStates;
+    public SerializableDictionary<string, string> displayNameData;
+    public SerializableDictionary<string, QuestState> questStateData;
+    public SerializableDictionary<string, int> questStepIndexData;
+    public SerializableDictionary<string, string> serializedQuestStepStatesData;
 
-    public QuestData(QuestState state, int questStepIndex, QuestStepState[] questStepStates){
-        this.state = state;
-        this.questStepIndex = questStepIndex;
-        this.questStepStates = questStepStates;
+    // public QuestData(string displayName, QuestState state, int questStepIndex, QuestStepState[] questStepStates){
+    //     this.displayName = displayName;
+    //     this.state = state;
+    //     this.questStepIndex = questStepIndex;
+    //     this.questStepStates = questStepStates;
+    // }
+
+    public QuestData(){
+        this.displayNameData = new SerializableDictionary<string, string>();
+        this.questStateData = new SerializableDictionary<string, QuestState>();
+        this.questStepIndexData = new SerializableDictionary<string, int>();
+        this.serializedQuestStepStatesData = new SerializableDictionary<string, string>();
     }
 }

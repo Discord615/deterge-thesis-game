@@ -9,6 +9,8 @@ public class QuestManager : MonoBehaviour
 
     public static QuestManager instance { get; private set; }
 
+    private QuestData questData;
+
     private Dictionary<string, Quest> questMap;
     private FileDataHandler fileDataHandler;
 
@@ -126,13 +128,42 @@ public class QuestManager : MonoBehaviour
 
         Dictionary<string, Quest> idToQuestMap = new Dictionary<string, Quest>();
 
+        questData = fileDataHandler.loadQuests();
+
         foreach (QuestInfoSO questInfo in allQuest)
         {
             if (idToQuestMap.ContainsKey(questInfo.id)) Debug.LogWarning("Duplicate ID for " + questInfo.id + " exists");
 
-            if (!MenuToGamplayPass.instance.startNewGame)
-                idToQuestMap.Add(questInfo.id, fileDataHandler.load(questInfo));
-            else idToQuestMap.Add(questInfo.id, new Quest(questInfo));
+            QuestState questState;
+            int questStepIndex;
+            string serializedQuestStepStates;
+
+            bool createNewQuest;
+
+            createNewQuest = !questData.questStateData.TryGetValue(questInfo.id, out questState);
+
+            if (createNewQuest) {
+                idToQuestMap.Add(questInfo.id, new Quest(questInfo));
+                continue;
+            }
+
+            createNewQuest = !questData.questStepIndexData.TryGetValue(questInfo.id, out questStepIndex);
+
+            if (createNewQuest) {
+                idToQuestMap.Add(questInfo.id, new Quest(questInfo));
+                continue;
+            }
+
+            createNewQuest = !questData.serializedQuestStepStatesData.TryGetValue(questInfo.id, out serializedQuestStepStates);
+
+            if (createNewQuest) {
+                idToQuestMap.Add(questInfo.id, new Quest(questInfo));
+                continue;
+            }
+
+            Debug.Log(serializedQuestStepStates);
+
+            idToQuestMap.Add(questInfo.id, new Quest(questInfo, questState, questStepIndex, JsonUtility.FromJson<QuestStepState[]>(serializedQuestStepStates)));
         }
 
         return idToQuestMap;
@@ -152,9 +183,25 @@ public class QuestManager : MonoBehaviour
 
     public void saveQuests()
     {
-        foreach (Quest quest in questMap.Values)
+        foreach (Quest questItem in questMap.Values)
         {
-            fileDataHandler.save(quest);
+            if (questData.displayNameData.ContainsKey(questItem.info.id))
+                questData.displayNameData.Remove(questItem.info.id);
+            questData.displayNameData.Add(questItem.info.id, questItem.info.displayName);
+
+            if (questData.questStateData.ContainsKey(questItem.info.id))
+                questData.questStateData.Remove(questItem.info.id);
+            questData.questStateData.Add(questItem.info.id, questItem.state);
+
+            if (questData.questStepIndexData.ContainsKey(questItem.info.id))
+                questData.questStepIndexData.Remove(questItem.info.id);
+            questData.questStepIndexData.Add(questItem.info.id, questItem.currentQuestStepIndex);
+
+            if (questData.serializedQuestStepStatesData.ContainsKey(questItem.info.id))
+                questData.serializedQuestStepStatesData.Remove(questItem.info.id);
+            questData.serializedQuestStepStatesData.Add(questItem.info.id, JsonUtility.ToJson(questItem.questStepStates, true));
         }
+
+        fileDataHandler.save(questData);
     }
 }

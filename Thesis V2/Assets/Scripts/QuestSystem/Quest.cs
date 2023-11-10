@@ -7,7 +7,7 @@ public class Quest
     public QuestInfoSO info;
     public QuestState state;
     public int currentQuestStepIndex;
-    private QuestStepState[] questStepStates;
+    public QuestStepState[] questStepStates;
 
     public Quest(QuestInfoSO questInfo)
     {
@@ -78,6 +78,6 @@ public class Quest
 
     public QuestData getQuestData()
     {
-        return new QuestData(state, currentQuestStepIndex, questStepStates);
+        return new QuestData();
     }
 }

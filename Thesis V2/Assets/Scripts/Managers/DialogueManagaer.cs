@@ -63,6 +63,8 @@ public class DialogueManagaer : MonoBehaviour
             StartCoroutine(ExitDialogueMode());
         }
 
+        if (!dialogueIsPlaying) return;
+
         if (InputManager.getInstance().GetContextActionPressed())
         {
             ContinueStory();

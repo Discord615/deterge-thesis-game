@@ -15,11 +15,11 @@ public class FileDataHandler
         this.fileName = fileName;
     }
 
-    public Quest load(QuestInfoSO questInfo)
+    public QuestData loadQuests()
     {
         string fullPath = System.IO.Path.Combine(filePath, fileName);
 
-        Quest quest = null;
+        QuestData questData = null;
 
         if (File.Exists(fullPath))
         {
@@ -34,8 +34,8 @@ public class FileDataHandler
                         dataToLoad = reader.ReadToEnd();
                     }
                 }
-                QuestData questData = JsonUtility.FromJson<QuestData>(dataToLoad);
-                quest = new Quest(questInfo, questData.state, questData.questStepIndex, questData.questStepStates);
+                questData = JsonUtility.FromJson<QuestData>(dataToLoad);
+
             }
             catch (System.Exception)
             {
@@ -44,20 +44,19 @@ public class FileDataHandler
         }
         else
         {
-            quest = new Quest(questInfo);
+            questData = new QuestData();
         }
 
-        return quest;
+        return questData;
     }
 
-    public void save(Quest quest)
+    public void save(QuestData questData)
     {
         string fullPath = System.IO.Path.Combine(filePath, fileName);
         try
         {
             Directory.CreateDirectory(System.IO.Path.GetDirectoryName(fullPath));
 
-            QuestData questData = quest.getQuestData();
             string serializedData = JsonUtility.ToJson(questData, true);
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
             {
