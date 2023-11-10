@@ -7,11 +7,18 @@ public class QuestManager : MonoBehaviour
     [Header("Config")]
     [SerializeField] private string fileName;
 
+    public static QuestManager instance { get; private set; }
+
     private Dictionary<string, Quest> questMap;
     private FileDataHandler fileDataHandler;
 
     private void Awake()
     {
+        if (instance != null){
+            Debug.LogError("More than one instance of Quest Manager exists in current scene");
+        }
+        instance = this;
+
         fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         questMap = createQuestMap();
     }
@@ -38,12 +45,6 @@ public class QuestManager : MonoBehaviour
     {
         foreach (Quest quest in questMap.Values)
         {
-            if (quest.info.id.Equals("TalkToCanteenLady") && MenuToGamplayPass.instance.startNewGame)
-            {
-                quest.instantiateCurrentQuestStep(this.transform);
-                Debug.Log(quest.state);
-            }
-
             if (quest.state == QuestState.IN_PROGRESS)
             {
                 quest.instantiateCurrentQuestStep(this.transform);
@@ -66,7 +67,6 @@ public class QuestManager : MonoBehaviour
 
         foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites)
         {
-            Debug.Log(getQuestById(prerequisiteQuestInfo.id).state);
             if (getQuestById(prerequisiteQuestInfo.id).state != QuestState.FINISHED) meetsRequirements = false;
         }
 
@@ -130,13 +130,15 @@ public class QuestManager : MonoBehaviour
         {
             if (idToQuestMap.ContainsKey(questInfo.id)) Debug.LogWarning("Duplicate ID for " + questInfo.id + " exists");
 
-            idToQuestMap.Add(questInfo.id, fileDataHandler.load(questInfo));
+            if (!MenuToGamplayPass.instance.startNewGame)
+                idToQuestMap.Add(questInfo.id, fileDataHandler.load(questInfo));
+            else idToQuestMap.Add(questInfo.id, new Quest(questInfo));
         }
 
         return idToQuestMap;
     }
 
-    private Quest getQuestById(string id)
+    public Quest getQuestById(string id)
     {
         Quest quest = questMap[id];
         if (quest == null) Debug.LogError("ID not found in quest map: " + id);

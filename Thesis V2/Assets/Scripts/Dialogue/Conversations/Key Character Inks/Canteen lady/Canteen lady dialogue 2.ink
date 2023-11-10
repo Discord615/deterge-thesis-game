@@ -3,13 +3,13 @@
 
 === cafeteriaStaff ===
 Hey doc, how can we help regarding the suspected food contamination?
-    + [I found evidence linking cafeteria meals]
+    + [Evidence links cafeteria]
         That's concerning. Any specific actions we should take?
-            ++[I'd like to inspect the kitchen]
+            ++[Inspect kitchen]
             // went to the kitchen
                  Any initial thoughts on the contamination?
-                    +++[Improper bin placement near food prep]
-                    +++[Mixing raw food with cooked food]
+                    +++[Bin misplacement issue]
+                    +++[Raw and cooked food]
                     +++[Dirty utensils]
                     - Got it. We'll address these concerns promptly.
                         -> DONE

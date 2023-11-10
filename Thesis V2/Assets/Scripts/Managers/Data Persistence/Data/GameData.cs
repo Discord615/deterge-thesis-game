@@ -44,7 +44,7 @@ public class GameData
 
     public GameData()
     {
-        this.playerPosition = Vector3.zero;
+        this.playerPosition = new Vector3(0, 1, 0);
 
         this.NPCTargetMap = new SerializableDictionary<string, Vector3>();
         this.NPCIsLayingDownMap = new SerializableDictionary<string, bool>();

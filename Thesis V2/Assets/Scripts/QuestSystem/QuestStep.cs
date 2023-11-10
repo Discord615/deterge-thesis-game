@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class QuestStep : MonoBehaviour
 {
     private bool isFinished = false;
-    private string questId;
+    public string questId { get; private set; }
     private int stepIndex;
 
     public void initializeQuestStep(string questId, int stepIndex, string questStepState)

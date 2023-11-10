@@ -60,6 +60,8 @@ public class Unit : MonoBehaviour, IDataPersistence
 			}
 		}
 
+		target = new Vector3(target.x, 0, target.z);
+
 		if (!animScript.isLayingDown)
 		{
 			transform.localPosition = new Vector3(transform.localPosition.x, 1, transform.localPosition.z);

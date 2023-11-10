@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CurePatientsQuestStep : QuestStep
@@ -7,12 +9,22 @@ public class CurePatientsQuestStep : QuestStep
     private int patientsSaved = 0;
     private int patientsToBeSaved = 5;
 
+    private GameObject objectiveOut;
+
     private void OnEnable() {
         GameEventsManager.instance.miscEvents.onPatientSaved += patientSaved;
     }
 
     private void OnDisable() {
         GameEventsManager.instance.miscEvents.onPatientSaved -= patientSaved;
+    }
+
+    private void Start() {
+        objectiveOut = GameObject.Find("Objective");
+    }
+
+    private void Update() {
+        objectiveOut.GetComponent<TextMeshProUGUI>().text = string.Format("{0}: {1} / {2}", QuestManager.instance.getQuestById(questId).info.displayName, patientsSaved, patientsToBeSaved);
     }
 
     private void patientSaved(){

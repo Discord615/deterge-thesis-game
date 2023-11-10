@@ -5,7 +5,6 @@ using UnityEngine;
 public class Quest
 {
     public QuestInfoSO info;
-
     public QuestState state;
     public int currentQuestStepIndex;
     private QuestStepState[] questStepStates;

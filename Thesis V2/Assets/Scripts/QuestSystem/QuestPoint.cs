@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -8,8 +10,18 @@ public class QuestPoint : MonoBehaviour
     [Header("Quest")]
     [SerializeField] private QuestInfoSO questInfoForPoint;
 
+    [Header("Point Type")]
+    [SerializeField] private bool startPoint;
+    [SerializeField] private bool finishPoint;
+    [SerializeField] private bool BypassDialogue;
+
     private string questId;
     private QuestState currentQuestState;
+    [SerializeField] private GameObject QuestIconPrefab;
+
+    GameObject questObject;
+    public bool iconIsDestroyed = false;
+    // bool startUpdatingIconText = false;
 
     private void Awake()
     {
@@ -26,20 +38,71 @@ public class QuestPoint : MonoBehaviour
         GameEventsManager.instance.questEvents.onQuestStateChange -= questStateChange;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
+    private void OnTriggerStay(Collider other) {
         if (!other.tag.Equals("Player")) return;
 
-        if (!DialogueManagaer.GetInstance().dialogueIsPlaying) return;
+        Debug.Log(string.Format("{0} : {1}", questInfoForPoint.displayName, currentQuestState));
 
-        if (currentQuestState.Equals(QuestState.CAN_START))
-        {
-            Debug.Log("start quest");
-            GameEventsManager.instance.questEvents.startQuest(questId);
-        }
-        else if (currentQuestState.Equals(QuestState.CAN_FINISH))
+        if (!(DialogueManagaer.GetInstance().dialogueIsPlaying || BypassDialogue)) return;
+
+        if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
         {
             GameEventsManager.instance.questEvents.finishQuest(questId);
+        }
+
+        if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
+        {
+            GameEventsManager.instance.questEvents.startQuest(questId);
+        }
+    }
+
+    private void ShowQuestIcon(QuestState currentQuestState)
+    {
+        questObject = Instantiate(QuestIconPrefab, transform.position, Quaternion.identity, transform);
+        // startUpdatingIconText = true;
+    }
+
+    private void SetQuestIconText(QuestState currentQuestState, bool startPoint, bool finishPoint)
+    {
+        if (currentQuestState != QuestState.REQUIREMENTS_NOT_MET && questObject == null)
+            ShowQuestIcon(currentQuestState);
+
+        switch (currentQuestState)
+        {
+            case QuestState.REQUIREMENTS_NOT_MET:
+                // if (startPoint){
+                //     questObject.GetComponent<TextMeshPro>().text = "!";
+                //     questObject.GetComponent<TextMeshPro>().color = Color.grey;
+                // }
+            break;
+
+            case QuestState.CAN_START:
+                if (startPoint){
+                    questObject.GetComponent<TextMeshPro>().text = "!";
+                    questObject.GetComponent<TextMeshPro>().color = Color.green;
+                }
+            break;
+
+            case QuestState.IN_PROGRESS:
+                if (startPoint && !finishPoint){
+                    Destroy(questObject);
+                }
+                if (finishPoint){
+                    questObject.GetComponent<TextMeshPro>().text = "?";
+                    questObject.GetComponent<TextMeshPro>().color = Color.grey;
+                }
+            break;
+
+            case QuestState.CAN_FINISH:
+                if (finishPoint){
+                    questObject.GetComponent<TextMeshPro>().text = "?";
+                    questObject.GetComponent<TextMeshPro>().color = Color.green;
+                }
+            break;
+
+            case QuestState.FINISHED:
+                Destroy(questObject);
+            break;
         }
     }
 
@@ -48,6 +111,9 @@ public class QuestPoint : MonoBehaviour
         if (quest.info.id.Equals(questId))
         {
             currentQuestState = quest.state;
+
+            if (!iconIsDestroyed)
+            SetQuestIconText(currentQuestState, startPoint, finishPoint);
         }
     }
 }

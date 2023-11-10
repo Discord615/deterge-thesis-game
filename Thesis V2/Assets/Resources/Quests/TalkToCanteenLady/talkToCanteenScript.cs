@@ -1,25 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 public class talkToCanteenScript : QuestStep
 {
-    public static talkToCanteenScript instance { get; private set; }
+    private GameObject objectiveOut;
 
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.LogError("More than one instance of \"Talk To Canteen Quest\" exists in current scene");
-        }
-        instance = this;
+    private void Start() {
+        objectiveOut = GameObject.Find("Objective");
+    }
+
+    private void Update() {
+        objectiveOut.GetComponent<TextMeshProUGUI>().text = string.Format("{0}", QuestManager.instance.getQuestById(questId).info.displayName);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!other.tag.Equals("Player")) return;
-        if (!DialogueManagaer.GetInstance().dialogueIsPlaying) return;
         FinishQuestStep();
     }
 

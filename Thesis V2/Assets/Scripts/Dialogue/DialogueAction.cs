@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class DialogueAction : MonoBehaviour, IDataPersistence
 {
     [Header("Visual Cue")]
-    [SerializeField] private GameObject visualCue;
+    [SerializeField] private GameObject interactCue;
 
     [Header("Ink JSON")]
     [SerializeField] public TextAsset inkJson;
@@ -24,20 +25,14 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
     private void Awake()
     {
-        visualCue.SetActive(false);
+        interactCue.SetActive(false);
     }
 
     void Update()
     {
         if (gameObject.GetComponent<NPCAnimScript>().isSick || gameObject.GetComponent<NPCAnimScript>().isLayingDown) return;
 
-        if (!playerInRange) // ! Forces Visual Cue to be off
-        {
-            visualCue.SetActive(false);
-            return;
-        }
-
-        visualCue.SetActive(true);
+        if (!interactCue.activeInHierarchy) return;
 
         if (!InputManager.getInstance().GetInteractPressed())
         {
@@ -45,6 +40,18 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
         }
 
         DialogueManagaer.GetInstance().EnterDialogueMode(inkJson);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (!other.tag.Equals("Player")) return;
+
+        interactCue.SetActive(true);
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (!other.tag.Equals("Player")) return;
+
+        interactCue.SetActive(false);
     }
 
     public void LoadData(GameData data)

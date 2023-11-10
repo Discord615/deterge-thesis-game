@@ -10,6 +10,8 @@ public class DialogueManagaer : MonoBehaviour
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    public CanvasGroup objectivePanel;
+    [SerializeField] private GameObject objectiveOutput;
 
     [Header("Choices")]
     [SerializeField] private GameObject[] choices;
@@ -56,11 +58,10 @@ public class DialogueManagaer : MonoBehaviour
 
     private void Update()
     {
-
-        if (!dialogueIsPlaying)
-        {
-            return;
-        }
+        if (!dialogueIsPlaying && objectiveOutput.GetComponent<TextMeshProUGUI>().text != "")
+            objectivePanel.alpha = 1;
+        else
+            objectivePanel.alpha = 0;
 
         if (MinigameManager.instance.syringeGame.activeInHierarchy)
         {
