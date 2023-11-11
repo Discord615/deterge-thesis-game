@@ -78,6 +78,6 @@ public class Quest
 
     public QuestData getQuestData()
     {
-        return new QuestData();
+        return new QuestData(info, state, currentQuestStepIndex, questStepStates);
     }
 }
