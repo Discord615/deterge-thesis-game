@@ -6,6 +6,7 @@ public class PlayerHealthManager : MonoBehaviour
     public static PlayerHealthManager instance { get; private set; }
 
     [SerializeField] private Slider healthBar;
+    [SerializeField] private GameObject loseScreen;
 
     private void Awake()
     {
@@ -20,7 +21,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if (healthBar.value <= 0)
         {
-            // TODO: Game Over From Infection
+            loseScreen.SetActive(true);
         }
 
         if (InputManager.getInstance().getAlcoholPressed())
@@ -79,7 +80,8 @@ public class PlayerHealthManager : MonoBehaviour
         InventoryManager.instance.maskRemainingUses = 3;
     }
 
-    public void healthRestore(){
+    public void healthRestore()
+    {
         healthBar.value = healthBar.maxValue;
     }
 }

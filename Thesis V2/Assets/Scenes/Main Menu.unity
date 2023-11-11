@@ -2490,6 +2490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreenPanel: {fileID: 413431779}
   loadingBarFill: {fileID: 280639189}
+  testing: 1
 --- !u!1 &2096015873
 GameObject:
   m_ObjectHideFlags: 0

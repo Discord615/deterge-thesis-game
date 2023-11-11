@@ -6,15 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScreen : MonoBehaviour
 {
+    public static LoadingScreen instance { get; private set; }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("More than one instance of Loading Screen in current scene");
+        }
+        instance = this;
+    }
+
     [SerializeField] private GameObject loadingScreenPanel;
     [SerializeField] private Slider loadingBarFill;
 
-    public void LoadScene(int sceneId){
+    [SerializeField] private bool testing;
+
+    public void LoadScene(int sceneId)
+    {
         Time.timeScale = 1;
-        StartCoroutine(LoadSceneAsync(sceneId));
+
+        StartCoroutine(LoadSceneAsync(testing && sceneId == 1 ? 2 : sceneId));
     }
 
-    IEnumerator LoadSceneAsync(int sceneId){
+    IEnumerator LoadSceneAsync(int sceneId)
+    {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
 
         loadingScreenPanel.SetActive(true);
@@ -22,12 +38,14 @@ public class LoadingScreen : MonoBehaviour
 
         float progressValue = 0;
 
-        while (!operation.isDone){
+        while (!operation.isDone)
+        {
             progressValue = Mathf.MoveTowards(progressValue, operation.progress, Time.deltaTime);
 
             loadingBarFill.value = progressValue;
 
-            if (progressValue >= 0.9f){
+            if (progressValue >= 0.9f)
+            {
                 progressValue = 1;
                 operation.allowSceneActivation = true;
             }

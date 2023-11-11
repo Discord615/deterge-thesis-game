@@ -11,24 +11,30 @@ public class CurePatientsQuestStep : QuestStep
 
     private GameObject objectiveOut;
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         GameEventsManager.instance.miscEvents.onPatientSaved += patientSaved;
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         GameEventsManager.instance.miscEvents.onPatientSaved -= patientSaved;
     }
 
-    private void Start() {
+    private void Start()
+    {
         objectiveOut = GameObject.Find("Objective");
     }
 
-    private void Update() {
+    private void Update()
+    {
         objectiveOut.GetComponent<TextMeshProUGUI>().text = string.Format("{0}: {1} / {2}", QuestManager.instance.getQuestById(questId).info.displayName, patientsSaved, patientsToBeSaved);
     }
 
-    private void patientSaved(){
-        if (patientsSaved < patientsToBeSaved){
+    private void patientSaved()
+    {
+        if (patientsSaved < patientsToBeSaved)
+        {
             patientsSaved++;
 
             PlayerHealthManager.instance.reduceHealth();
@@ -39,10 +45,15 @@ public class CurePatientsQuestStep : QuestStep
             updateState();
         }
 
-        if (patientsSaved >= patientsToBeSaved) FinishQuestStep();
+        if (patientsSaved >= patientsToBeSaved)
+        {
+            FinishQuestStep();
+            objectiveOut.GetComponent<TextMeshProUGUI>().text = "Talk to canteen lady";
+        }
     }
 
-    private void updateState(){
+    private void updateState()
+    {
         string state = patientsSaved.ToString();
         changeState(state);
     }

@@ -15,7 +15,6 @@ public class LayDown : MonoBehaviour, IDataPersistence
     string occupantName;
     Vector3 previousPosition;
 
-    [SerializeField] private TextAsset virusJson;
     [SerializeField] private GameObject visualCue;
 
     private void OnTriggerEnter(Collider other)
@@ -30,7 +29,10 @@ public class LayDown : MonoBehaviour, IDataPersistence
 
     private void OnTriggerStay(Collider other)
     {
-        NPCAnimBehavior(other.gameObject);
+        if (other.tag.Equals("npc"))
+        {
+            NPCAnimBehavior(other.gameObject);
+        }
 
         EnterDialogue(other.gameObject);
     }
@@ -43,19 +45,18 @@ public class LayDown : MonoBehaviour, IDataPersistence
     }
 
 
-    private void layDownTrigger(Animator animator, GameObject npc, GameObject bed)
+    private void layDownTrigger(Animator animator, GameObject npc)
     {
         animator.SetTrigger("LayDown");
         npc.GetComponent<NPCAnimScript>().isLayingDown = true;
 
         npc.GetComponent<BoxCollider>().enabled = false;
         previousPosition = new Vector3(0, npc.transform.position.y, 0);
-        npc.transform.position = new Vector3(bed.transform.position.x, 1, bed.transform.position.z + 2);
-        npc.transform.forward = bed.transform.forward;
+        npc.transform.position = new Vector3(transform.position.x, 1, transform.position.z + 2);
+        npc.transform.forward = transform.forward;
 
         occupantName = npc.name;
         occupied = true;
-        virusJson = InkManager.instance.getVirusDialogue();
     }
 
     private void standUpTrigger(Animator animator, GameObject npc)
@@ -65,7 +66,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
         npc.transform.position = new Vector3(npc.transform.position.x, previousPosition.y, npc.transform.position.z);
 
         npc.GetComponent<NPCAnimScript>().isLayingDown = false;
-        npc.GetComponent<DialogueAction>().inkJson = InkManager.instance.getRandomInk(npc.GetComponent<DialogueAction>().isMale);
+        npc.GetComponent<DialogueAction>().getNewInk();
 
         npc.GetComponent<CapsuleCollider>().enabled = true;
 
@@ -75,60 +76,48 @@ public class LayDown : MonoBehaviour, IDataPersistence
         npc.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc).transform.position;
     }
 
-    private void NPCAnimBehavior(GameObject other)
+    private void NPCAnimBehavior(GameObject npc)
     {
-        if (other.tag != "npc") return;
+        if (!npc.GetComponent<Unit>().target.Equals(new Vector3(transform.position.x, 0, transform.position.z))) return;
 
-        if (!other.GetComponent<Unit>().target.Equals(transform.position)) return;
-
-        GameObject bed = gameObject;
-
-        bool npcLayingDown = other.GetComponent<NPCAnimScript>().isLayingDown;
-        bool npcIsSick = other.GetComponent<NPCAnimScript>().isSick;
+        bool npcLayingDown = npc.GetComponent<NPCAnimScript>().isLayingDown;
+        bool npcIsSick = npc.GetComponent<NPCAnimScript>().isSick;
 
         if (!(npcIsSick ^ (npcLayingDown && occupied))) return;
         if (npcLayingDown != occupied) return;
-        if (npcIsSick && !npcLayingDown) layDownTrigger(other.GetComponent<Animator>(), other.gameObject, bed);
-        else if (!npcIsSick) standUpTrigger(other.GetComponent<Animator>(), other.gameObject);
+        if (npcIsSick && !npcLayingDown) layDownTrigger(npc.GetComponent<Animator>(), npc);
+        else if (!npcIsSick) standUpTrigger(npc.GetComponent<Animator>(), npc.gameObject);
     }
 
     private void EnterDialogue(GameObject other)
     {
         if (!other.tag.Equals("Player")) return;
         visualCue.SetActive(true);
-        // if (!visualCue.activeInHierarchy) return;
+
         AssigningBottleWithMeds.instance.npcPatient = occupantName;
         AssigningBottleWithMeds.instance.bed = gameObject;
+
         if (!InputManager.getInstance().GetInteractPressed()) return;
         if (!occupied) return;
 
-        DialogueManagaer.instance.EnterDialogueMode(virusJson);
+        DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.getVirusDialogue());
     }
 
     public void LoadData(GameData data)
     {
-        if (data.virusJsonData.TryGetValue(id, out virusJson))
-        {
-            virusJson = null;
-        }
-
         string occupantOutPut;
-        if (data.occupantLDNameData.TryGetValue(id, out occupantOutPut)){
+        if (data.occupantLDNameData.TryGetValue(id, out occupantOutPut))
+        {
             if (occupantOutPut == "") return;
             GameObject.Find(occupantOutPut).GetComponent<NPCAnimScript>().isLayingDown = false;
-            layDownTrigger(GameObject.Find(occupantOutPut).GetComponent<Animator>(), GameObject.Find(occupantOutPut), this.gameObject);
+            layDownTrigger(GameObject.Find(occupantOutPut).GetComponent<Animator>(), GameObject.Find(occupantOutPut));
         }
     }
 
     public void SaveData(ref GameData data)
     {
-        if (data.virusJsonData.ContainsKey(id))
+        if (data.occupantLDNameData.ContainsKey(id))
         {
-            data.virusJsonData.Remove(id);
-        }
-        data.virusJsonData.Add(id, virusJson);
-
-        if (data.occupantLDNameData.ContainsKey(id)){
             data.occupantLDNameData.Remove(id);
         }
         data.occupantLDNameData.Add(id, occupantName);

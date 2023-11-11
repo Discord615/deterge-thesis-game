@@ -9,7 +9,6 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject interactCue;
 
     [Header("Ink JSON")]
-    [SerializeField] public TextAsset inkJson;
 
     [SerializeField] public bool isMale;
 
@@ -21,36 +20,46 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
         id = System.Guid.NewGuid().ToString();
     }
 
-    public bool playerInRange;
+    [SerializeField] private bool questGiver;
+    private TextAsset inkJson;
 
     private void Awake()
     {
         interactCue.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
-        if (inkJson == null) inkJson = InkManager.instance.getRandomInk(isMale);
+        if (inkJson == null && !questGiver) inkJson = InkManager.instance.getRandomInk(isMale);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.tag.Equals("Player")) return;
 
         if (gameObject.GetComponent<NPCAnimScript>().isSick || gameObject.GetComponent<NPCAnimScript>().isLayingDown) return;
 
         if (!interactCue.activeInHierarchy) return;
 
-        if (!InputManager.getInstance().GetInteractPressed())
-        {
-            return;
-        }
+        if (!InputManager.getInstance().GetInteractPressed()) return;
 
         DialogueManagaer.instance.EnterDialogueMode(inkJson);
     }
 
-    private void OnTriggerEnter(Collider other) {
+    public void getNewInk()
+    {
+        inkJson = InkManager.instance.getRandomInk(isMale);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
         if (!other.tag.Equals("Player")) return;
 
         interactCue.SetActive(true);
     }
 
-    private void OnTriggerExit(Collider other) {
+    private void OnTriggerExit(Collider other)
+    {
         if (!other.tag.Equals("Player")) return;
 
         interactCue.SetActive(false);
