@@ -40,8 +40,6 @@ public class QuestPoint : MonoBehaviour
     private void OnTriggerStay(Collider other) {
         if (!other.tag.Equals("Player")) return;
 
-        Debug.Log(string.Format("{0} : {1}", questInfoForPoint.displayName, currentQuestState));
-
         if (!(DialogueManagaer.instance.dialogueIsPlaying || BypassDialogue)) return;
 
         if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
