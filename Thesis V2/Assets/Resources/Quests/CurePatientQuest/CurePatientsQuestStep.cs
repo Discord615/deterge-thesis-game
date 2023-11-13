@@ -47,8 +47,12 @@ public class CurePatientsQuestStep : QuestStep
 
         if (patientsSaved >= patientsToBeSaved)
         {
-            FinishQuestStep();
             objectiveOut.GetComponent<TextMeshProUGUI>().text = "Talk to canteen lady";
+            
+            // ? For Alpha Testing
+            InventoryManager.instance.itemsAreAvailable = true;
+
+            FinishQuestStep();
         }
     }
 

@@ -18,35 +18,45 @@ public class Movement : MonoBehaviour, IDataPersistence
 
     public Vector2 moveDirection { get; private set; } = Vector2.zero;
 
-    void Update(){
+    void Update()
+    {
         moveDirection = InputManager.getInstance().GetMovePressed();
 
-        if (DialogueManagaer.instance.dialogueIsPlaying) return;
+        // ! player character wont stop moving after opening dialogue
+
+        if (DialogueManagaer.instance.dialogueIsPlaying)
+        {
+            Debug.Log("Baby");
+            playerBody.isKinematic = true;
+            playerBody.velocity = Vector3.zero;
+        }
+        else playerBody.isKinematic = false;
 
         if (TeleportManager.GetInstance().goingToTeleport) return;
 
         if (MinigameManager.instance.syringeGame.activeInHierarchy) return;
         if (MinigameManager.instance.onBeatGame.activeInHierarchy) return;
 
-        // ! player character wont stop moving after opening dialogue
-        if (DialogueManagaer.instance.dialogueIsPlaying){
-            playerBody.isKinematic = true;
-            return;
-        } else playerBody.isKinematic = false;
+        if (DialogueManagaer.instance.dialogueIsPlaying) return;
+
         rotate();
         playerBody.velocity = MoveRelativeToCamera() * ((InputManager.getInstance().GetRunPressed() ? 2.5f : 1) * moveSpeed);
     }
 
-    public void LoadData(GameData data){
+    public void LoadData(GameData data)
+    {
         this.transform.position = data.playerPosition;
     }
 
-    public void SaveData(ref GameData data){
+    public void SaveData(ref GameData data)
+    {
         data.playerPosition = this.transform.position;
     }
 
-    private void rotate(){
-        if (moveDirection != Vector2.zero){
+    private void rotate()
+    {
+        if (moveDirection != Vector2.zero)
+        {
             Vector3 moveDirectionV3 = new Vector3(MoveRelativeToCamera().x, 0, MoveRelativeToCamera().z);
             Quaternion rotation = Quaternion.LookRotation(moveDirectionV3, Vector3.up);
 
@@ -54,7 +64,8 @@ public class Movement : MonoBehaviour, IDataPersistence
         }
     }
 
-    private Vector3 MoveRelativeToCamera(){
+    private Vector3 MoveRelativeToCamera()
+    {
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
         forward.y = 0;

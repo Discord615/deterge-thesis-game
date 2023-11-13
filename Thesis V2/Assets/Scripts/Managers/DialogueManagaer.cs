@@ -10,7 +10,7 @@ public class DialogueManagaer : MonoBehaviour
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    
+
     [SerializeField] private GameObject objectiveOutput;
 
     [Header("Choices")]
@@ -18,7 +18,7 @@ public class DialogueManagaer : MonoBehaviour
     private TextMeshProUGUI[] choicesText;
 
     private Story currentStory;
-    
+
     public static DialogueManagaer instance { get; private set; }
 
     private InkExternalFunctions inkExternalFunctions;
@@ -53,6 +53,8 @@ public class DialogueManagaer : MonoBehaviour
 
     private void Update()
     {
+        dialogueIsPlaying = dialoguePanel.activeInHierarchy;
+
         if (!dialogueIsPlaying && objectiveOutput.GetComponent<TextMeshProUGUI>().text != "")
             objectivePanel.alpha = 1;
         else
@@ -74,7 +76,6 @@ public class DialogueManagaer : MonoBehaviour
     public void EnterDialogueMode(TextAsset inkJSON)
     {
         currentStory = new Story(inkJSON.text);
-        dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
         inkExternalFunctions.Bind(currentStory);
@@ -83,12 +84,11 @@ public class DialogueManagaer : MonoBehaviour
     }
 
     private IEnumerator ExitDialogueMode()
-    {   
+    {
         yield return new WaitForSeconds(0.2f);
 
         inkExternalFunctions.Unbind(currentStory);
 
-        dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
     }
