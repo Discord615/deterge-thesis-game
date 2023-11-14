@@ -73,7 +73,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
         occupantName = "";
         occupied = false;
 
-        npc.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc).transform.position;
+        npc.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc);
     }
 
     private void NPCAnimBehavior(GameObject npc)

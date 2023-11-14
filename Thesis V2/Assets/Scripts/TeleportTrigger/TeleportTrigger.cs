@@ -48,15 +48,15 @@ public class TeleportTrigger : MonoBehaviour
 
         if (collider.tag == "npc")
         {
-            int floorNumber = collider.GetComponent<Unit>().floor;
 
-            if (collider.GetComponent<NPC_teleport_script>().wantToTeleport)
+            if (collider.GetComponent<Unit>().wantToTeleport)
             {
+                collider.GetComponent<Unit>().floor = collider.GetComponent<Unit>().floor == 1 ? 2 : 1;
+                collider.GetComponent<Unit>().wantToTeleport = false;
                 teleportAvailable = true;
                 teleportee = collider.gameObject;
 
-                collider.GetComponent<Unit>().floor = floorNumber == 1 ? 2 : 1;
-                collider.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(collider.GetComponent<Unit>().floor, collider.gameObject).transform.position;
+                collider.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(collider.GetComponent<Unit>().floor, collider.gameObject);
             }
         }
     }

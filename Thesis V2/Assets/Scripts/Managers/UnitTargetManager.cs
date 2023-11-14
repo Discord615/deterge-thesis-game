@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
+public class UnitTargetManager : MonoBehaviour
 {
     private static UnitTargetManager instance;
 
@@ -40,62 +40,78 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
     [SerializeField] private bool allowTeleporting = true;
 
 
-    public GameObject getAnyGameObjectTarget(int floor, GameObject NPC)
+    public Vector3 getAnyGameObjectTarget(int floor, GameObject NPC)
     {
+        Vector3 result = Vector3.zero;
         switch (floor)
         {
             case 1:
-                return getAnyFirstFloorTargets();
+                result = getAnyFirstFloorTargets(NPC);
+                break;
 
             case 2:
-                return getAnySecondFloorTargets();
+                result = getAnySecondFloorTargets(NPC);
+                break;
         }
 
-        return null;
+        return result;
     }
 
-    private GameObject getAnyFirstFloorTargets(){
+    private Vector3 getAnyFirstFloorTargets(GameObject npc)
+    {
+        Vector3 result = Vector3.zero;
         int randomSwitchCase = Random.Range(0, 4);
         if (!allowTeleporting && randomSwitchCase == 2) randomSwitchCase++;
 
         switch (randomSwitchCase)
         {
             case 0:
-                return gymnasiumTargets[Random.Range(0, gymnasiumTargets.Length)];
+                result = gymnasiumTargets[Random.Range(0, gymnasiumTargets.Length)].transform.position;
+                break;
 
             case 1:
-                return canteenChairs[Random.Range(0, canteenChairs.Length)];
+                result = canteenChairs[Random.Range(0, canteenChairs.Length)].transform.position;
+                break;
 
             case 2:
-                return FirstFloorTeleps[Random.Range(0, FirstFloorTeleps.Length)];
+                npc.GetComponent<Unit>().wantToTeleport = true;
+                result = FirstFloorTeleps[Random.Range(0, FirstFloorTeleps.Length)].transform.position;
+                break;
 
             case 3:
-                return FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)];
+                result = FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)].transform.position;
+                break;
         }
 
-        return null;
+        return result;
     }
 
-    private GameObject getAnySecondFloorTargets(){
+    private Vector3 getAnySecondFloorTargets(GameObject npc)
+    {
+        Vector3 result = Vector3.zero;
         switch (Random.Range(0, 3))
         {
             case 0:
-                return classroomChairs[Random.Range(0, classroomChairs.Length)];
+                result = classroomChairs[Random.Range(0, classroomChairs.Length)].transform.position;
+                break;
 
             case 1:
-                return SecondFloorTeleps[Random.Range(0, SecondFloorTeleps.Length)];
-                
+                npc.GetComponent<Unit>().wantToTeleport = true;
+                result = SecondFloorTeleps[Random.Range(0, SecondFloorTeleps.Length)].transform.position;
+                break;
+
             case 2:
-                return SecondFloorRandomTargets[Random.Range(0, SecondFloorRandomTargets.Length)];
+                result = SecondFloorRandomTargets[Random.Range(0, SecondFloorRandomTargets.Length)].transform.position;
+                break;
 
         }
 
-        return null;
+        return result - new Vector3(850, 0, 0);
     }
 
-    public GameObject getBedTarget(int floor, GameObject NPC)
+    public Vector3 getBedTarget(int floor, GameObject NPC)
     {
-        GameObject target = null;
+        Vector3 target = Vector3.zero;
 
         if (floor != 1)
         {
@@ -106,11 +122,12 @@ public class UnitTargetManager : MonoBehaviour // TODO: TEST Script
         {
             if (bed.GetComponent<LayDown>().occupied) continue;
 
-            target = bed;
+            target = bed.transform.position;
             break;
         }
 
-        if (target == null){
+        if (target == null)
+        {
             target = getAnyGameObjectTarget(floor, NPC);
         }
 

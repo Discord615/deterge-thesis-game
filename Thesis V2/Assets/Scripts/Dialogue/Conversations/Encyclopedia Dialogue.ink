@@ -17,8 +17,8 @@ What virus would you like to know more about?
 + [Coronavirus]
 	-> covid
 
-+ [Rhinovirus]
-	-> cold
++ [Rabies]
+	-> rabies
 
 + [Close Encyclopedia]
     -> END
@@ -46,14 +46,14 @@ what about typhoid would you like to know?
             -> END
 			
 + [Medication]
-    Antibiotics, as prescribed depending on where they traveled before. // Be More Specific
+    Fluoroquinolones, Cephalosporins, Macrolides, Carbapenems
     ++ [Return]
         -> typhoid
     ++ [Close Encyclopedia]
         -> END
     
 + [Causes]
-    causes
+    Usual causes of typhoid is ingestion of infected food or drinks.
     ++ [Return]
         -> typhoid
     ++ [Close Encyclopedia]
@@ -95,7 +95,7 @@ What would you like to know about dengue?
 	    ->END
 
 + [Causes]
-    causes
+    spread through mosquito bites
     ++ [Return]
 	    -> dengue
 	++ [Close Encyclopedia]
@@ -138,7 +138,7 @@ What would you like to know about tuberculosis?
 		-> END
 
 + [Causes]
-	causes // ADD
+	spreads through the air when an infected person coughs or sneezes.
 	++ [Return]
 		-> tuberculosis
 	++ [Close Encyclopedia]
@@ -176,7 +176,7 @@ What would you like to know about flu?
 		-> END
 		
 + [Causes]
-	causes // ADD
+	transmitted through contaminated objects such as stainless steel, plate and other hard surfaces.
 	++ [Return]
 		-> flu
 	++ [Close Encyclopedia]
@@ -215,7 +215,7 @@ What would you like to know about Coronavirus?
 		-> END
 
 + [Causes]
-	causes // ADD
+	transmitted through contaminated objects.
 	++ [Return]
 		-> covid
 	++ [Close Encyclopedia]
@@ -226,32 +226,32 @@ What would you like to know about Coronavirus?
 + [Close Encyclopedia]
 	-> END
 	
-=== cold ===
-What would you like to know about Rhinovirus?
+=== rabies ===
+What would you like to know about rabies?
 + [Symptoms]
 	Mild or Severe?
 		++ [Mild]
-			Cough, Sneeze, Sore throat, Runny Nose, Nasal congestion, Headache, Fever, Body Aches.
+			Similar to flu, including weakness or discomfort, fever, or headache.
 			+++ [Return]
-				-> cold
+				-> rabies
 			+++ [Close Encyclopedia]
 				-> END
 		++ [Severe]
-			asthma exacerbations, bronchioliti middle ear infections, sinusitis, bronchitis, pneumonia
+			Cerebral dysfunction, anxiety, confusion, and agitation.
 			+++ [Return]
-				-> cold
+				-> rabies
 			+++ [Close Encyclopedia]
 				-> END
 + [Medication]
-	Over the counter medicine is enough to lessen the symptoms as there are no medicine specifically made for common cold.
+	Postexposure Prophylaxis (PEP) consists of a dose of human rabies immune globulin(HRIG)
 	++ [Return]
-		-> cold
+		-> rabies
 	++ [Close Encyclopedia]
 		-> END
 + [Causes]
-	causes // ADD
+	Transmitted through the saliva of infected animals.
 	++ [Return]
-		-> cold
+		-> rabies
 	++ [Close Encyclopedia]
 		-> END
 + [Return]

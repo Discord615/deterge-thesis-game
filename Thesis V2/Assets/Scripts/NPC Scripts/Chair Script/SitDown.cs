@@ -76,12 +76,12 @@ public class SitDown : MonoBehaviour, IDataPersistence
 
     private void getNewTarget(GameObject npc)
     {
-        Transform newTarget;
+        Vector3 newTarget;
         while (true)
         {
             try
             {
-                newTarget = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc).transform;
+                newTarget = UnitTargetManager.GetInstance().getAnyGameObjectTarget(npc.GetComponent<Unit>().floor, npc);
                 break;
             }
             catch (System.Exception)
@@ -90,7 +90,7 @@ public class SitDown : MonoBehaviour, IDataPersistence
             }
         }
 
-        npc.GetComponent<Unit>().target = newTarget.position;
+        npc.GetComponent<Unit>().target = newTarget;
     }
 
     private IEnumerator sittingDuration(GameObject npc)

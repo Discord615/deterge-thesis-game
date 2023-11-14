@@ -22,6 +22,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 	public float turnDst = 5f;
 	public float stoppingDst = 2f;
 	public int floor;
+	public bool wantToTeleport = false;
 
 	Path path;
 
@@ -41,21 +42,22 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 	private void Update()
 	{
-		if ((target == null || (animScript.stopped && !DialogueManagaer.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown) {
+		if ((target == null || (animScript.stopped && !DialogueManagaer.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
+		{
 			if (animScript.isSick)
 			{
 				try
 				{
-					target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject).transform.position;
+					target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject);
 				}
 				catch (System.Exception)
 				{
-					target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform.position;
+					target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
 				}
 			}
 			else
 			{
-				target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform.position;
+				target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
 				animScript.stopped = false;
 			}
 		}
@@ -81,8 +83,9 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 		// Load Unit Target
 		Vector3 targetOut;
-		if (data.NPCTargetMap.TryGetValue(id, out targetOut)){
-			if (targetOut == Vector3.zero) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject).transform.position;
+		if (data.NPCTargetMap.TryGetValue(id, out targetOut))
+		{
+			if (targetOut == Vector3.zero) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
 			else target = targetOut;
 		}
 
@@ -141,7 +144,8 @@ public class Unit : MonoBehaviour, IDataPersistence
 				PathRequestManager1.RequestPath(new PathRequest1(transform.position, target, OnPathFound));
 				break;
 			case 2:
-				PathRequestManager2.RequestPath(new PathRequest2(transform.position, target, OnPathFound));
+				Vector3 NPCTransformWithOffset = new Vector3(transform.position.x - 850, transform.position.y, transform.position.z);
+				PathRequestManager2.RequestPath(new PathRequest2(NPCTransformWithOffset, target, OnPathFound));
 				break;
 		}
 
@@ -228,7 +232,8 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 				if (!((gameObject == PlayerInteracting.instance.NPC) && DialogueManagaer.instance.dialogueIsPlaying))
 					unitRB.MovePosition(transform.position + (transform.forward * speed * speedPercent * Time.deltaTime));
-				else {
+				else
+				{
 					animScript.stopped = true;
 					transform.position = transform.position;
 					transform.LookAt(GameObject.Find("Player").transform);
