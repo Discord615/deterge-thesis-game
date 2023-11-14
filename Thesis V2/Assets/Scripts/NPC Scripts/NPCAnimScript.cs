@@ -20,6 +20,7 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
 
     [Header("Bed Variables")]
     public bool isSick = false;
+    public bool goingToBed = false;
     public bool isLayingDown = false;
     public bool slowDown = false;
     public bool stopped = false;
@@ -28,14 +29,21 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
     public bool wantToSit = false;
     public bool isSitting = false;
 
+    private Material skinColor;
+    private Color originalSkinColor;
+
 
     private void Start()
     {
+        skinColor = GetComponentInChildren<SkinnedMeshRenderer>().material; // ! Not picking one specific material
+        originalSkinColor = skinColor.color;
         animator = gameObject.GetComponent<Animator>();
     }
 
     private void Update()
     {
+        skinColor.color = isSick ? Color.green : originalSkinColor;
+
         updateSpeed();
 
         animator.SetFloat("Speed", speed);
@@ -43,7 +51,8 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
 
     private void updateSpeed()
     {
-        if (stopped) {
+        if (stopped)
+        {
             speed = 0;
             return;
         }

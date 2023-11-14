@@ -26,7 +26,6 @@ public class Movement : MonoBehaviour, IDataPersistence
 
         if (DialogueManagaer.instance.dialogueIsPlaying)
         {
-            Debug.Log("Baby");
             playerBody.isKinematic = true;
             playerBody.velocity = Vector3.zero;
         }

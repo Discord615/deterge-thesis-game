@@ -133,14 +133,4 @@ public class UnitTargetManager : MonoBehaviour
 
         return target;
     }
-
-    public void getSick(GameObject NPC)
-    {
-        if (!NPC.GetComponent<NPCAnimScript>().isSick && !NPC.GetComponent<NPCAnimScript>().isLayingDown)
-        {
-            int chanceOfGettingSick = Random.Range(0, 30);
-
-            if (chanceOfGettingSick == 9) NPC.GetComponent<NPCAnimScript>().isSick = true;
-        }
-    }
 }

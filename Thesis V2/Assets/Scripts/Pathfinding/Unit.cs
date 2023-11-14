@@ -42,9 +42,9 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 	private void Update()
 	{
-		if ((target == null || (animScript.stopped && !DialogueManagaer.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
+		if ((target == Vector3.zero || (animScript.stopped && !DialogueManagaer.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
 		{
-			if (animScript.isSick)
+			if (animScript.isSick && animScript.goingToBed)
 			{
 				try
 				{
@@ -168,7 +168,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 							PathRequestManager1.RequestPath(new PathRequest1(transform.position, target, OnPathFound));
 							break;
 						case 2:
-							PathRequestManager2.RequestPath(new PathRequest2(transform.position, target, OnPathFound));
+							PathRequestManager2.RequestPath(new PathRequest2(transform.position - new Vector3(850, 0, 0), target, OnPathFound));
 							break;
 					}
 

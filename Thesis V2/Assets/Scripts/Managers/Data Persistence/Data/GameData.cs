@@ -27,12 +27,9 @@ public class GameData
     public int maskUsesData;
 
     // * Virus Variables
-    public bool tyhpoidIsActive;
-    public bool tuberculosisIsActive;
-    public bool dengueIsActive;
-    public bool influenzaIsActive;
-    public bool coronaIsActive;
-    public bool rabiesIsActive;
+    public string activeVirusData;
+
+    public bool hasFaceMaskData;
 
     // * SitDown Variables
     public SerializableDictionary<string, Transform> occupantData;
@@ -59,12 +56,8 @@ public class GameData
         this.alcoholUsesData = 0;
         this.maskUsesData = 0;
 
-        this.tyhpoidIsActive = true;
-        this.tuberculosisIsActive = false;
-        this.dengueIsActive = false;
-        this.influenzaIsActive = false;
-        this.coronaIsActive = false;
-        this.rabiesIsActive = false;
+        this.activeVirusData = "tuber";
+        this.hasFaceMaskData = false;
 
         this.occupantData = new SerializableDictionary<string, Transform>();
         this.occupiedData = new SerializableDictionary<string, bool>();

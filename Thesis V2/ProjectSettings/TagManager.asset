@@ -6,6 +6,7 @@ TagManager:
   tags:
   - npc
   - teleporter
+  - invisible
   layers:
   - Default
   - TransparentFX

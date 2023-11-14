@@ -23,6 +23,8 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
     [SerializeField] private bool questGiver;
     private TextAsset inkJson;
 
+    private bool tookWalkingSickInk;
+
     private void Awake()
     {
         interactCue.SetActive(false);
@@ -30,20 +32,35 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
     private void Update()
     {
-        if (inkJson == null && !questGiver) inkJson = InkManager.instance.getRandomInk(isMale);
+        if ((inkJson == null && !questGiver) || (!GetComponent<NPCAnimScript>().isSick && tookWalkingSickInk))
+        {
+            tookWalkingSickInk = false;
+            getNewInk();
+        }
+
+        if (GetComponent<NPCAnimScript>().isSick && !tookWalkingSickInk)
+        {
+            tookWalkingSickInk = true;
+            inkJson = InkManager.instance.getWalkingSickInk();
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (!other.tag.Equals("Player")) return;
 
-        if (gameObject.GetComponent<NPCAnimScript>().isSick || gameObject.GetComponent<NPCAnimScript>().isLayingDown) return;
+        if (GetComponent<NPCAnimScript>().isLayingDown) return;
 
         if (!interactCue.activeInHierarchy) return;
 
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
         DialogueManagaer.instance.EnterDialogueMode(inkJson);
+
+        if (GetComponent<NPCAnimScript>().isSick)
+        {
+            GetComponent<NPCAnimScript>().goingToBed = true;
+        }
     }
 
     public void getNewInk()

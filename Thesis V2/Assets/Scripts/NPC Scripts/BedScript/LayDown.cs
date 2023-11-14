@@ -49,6 +49,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
     {
         animator.SetTrigger("LayDown");
         npc.GetComponent<NPCAnimScript>().isLayingDown = true;
+        npc.GetComponent<NPCAnimScript>().goingToBed = false;
 
         npc.GetComponent<BoxCollider>().enabled = false;
         previousPosition = new Vector3(0, npc.transform.position.y, 0);
@@ -100,7 +101,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
         if (!InputManager.getInstance().GetInteractPressed()) return;
         if (!occupied) return;
 
-        DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.getVirusDialogue());
+        DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.getDNASampleAcquisitionInk());
     }
 
     public void LoadData(GameData data)

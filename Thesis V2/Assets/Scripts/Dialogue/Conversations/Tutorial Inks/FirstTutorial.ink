@@ -1,9 +1,7 @@
-INCLUDE tutorialExternalFunction.ink
-
 -> main
 
 === main ===
-Welcome to the tutorial of the game. You can use press Enter to continue to the dialogue.
+Welcome to the tutorial of the game. You can press Enter to continue to the dialogue.
 
 Now you can use the arrow keys or WASD to select a choice and press enter to choose it.
 + [Sounds cool]
@@ -15,5 +13,6 @@ Now you can use the arrow keys or WASD to select a choice and press enter to cho
 
 === Continuation ===
 Now we can move onto movement. You can use the arrow keys or WASD to move your character. Try walking towards the NPC.
-~ startQuest("goToPoint")
+
+If you are close enough to the NPC, a visual cue on the bottom left should show up telling you how to interact with the NPC.
 -> END

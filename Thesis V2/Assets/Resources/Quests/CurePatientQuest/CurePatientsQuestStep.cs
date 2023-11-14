@@ -37,7 +37,6 @@ public class CurePatientsQuestStep : QuestStep
         {
             patientsSaved++;
 
-            PlayerHealthManager.instance.reduceHealth();
             GameObject.Find(AssigningBottleWithMeds.instance.npcPatient).GetComponent<NPCAnimScript>().isSick = false;
             MinigameManager.instance.syringeGame.SetActive(false);
             MinigameManager.instance.playerHud.SetActive(true);
@@ -48,9 +47,6 @@ public class CurePatientsQuestStep : QuestStep
         if (patientsSaved >= patientsToBeSaved)
         {
             objectiveOut.GetComponent<TextMeshProUGUI>().text = "Talk to canteen lady";
-            
-            // ? For Alpha Testing
-            InventoryManager.instance.itemsAreAvailable = true;
 
             FinishQuestStep();
         }

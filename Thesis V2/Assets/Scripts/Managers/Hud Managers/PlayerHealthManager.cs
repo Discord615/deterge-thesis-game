@@ -23,61 +23,11 @@ public class PlayerHealthManager : MonoBehaviour
         {
             loseScreen.SetActive(true);
         }
-
-        if (InputManager.getInstance().getAlcoholPressed())
-        {
-            healthBar.value += InventoryManager.instance.useAlcohol() ? 5 : 0;
-        }
-
-        if (InputManager.getInstance().getGlovePressed())
-        {
-            InventoryManager.instance.toggleGlove();
-        }
-
-        if (InputManager.getInstance().getMaskPressed())
-        {
-            InventoryManager.instance.toggleMask();
-        }
     }
 
-    public void reduceHealth()
+    private void reduceHealth(float reductionValue)
     {
-        reduceHealthWithGloves();
-        reduceHealthWithMask();
-    }
-
-    private void reduceHealthWithGloves()
-    {
-        float reductionValue = 10;
-
-        if (InventoryManager.instance.glovesInUse && InventoryManager.instance.gloveRemainingUses >= 1)
-        {
-            reductionValue = 3;
-        }
-
-        InventoryManager.instance.gloveRemainingUses--;
         healthBar.value -= reductionValue;
-    }
-
-    private void reduceHealthWithMask()
-    {
-        float reductionValue = 15;
-
-        if (InventoryManager.instance.maskInUse && InventoryManager.instance.maskRemainingUses >= 1)
-        {
-            reductionValue = 5;
-        }
-
-        InventoryManager.instance.maskRemainingUses--;
-        healthBar.value -= reductionValue;
-    }
-
-    public void fullRestore()
-    {
-        healthBar.value = healthBar.maxValue;
-        InventoryManager.instance.alcoholRemainingUses = 2;
-        InventoryManager.instance.gloveRemainingUses = 3;
-        InventoryManager.instance.maskRemainingUses = 3;
     }
 
     public void healthRestore()

@@ -28,6 +28,17 @@ public class InkManager : MonoBehaviour
     [SerializeField] private TextAsset[] CoronaInks;
     [SerializeField] private TextAsset[] RabiesInks;
 
+    [Header("Sick Walking NPC Dialogue")]
+    [SerializeField] private TextAsset[] walkingSickInks;
+
+    [Header("Get DNA Samples Dialogue")]
+    [SerializeField] private TextAsset[] getDNASampleDialogue;
+
+    public TextAsset getWalkingSickInk()
+    {
+        return walkingSickInks[Random.Range(0, walkingSickInks.Length)];
+    }
+
 
     public TextAsset getRandomInk(bool isMale)
     {
@@ -45,40 +56,45 @@ public class InkManager : MonoBehaviour
         return femaleRandomInks[Random.Range(0, femaleRandomInks.Length)];
     }
 
-    public TextAsset getVirusDialogue()
+    public TextAsset getVirusDialogue(string virusName) // TODO: Change to individual Viruses
     {
-        List<TextAsset> listOfActiveViruses = new List<TextAsset>();
-
-        if (GameWorldStatsManager.instance.tyhpoidIsActive)
+        TextAsset result = null;
+        switch (virusName)
         {
-            listOfActiveViruses.Add(TyphoidInks[Random.Range(0, 3)]);
+            case "tuber":
+                result = TuberCulosisInks[Random.Range(0, TuberCulosisInks.Length)];
+                break;
+
+            case "typhoid":
+                result = TyphoidInks[Random.Range(0, TyphoidInks.Length)];
+                break;
+
+            case "dengue":
+                result = DengueInks[Random.Range(0, DengueInks.Length)];
+                break;
+
+            case "flu":
+                result = InfluenzaInks[Random.Range(0, InfluenzaInks.Length)];
+                break;
+
+            case "corona":
+                result = CoronaInks[Random.Range(0, CoronaInks.Length)];
+                break;
+
+            case "rabies":
+                result = RabiesInks[Random.Range(0, RabiesInks.Length)];
+                break;
         }
 
-        if (GameWorldStatsManager.instance.tuberculosisIsActive)
-        {
-            listOfActiveViruses.Add(TuberCulosisInks[Random.Range(0, 3)]);
-        }
+        return result;
+    }
 
-        if (GameWorldStatsManager.instance.dengueIsActive)
-        {
-            listOfActiveViruses.Add(DengueInks[Random.Range(0, 3)]);
-        }
+    public TextAsset getDNASampleAcquisitionInk()
+    {
+        TextAsset result = null;
 
-        if (GameWorldStatsManager.instance.influenzaIsActive)
-        {
-            listOfActiveViruses.Add(DengueInks[Random.Range(0, 3)]);
-        }
+        // TODO: add inks
 
-        if (GameWorldStatsManager.instance.coronaIsActive)
-        {
-            listOfActiveViruses.Add(CoronaInks[Random.Range(0, 3)]);
-        }
-
-        if (GameWorldStatsManager.instance.rabiesIsActive)
-        {
-            listOfActiveViruses.Add(RabiesInks[Random.Range(0, 3)]);
-        }
-
-        return listOfActiveViruses[Random.Range(0, listOfActiveViruses.Count)];
+        return result;
     }
 }
