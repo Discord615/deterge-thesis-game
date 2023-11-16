@@ -13,9 +13,6 @@ public class StartMainQuest : MonoBehaviour
     {
         if (MenuToGamplayPass.instance.startNewGame)
         {
-            SicknessManager.instance.spreadSickness();
-            SicknessManager.instance.displayNumberOfSickStudents = true;
-            GameWorldStatsManager.instance.activeVirusName = "tuber";
             DialogueManagaer.instance.EnterDialogueMode(firstMainQuestDialogue);
         }
 

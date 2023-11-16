@@ -33,16 +33,11 @@ public class SicknessManager : MonoBehaviour
     {
         foreach (Transform student in studentsObject.transform)
         {
-            if (Random.Range(0, 30) < 9 && !student.gameObject.GetComponent<NPCAnimScript>().isSick)
+            if (Random.Range(0, 30) < 13)
             {
-                student.gameObject.GetComponent<NPCAnimScript>().isSick = true;
+                student.GetComponent<NPCAnimScript>().isSick = true;
                 numberOfSickStudents++; // TODO: incrementing for some weird reason..
             }
-        }
-
-        if (numberOfSickStudents < 3)
-        {
-            spreadSickness();
         }
     }
 }

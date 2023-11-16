@@ -12,10 +12,17 @@ public class InkExternalFunctions
             MinigameManager.instance.syringeGame.SetActive(true);
             AssigningBottleWithMeds.instance.setBottleNames(mainVirus);
         });
+
+        story.BindExternalFunction("spreadSickness", () => {
+            SicknessManager.instance.displayNumberOfSickStudents = true;
+            GameWorldStatsManager.instance.activeVirusName = "tuber";
+            SicknessManager.instance.spreadSickness();
+        });
     }
 
     public void Unbind(Story story)
     {
         story.UnbindExternalFunction("administerMeds");
+        story.UnbindExternalFunction("spreadSickness");
     }
 }
