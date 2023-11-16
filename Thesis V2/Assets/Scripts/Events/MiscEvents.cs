@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class MiscEvents
 {
@@ -9,7 +10,24 @@ public class MiscEvents
         onPatientSaved?.Invoke();
     }
 
-    // TODO: use event to check if patient was saved from seizure
+    public event Action onSampleCollected;
+
+    public void sampleCollected(){
+        onSampleCollected?.Invoke();
+    }
+
+    public event Action onTalkToSickStudent;
+
+    public void talkToStudent(){
+        onTalkToSickStudent?.Invoke();
+    }
+
+    public event Action onPlayerGetMeds;
+
+    public void playerGetsMeds(){
+        onPlayerGetMeds?.Invoke();
+    }
+
     public static event Action onSequenceCompleted;
 
     public void sequenceCompleted()

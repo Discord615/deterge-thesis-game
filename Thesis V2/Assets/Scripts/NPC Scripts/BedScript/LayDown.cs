@@ -18,6 +18,18 @@ public class LayDown : MonoBehaviour, IDataPersistence
 
     [SerializeField] private GameObject visualCue;
 
+    private void OnEnable() {
+        GameEventsManager.instance.miscEvents.onPlayerGetMeds += playerGetsMeds;
+    }
+
+    private void OnDisable() {
+        GameEventsManager.instance.miscEvents.onPlayerGetMeds -= playerGetsMeds;
+    }
+
+    private void playerGetsMeds(){
+        if (occupied) playerHasMeds = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))

@@ -1,4 +1,5 @@
 //DNA_sample
+EXTERNAL getSample()
 -> doctor
 
 === doctor ===
@@ -8,6 +9,7 @@ Doc, I've been feeling unwell. Can you assist me in figuring out what's going on
             ++ [We need a DNA sample, typically from saliva or blood]
                  I've never done this. Is it safe?
                     +++ [Yes, the process is safe]
+                        ~ getSample()
                          Alright, let's go ahead. I want to know what's causing this.
                         -> DONE
                         

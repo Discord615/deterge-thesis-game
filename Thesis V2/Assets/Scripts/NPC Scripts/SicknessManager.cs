@@ -22,13 +22,6 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
 
     [SerializeField] private GameObject studentsObject;
 
-    private void Update()
-    {
-        if (!displayNumberOfSickStudents) return;
-
-        GameObject.Find("Objective").GetComponent<TextMeshProUGUI>().text = string.Format("Find and talk to sick students\nNumber of sick students roaming: {0}", numberOfSickStudents);
-    }
-
     public void spreadSickness()
     {
         foreach (Transform student in studentsObject.transform)

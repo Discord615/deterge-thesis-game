@@ -61,14 +61,8 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
         if (GetComponent<NPCAnimScript>().isSick)
         {
             GetComponent<NPCAnimScript>().goingToBed = true;
-            if (SicknessManager.instance.numberOfSickStudents > 0)
-            {
-                SicknessManager.instance.numberOfSickStudents--;
-            }
-            else
-            {
-                GameObject.Find("Objective").GetComponent<TextMeshProUGUI>().text = "Get DNA samples from sick students";
-            }
+
+            GameEventsManager.instance.miscEvents.talkToStudent();
         }
     }
 

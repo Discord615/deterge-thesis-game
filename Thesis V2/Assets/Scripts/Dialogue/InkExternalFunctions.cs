@@ -18,11 +18,16 @@ public class InkExternalFunctions
             GameWorldStatsManager.instance.activeVirusName = "tuber";
             SicknessManager.instance.spreadSickness();
         });
+
+        story.BindExternalFunction("getSample", () => {
+            GameEventsManager.instance.miscEvents.sampleCollected();
+        });
     }
 
     public void Unbind(Story story)
     {
         story.UnbindExternalFunction("administerMeds");
         story.UnbindExternalFunction("spreadSickness");
+        story.UnbindExternalFunction("getSample");
     }
 }
