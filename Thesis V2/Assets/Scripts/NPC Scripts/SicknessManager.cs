@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SicknessManager : MonoBehaviour
@@ -15,27 +16,33 @@ public class SicknessManager : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
-    {
-        int numberOfSickStudents = 0;
-        foreach (Transform student in studentsObject.transform)
-        {
-            if (student.gameObject.GetComponent<NPCAnimScript>().isSick) numberOfSickStudents++;
-        }
-        if (numberOfSickStudents < 2)
-            spreadSickness();
-    }
+    public bool displayNumberOfSickStudents = false;
+
+    public int numberOfSickStudents = 0;
 
     [SerializeField] private GameObject studentsObject;
+
+    private void Update()
+    {
+        if (!displayNumberOfSickStudents) return;
+
+        GameObject.Find("Objective").GetComponent<TextMeshProUGUI>().text = string.Format("Find and talk to sick students\nNumber of sick students roaming: {0}", numberOfSickStudents);
+    }
 
     public void spreadSickness()
     {
         foreach (Transform student in studentsObject.transform)
         {
-            if (Random.Range(0, 30) < 9)
+            if (Random.Range(0, 30) < 9 && !student.gameObject.GetComponent<NPCAnimScript>().isSick)
             {
                 student.gameObject.GetComponent<NPCAnimScript>().isSick = true;
+                numberOfSickStudents++; // TODO: incrementing for some weird reason..
             }
+        }
+
+        if (numberOfSickStudents < 3)
+        {
+            spreadSickness();
         }
     }
 }

@@ -44,7 +44,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 	{
 		if ((target == Vector3.zero || (animScript.stopped && !DialogueManagaer.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
 		{
-			if (animScript.isSick && animScript.goingToBed)
+			if (animScript.isSick && animScript.goingToBed && floor == 1)
 			{
 				try
 				{

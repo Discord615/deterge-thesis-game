@@ -14,7 +14,7 @@ public class StartMainQuest : MonoBehaviour
         if (MenuToGamplayPass.instance.startNewGame)
         {
             SicknessManager.instance.spreadSickness();
-            objectiveTaskTextOut.GetComponent<TextMeshProUGUI>().text = "Find sick students and talk to them";
+            SicknessManager.instance.displayNumberOfSickStudents = true;
             GameWorldStatsManager.instance.activeVirusName = "tuber";
             DialogueManagaer.instance.EnterDialogueMode(firstMainQuestDialogue);
         }
