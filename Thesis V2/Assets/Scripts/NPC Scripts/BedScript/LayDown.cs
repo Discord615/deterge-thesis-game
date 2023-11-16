@@ -14,6 +14,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
     public bool occupied = false;
     string occupantName;
     Vector3 previousPosition;
+    public bool playerHasMeds = false; // ! Call when med labs send back results
 
     [SerializeField] private GameObject visualCue;
 
@@ -101,7 +102,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
         if (!InputManager.getInstance().GetInteractPressed()) return;
         if (!occupied) return;
 
-        DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.getDNASampleAcquisitionInk());
+        DialogueManagaer.instance.EnterDialogueMode(playerHasMeds ? InkManager.instance.getGiveMedsInk() : InkManager.instance.getDNASampleAcquisitionInk());
     }
 
     public void LoadData(GameData data)

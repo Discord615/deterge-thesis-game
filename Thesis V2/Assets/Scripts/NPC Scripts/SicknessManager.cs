@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class SicknessManager : MonoBehaviour
+public class SicknessManager : MonoBehaviour, IDataPersistence
 {
     public static SicknessManager instance { get; private set; }
 
@@ -39,5 +39,17 @@ public class SicknessManager : MonoBehaviour
                 numberOfSickStudents++; // TODO: incrementing for some weird reason..
             }
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        displayNumberOfSickStudents = data.displayNumberOfSickStudentsData;
+        numberOfSickStudents = data.numberOfSickStudentsData;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.displayNumberOfSickStudentsData = displayNumberOfSickStudents;
+        data.numberOfSickStudentsData = numberOfSickStudents;
     }
 }
