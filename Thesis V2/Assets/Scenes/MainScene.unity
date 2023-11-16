@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1801,36 +1801,17 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 2021c1f7620a7104e85e075f6185540f, type: 3}
   - {fileID: 4900000, guid: d8492f40af66e1946b78d4bf2706e13f, type: 3}
   - {fileID: 4900000, guid: ef54c4f1bb460d2468f49334c6a868a2, type: 3}
-  TyphoidInks:
-  - {fileID: 4900000, guid: c6906be65800d3e48b29395500f36381, type: 3}
-  - {fileID: 4900000, guid: 682f17ff02b42cd4193356fc337fece0, type: 3}
-  - {fileID: 4900000, guid: efe35fd09a93d8341a9f0cfad69cfae0, type: 3}
-  TuberCulosisInks:
-  - {fileID: 4900000, guid: a17c3abb20ef2c547a5f8b80b8ed4e59, type: 3}
-  - {fileID: 4900000, guid: 571da26ad3c21164da00752b9bfcd8f7, type: 3}
-  - {fileID: 4900000, guid: 983df1cc0fabd5844a5bcbc74789372f, type: 3}
-  DengueInks:
-  - {fileID: 4900000, guid: 74622fe6217fb2a4984599c465881f09, type: 3}
-  - {fileID: 4900000, guid: 2f77f8820994ed943ac65e8877cdc6ec, type: 3}
-  - {fileID: 4900000, guid: 393a37e7c0d5e8644b3d64443757d4bf, type: 3}
-  InfluenzaInks:
-  - {fileID: 4900000, guid: 27aa62e6f79961a4fba32b26526741a6, type: 3}
-  - {fileID: 4900000, guid: a6f85c6aca8b9e94cbb79b8751fd91f0, type: 3}
-  - {fileID: 4900000, guid: 2381c57164d78dc459c4bb6181e4d8df, type: 3}
-  CoronaInks:
-  - {fileID: 4900000, guid: 1b2ee8d55b4308f49a7c3503ae587b55, type: 3}
-  - {fileID: 4900000, guid: 5d28da8cd2a4c1945b73d004c58bfbe1, type: 3}
-  - {fileID: 4900000, guid: 5986eb6cad66a124dade59b75ad05eb8, type: 3}
-  RabiesInks:
-  - {fileID: 4900000, guid: a88d89d7a4a431b4096a498f91e6e87d, type: 3}
-  - {fileID: 4900000, guid: cb26dd62e84af6148905d35a1b630e2c, type: 3}
-  - {fileID: 4900000, guid: 0574e31d23ce30f4a9fe021dc5d81b2b, type: 3}
+  giveMedsDialogue: []
   walkingSickInks:
   - {fileID: 4900000, guid: 1e0bc4637c373dc49a0e8600ce882f09, type: 3}
   - {fileID: 4900000, guid: 728ac22fac70fa443bfe3b22a1f52775, type: 3}
   - {fileID: 4900000, guid: c25c57df6e240514fb31e294df432847, type: 3}
   - {fileID: 4900000, guid: 00ac5002729db5845a7a2133d028839c, type: 3}
   - {fileID: 4900000, guid: 5fb28b7a90507d543938d74f0405c1e1, type: 3}
+  getDNASampleDialogue:
+  - {fileID: 4900000, guid: f76b50e22c1c3214ba1e75cec35376c6, type: 3}
+  - {fileID: 4900000, guid: 8672f9c6e60cd454482a84097abfe054, type: 3}
+  - {fileID: 4900000, guid: 2fabc623449958d4e911bd870ec1bd2a, type: 3}
 --- !u!1 &263821712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2903705498718799438, guid: 6a63d4111bb3d804e97239b2fb6b9808,
@@ -8112,6 +8093,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448ab21e35346e04981232833dbb5d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayNumberOfSickStudents: 0
+  numberOfSickStudents: 0
   studentsObject: {fileID: 1907519036}
 --- !u!1001 &794173183
 PrefabInstance:
@@ -15791,12 +15774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isNewGame: 0
-  tyhpoidIsActive: 0
-  tuberculosisIsActive: 0
-  dengueIsActive: 0
-  influenzaIsActive: 0
-  coronaIsActive: 0
-  rabiesIsActive: 0
+  activeVirusName: 
   hasFaceMask: 0
 --- !u!1001 &1507706155
 PrefabInstance:
