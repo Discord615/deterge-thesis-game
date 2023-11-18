@@ -11,6 +11,8 @@ public class StartMainQuest : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
+        
         if (MenuToGamplayPass.instance.startNewGame)
         {
             DialogueManagaer.instance.EnterDialogueMode(firstMainQuestDialogue);

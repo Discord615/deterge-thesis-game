@@ -29,7 +29,7 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
             if (Random.Range(0, 30) < 13)
             {
                 student.GetComponent<NPCAnimScript>().isSick = true;
-                numberOfSickStudents++; // TODO: incrementing for some weird reason..
+                numberOfSickStudents++;
             }
         }
     }

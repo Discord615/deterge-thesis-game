@@ -16,6 +16,7 @@ public class MinigameManager : MonoBehaviour
     [Header("Minigame GameObjects")]
     public GameObject syringeGame;
     public GameObject onBeatGame;
+    public GameObject sequenceGame;
 
     [Header("Game HUD")]
     public GameObject playerHud;
@@ -23,5 +24,6 @@ public class MinigameManager : MonoBehaviour
     private void Start() {
         syringeGame.SetActive(false);
         onBeatGame.SetActive(false);
+        sequenceGame.SetActive(false);
     }
 }

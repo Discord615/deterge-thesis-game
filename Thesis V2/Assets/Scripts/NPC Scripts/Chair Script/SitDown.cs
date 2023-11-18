@@ -22,7 +22,7 @@ public class SitDown : MonoBehaviour, IDataPersistence
         if (other == null) return;
         if (other.tag != "npc") return;
         if (other.GetComponent<Unit>().target == null) return;
-        if (!other.GetComponent<Unit>().target.Equals(transform.position)) return;
+        if (!other.GetComponent<Unit>().target.Equals(new Vector3(transform.position.x, 0, transform.position.z))) return;
         if (occupied)
         {
             getNewTarget(other.gameObject);

@@ -15,17 +15,20 @@ public class QuestPoint : MonoBehaviour
     [SerializeField] private bool finishPoint;
     [SerializeField] private bool BypassDialogue;
     [SerializeField] private bool needInteract;
+    private GameObject interactCue;
 
     private string questId;
     private QuestState currentQuestState;
-    // [SerializeField] private GameObject QuestIconPrefab;
 
-    GameObject questObject;
     public bool iconIsDestroyed = false;
 
     private void Awake()
     {
         questId = questInfoForPoint.id;
+    }
+
+    private void Start() {
+        interactCue = GameObject.Find("QuestPointCue");
     }
 
     private void OnEnable()
@@ -44,7 +47,7 @@ public class QuestPoint : MonoBehaviour
         if (!(DialogueManagaer.instance.dialogueIsPlaying || BypassDialogue)) return;
 
         if (needInteract) 
-            if (!InputManager.getInstance().GetInteractPressed() && !GameObject.Find("Interact Cue").activeInHierarchy) return;
+            if (!InputManager.getInstance().GetInteractPressed() && !interactCue.activeInHierarchy) return;
 
         if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
         {
@@ -62,15 +65,13 @@ public class QuestPoint : MonoBehaviour
 
         if (!needInteract) return;
 
-        GameObject.Find("Interact Cue").SetActive(true);
+        interactCue.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other) {
         if (!other.tag.Equals("Player")) return;
 
-        if (!needInteract) return;
-
-        GameObject.Find("Interact Cue").SetActive(false);
+        interactCue.SetActive(false);
     }
 
     // private void ShowQuestIcon(QuestState currentQuestState)

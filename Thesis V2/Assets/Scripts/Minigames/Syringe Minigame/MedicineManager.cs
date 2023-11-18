@@ -18,7 +18,7 @@ public class MedicineManager : MonoBehaviour
     private Dictionary<string, string[]> medsDictionary = new Dictionary<string, string[]>();
 
     private void Start() {
-        medsDictionary.Add("typoihd", new string[] {
+        medsDictionary.Add("typhoid", new string[] {
             "Fluoroquinolones",
             "Cephalosporins",
             "Macrolides",
@@ -33,8 +33,10 @@ public class MedicineManager : MonoBehaviour
             "Streptomycin"
         });
 
-        // ! UP FOR DISCUSSION
-        // medsDictionary.Add("Rabies", new string[] {});
+        medsDictionary.Add("rabies", new string[] {
+            "Imovax",
+            "Rabavert"
+        });
 
         medsDictionary.Add("dengue", new string[] {
             "Paracetamol" // ? Add more?

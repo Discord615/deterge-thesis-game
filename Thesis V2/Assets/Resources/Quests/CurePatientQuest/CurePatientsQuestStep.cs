@@ -7,7 +7,7 @@ using UnityEngine;
 public class CurePatientsQuestStep : QuestStep
 {
     private int patientsSaved = 0;
-    private int patientsToBeSaved = 5;
+    private int patientsToBeSaved = 1;
 
     private GameObject objectiveOut;
 
@@ -24,6 +24,8 @@ public class CurePatientsQuestStep : QuestStep
     private void Start()
     {
         objectiveOut = GameObject.Find("Objective");
+        GameEventsManager.instance.miscEvents.playerGetsMeds();
+        patientsToBeSaved = getNumberOfSickStudents();
     }
 
     private void Update()
@@ -50,6 +52,17 @@ public class CurePatientsQuestStep : QuestStep
 
             FinishQuestStep();
         }
+    }
+
+    private int getNumberOfSickStudents(){
+        int result = 0;
+
+        foreach (Transform student in GameObject.Find("Students").transform)
+        {
+            if (student.GetComponent<NPCAnimScript>().isSick) result++;
+        }
+
+        return result;
     }
 
     private void updateState()

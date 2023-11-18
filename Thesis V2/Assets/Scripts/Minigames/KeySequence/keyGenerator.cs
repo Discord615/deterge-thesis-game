@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class keyGenerator : MonoBehaviour{
     [SerializeField] private TextMeshProUGUI keySequenceOutput;
+    [SerializeField] private TextMeshProUGUI winsLeftOutput;
     [SerializeField] private Timer timer;
     [SerializeField] private Slider slider;
     private List<string> combination;
@@ -13,14 +14,23 @@ public class keyGenerator : MonoBehaviour{
     private bool win = false;
     public bool reset = false;
 
+    // * Win Counter
+    int winsLeft = 3;
+
     private void Start() {
         resetVariables();
     }
 
     private void Update() {
-        if (InputManager.getInstance().getSpacePressedImpulse()) resetVariables();  // TODO: Remove in final build
-        
-        string letter = "";
+
+        if (winsLeft > 1 && win){
+            winsLeft--;
+            win = false;
+            resetVariables();
+            return;
+        }
+
+        winsLeftOutput.text = string.Format("Successful Sequences Needed: {0}", winsLeft);
 
         if (win) {
             timer.stopTimer = true;
@@ -34,14 +44,13 @@ public class keyGenerator : MonoBehaviour{
             GameEventsManager.instance.miscEvents.sequenceFailed();
             return;
         }
-            
+
         if (combination.Count == 0) {
             win = true;
             return;
         }
 
-        letter = combination[0];
-
+        string letter = combination[0];
         updateText(combination);
 
         if (letter == "W" && InputManager.getInstance().GetMovePressImpulse() == Vector2.up) updateArray();
@@ -51,6 +60,8 @@ public class keyGenerator : MonoBehaviour{
     }
 
     private void updateArray(){
+        timer.startTimer = true;
+
         try{
             combination.RemoveAt(0);
             timer.correctLetter();
@@ -60,7 +71,7 @@ public class keyGenerator : MonoBehaviour{
     }
 
     private List<string> generateRandomKeys(){
-        float numberOfKeys = Random.Range(4, 8);
+        float numberOfKeys = Random.Range(4, 10);
         List<string> resultArr = new List<string>();
         
         for (int i = 0; i < numberOfKeys; i++){
@@ -81,7 +92,7 @@ public class keyGenerator : MonoBehaviour{
 
     private void resetVariables(){
         combination = generateRandomKeys();
-        slider.value = slider.minValue;
+        slider.value = slider.maxValue;
         win = false;
         timer.timeOut = false;
         timer.stopTimer = false;

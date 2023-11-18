@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e7df891c47e8fa40adda3a328b693b6, type: 3}
-  m_Name: CurePatientQuest
+  m_Name: ProcessSamples
   m_EditorClassIdentifier: 
-  <id>k__BackingField: CurePatientQuest
-  displayName: Cure Patients
+  <id>k__BackingField: ProcessSamples
+  displayName: Process Samples
   questPrerequisites:
-  - {fileID: 11400000, guid: 583d90c312891e94e99771d34200035d, type: 2}
+  - {fileID: 11400000, guid: 97d7db0a49c24274dac3f16363c36a1a, type: 2}
   questStepPrefabs:
-  - {fileID: 5085480678664313490, guid: c2f35db65af66ac4cb1a3e05cfe73322, type: 3}
+  - {fileID: 8904764106189394061, guid: 1db6dcb3575d72441958e83918f351b8, type: 3}

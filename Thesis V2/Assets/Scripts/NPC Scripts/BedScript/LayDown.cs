@@ -14,6 +14,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
     public bool occupied = false;
     string occupantName;
     Vector3 previousPosition;
+    public bool reverseBeds = false;
     public bool playerHasMeds = false; // ! Call when med labs send back results
 
     public bool sampleTaken = false;
@@ -67,7 +68,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
 
         npc.GetComponent<BoxCollider>().enabled = false;
         previousPosition = new Vector3(0, npc.transform.position.y, 0);
-        npc.transform.position = new Vector3(transform.position.x, 1, transform.position.z + 2);
+        npc.transform.position = new Vector3(transform.position.x, 1, transform.position.z + (reverseBeds ? -2 : 2));
         npc.transform.forward = transform.forward;
 
         occupantName = npc.name;
@@ -107,14 +108,12 @@ public class LayDown : MonoBehaviour, IDataPersistence
     private void EnterDialogue(GameObject other)
     {
         if (!other.tag.Equals("Player")) return;
-        visualCue.SetActive(true);
 
         AssigningBottleWithMeds.instance.npcPatient = occupantName;
         AssigningBottleWithMeds.instance.bed = gameObject;
 
         if (sampleTaken && !playerHasMeds) return;
-        if (!InputManager.getInstance().GetInteractPressed()) return;
-        if (!occupied) return;
+        if (!InputManager.getInstance().GetInteractPressed() && !visualCue.activeInHierarchy) return;
 
         DialogueManagaer.instance.EnterDialogueMode(playerHasMeds ? InkManager.instance.getGiveMedsInk() : InkManager.instance.getDNASampleAcquisitionInk());
 

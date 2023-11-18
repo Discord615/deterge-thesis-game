@@ -28,14 +28,14 @@ public class MiscEvents
         onPlayerGetMeds?.Invoke();
     }
 
-    public static event Action onSequenceCompleted;
+    public event Action onSequenceCompleted;
 
     public void sequenceCompleted()
     {
         onSequenceCompleted?.Invoke();
     }
 
-    public static event Action onSequenceFailed;
+    public event Action onSequenceFailed;
 
     public void sequenceFailed()
     {

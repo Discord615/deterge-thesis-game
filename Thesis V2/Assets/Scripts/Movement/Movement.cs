@@ -22,8 +22,6 @@ public class Movement : MonoBehaviour, IDataPersistence
     {
         moveDirection = InputManager.getInstance().GetMovePressed();
 
-        // ! player character wont stop moving after opening dialogue
-
         if (DialogueManagaer.instance.dialogueIsPlaying)
         {
             playerBody.isKinematic = true;
@@ -35,6 +33,7 @@ public class Movement : MonoBehaviour, IDataPersistence
 
         if (MinigameManager.instance.syringeGame.activeInHierarchy) return;
         if (MinigameManager.instance.onBeatGame.activeInHierarchy) return;
+        if (MinigameManager.instance.sequenceGame.activeInHierarchy) return;
 
         if (DialogueManagaer.instance.dialogueIsPlaying) return;
 

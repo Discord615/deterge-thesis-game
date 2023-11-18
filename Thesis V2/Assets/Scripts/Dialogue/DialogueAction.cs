@@ -21,7 +21,6 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
         id = System.Guid.NewGuid().ToString();
     }
 
-    [SerializeField] private bool questGiver;
     private TextAsset inkJson;
 
     private bool tookWalkingSickInk;
@@ -33,7 +32,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
     private void Update()
     {
-        if ((inkJson == null && !questGiver) || (!GetComponent<NPCAnimScript>().isSick && tookWalkingSickInk))
+        if (inkJson == null || (!GetComponent<NPCAnimScript>().isSick && tookWalkingSickInk))
         {
             tookWalkingSickInk = false;
             getNewInk();
@@ -50,7 +49,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
     {
         if (!other.tag.Equals("Player")) return;
 
-        if (GetComponent<NPCAnimScript>().isLayingDown && !GetComponent<NPCAnimScript>().goingToBed) return;
+        if (GetComponent<NPCAnimScript>().isLayingDown) return;
 
         if (!interactCue.activeInHierarchy) return;
 
@@ -75,7 +74,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
     {
         if (!other.tag.Equals("Player")) return;
 
-        interactCue.SetActive(true);
+        interactCue.SetActive(!GetComponent<NPCAnimScript>().goingToBed);
     }
 
     private void OnTriggerExit(Collider other)
