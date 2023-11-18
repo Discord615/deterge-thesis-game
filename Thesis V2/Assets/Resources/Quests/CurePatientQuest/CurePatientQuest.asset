@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: CurePatientQuest
   displayName: Cure Patients
-  questPrerequisites:
-  - {fileID: 11400000, guid: 3ad6a0101a84a3b4ea44f3f717700a58, type: 2}
+  questPrerequisites: []
   questStepPrefabs:
   - {fileID: 5085480678664313490, guid: c2f35db65af66ac4cb1a3e05cfe73322, type: 3}

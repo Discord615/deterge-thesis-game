@@ -50,7 +50,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
     {
         if (!other.tag.Equals("Player")) return;
 
-        if (GetComponent<NPCAnimScript>().isLayingDown) return;
+        if (GetComponent<NPCAnimScript>().isLayingDown && !GetComponent<NPCAnimScript>().goingToBed) return;
 
         if (!interactCue.activeInHierarchy) return;
 

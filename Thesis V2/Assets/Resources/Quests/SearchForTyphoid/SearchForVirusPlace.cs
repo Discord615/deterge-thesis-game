@@ -17,9 +17,6 @@ public class SearchForVirusPlace : QuestStep
 
     private void Start() {
         objectiveOut = GameObject.Find("Objective");
-    }
-
-    private void Update() {
         objectiveOut.GetComponent<TextMeshProUGUI>().text = string.Format("{0}", "Search for virus around the school");
     }
 
@@ -29,26 +26,32 @@ public class SearchForVirusPlace : QuestStep
         switch (GameWorldStatsManager.instance.activeVirusName)
         {
             case "tuber":
+                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
                 if (tuber) FinishQuestStep();
                 break;
 
             case "typhoid":
+                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
                 if (typhoid) FinishQuestStep();
                 break;
 
             case "covid":
+                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
                 if (covid) FinishQuestStep();
                 break;
 
             case "rabies":
+                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
                 if (rabies) FinishQuestStep();
                 break;
 
             case "flu":
+                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
                 if (flu) FinishQuestStep();
                 break;
 
             case "dengue":
+                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
                 if (dengue) FinishQuestStep();
                 break;
         }

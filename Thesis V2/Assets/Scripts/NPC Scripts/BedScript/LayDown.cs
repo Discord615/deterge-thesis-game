@@ -16,6 +16,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
     Vector3 previousPosition;
     public bool playerHasMeds = false; // ! Call when med labs send back results
 
+    public bool sampleTaken = false;
     [SerializeField] private GameObject visualCue;
 
     private void OnEnable() {
@@ -111,10 +112,13 @@ public class LayDown : MonoBehaviour, IDataPersistence
         AssigningBottleWithMeds.instance.npcPatient = occupantName;
         AssigningBottleWithMeds.instance.bed = gameObject;
 
+        if (sampleTaken && !playerHasMeds) return;
         if (!InputManager.getInstance().GetInteractPressed()) return;
         if (!occupied) return;
 
         DialogueManagaer.instance.EnterDialogueMode(playerHasMeds ? InkManager.instance.getGiveMedsInk() : InkManager.instance.getDNASampleAcquisitionInk());
+
+        if (!playerHasMeds) sampleTaken = true;
     }
 
     public void LoadData(GameData data)

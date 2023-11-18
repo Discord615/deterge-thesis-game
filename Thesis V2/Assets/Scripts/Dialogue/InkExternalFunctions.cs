@@ -5,17 +5,17 @@ public class InkExternalFunctions
 {
     public void Bind(Story story)
     {
-        story.BindExternalFunction("administerMeds", (string mainVirus) =>
+        story.BindExternalFunction("administerMeds", () =>
         {
             SyringeBehaviour.instance.resetValues();
             MinigameManager.instance.playerHud.SetActive(false);
             MinigameManager.instance.syringeGame.SetActive(true);
-            AssigningBottleWithMeds.instance.setBottleNames(mainVirus);
+            AssigningBottleWithMeds.instance.setBottleNames(GameWorldStatsManager.instance.activeVirusName);
         });
 
-        story.BindExternalFunction("spreadSickness", () => {
+        story.BindExternalFunction("spreadSickness", (string virusName) => {
+            GameWorldStatsManager.instance.activeVirusName = virusName;
             SicknessManager.instance.displayNumberOfSickStudents = true;
-            GameWorldStatsManager.instance.activeVirusName = "tuber";
             SicknessManager.instance.spreadSickness();
         });
 

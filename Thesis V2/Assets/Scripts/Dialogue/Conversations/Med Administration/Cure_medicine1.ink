@@ -1,4 +1,5 @@
 //Cure_medicine
+EXTERNAL administerMeds()
 -> doctor
 
 === doctor ===
@@ -9,6 +10,7 @@ Hi doc!
                  Really? What is it?
                     +++ [It's a cure for your condition]
                         Thanks doc!
+                        ~ administerMeds()
                         -> DONE
                         
    

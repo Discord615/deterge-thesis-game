@@ -18,14 +18,14 @@ public class MedicineManager : MonoBehaviour
     private Dictionary<string, string[]> medsDictionary = new Dictionary<string, string[]>();
 
     private void Start() {
-        medsDictionary.Add("Typhoid", new string[] {
+        medsDictionary.Add("typoihd", new string[] {
             "Fluoroquinolones",
             "Cephalosporins",
             "Macrolides",
             "Carbapenems"
         });
 
-        medsDictionary.Add("Tuberculosis", new string[] {
+        medsDictionary.Add("tuber", new string[] {
             "Isoniazid",
             "Rifampin",
             "Pyrazinamide",
@@ -36,16 +36,16 @@ public class MedicineManager : MonoBehaviour
         // ! UP FOR DISCUSSION
         // medsDictionary.Add("Rabies", new string[] {});
 
-        medsDictionary.Add("Dengue", new string[] {
+        medsDictionary.Add("dengue", new string[] {
             "Paracetamol" // ? Add more?
         });
 
-        medsDictionary.Add("Covid", new string[] {
+        medsDictionary.Add("covid", new string[] {
             "molnupiravir",
             "remdesivir"
         });
 
-        medsDictionary.Add("Influenza", new string[] {
+        medsDictionary.Add("flu", new string[] {
             "Oseltamivir Phosphate",
             "Zanamivir",
             "Peramivir",
