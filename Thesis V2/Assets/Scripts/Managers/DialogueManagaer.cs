@@ -11,31 +11,32 @@ public class DialogueManagaer : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
+    [SerializeField] private GameObject objectiveOutput;
+
     [Header("Choices")]
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
     private Story currentStory;
-    public bool dialogueIsPlaying { get; private set; }
 
-    private static DialogueManagaer instance;
-
-    public bool inkStart = false, inkFinish = false;
+    public static DialogueManagaer instance { get; private set; }
 
     private InkExternalFunctions inkExternalFunctions;
 
-    private void Awake(){
-        if (instance != null){
+    public CanvasGroup objectivePanel;
+    public bool dialogueIsPlaying { get; private set; }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
             Debug.LogError("There are more than one instance of Dialogue Manager");
         }
         instance = this;
     }
 
-    public static DialogueManagaer GetInstance(){
-        return instance;
-    }
-
-    private void Start(){
+    private void Start()
+    {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
@@ -43,25 +44,38 @@ public class DialogueManagaer : MonoBehaviour
 
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
-        foreach (GameObject choice in choices){
+        foreach (GameObject choice in choices)
+        {
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
         }
     }
 
-    private void Update(){
-        if (!dialogueIsPlaying){
-            return;
+    private void Update()
+    {
+        dialogueIsPlaying = dialoguePanel.activeInHierarchy;
+
+        if (!dialogueIsPlaying && objectiveOutput.GetComponent<TextMeshProUGUI>().text != "")
+            objectivePanel.alpha = 1;
+        else
+            objectivePanel.alpha = 0;
+
+        if (MinigameManager.instance.syringeGame.activeInHierarchy)
+        {
+            StartCoroutine(ExitDialogueMode());
         }
 
-        if (InputManager.getInstance().GetContextActionPressed()){
+        if (!dialogueIsPlaying) return;
+
+        if (InputManager.getInstance().GetContextActionPressed())
+        {
             ContinueStory();
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON){
+    public void EnterDialogueMode(TextAsset inkJSON)
+    {
         currentStory = new Story(inkJSON.text);
-        dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
         inkExternalFunctions.Bind(currentStory);
@@ -69,31 +83,42 @@ public class DialogueManagaer : MonoBehaviour
         ContinueStory();
     }
 
-    private IEnumerator ExitDialogueMode(){
+    private IEnumerator ExitDialogueMode()
+    {
         yield return new WaitForSeconds(0.2f);
 
         inkExternalFunctions.Unbind(currentStory);
 
-        dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
     }
 
-    private void ContinueStory(){
-        Debug.Log("Continued");
-        if (currentStory.canContinue){
-            dialogueText.text = currentStory.Continue();
-            DisplayChoices();
+    private void ContinueStory()
+    {
+        if (currentStory.canContinue)
+        {
+            string nextLine = currentStory.Continue();
+
+            if (nextLine.Equals("") && !currentStory.canContinue)
+                StartCoroutine(ExitDialogueMode());
+            else
+            {
+                dialogueText.text = nextLine;
+                DisplayChoices();
+            }
         }
-        else {
+        else
+        {
             StartCoroutine(ExitDialogueMode());
         }
     }
 
-    private void DisplayChoices(){
+    private void DisplayChoices()
+    {
         List<Choice> currentChoices = currentStory.currentChoices;
 
-        if (currentChoices.Count > choices.Length){
+        if (currentChoices.Count > choices.Length)
+        {
             Debug.LogError("Too Many Choices Given");
         }
 
@@ -106,20 +131,23 @@ public class DialogueManagaer : MonoBehaviour
             index++;
         }
 
-        for (int i = index; i < choices.Length; i++){
+        for (int i = index; i < choices.Length; i++)
+        {
             choices[i].gameObject.SetActive(false);
         }
 
         StartCoroutine(SelectFirstChoice());
     }
 
-    private IEnumerator SelectFirstChoice(){
+    private IEnumerator SelectFirstChoice()
+    {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
         EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
     }
 
-    public void MakeChoice(int ChoiceIndex){
+    public void MakeChoice(int ChoiceIndex)
+    {
         currentStory.ChooseChoiceIndex(ChoiceIndex);
     }
 }

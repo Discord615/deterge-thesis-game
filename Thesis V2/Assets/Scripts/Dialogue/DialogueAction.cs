@@ -1,30 +1,109 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class DialogueAction : MonoBehaviour
+[RequireComponent(typeof(BoxCollider))]
+public class DialogueAction : MonoBehaviour, IDataPersistence
 {
     [Header("Visual Cue")]
-    [SerializeField] private GameObject visualCue;
+    [SerializeField] private GameObject interactCue;
 
     [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJson;
 
-    public bool playerInRange;
+    [SerializeField] public bool isMale;
 
-    private void Awake(){
-        visualCue.SetActive(false);
+    [SerializeField] private string id;
+
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
     }
 
-    void Update(){
-        if (playerInRange && !DialogueManagaer.GetInstance().dialogueIsPlaying){
-            visualCue.SetActive(true);
-            if(InputManager.getInstance().GetInteractPressed()){
-                DialogueManagaer.GetInstance().EnterDialogueMode(inkJson);
-            }
-        } 
-        else {
-            visualCue.SetActive(false);
+    private TextAsset inkJson;
+
+    private bool tookWalkingSickInk;
+
+    private void Awake()
+    {
+        interactCue.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (inkJson == null || (!GetComponent<NPCAnimScript>().isSick && tookWalkingSickInk))
+        {
+            tookWalkingSickInk = false;
+            getNewInk();
         }
+
+        if (GetComponent<NPCAnimScript>().isSick && !tookWalkingSickInk)
+        {
+            tookWalkingSickInk = true;
+            inkJson = InkManager.instance.getWalkingSickInk();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.tag.Equals("Player")) return;
+
+        if (GetComponent<NPCAnimScript>().isLayingDown) return;
+
+        if (!interactCue.activeInHierarchy) return;
+
+        if (!InputManager.getInstance().GetInteractPressed()) return;
+
+        DialogueManagaer.instance.EnterDialogueMode(inkJson);
+
+        if (GetComponent<NPCAnimScript>().isSick)
+        {
+            GetComponent<NPCAnimScript>().goingToBed = true;
+
+            GameEventsManager.instance.miscEvents.talkToStudent();
+        }
+    }
+
+    public void getNewInk()
+    {
+        inkJson = InkManager.instance.getRandomInk(isMale);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.tag.Equals("Player")) return;
+
+        interactCue.SetActive(!GetComponent<NPCAnimScript>().goingToBed);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.tag.Equals("Player")) return;
+
+        interactCue.SetActive(false);
+    }
+
+    public void LoadData(GameData data)
+    {
+        TextAsset inkJsonOut;
+        if (!data.inkJsonData.TryGetValue(id, out inkJsonOut))
+        {
+            if (inkJson != null) return;
+            this.inkJson = InkManager.instance.getRandomInk(isMale);
+        }
+        else
+        {
+            inkJson = inkJsonOut;
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.inkJsonData.ContainsKey(id))
+        {
+            data.inkJsonData.Remove(id);
+        }
+        data.inkJsonData.Add(id, inkJson);
     }
 }

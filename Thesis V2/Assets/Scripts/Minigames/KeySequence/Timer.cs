@@ -10,24 +10,26 @@ public class Timer : MonoBehaviour
     public bool timeOut = false;
     public bool stopTimer = false;
 
+    public bool startTimer = false;
+
     private void Start() {
-        timer.value = 0;
+        timer.value = timer.maxValue;
     }
 
     private void Update() {
-        if (!stopTimer) updateTimer();
+        if (!stopTimer && startTimer) updateTimer();
     }
 
     private void updateTimer(){
-        timer.value += timerAccel * Time.deltaTime;
+        timer.value -= timerAccel * Time.deltaTime;
 
-        if (timer.value >= timer.maxValue){
-            timer.value = timer.maxValue;
+        if (timer.value <= timer.minValue){
+            timer.value = timer.minValue;
             timeOut = true;
         }
     }
 
     public void correctLetter(){
-        timer.value -= 0.5f;
+        timer.value += 0.5f;
     }
 }

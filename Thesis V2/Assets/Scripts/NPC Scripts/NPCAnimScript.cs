@@ -7,9 +7,10 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
     [SerializeField] private string id;
 
     [ContextMenu("Generate guid for id")]
-	private void GenerateGuid(){
-		id = System.Guid.NewGuid().ToString();
-	}
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
 
     Animator animator;
 
@@ -19,61 +20,96 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
 
     [Header("Bed Variables")]
     public bool isSick = false;
+    public bool goingToBed = false;
     public bool isLayingDown = false;
     public bool slowDown = false;
     public bool stopped = false;
 
     [Header("Chair Variables")]
-    public bool wantToSit = false; // TODO: Anim - Should base off of the target name/tag. If Chair then wantToSit = false
-    public bool isSitting = false; 
-    
+    public bool wantToSit = false;
+    public bool isSitting = false;
 
-    private void Start() {
+    private Material skinColor;
+    private Color originalSkinColor;
+
+
+    private void Start()
+    {
+        skinColor = GetComponentInChildren<SkinnedMeshRenderer>().material; // ! Not picking one specific material
+        originalSkinColor = skinColor.color;
         animator = gameObject.GetComponent<Animator>();
     }
 
-    private void Update() {
-        if (!stopped){
-            if (slowDown){
-                if (speed < 0.05f){
-                    speed = 0;
-                    stopped = true;
-                    slowDown = false;
-                }
+    private void Update()
+    {
+        skinColor.color = isSick ? Color.green : originalSkinColor;
 
-                speed -= deccelarationSpeed * Time.deltaTime;
-            } else {
-                speed += accelarationSpeed * Time.deltaTime;
-            }
-
-            if (speed > 1f) speed = 1f;
-        }
+        updateSpeed();
 
         animator.SetFloat("Speed", speed);
     }
 
-    public void LoadData(GameData data){
+    private void updateSpeed()
+    {
+        if (stopped)
+        {
+            speed = 0;
+            return;
+        }
+
+        if (speed > 1f) speed = 1f;
+
+        if (!slowDown)
+        {
+            speed += accelarationSpeed * Time.deltaTime;
+            return;
+        }
+
+        speed -= deccelarationSpeed * Time.deltaTime;
+
+        if (speed < 0.05f)
+        {
+            speed = 0;
+            stopped = true;
+            slowDown = false;
+        }
+    }
+
+    public void LoadData(GameData data)
+    {
         data.NPCIsLayingDownMap.TryGetValue(id, out isLayingDown);
 
         data.NPCIsSickMap.TryGetValue(id, out isSick);
 
         data.NPCIsSittingMap.TryGetValue(id, out isSitting);
+
+        data.NPCWantToSitMap.TryGetValue(id, out wantToSit);
     }
 
-    public void SaveData(ref GameData data){
-        if (data.NPCIsLayingDownMap.ContainsKey(id)){
+    public void SaveData(ref GameData data)
+    {
+        if (data.NPCIsLayingDownMap.ContainsKey(id))
+        {
             data.NPCIsLayingDownMap.Remove(id);
         }
         data.NPCIsLayingDownMap.Add(id, isLayingDown);
 
-        if (data.NPCIsSickMap.ContainsKey(id)){
+        if (data.NPCIsSickMap.ContainsKey(id))
+        {
             data.NPCIsSickMap.Remove(id);
         }
         data.NPCIsSickMap.Add(id, isSick);
 
-        if (data.NPCIsSittingMap.ContainsKey(id)){
+        if (data.NPCIsSittingMap.ContainsKey(id))
+        {
             data.NPCIsSittingMap.Remove(id);
         }
         data.NPCIsSittingMap.Add(id, isSitting);
+
+        if (data.NPCWantToSitMap.ContainsKey(id))
+        {
+            data.NPCWantToSitMap.Remove(id);
+        }
+        data.NPCWantToSitMap.Add(id, wantToSit);
     }
 }

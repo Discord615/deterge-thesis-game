@@ -19,21 +19,24 @@ public class MakeWallTransparent : MonoBehaviour
     [SerializeField] private float timeStart = 1f;
     private float timer;
 
-    private void Start() {
+    private void Start()
+    {
         layerMask = 1 << layerNumber;
         timer = timeStart;
     }
 
-    void castRay(){
+    void castRay()
+    {
         Vector3 screenPos = mainCam.WorldToScreenPoint(new Vector3(player.transform.position.x, player.transform.position.y + 0.5f, player.transform.position.z));
         Ray rayFromCam = mainCam.ScreenPointToRay(screenPos);
 
         float camDistanceToPlayer = Vector3.Distance(mainCam.transform.position, player.transform.position);
 
-        if (!Physics.Raycast(rayFromCam, out hit, camDistanceToPlayer, layerMask)) {
-        // Debug.DrawRay(rayFromCam.origin, rayFromCam.direction * 50, Color.green);
+        if (!Physics.Raycast(rayFromCam, out hit, camDistanceToPlayer, layerMask))
+        {
+            // Debug.DrawRay(rayFromCam.origin, rayFromCam.direction * 50, Color.green);
             if (prevWall == null) return;
-
+            if (prevWall.tag.Equals("invisible")) return;
             prevWall.GetComponent<MeshRenderer>().enabled = true;
 
             prevWall = null;
@@ -42,12 +45,15 @@ public class MakeWallTransparent : MonoBehaviour
 
             return;
         }
-        
+
+        if (hit.collider.tag.Equals("invisible")) return;
+
         newWall = hit.collider.gameObject;
 
         if (newWall == prevWall) return;
 
-        if (timer > 0){
+        if (timer > 0)
+        {
             timer -= Time.deltaTime;
             return;
         }
@@ -60,7 +66,8 @@ public class MakeWallTransparent : MonoBehaviour
         // Debug.DrawRay(rayFromCam.origin, rayFromCam.direction * 50, Color.blue);
     }
 
-    void Update(){
+    void Update()
+    {
         castRay();
     }
 }

@@ -15,13 +15,14 @@ public class Unit : MonoBehaviour, IDataPersistence
 	const float minPathUpdateTime = .2f;
 	const float pathUpdateMoveThreshold = .5f;
 
-	public Transform target;
-	private Transform oldTarget;
+	public Vector3 target;
+	private Vector3 oldTarget;
 	public float speed = 3.5f;
 	public float turnSpeed = 3f;
 	public float turnDst = 5f;
 	public float stoppingDst = 2f;
 	public int floor;
+	public bool wantToTeleport = false;
 
 	Path path;
 
@@ -29,16 +30,45 @@ public class Unit : MonoBehaviour, IDataPersistence
 	Quaternion unitRotation;
 	NPCAnimScript animScript;
 
+	private Rigidbody unitRB;
+
 	void Start()
 	{
+		unitRB = GetComponent<Rigidbody>();
 		animScript = GetComponent<NPCAnimScript>();
-		oldTarget = target;
+
 		StartCoroutine(UpdatePath());
 	}
 
 	private void Update()
 	{
-		if (target == null) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
+		if ((target == Vector3.zero || (animScript.stopped && !DialogueManagaer.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
+		{
+			if (animScript.isSick && animScript.goingToBed)
+			{
+				if (floor == 1){
+					try
+					{
+						target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject);
+					}
+					catch (System.Exception)
+					{
+						target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
+					}
+				} else {
+					wantToTeleport = true;
+					target = UnitTargetManager.GetInstance().getTeleportTarget(floor);
+				}
+				animScript.stopped = false;
+			}
+			else
+			{
+				target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
+				animScript.stopped = false;
+			}
+		}
+
+		target = new Vector3(target.x, 0, target.z);
 
 		if (!animScript.isLayingDown)
 		{
@@ -55,16 +85,19 @@ public class Unit : MonoBehaviour, IDataPersistence
 	public void LoadData(GameData data) // ? Subject to change because I can't tell what TryGetValue returns if id does not exist
 	{
 		// Load Unit Floor
-		data.NPCFloorMap.TryGetValue(id, out floor);
-		if (floor == 0) floor = 1;
+		if (!data.NPCFloorMap.TryGetValue(id, out floor)) floor = 1;
 
 		// Load Unit Target
-		data.NPCTargetMap.TryGetValue(id, out target);
+		Vector3 targetOut;
+		if (data.NPCTargetMap.TryGetValue(id, out targetOut))
+		{
+			if (targetOut == Vector3.zero) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
+			else target = targetOut;
+		}
 
 		// Load NPC position
 		Vector3 position;
-		data.NPCposition.TryGetValue(id, out position);
-		if (position != Vector3.zero) this.transform.position = position;
+		if (data.NPCposition.TryGetValue(id, out position)) this.transform.position = position;
 	}
 
 	public void SaveData(ref GameData data)
@@ -114,18 +147,16 @@ public class Unit : MonoBehaviour, IDataPersistence
 		{
 
 			case 1:
-				PathRequestManager1.RequestPath(new PathRequest1(transform.position, target.position, OnPathFound));
+				PathRequestManager1.RequestPath(new PathRequest1(transform.position, target, OnPathFound));
 				break;
 			case 2:
-				PathRequestManager2.RequestPath(new PathRequest2(transform.position, target.position, OnPathFound));
-				break;
-			case 3:
-				PathRequestManager3.RequestPath(new PathRequest3(transform.position, target.position, OnPathFound));
+				Vector3 NPCTransformWithOffset = new Vector3(transform.position.x - 850, transform.position.y, transform.position.z);
+				PathRequestManager2.RequestPath(new PathRequest2(NPCTransformWithOffset, target, OnPathFound));
 				break;
 		}
 
 		float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;
-		Vector3 targetPosOld = target.position;
+		Vector3 targetPosOld = target;
 
 		while (true)
 		{
@@ -133,25 +164,21 @@ public class Unit : MonoBehaviour, IDataPersistence
 			// print (((target.position - targetPosOld).sqrMagnitude) + "    " + sqrMoveThreshold);
 			if (!gameObject.GetComponent<NPCAnimScript>().isLayingDown || !gameObject.GetComponent<NPCAnimScript>().isSitting)
 			{
-				if (((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) || oldTarget != target || wallReached)
+				if (((target - targetPosOld).sqrMagnitude > sqrMoveThreshold) || oldTarget == target || wallReached)
 				{
-					if (oldTarget != target) oldTarget = target;
 					if (wallReached) wallReached = false;
 
 					switch (floor)
 					{
 						case 1:
-							PathRequestManager1.RequestPath(new PathRequest1(transform.position, target.position, OnPathFound));
+							PathRequestManager1.RequestPath(new PathRequest1(transform.position, target, OnPathFound));
 							break;
 						case 2:
-							PathRequestManager2.RequestPath(new PathRequest2(transform.position, target.position, OnPathFound));
-							break;
-						case 3:
-							PathRequestManager3.RequestPath(new PathRequest3(transform.position, target.position, OnPathFound));
+							PathRequestManager2.RequestPath(new PathRequest2(transform.position - new Vector3(850, 0, 0), target, OnPathFound));
 							break;
 					}
 
-					targetPosOld = target.position;
+					targetPosOld = target;
 				}
 			}
 		}
@@ -162,7 +189,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 		bool followingPath = true;
 		int pathIndex = 0;
-		transform.LookAt(path.lookPoints[0]);
+		if (!animScript.isSitting) transform.LookAt(path.lookPoints[0]);
 
 		float speedPercent = 1;
 
@@ -182,7 +209,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 				}
 			}
 
-			if (followingPath)
+			if (followingPath && !animScript.isLayingDown && !animScript.isSitting) // TODO: Test if sitting and laying down condition works properly
 			{
 
 				animScript.slowDown = false;
@@ -196,16 +223,28 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 					if (speedPercent < 0.01f)
 					{
+						if (oldTarget != target) oldTarget = target;
 						followingPath = false;
-						target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor).transform;
-						Debug.Log("Completed path");
+						// Debug.Log("Completed path");
+						animScript.stopped = true;
 					}
 				}
 
-				// TODO: Add lock for when target has been changed while laying down or sitting down
-				Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
-				transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
-				transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
+				if (!animScript.isSitting && !((gameObject == PlayerInteracting.instance.NPC) && DialogueManagaer.instance.dialogueIsPlaying))
+				{
+					Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
+					unitRB.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed));
+				}
+
+				if (!((gameObject == PlayerInteracting.instance.NPC) && DialogueManagaer.instance.dialogueIsPlaying))
+					unitRB.MovePosition(transform.position + (transform.forward * speed * speedPercent * Time.deltaTime));
+				else
+				{
+					animScript.stopped = true;
+					transform.position = transform.position;
+					transform.LookAt(GameObject.Find("Player").transform);
+				}
+				// transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
 			}
 
 			yield return null;

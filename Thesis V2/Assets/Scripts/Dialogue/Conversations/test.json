@@ -1,1 +1,0 @@
-﻿{"inkVersion":21,"root":[["^How are you?","\n","ev","str","^You suck","/str","/ev",{"*":"0.c-0","flg":4},"ev","str","^Not doing so well","/str","/ev",{"*":"0.c-1","flg":4},{"c-0":["\n","^That's not very kind of you","\n",{"->":"0.g-0"},{"#f":5}],"c-1":["\n","^Well. I'm sorry to hear that","\n",{"->":"0.g-0"},{"#f":5}],"g-0":["done",{"#f":5}]}],"done",{"#f":1}],"listDefs":{}}

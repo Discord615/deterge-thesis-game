@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: CurePatientQuest
   m_EditorClassIdentifier: 
   <id>k__BackingField: CurePatientQuest
-  displayName: Cure some dudes!
-  questPrerequisites: []
+  displayName: Cure Patients
+  questPrerequisites:
+  - {fileID: 11400000, guid: 583d90c312891e94e99771d34200035d, type: 2}
   questStepPrefabs:
   - {fileID: 5085480678664313490, guid: c2f35db65af66ac4cb1a3e05cfe73322, type: 3}

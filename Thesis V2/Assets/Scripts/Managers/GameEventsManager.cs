@@ -10,6 +10,8 @@ public class GameEventsManager : MonoBehaviour
     public QuestEvents questEvents;
 
     private void Awake() {
+        Application.targetFrameRate = 60;
+
         if (instance != null){
             Debug.LogError("There are more than one instance of Game Event Manager");
         }

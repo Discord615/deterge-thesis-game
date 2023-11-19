@@ -71,6 +71,51 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AlcoholBind"",
+                    ""type"": ""Button"",
+                    ""id"": ""a0249766-c24d-4c69-a666-5de51ff41539"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GloveBind"",
+                    ""type"": ""Button"",
+                    ""id"": ""dbf670eb-2a89-49ac-836c-4eb716795c25"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MaskBind"",
+                    ""type"": ""Button"",
+                    ""id"": ""915c609d-0607-42ba-aabb-3240ef98b2b1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Space"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e39dea7-719e-4e6f-90ab-549eccb979b1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Encyclopedia"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2fbe264-98e9-4a2a-9d83-866ae78d563c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -82,17 +127,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2dfcd921-367c-4dee-9b49-bd80ada088fc"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ContextAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -238,6 +272,61 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20fadfb0-538e-41ec-b83e-31a67dc785bc"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AlcoholBind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03e15806-ab36-4225-b7d6-c05042bcc450"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GloveBind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e3d1da8-7f05-4778-8aab-b21505b41884"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MaskBind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2dfcd921-367c-4dee-9b49-bd80ada088fc"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Space"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f29972f-5029-4b77-a38b-50ae924a4f0a"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Encyclopedia"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -251,6 +340,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_AlcoholBind = m_Player.FindAction("AlcoholBind", throwIfNotFound: true);
+        m_Player_GloveBind = m_Player.FindAction("GloveBind", throwIfNotFound: true);
+        m_Player_MaskBind = m_Player.FindAction("MaskBind", throwIfNotFound: true);
+        m_Player_Space = m_Player.FindAction("Space", throwIfNotFound: true);
+        m_Player_Encyclopedia = m_Player.FindAction("Encyclopedia", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +411,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_AlcoholBind;
+    private readonly InputAction m_Player_GloveBind;
+    private readonly InputAction m_Player_MaskBind;
+    private readonly InputAction m_Player_Space;
+    private readonly InputAction m_Player_Encyclopedia;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -326,6 +425,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @AlcoholBind => m_Wrapper.m_Player_AlcoholBind;
+        public InputAction @GloveBind => m_Wrapper.m_Player_GloveBind;
+        public InputAction @MaskBind => m_Wrapper.m_Player_MaskBind;
+        public InputAction @Space => m_Wrapper.m_Player_Space;
+        public InputAction @Encyclopedia => m_Wrapper.m_Player_Encyclopedia;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,6 +454,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @AlcoholBind.started += instance.OnAlcoholBind;
+            @AlcoholBind.performed += instance.OnAlcoholBind;
+            @AlcoholBind.canceled += instance.OnAlcoholBind;
+            @GloveBind.started += instance.OnGloveBind;
+            @GloveBind.performed += instance.OnGloveBind;
+            @GloveBind.canceled += instance.OnGloveBind;
+            @MaskBind.started += instance.OnMaskBind;
+            @MaskBind.performed += instance.OnMaskBind;
+            @MaskBind.canceled += instance.OnMaskBind;
+            @Space.started += instance.OnSpace;
+            @Space.performed += instance.OnSpace;
+            @Space.canceled += instance.OnSpace;
+            @Encyclopedia.started += instance.OnEncyclopedia;
+            @Encyclopedia.performed += instance.OnEncyclopedia;
+            @Encyclopedia.canceled += instance.OnEncyclopedia;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -369,6 +488,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @AlcoholBind.started -= instance.OnAlcoholBind;
+            @AlcoholBind.performed -= instance.OnAlcoholBind;
+            @AlcoholBind.canceled -= instance.OnAlcoholBind;
+            @GloveBind.started -= instance.OnGloveBind;
+            @GloveBind.performed -= instance.OnGloveBind;
+            @GloveBind.canceled -= instance.OnGloveBind;
+            @MaskBind.started -= instance.OnMaskBind;
+            @MaskBind.performed -= instance.OnMaskBind;
+            @MaskBind.canceled -= instance.OnMaskBind;
+            @Space.started -= instance.OnSpace;
+            @Space.performed -= instance.OnSpace;
+            @Space.canceled -= instance.OnSpace;
+            @Encyclopedia.started -= instance.OnEncyclopedia;
+            @Encyclopedia.performed -= instance.OnEncyclopedia;
+            @Encyclopedia.canceled -= instance.OnEncyclopedia;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -393,5 +527,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnAlcoholBind(InputAction.CallbackContext context);
+        void OnGloveBind(InputAction.CallbackContext context);
+        void OnMaskBind(InputAction.CallbackContext context);
+        void OnSpace(InputAction.CallbackContext context);
+        void OnEncyclopedia(InputAction.CallbackContext context);
     }
 }

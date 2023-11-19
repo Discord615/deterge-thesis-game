@@ -1,30 +1,109 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CurePatientsQuestStep : QuestStep
 {
     private int patientsSaved = 0;
-    private int patientsToBeSaved = 5;
+    private int patientsToBeSaved = 1;
 
-    private void OnEnable() {
+    private GameObject objectiveOut;
+
+    private void OnEnable()
+    {
         GameEventsManager.instance.miscEvents.onPatientSaved += patientSaved;
+        GameEventsManager.instance.miscEvents.onPatientKilled += patientKilled;
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         GameEventsManager.instance.miscEvents.onPatientSaved -= patientSaved;
+        GameEventsManager.instance.miscEvents.onPatientKilled -= patientKilled;
     }
 
-    private void patientSaved(){
-        if (patientsSaved < patientsToBeSaved){
+    private void Start()
+    {
+        ArrowManager.instance.target = Vector3.zero;
+        medLabResultStartDialogue();
+        objectiveOut = GameObject.Find("Objective");
+        GameEventsManager.instance.miscEvents.playerGetsMeds();
+        patientsToBeSaved = getNumberOfSickStudents();
+    }
+
+    private void Update()
+    {
+        objectiveOut.GetComponent<TextMeshProUGUI>().text = string.Format("{0}: {1} / {2}", QuestManager.instance.getQuestById(questId).info.displayName, patientsSaved, patientsToBeSaved);
+
+        if (patientsSaved >= patientsToBeSaved)
+        {
+            objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to Med Lab";
+            ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
+            FinishQuestStep();
+        }
+    }
+
+    private void medLabResultStartDialogue(){
+        switch (GameWorldStatsManager.instance.activeVirusName)
+        {
+            case "flu":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.fluResult);
+            break;
+
+            case "tuber":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.tuberResult);
+            break;
+
+            case "covid":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.covidResult);
+            break;
+
+            case "rabies":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.rabiesResult);
+            break;
+
+            case "typhoid":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.typhoidResult);
+            break;
+
+            case "dengue":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.dengueResult);
+            break;
+        }
+    }
+
+    private void patientSaved()
+    {
+        if (patientsSaved < patientsToBeSaved)
+        {
             patientsSaved++;
+
+            GameObject.Find(AssigningBottleWithMeds.instance.npcPatient).GetComponent<NPCAnimScript>().isSick = false;
+            MinigameManager.instance.syringeGame.SetActive(false);
+            MinigameManager.instance.playerHud.SetActive(true);
+
             updateState();
         }
-
-        if (patientsSaved >= patientsToBeSaved) FinishQuestStep();
     }
 
-    private void updateState(){
+    private void patientKilled(){
+        patientsToBeSaved--;
+    }
+
+    private int getNumberOfSickStudents(){
+        int result = 0;
+
+        foreach (Transform student in GameObject.Find("Students").transform)
+        {
+            if (student.GetComponent<NPCAnimScript>().isSick) result++;
+        }
+
+        return result;
+    }
+
+    private void updateState()
+    {
         string state = patientsSaved.ToString();
         changeState(state);
     }

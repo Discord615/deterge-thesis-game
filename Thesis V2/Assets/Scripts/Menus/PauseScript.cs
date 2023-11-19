@@ -12,6 +12,7 @@ public class PauseScript : MonoBehaviour
     private void Start() {
         pauseOverlay.SetActive(false);
         overlayBool = false;
+        Time.timeScale = 1;
     }
 
     private void Update() {

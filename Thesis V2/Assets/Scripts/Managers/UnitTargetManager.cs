@@ -22,106 +22,126 @@ public class UnitTargetManager : MonoBehaviour
 
     // =====================================================================================================
     // =====================================================================================================
-    [Header("Teleporters")]
+    [Header("FirstFloor")]
+    [SerializeField] private GameObject[] FirstFloorRandomTargets;
     [SerializeField] private GameObject[] FirstFloorTeleps;
-    [SerializeField] private GameObject[] SecondFloorTeleps;
-
-    [Header("Chairs")]
+    [SerializeField] private GameObject[] gymnasiumTargets;
     [SerializeField] private GameObject[] canteenChairs;
+
+    [Header("SecondFloor")]
+    [SerializeField] private GameObject[] SecondFloorRandomTargets;
+    [SerializeField] private GameObject[] SecondFloorTeleps;
     [SerializeField] private GameObject[] classroomChairs;
 
     [Header("Beds")]
     [SerializeField] private GameObject[] beds;
 
-    [Header("General")]
-    [SerializeField] private GameObject[] FirstFloorRandomTargets;
-    [SerializeField] private GameObject[] SecondFloorRandomTargets;
-    [SerializeField] private GameObject canteenFood;
-
-
-    public GameObject getAnyGameObjectTarget(int floor) // TODO: If target is key places for virus then add a randomizer for getting sick that depends on where they got it
+    public Vector3 getAnyGameObjectTarget(int floor, GameObject NPC)
     {
-        GameObject target = null;
-        switch (Random.Range(0, 4))
-        {
-            case 0:
-                target = getTeleportTarget(floor);
-                break;
-
-            case 1:
-                target = getRandomTarget(floor);
-                break;
-
-            case 2:
-                target = getClassroomChairTarget(floor);
-                break;
-
-            case 3:
-                target = getCanteenChairTarget(floor);
-                break;
-        }
-
-        return target;
-    }
-
-    public GameObject getTeleportTarget(int floor)
-    {
+        Vector3 result = Vector3.zero;
         switch (floor)
         {
             case 1:
-                return FirstFloorTeleps[Random.Range(0, FirstFloorTeleps.Length)];
+                result = getAnyFirstFloorTargets(NPC);
+                break;
+
             case 2:
-                return SecondFloorTeleps[Random.Range(0, SecondFloorTeleps.Length)];
+                result = getAnySecondFloorTargets(NPC);
+                break;
         }
-        return null;
+
+        return result;
     }
 
-    public GameObject getCanteenChairTarget(int floor)
+    private Vector3 getAnyFirstFloorTargets(GameObject npc)
     {
-        GameObject target = null;
-        if (floor != 1) target = getAnyGameObjectTarget(floor);
+        Vector3 result = Vector3.zero;
+        int randomSwitchCase = Random.Range(0, 4);
+        if (!npc.GetComponent<NPCAnimScript>().isSick && randomSwitchCase == 2) randomSwitchCase++;
 
-        target = canteenChairs[Random.Range(0, canteenChairs.Length)];
+        switch (randomSwitchCase)
+        {
+            case 0:
+                result = gymnasiumTargets[Random.Range(0, gymnasiumTargets.Length)].transform.position;
+                break;
 
-        return target;
+            case 1:
+                result = canteenChairs[Random.Range(0, canteenChairs.Length)].transform.position;
+                break;
+
+            case 2:
+                npc.GetComponent<Unit>().wantToTeleport = true;
+                result = FirstFloorTeleps[Random.Range(0, FirstFloorTeleps.Length)].transform.position;
+                break;
+
+            case 3:
+                result = FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)].transform.position;
+                break;
+        }
+
+        return result;
     }
 
-    public GameObject getClassroomChairTarget(int floor)
+    private Vector3 getAnySecondFloorTargets(GameObject npc)
     {
-        GameObject target = null;
+        Vector3 result = Vector3.zero;
+        switch (Random.Range(0, 3))
+        {
+            case 0:
+                result = classroomChairs[Random.Range(0, classroomChairs.Length)].transform.position;
+                break;
 
-        if (floor != 2) target = getAnyGameObjectTarget(floor);
+            case 1:
+                npc.GetComponent<Unit>().wantToTeleport = true;
+                result = SecondFloorTeleps[Random.Range(0, SecondFloorTeleps.Length)].transform.position;
+                break;
 
-        target = classroomChairs[Random.Range(0, classroomChairs.Length)];
+            case 2:
+                result = SecondFloorRandomTargets[Random.Range(0, SecondFloorRandomTargets.Length)].transform.position;
+                break;
 
-        return target;
+        }
+
+        return result - new Vector3(850, 0, 0);
     }
 
-    public GameObject getBedTarget(int floor)
+    public Vector3 getBedTarget(int floor, GameObject NPC)
     {
-        GameObject target = null;
+        Vector3 target = Vector3.zero;
+
+        if (floor != 1)
+        {
+            return getAnyGameObjectTarget(floor, NPC);
+        }
 
         foreach (GameObject bed in beds)
         {
             if (bed.GetComponent<LayDown>().occupied) continue;
 
-            target = bed;
+            target = bed.transform.position;
             break;
         }
 
-        return target; // Returns null if no bed was available
+        if (target == null)
+        {
+            target = getAnyGameObjectTarget(floor, NPC);
+        }
+
+        return target;
     }
 
-    public GameObject getRandomTarget(int floor)
-    {
+    public Vector3 getTeleportTarget(int floor){
+
         switch (floor)
         {
             case 1:
-                return FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)];
+                return FirstFloorTeleps[Random.Range(0, FirstFloorTeleps.Length)].transform.position;
 
             case 2:
-                return SecondFloorRandomTargets[Random.Range(0, SecondFloorRandomTargets.Length)];
+                return SecondFloorTeleps[Random.Range(0, SecondFloorTeleps.Length)].transform.position;
         }
-        return null;
+
+        return Vector3.zero;
+
     }
 }

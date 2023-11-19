@@ -5,14 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class QuestData
 {
+    public QuestInfoSO info;
     public QuestState state;
-    public int questStepIndex;
+    public int currentQuestStepIndex;
     public QuestStepState[] questStepStates;
-    public Vector3 playerPosition;
 
-    public QuestData(QuestState state, int questStepIndex, QuestStepState[] questStepStates){
+    public QuestData(QuestInfoSO info, QuestState state, int currentQuestStepIndex, QuestStepState[] questStepStates)
+    {
+        this.info = info;
         this.state = state;
-        this.questStepIndex = questStepIndex;
+        this.currentQuestStepIndex = currentQuestStepIndex;
         this.questStepStates = questStepStates;
     }
 }
