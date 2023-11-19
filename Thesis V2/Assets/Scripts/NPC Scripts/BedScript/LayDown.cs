@@ -20,6 +20,10 @@ public class LayDown : MonoBehaviour, IDataPersistence
     public bool sampleTaken = false;
     [SerializeField] private GameObject visualCue;
 
+    private void Start() {
+        visualCue.SetActive(false);
+    }
+
     private void OnEnable() {
         GameEventsManager.instance.miscEvents.onPlayerGetMeds += playerGetsMeds;
     }

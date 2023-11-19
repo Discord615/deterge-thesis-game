@@ -23,6 +23,7 @@ public class CurePatientsQuestStep : QuestStep
 
     private void Start()
     {
+        medLabResultStartDialogue();
         objectiveOut = GameObject.Find("Objective");
         GameEventsManager.instance.miscEvents.playerGetsMeds();
         patientsToBeSaved = getNumberOfSickStudents();
@@ -31,6 +32,35 @@ public class CurePatientsQuestStep : QuestStep
     private void Update()
     {
         objectiveOut.GetComponent<TextMeshProUGUI>().text = string.Format("{0}: {1} / {2}", QuestManager.instance.getQuestById(questId).info.displayName, patientsSaved, patientsToBeSaved);
+    }
+
+    private void medLabResultStartDialogue(){
+        switch (GameWorldStatsManager.instance.activeVirusName)
+        {
+            case "flu":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.fluResult);
+            break;
+
+            case "tuber":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.tuberResult);
+            break;
+
+            case "covid":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.covidResult);
+            break;
+
+            case "rabies":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.rabiesResult);
+            break;
+
+            case "typhoid":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.typhoidResult);
+            break;
+
+            case "dengue":
+            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.dengueResult);
+            break;
+        }
     }
 
     private void patientSaved()

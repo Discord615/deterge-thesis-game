@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class ProcessSamplesScript : QuestStep
 {
     private GameObject objectiveOut;
+    private GameObject visualCue;
 
     private void OnEnable() {
         GameEventsManager.instance.miscEvents.onSequenceCompleted += processSuccess;
@@ -19,9 +22,24 @@ public class ProcessSamplesScript : QuestStep
 
     private void Start() {
         objectiveOut = GameObject.Find("Objective");
-        
+        visualCue = GameObject.Find("QuestPointCue");
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (!other.tag.Equals("Player")) return;
+
+        visualCue.SetActive(true);
+
+        if (!InputManager.getInstance().GetInteractPressed() && !DialogueManagaer.instance.dialogueIsPlaying) return;
+
         MinigameManager.instance.playerHud.SetActive(false);
         MinigameManager.instance.sequenceGame.SetActive(true);
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (!other.tag.Equals("Player")) return;
+
+        visualCue.SetActive(false);
     }
 
     private void processSuccess(){

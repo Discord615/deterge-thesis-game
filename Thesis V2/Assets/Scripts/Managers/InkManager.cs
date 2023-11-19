@@ -28,6 +28,14 @@ public class InkManager : MonoBehaviour
 
     [Header("Get DNA Samples Dialogue")]
     [SerializeField] private TextAsset[] getDNASampleDialogue;
+    
+    [Header("Med Lab Results")]
+    public TextAsset fluResult;
+    public TextAsset dengueResult;
+    public TextAsset covidResult;
+    public TextAsset typhoidResult;
+    public TextAsset tuberResult;
+    public TextAsset rabiesResult;
 
     public TextAsset getWalkingSickInk()
     {

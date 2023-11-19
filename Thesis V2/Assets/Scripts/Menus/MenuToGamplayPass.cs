@@ -14,6 +14,10 @@ public class MenuToGamplayPass : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Start() {
+        Cursor.visible = true;
+    }
+
     public bool startNewGame;
     public void createNewGame(bool shouldWeStartNewGame){
         startNewGame = shouldWeStartNewGame;
