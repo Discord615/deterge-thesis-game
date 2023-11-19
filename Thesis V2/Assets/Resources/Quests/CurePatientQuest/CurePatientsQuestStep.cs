@@ -14,15 +14,18 @@ public class CurePatientsQuestStep : QuestStep
     private void OnEnable()
     {
         GameEventsManager.instance.miscEvents.onPatientSaved += patientSaved;
+        GameEventsManager.instance.miscEvents.onPatientKilled += patientKilled;
     }
 
     private void OnDisable()
     {
         GameEventsManager.instance.miscEvents.onPatientSaved -= patientSaved;
+        GameEventsManager.instance.miscEvents.onPatientKilled -= patientKilled;
     }
 
     private void Start()
     {
+        ArrowManager.instance.target = Vector3.zero;
         medLabResultStartDialogue();
         objectiveOut = GameObject.Find("Objective");
         GameEventsManager.instance.miscEvents.playerGetsMeds();
@@ -32,6 +35,13 @@ public class CurePatientsQuestStep : QuestStep
     private void Update()
     {
         objectiveOut.GetComponent<TextMeshProUGUI>().text = string.Format("{0}: {1} / {2}", QuestManager.instance.getQuestById(questId).info.displayName, patientsSaved, patientsToBeSaved);
+
+        if (patientsSaved >= patientsToBeSaved)
+        {
+            objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to Med Lab";
+            ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
+            FinishQuestStep();
+        }
     }
 
     private void medLabResultStartDialogue(){
@@ -75,13 +85,10 @@ public class CurePatientsQuestStep : QuestStep
 
             updateState();
         }
+    }
 
-        if (patientsSaved >= patientsToBeSaved)
-        {
-            objectiveOut.GetComponent<TextMeshProUGUI>().text = "Talk to canteen lady";
-
-            FinishQuestStep();
-        }
+    private void patientKilled(){
+        patientsToBeSaved--;
     }
 
     private int getNumberOfSickStudents(){

@@ -46,13 +46,14 @@ public class QuestPoint : MonoBehaviour
 
         if (!(DialogueManagaer.instance.dialogueIsPlaying || BypassDialogue)) return;
 
-        if (needInteract) 
-            if (!InputManager.getInstance().GetInteractPressed() && !interactCue.activeInHierarchy) return;
-
         if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
         {
             GameEventsManager.instance.questEvents.finishQuest(questId);
         }
+        
+        if (needInteract) 
+            if (!InputManager.getInstance().GetInteractPressed() && interactCue.activeInHierarchy) return;
+
 
         if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
         {

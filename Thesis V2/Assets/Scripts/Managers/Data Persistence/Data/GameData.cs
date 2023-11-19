@@ -43,6 +43,9 @@ public class GameData
     public bool displayNumberOfSickStudentsData;
     public int numberOfSickStudentsData;
 
+    // * General GameData
+    public int patientsKilledData;
+
     public GameData()
     {
         this.playerPosition = new Vector3(0, 1, 0);
@@ -71,6 +74,8 @@ public class GameData
 
         this.displayNumberOfSickStudentsData = false;
         this.numberOfSickStudentsData = 0;
+
+        this.patientsKilledData = 0;
 
         // ! These two causes issues because it initializes to either null or 0
         this.NPCFloorMap = new SerializableDictionary<string, int>();

@@ -28,11 +28,6 @@ public class TeleportTrigger : MonoBehaviour
             {
                 TeleportManager.GetInstance().TeleportPlayer(teleportee, location.transform.position);
             }
-
-            if (teleportee.tag == "npc")
-            {
-                TeleportManager.GetInstance().TeleportNPC(teleportee, location.transform.position);
-            }
         }
     }
 
@@ -49,12 +44,12 @@ public class TeleportTrigger : MonoBehaviour
         if (collider.tag == "npc")
         {
 
-            if (collider.GetComponent<Unit>().wantToTeleport)
+            if (collider.GetComponent<Unit>().wantToTeleport && collider.GetComponent<Unit>().target == new Vector3(transform.position.x, 0, transform.position.z))
             {
                 collider.GetComponent<Unit>().floor = collider.GetComponent<Unit>().floor == 1 ? 2 : 1;
                 collider.GetComponent<Unit>().wantToTeleport = false;
-                teleportAvailable = true;
                 teleportee = collider.gameObject;
+                TeleportManager.GetInstance().TeleportNPC(teleportee, location.transform.position);
 
                 collider.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(collider.GetComponent<Unit>().floor, collider.gameObject);
             }
@@ -72,7 +67,6 @@ public class TeleportTrigger : MonoBehaviour
 
         if (collider.tag == "npc")
         {
-            teleportAvailable = false;
             teleportee = null;
         }
     }

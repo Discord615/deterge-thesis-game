@@ -44,16 +44,22 @@ public class Unit : MonoBehaviour, IDataPersistence
 	{
 		if ((target == Vector3.zero || (animScript.stopped && !DialogueManagaer.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
 		{
-			if (animScript.isSick && animScript.goingToBed && floor == 1)
+			if (animScript.isSick && animScript.goingToBed)
 			{
-				try
-				{
-					target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject);
+				if (floor == 1){
+					try
+					{
+						target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject);
+					}
+					catch (System.Exception)
+					{
+						target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
+					}
+				} else {
+					wantToTeleport = true;
+					target = UnitTargetManager.GetInstance().getTeleportTarget(floor);
 				}
-				catch (System.Exception)
-				{
-					target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
-				}
+				animScript.stopped = false;
 			}
 			else
 			{

@@ -117,7 +117,12 @@ public class LayDown : MonoBehaviour, IDataPersistence
         AssigningBottleWithMeds.instance.bed = gameObject;
 
         if (sampleTaken && !playerHasMeds) return;
-        if (!InputManager.getInstance().GetInteractPressed() && !visualCue.activeInHierarchy) return;
+
+        if (!InputManager.getInstance().GetInteractPressed()) return;
+
+        if (!visualCue.activeInHierarchy) return;
+
+        visualCue.SetActive(false);
 
         DialogueManagaer.instance.EnterDialogueMode(playerHasMeds ? InkManager.instance.getGiveMedsInk() : InkManager.instance.getDNASampleAcquisitionInk());
 

@@ -23,6 +23,7 @@ public class GetDNAScript : QuestStep
 
     private void Start()
     {
+        ArrowManager.instance.target = Vector3.zero;
         samplesToCollect = getNumberOfSickStudents();
         objectiveOut = GameObject.Find("Objective");
     }
@@ -54,6 +55,7 @@ public class GetDNAScript : QuestStep
         if (samplesCollected >= samplesToCollect)
         {
             objectiveOut.GetComponent<TextMeshProUGUI>().text = "Send samples to Med Lab";
+            ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
             FinishQuestStep();
         }
     }

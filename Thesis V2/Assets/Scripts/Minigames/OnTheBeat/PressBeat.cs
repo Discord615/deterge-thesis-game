@@ -35,6 +35,7 @@ public class PressBeat : MonoBehaviour
             GameObject.Find(AssigningBottleWithMeds.instance.npcPatient).GetComponent<NPCAnimScript>().isSick = false;
             AssigningBottleWithMeds.instance.bed.GetComponent<LayDown>().occupied = false;
             GameObject.Find(AssigningBottleWithMeds.instance.npcPatient).SetActive(false);
+            GameEventsManager.instance.miscEvents.patientKilled();
             MinigameManager.instance.playerHud.SetActive(true);
             MinigameManager.instance.onBeatGame.SetActive(false);
         }

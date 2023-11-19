@@ -15,6 +15,7 @@ public class GameWorldStatsManager : MonoBehaviour, IDataPersistence
 
     public bool isNewGame;
     public string activeVirusName;
+    public int patientsKilled = 0;
 
     public bool hasFaceMask = false;
 
@@ -22,12 +23,14 @@ public class GameWorldStatsManager : MonoBehaviour, IDataPersistence
     {
         this.activeVirusName = data.activeVirusData;
         this.hasFaceMask = data.hasFaceMaskData;
+        this.patientsKilled = data.patientsKilledData;
     }
 
     public void SaveData(ref GameData data)
     {
         data.activeVirusData = this.activeVirusName;
         data.hasFaceMaskData = this.hasFaceMask;
+        data.patientsKilledData = this.patientsKilled;
     }
 
 }

@@ -31,7 +31,7 @@ public class LoadingScreen : MonoBehaviour
 
     IEnumerator LoadSceneAsync(int sceneId)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId, LoadSceneMode.Single);
 
         loadingScreenPanel.SetActive(true);
         operation.allowSceneActivation = false;

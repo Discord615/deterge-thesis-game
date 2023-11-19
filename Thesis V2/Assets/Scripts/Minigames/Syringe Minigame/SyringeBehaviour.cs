@@ -63,7 +63,7 @@ public class SyringeBehaviour : MonoBehaviour
             checkCorrection();
         }
 
-        if (press && !finished)
+        if (press && !finished && medBottleLabel != null)
         {
             if (!stop) stop = true;
             currentSyringeSpeed += acceleration * Time.deltaTime * 0.5f;
@@ -76,7 +76,8 @@ public class SyringeBehaviour : MonoBehaviour
     {
         float dosageValue = AssigningBottleWithMeds.instance.dosageValue;
         float marginOfError = 15f;
-        if (!(dosageValue - marginOfError <= syringeValue && dosageValue + marginOfError >= syringeValue))
+        
+        if (!((Mathf.Abs(syringeValue - dosageValue) < marginOfError) || (Mathf.Abs(syringeValue + dosageValue) > marginOfError)))
         {
             Lose();
             return;

@@ -36,10 +36,6 @@ public class UnitTargetManager : MonoBehaviour
     [Header("Beds")]
     [SerializeField] private GameObject[] beds;
 
-    [Header("TESTING")]
-    [SerializeField] private bool allowTeleporting = true;
-
-
     public Vector3 getAnyGameObjectTarget(int floor, GameObject NPC)
     {
         Vector3 result = Vector3.zero;
@@ -61,7 +57,7 @@ public class UnitTargetManager : MonoBehaviour
     {
         Vector3 result = Vector3.zero;
         int randomSwitchCase = Random.Range(0, 4);
-        if (!allowTeleporting && randomSwitchCase == 2) randomSwitchCase++;
+        if (!npc.GetComponent<NPCAnimScript>().isSick && randomSwitchCase == 2) randomSwitchCase++;
 
         switch (randomSwitchCase)
         {
@@ -132,5 +128,20 @@ public class UnitTargetManager : MonoBehaviour
         }
 
         return target;
+    }
+
+    public Vector3 getTeleportTarget(int floor){
+
+        switch (floor)
+        {
+            case 1:
+                return FirstFloorTeleps[Random.Range(0, FirstFloorTeleps.Length)].transform.position;
+
+            case 2:
+                return SecondFloorTeleps[Random.Range(0, SecondFloorTeleps.Length)].transform.position;
+        }
+
+        return Vector3.zero;
+
     }
 }

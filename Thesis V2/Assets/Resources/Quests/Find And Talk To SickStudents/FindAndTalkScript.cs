@@ -20,6 +20,7 @@ public class FindAndTalkScript : QuestStep
     private void Start()
     {
         objectiveOut = GameObject.Find("Objective");
+        ArrowManager.instance.target = Vector3.zero;
     }
 
     private void Update()
@@ -39,6 +40,7 @@ public class FindAndTalkScript : QuestStep
         if (SicknessManager.instance.numberOfSickStudents <= 0)
         {
             objectiveOut.GetComponent<TextMeshProUGUI>().text = "Go to infirmary";
+            ArrowManager.instance.target = new Vector3(-90.7899475f, 4.47160244f, 95.7035599f);
 
             FinishQuestStep();
         }

@@ -14,13 +14,29 @@ public class HeartTempo : MonoBehaviour
     float scaleChange = 0.1f;
 
     float heartZScale;
+
+    Thread resetBeatThread;
+    Thread resetUpdateBeatThread;
+    Thread updateHeartBeatThread;
     private void Start() {
-        Thread resetBeatThread = new Thread(resetBeat);
-        Thread resetUpdateBeatThread = new Thread(resetUpdateBeat);
-        Thread updateHeartBeatThread = new Thread(updateHeart);
+        resetBeatThread = new Thread(resetBeat);
+        resetUpdateBeatThread = new Thread(resetUpdateBeat);
+        updateHeartBeatThread = new Thread(updateHeart);
         resetBeatThread.Start();
         resetUpdateBeatThread.Start();
         updateHeartBeatThread.Start();
+    }
+
+    private void OnEnable() {
+        resetBeatThread.Start();
+        resetUpdateBeatThread.Start();
+        updateHeartBeatThread.Start();
+    }
+
+    private void OnDisable() {
+        resetBeatThread.Abort();
+        resetUpdateBeatThread.Abort();
+        updateHeartBeatThread.Abort();
     }
 
     private void Update() {

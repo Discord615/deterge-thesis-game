@@ -10,6 +10,12 @@ public class MiscEvents
         onPatientSaved?.Invoke();
     }
 
+    public event Action onPatientKilled;
+
+    public void patientKilled(){
+        onPatientKilled?.Invoke();
+    }
+
     public event Action onSampleCollected;
 
     public void sampleCollected(){

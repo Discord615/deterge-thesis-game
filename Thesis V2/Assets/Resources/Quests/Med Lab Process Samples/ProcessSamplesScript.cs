@@ -23,6 +23,9 @@ public class ProcessSamplesScript : QuestStep
     private void Start() {
         objectiveOut = GameObject.Find("Objective");
         visualCue = GameObject.Find("QuestPointCue");
+
+        MinigameManager.instance.playerHud.SetActive(false);
+        MinigameManager.instance.sequenceGame.SetActive(true);
     }
 
     private void OnTriggerStay(Collider other) {
@@ -30,7 +33,7 @@ public class ProcessSamplesScript : QuestStep
 
         visualCue.SetActive(true);
 
-        if (!InputManager.getInstance().GetInteractPressed() && !DialogueManagaer.instance.dialogueIsPlaying) return;
+        if (!InputManager.getInstance().GetInteractPressed()) return;
 
         MinigameManager.instance.playerHud.SetActive(false);
         MinigameManager.instance.sequenceGame.SetActive(true);

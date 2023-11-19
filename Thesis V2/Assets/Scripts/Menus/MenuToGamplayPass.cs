@@ -8,14 +8,10 @@ public class MenuToGamplayPass : MonoBehaviour
 
     private void Awake() {
         if (instance != null){
-            Destroy(instance);
+            Destroy(gameObject);
         }
         instance = this;
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    private void Start() {
-        Cursor.visible = true;
     }
 
     public bool startNewGame;
