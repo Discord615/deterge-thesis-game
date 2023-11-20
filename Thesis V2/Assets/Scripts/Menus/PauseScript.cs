@@ -16,9 +16,16 @@ public class PauseScript : MonoBehaviour
     }
 
     private void Update() {
-        if (InputManager.getInstance().GetEscapedPressed()){
-            togglePauseMenu();
+        if (!InputManager.getInstance().GetEscapedPressed()) return;
+        
+        if (DialogueManagaer.instance.dialogueIsPlaying){
+            // Action Invalid Prompt
+            return;
         }
+
+        if (MinigameManager.instance.sequenceGame.activeInHierarchy || MinigameManager.instance.syringeGame.activeInHierarchy || MinigameManager.instance.onBeatGame.activeInHierarchy) return;
+
+        togglePauseMenu();
     }
 
     // TODO: Add settings and return to main menu

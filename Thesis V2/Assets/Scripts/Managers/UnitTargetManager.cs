@@ -57,7 +57,6 @@ public class UnitTargetManager : MonoBehaviour
     {
         Vector3 result = Vector3.zero;
         int randomSwitchCase = Random.Range(0, 4);
-        if (!npc.GetComponent<NPCAnimScript>().isSick && randomSwitchCase == 2) randomSwitchCase++;
 
         switch (randomSwitchCase)
         {
@@ -70,6 +69,10 @@ public class UnitTargetManager : MonoBehaviour
                 break;
 
             case 2:
+                if (npc.GetComponent<NPCAnimScript>().isSick){
+                    result = FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)].transform.position;
+                    break;
+                }
                 npc.GetComponent<Unit>().wantToTeleport = true;
                 result = FirstFloorTeleps[Random.Range(0, FirstFloorTeleps.Length)].transform.position;
                 break;

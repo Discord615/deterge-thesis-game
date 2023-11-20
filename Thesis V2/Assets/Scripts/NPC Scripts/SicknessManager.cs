@@ -31,6 +31,7 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
             if (Random.Range(0, 30) < 13 && student.GetComponent<Unit>().floor == 1)
             {
                 student.GetComponent<NPCAnimScript>().isSick = true;
+                student.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(student.GetComponent<Unit>().floor, student.gameObject);
                 numberOfSickStudents++;
             }
         }
