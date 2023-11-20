@@ -18,7 +18,7 @@ public class HeartTempo : MonoBehaviour
     Thread resetBeatThread;
     Thread resetUpdateBeatThread;
     Thread updateHeartBeatThread;
-    private void Start() {
+    private void Awake() {
         resetBeatThread = new Thread(resetBeat);
         resetUpdateBeatThread = new Thread(resetUpdateBeat);
         updateHeartBeatThread = new Thread(updateHeart);

@@ -25160,7 +25160,7 @@ MonoBehaviour:
   startPoint: 1
   finishPoint: 1
   BypassDialogue: 1
-  needInteract: 1
+  needInteract: 0
   iconIsDestroyed: 0
 --- !u!65 &1797947258
 BoxCollider:
@@ -29517,6 +29517,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1755516626230306399, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: maxNumberOfKeys
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2350851226165599882, guid: 0b68cdf92c5f20d4e9692a79393005a8,
         type: 3}
       propertyPath: m_text

@@ -10,10 +10,12 @@ public class SanitizeFluScript : QuestStep
     private GameObject objectiveOut;
 
     private void Start() {
+        ArrowManager.instance.target = Vector3.zero;
+        objectiveOut = GameObject.Find("Objective");
+
         sanitizeCue = VisualCueManager.instnace.sanitizeCue;
 
         objectiveOut.GetComponent<TextMeshProUGUI>().text = "Head to ventilations at 3rd Floor";
-        objectiveOut = GameObject.Find("Objective");
         
         sanitizeCue.SetActive(false);
     }
