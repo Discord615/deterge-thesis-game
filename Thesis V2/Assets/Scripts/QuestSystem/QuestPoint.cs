@@ -28,7 +28,7 @@ public class QuestPoint : MonoBehaviour
     }
 
     private void Start() {
-        interactCue = GameObject.Find("QuestPointCue");
+        interactCue = VisualCueManager.instnace.questPointCue;
     }
 
     private void OnEnable()
@@ -51,8 +51,8 @@ public class QuestPoint : MonoBehaviour
             GameEventsManager.instance.questEvents.finishQuest(questId);
         }
         
-        if (needInteract) 
-            if (!InputManager.getInstance().GetInteractPressed() && interactCue.activeInHierarchy) return;
+        if (needInteract)
+            if (!InputManager.getInstance().GetInteractPressed()) return;
 
 
         if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)

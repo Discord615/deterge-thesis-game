@@ -10,10 +10,11 @@ public class TeleportTrigger : MonoBehaviour
     private bool teleportAvailable;
     private GameObject teleportee;
 
-    [SerializeField] private GameObject visualCue;
+    private GameObject visualCue;
 
     private void Start()
     {
+        visualCue = VisualCueManager.instnace.teleportCue;
         visualCue.SetActive(false);
     }
 

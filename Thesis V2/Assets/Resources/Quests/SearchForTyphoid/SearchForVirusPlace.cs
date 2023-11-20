@@ -27,39 +27,52 @@ public class SearchForVirusPlace : QuestStep
         switch (GameWorldStatsManager.instance.activeVirusName)
         {
             case "tuber":
-                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
-                ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
-                if (tuber) FinishQuestStep();
+                if (tuber) {
+                    objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
+                    ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
+                    FinishQuestStep();
+                }
                 break;
 
             case "typhoid":
-                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
-                ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
-                if (typhoid) FinishQuestStep();
+                
+                if (typhoid) {
+                    objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
+                    ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
+                    FinishQuestStep();
+                }
                 break;
 
             case "covid":
-                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
-                ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
-                if (covid) FinishQuestStep();
+                if (covid) {
+                    objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
+                    ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
+                    FinishQuestStep();
+                }
                 break;
 
             case "rabies":
-                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
-                ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
-                if (rabies) FinishQuestStep();
+                if (rabies) {
+                    objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
+                    ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
+                    FinishQuestStep();
+                }
                 break;
 
             case "flu":
-                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
-                ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
-                if (flu) FinishQuestStep();
+                if (flu) {
+                    objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
+                    ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
+                    FinishQuestStep();
+                }
                 break;
 
             case "dengue":
-                objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
-                ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
-                if (dengue) FinishQuestStep();
+                if (dengue) {
+                    objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to the Med Lab to get cure for the root cause";
+                    ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
+                    FinishQuestStep();
+                }
                 break;
         }
     }

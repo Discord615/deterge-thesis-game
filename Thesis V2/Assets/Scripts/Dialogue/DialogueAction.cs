@@ -6,8 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class DialogueAction : MonoBehaviour, IDataPersistence
 {
-    [Header("Visual Cue")]
-    [SerializeField] private GameObject interactCue;
+    private GameObject interactCue;
 
     [Header("Ink JSON")]
 
@@ -25,8 +24,8 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
     private bool tookWalkingSickInk;
 
-    private void Awake()
-    {
+    private void Start() {
+        interactCue = VisualCueManager.instnace.npcCue;
         interactCue.SetActive(false);
     }
 

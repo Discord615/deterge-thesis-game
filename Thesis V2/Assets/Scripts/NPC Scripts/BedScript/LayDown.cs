@@ -15,12 +15,13 @@ public class LayDown : MonoBehaviour, IDataPersistence
     string occupantName;
     Vector3 previousPosition;
     public bool reverseBeds = false;
-    public bool playerHasMeds = false; // ! Call when med labs send back results
+    public bool playerHasMeds = false;
 
     public bool sampleTaken = false;
-    [SerializeField] private GameObject visualCue;
+    private GameObject visualCue;
 
     private void Start() {
+        visualCue = VisualCueManager.instnace.bedCue;
         visualCue.SetActive(false);
     }
 

@@ -5,10 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class sink : MonoBehaviour
 {
-    [SerializeField] private GameObject visualCue;
+    private GameObject visualCue;
 
     private void Start()
     {
+        visualCue = VisualCueManager.instnace.sinkCue;
         visualCue.SetActive(false);
     }
 

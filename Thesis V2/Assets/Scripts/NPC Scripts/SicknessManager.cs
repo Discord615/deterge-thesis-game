@@ -26,7 +26,9 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
     {
         foreach (Transform student in studentsObject.transform)
         {
-            if (Random.Range(0, 30) < 13)
+            if (numberOfSickStudents > 4) break;
+
+            if (Random.Range(0, 30) < 13 && student.GetComponent<Unit>().floor == 1)
             {
                 student.GetComponent<NPCAnimScript>().isSick = true;
                 numberOfSickStudents++;

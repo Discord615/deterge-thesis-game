@@ -22,7 +22,7 @@ public class ProcessSamplesScript : QuestStep
 
     private void Start() {
         objectiveOut = GameObject.Find("Objective");
-        visualCue = GameObject.Find("QuestPointCue");
+        visualCue = VisualCueManager.instnace.questPointCue;
 
         MinigameManager.instance.playerHud.SetActive(false);
         MinigameManager.instance.sequenceGame.SetActive(true);
