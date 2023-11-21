@@ -37,6 +37,9 @@ public class InkManager : MonoBehaviour
     public TextAsset tuberResult;
     public TextAsset rabiesResult;
 
+    [Header("Find Sick Students Quest Dialogues")]
+    public TextAsset[] findSickInks;
+
     public TextAsset getWalkingSickInk()
     {
         return walkingSickInks[Random.Range(0, walkingSickInks.Length)];

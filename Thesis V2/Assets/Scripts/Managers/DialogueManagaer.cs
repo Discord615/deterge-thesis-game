@@ -73,6 +73,10 @@ public class DialogueManagaer : MonoBehaviour
         }
     }
 
+    public void EndDialogue(){
+        StartCoroutine(ExitDialogueMode());
+    }
+
     public void EnterDialogueMode(TextAsset inkJSON)
     {
         currentStory = new Story(inkJSON.text);

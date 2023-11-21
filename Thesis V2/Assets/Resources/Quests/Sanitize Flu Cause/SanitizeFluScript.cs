@@ -22,14 +22,20 @@ public class SanitizeFluScript : QuestStep
 
     private void OnTriggerStay(Collider other) {
         if (!other.tag.Equals("Player")) return;
-        sanitizeCue.SetActive(true);
 
         if (!InputManager.getInstance().GetInteractPressed()) return;
+
+        sanitizeCue.SetActive(false);
 
         objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to Med Lab";
         ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
 
         FinishQuestStep();
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (!other.tag.Equals("Player")) return;
+        sanitizeCue.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other) {

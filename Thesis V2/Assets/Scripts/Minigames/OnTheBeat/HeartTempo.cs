@@ -19,7 +19,7 @@ public class HeartTempo : MonoBehaviour
     public bool updateBeat = true;
     public float targetScale = 2.7f;
     public float maxScale = 3f;
-    public float scaleChange = 0.1f;
+    public float scaleChange = 0.05f;
 
     public float heartZScale;
 

@@ -40,7 +40,6 @@ public class GameData
     public SerializableDictionary<string, string> occupantLDNameData;
 
     // * Sickness Manager Variables
-    public bool displayNumberOfSickStudentsData;
     public int numberOfSickStudentsData;
 
     // * General GameData
@@ -72,7 +71,6 @@ public class GameData
         this.virusJsonData = new SerializableDictionary<string, TextAsset>();
         this.occupantLDNameData = new SerializableDictionary<string, string>();
 
-        this.displayNumberOfSickStudentsData = false;
         this.numberOfSickStudentsData = 0;
 
         this.patientsKilledData = 0;

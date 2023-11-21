@@ -71,7 +71,6 @@ public class LayDown : MonoBehaviour, IDataPersistence
         npc.GetComponent<NPCAnimScript>().isLayingDown = true;
         npc.GetComponent<NPCAnimScript>().goingToBed = false;
 
-        npc.GetComponent<BoxCollider>().enabled = false;
         previousPosition = new Vector3(0, npc.transform.position.y, 0);
         npc.transform.position = new Vector3(transform.position.x, 1, transform.position.z + (reverseBeds ? -2 : 2));
         npc.transform.forward = transform.forward;

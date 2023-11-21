@@ -10,7 +10,7 @@ public class resetBeat : MonoBehaviour {
 
     IEnumerator beat(){
         if (HeartTempo.instance.beat) {
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.8f);
             HeartTempo.instance.beat = false;
         }
     }

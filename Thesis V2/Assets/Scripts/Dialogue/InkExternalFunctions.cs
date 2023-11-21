@@ -8,6 +8,7 @@ public class InkExternalFunctions
         story.BindExternalFunction("administerMeds", () =>
         {
             SyringeBehaviour.instance.resetValues();
+            DialogueManagaer.instance.EndDialogue();
             MinigameManager.instance.playerHud.SetActive(false);
             MinigameManager.instance.syringeGame.SetActive(true);
             AssigningBottleWithMeds.instance.setBottleNames(GameWorldStatsManager.instance.activeVirusName);
@@ -15,7 +16,6 @@ public class InkExternalFunctions
 
         story.BindExternalFunction("spreadSickness", (string virusName) => {
             GameWorldStatsManager.instance.activeVirusName = virusName;
-            SicknessManager.instance.displayNumberOfSickStudents = true;
             SicknessManager.instance.spreadSickness();
         });
 

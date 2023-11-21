@@ -111,7 +111,6 @@ public class SyringeBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.GetComponent<BottleBehavior>().medLabel);
         medBottleLabel = other.GetComponent<BottleBehavior>().medLabel;
     }
 

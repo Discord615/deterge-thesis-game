@@ -16,8 +16,6 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
         instance = this;
     }
 
-    public bool displayNumberOfSickStudents = false;
-
     public int numberOfSickStudents = 0;
 
     [SerializeField] private GameObject studentsObject;
@@ -39,13 +37,11 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        displayNumberOfSickStudents = data.displayNumberOfSickStudentsData;
         numberOfSickStudents = data.numberOfSickStudentsData;
     }
 
     public void SaveData(ref GameData data)
     {
-        data.displayNumberOfSickStudentsData = displayNumberOfSickStudents;
         data.numberOfSickStudentsData = numberOfSickStudents;
     }
 }

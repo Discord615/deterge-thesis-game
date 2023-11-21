@@ -72,6 +72,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
     private void OnTriggerEnter(Collider other)
     {
         if (!other.tag.Equals("Player")) return;
+        if (GetComponent<NPCAnimScript>().isLayingDown) return;
 
         interactCue.SetActive(!GetComponent<NPCAnimScript>().goingToBed);
     }
