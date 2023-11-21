@@ -35,13 +35,13 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        originalSkinColor = skinColor.color;
+        originalSkinColor = new Color(0.772549f, 0.6980392f, 0.5529411f);
         animator = gameObject.GetComponent<Animator>();
     }
 
     private void Update()
     {
-        skinColor.color = isSick ? Color.green : originalSkinColor;
+        skinColor.color = isSick ? new Color(0.6552206f, 0.7169812f, 0.4430402f) : originalSkinColor;
 
         updateSpeed();
 
