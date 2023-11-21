@@ -29,13 +29,12 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
     public bool wantToSit = false;
     public bool isSitting = false;
 
-    private Material skinColor;
+    [SerializeField] private Material skinColor;
     private Color originalSkinColor;
 
 
     private void Start()
     {
-        skinColor = GetComponentInChildren<SkinnedMeshRenderer>().material; // ! Not picking one specific material
         originalSkinColor = skinColor.color;
         animator = gameObject.GetComponent<Animator>();
     }

@@ -61,10 +61,12 @@ public class UnitTargetManager : MonoBehaviour
         switch (randomSwitchCase)
         {
             case 0:
+                npc.GetComponent<Unit>().wantToTeleport = false;
                 result = gymnasiumTargets[Random.Range(0, gymnasiumTargets.Length)].transform.position;
                 break;
 
             case 1:
+                npc.GetComponent<Unit>().wantToTeleport = false;
                 result = canteenChairs[Random.Range(0, canteenChairs.Length)].transform.position;
                 break;
 
@@ -78,6 +80,7 @@ public class UnitTargetManager : MonoBehaviour
                 break;
 
             case 3:
+                npc.GetComponent<Unit>().wantToTeleport = false;
                 result = FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)].transform.position;
                 break;
         }
@@ -91,6 +94,7 @@ public class UnitTargetManager : MonoBehaviour
         switch (Random.Range(0, 3))
         {
             case 0:
+                npc.GetComponent<Unit>().wantToTeleport = false;
                 result = classroomChairs[Random.Range(0, classroomChairs.Length)].transform.position;
                 break;
 
@@ -100,6 +104,7 @@ public class UnitTargetManager : MonoBehaviour
                 break;
 
             case 2:
+                npc.GetComponent<Unit>().wantToTeleport = false;
                 result = SecondFloorRandomTargets[Random.Range(0, SecondFloorRandomTargets.Length)].transform.position;
                 break;
 

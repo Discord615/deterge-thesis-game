@@ -36,6 +36,7 @@ public class TeleportManager : MonoBehaviour
 
     private void ChangePosition(GameObject gameObject, Vector3 teleportLocation)
     {
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.transform.position = teleportLocation;
     }
 }

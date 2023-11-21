@@ -41,14 +41,15 @@ public class TeleportTrigger : MonoBehaviour
             teleportAvailable = true;
             teleportee = collider.gameObject;
         }
+    }
 
+    private void OnTriggerStay(Collider collider) {
         if (collider.tag == "npc")
         {
-
-            if (collider.GetComponent<Unit>().wantToTeleport && collider.GetComponent<Unit>().target == new Vector3(transform.position.x, 0, transform.position.z))
+            if (collider.GetComponent<Unit>().wantToTeleport && positionMaths.roundVector3ToInt(collider.GetComponent<Unit>().target) == positionMaths.roundVector3ToInt(new Vector3(transform.localPosition.x, 0, transform.localPosition.z)))
             {
-                collider.GetComponent<Unit>().floor = collider.GetComponent<Unit>().floor == 1 ? 2 : 1;
                 collider.GetComponent<Unit>().wantToTeleport = false;
+                collider.GetComponent<Unit>().floor = collider.GetComponent<Unit>().floor == 1 ? 2 : 1;
                 teleportee = collider.gameObject;
                 TeleportManager.GetInstance().TeleportNPC(teleportee, location.transform.position);
 
