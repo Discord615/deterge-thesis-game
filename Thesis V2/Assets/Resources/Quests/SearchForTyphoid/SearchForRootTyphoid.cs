@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class SearchForVirusPlace : QuestStep
+public class SearchForRootTyphoid : QuestStep
 {
     private GameObject objectiveOut;
 
@@ -19,6 +19,7 @@ public class SearchForVirusPlace : QuestStep
         ArrowManager.instance.target = Vector3.zero;
         objectiveOut = GameObject.Find("Objective");
         objectiveOut.GetComponent<TextMeshProUGUI>().text = string.Format("{0}", "Search for virus around the school");
+        DialogueManager.instance.EnterDialogueMode(InkManager.instance.searchRootInks[4]);
     }
 
     private void OnTriggerEnter(Collider other) {

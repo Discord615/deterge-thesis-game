@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7df891c47e8fa40adda3a328b693b6, type: 3}
+  m_Name: SanitizeCovidCause
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: SanitizeCovidCause
+  displayName: Sanitize Flu Cause
+  questPrerequisites:
+  - {fileID: 11400000, guid: 8631e5b544819034aaf0b800f9eff1b4, type: 2}
+  questStepPrefabs:
+  - {fileID: 1743271154467730943, guid: 6939410d49cae74468a60c80c7f8a4d0, type: 3}

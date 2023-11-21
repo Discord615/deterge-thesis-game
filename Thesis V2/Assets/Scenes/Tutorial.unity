@@ -2733,12 +2733,12 @@ PrefabInstance:
     - target: {fileID: 4131795027508711841, guid: 05029dc37fbd8dd458111b3aa870d503,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4131795027508711841, guid: 05029dc37fbd8dd458111b3aa870d503,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4131795027508711841, guid: 05029dc37fbd8dd458111b3aa870d503,
         type: 3}
@@ -2749,11 +2749,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1908056930}
+    - target: {fileID: 4131795027508711841, guid: 05029dc37fbd8dd458111b3aa870d503,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 1908056933}
     - target: {fileID: 4131795027508711841, guid: 05029dc37fbd8dd458111b3aa870d503,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: togglePauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4131795027508711841, guid: 05029dc37fbd8dd458111b3aa870d503,
         type: 3}
@@ -2763,12 +2768,17 @@ PrefabInstance:
     - target: {fileID: 4131795027508711841, guid: 05029dc37fbd8dd458111b3aa870d503,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LoadingScreen, Assembly-CSharp
+      value: PauseScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4131795027508711841, guid: 05029dc37fbd8dd458111b3aa870d503,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: LoadingScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131795027508711841, guid: 05029dc37fbd8dd458111b3aa870d503,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4131795028130221885, guid: 05029dc37fbd8dd458111b3aa870d503,
         type: 3}

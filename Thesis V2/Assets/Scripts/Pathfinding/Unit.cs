@@ -42,7 +42,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 	private void Update()
 	{
-		if ((target == Vector3.zero || (animScript.stopped && !DialogueManagaer.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
+		if ((target == Vector3.zero || (animScript.stopped && !DialogueManager.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
 		{
 			if (animScript.isSick && animScript.goingToBed)
 			{
@@ -230,13 +230,13 @@ public class Unit : MonoBehaviour, IDataPersistence
 					}
 				}
 
-				if (!animScript.isSitting && !((gameObject == PlayerInteracting.instance.NPC) && DialogueManagaer.instance.dialogueIsPlaying))
+				if (!animScript.isSitting && !((gameObject == PlayerInteracting.instance.NPC) && DialogueManager.instance.dialogueIsPlaying))
 				{
 					Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
 					unitRB.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed));
 				}
 
-				if (!((gameObject == PlayerInteracting.instance.NPC) && DialogueManagaer.instance.dialogueIsPlaying))
+				if (!((gameObject == PlayerInteracting.instance.NPC) && DialogueManager.instance.dialogueIsPlaying))
 					unitRB.MovePosition(transform.position + (transform.forward * speed * speedPercent * Time.deltaTime));
 				else
 				{

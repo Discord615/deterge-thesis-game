@@ -44,7 +44,7 @@ public class QuestPoint : MonoBehaviour
     private void OnTriggerStay(Collider other) {
         if (!other.tag.Equals("Player")) return;
 
-        if (!(DialogueManagaer.instance.dialogueIsPlaying || BypassDialogue)) return;
+        if (!(DialogueManager.instance.dialogueIsPlaying || BypassDialogue)) return;
 
         if (needInteract) if (!InputManager.getInstance().GetInteractPressed()) return;
 

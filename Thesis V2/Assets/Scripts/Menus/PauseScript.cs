@@ -18,7 +18,7 @@ public class PauseScript : MonoBehaviour
     private void Update() {
         if (!InputManager.getInstance().GetEscapedPressed()) return;
         
-        if (DialogueManagaer.instance.dialogueIsPlaying){
+        if (DialogueManager.instance.dialogueIsPlaying){
             // Action Invalid Prompt
             return;
         }
@@ -38,7 +38,7 @@ public class PauseScript : MonoBehaviour
         Application.Quit();
     }
 
-    private void togglePauseMenu(){
+    public void togglePauseMenu(){
         if (!overlayBool){
             pauseOverlay.SetActive(true);
             Time.timeScale = 0;

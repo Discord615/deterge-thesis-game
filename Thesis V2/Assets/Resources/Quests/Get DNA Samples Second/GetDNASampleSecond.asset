@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7df891c47e8fa40adda3a328b693b6, type: 3}
+  m_Name: GetDNASampleSecond
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: GetDNASampleSecond
+  displayName: Get DNA Samples
+  questPrerequisites:
+  - {fileID: 11400000, guid: 66107a72c0d39f148865b381e320cfe3, type: 2}
+  questStepPrefabs:
+  - {fileID: 6195038306265539366, guid: 313a8f0c6c229294588d26e43249fa49, type: 3}

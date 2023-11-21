@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2973966864186495185}
-  - component: {fileID: 1003061079706876207}
   - component: {fileID: 2909501073644175922}
+  - component: {fileID: 152753652013223965}
   m_Layer: 0
   m_Name: SearchForTuber
   m_TagString: Untagged
@@ -26,31 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2684403586861118628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 772.1, y: 0, z: 48}
+  m_LocalPosition: {x: 79.1, y: 0, z: 7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1003061079706876207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2684403586861118628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 815e92f35b90b844da3daa74431a98da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tuber: 0
-  typhoid: 0
-  covid: 0
-  rabies: 0
-  flu: 0
-  dengue: 0
 --- !u!65 &2909501073644175922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64,3 +46,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 37.887123, y: 10.829811, z: 53.89857}
   m_Center: {x: 0.6080284, y: 5.9282885, z: 1.2160587}
+--- !u!114 &152753652013223965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2684403586861118628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2d6ea633e50ce4895584fc48ec6b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tuber: 1
+  typhoid: 0
+  covid: 0
+  rabies: 0
+  flu: 0
+  dengue: 0

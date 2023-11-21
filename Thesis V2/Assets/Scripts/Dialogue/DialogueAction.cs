@@ -54,7 +54,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
-        DialogueManagaer.instance.EnterDialogueMode(inkJson);
+        DialogueManager.instance.EnterDialogueMode(inkJson);
 
         if (GetComponent<NPCAnimScript>().isSick)
         {

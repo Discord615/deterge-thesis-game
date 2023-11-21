@@ -17,7 +17,7 @@ public class PlayerInteracting : MonoBehaviour
     public GameObject NPC;
 
     private void OnTriggerEnter(Collider other) {
-        if (DialogueManagaer.instance.dialogueIsPlaying) return;
+        if (DialogueManager.instance.dialogueIsPlaying) return;
         if (!other.tag.Equals("npc")) return;
 
         NPC = other.gameObject;

@@ -48,27 +48,27 @@ public class CurePatientsQuestStep : QuestStep
         switch (GameWorldStatsManager.instance.activeVirusName)
         {
             case "flu":
-            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.fluResult);
+            DialogueManager.instance.EnterDialogueMode(InkManager.instance.fluResult);
             break;
 
             case "tuber":
-            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.tuberResult);
+            DialogueManager.instance.EnterDialogueMode(InkManager.instance.tuberResult);
             break;
 
             case "covid":
-            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.covidResult);
+            DialogueManager.instance.EnterDialogueMode(InkManager.instance.covidResult);
             break;
 
             case "rabies":
-            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.rabiesResult);
+            DialogueManager.instance.EnterDialogueMode(InkManager.instance.rabiesResult);
             break;
 
             case "typhoid":
-            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.typhoidResult);
+            DialogueManager.instance.EnterDialogueMode(InkManager.instance.typhoidResult);
             break;
 
             case "dengue":
-            DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.dengueResult);
+            DialogueManager.instance.EnterDialogueMode(InkManager.instance.dengueResult);
             break;
         }
     }

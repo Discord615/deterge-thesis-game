@@ -20,8 +20,7 @@ public class FindAndTalkScriptSecond : QuestStep
     private void Start()
     {
         objectiveOut = GameObject.Find("Objective");
-        DialogueManagaer.instance.EnterDialogueMode(InkManager.instance.findSickInks[0]);
-        // ! Not Spreading Sickness
+        DialogueManager.instance.EnterDialogueMode(InkManager.instance.findSickInks[0]);
         ArrowManager.instance.target = Vector3.zero;
     }
 

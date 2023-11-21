@@ -196,7 +196,7 @@ public class InputManager : MonoBehaviour
     {
         bool result = interactPressed;
         interactPressed = false;
-        if (DialogueManagaer.instance.dialogueIsPlaying) result = false;
+        if (DialogueManager.instance.dialogueIsPlaying) result = false;
         return result;
     }
 

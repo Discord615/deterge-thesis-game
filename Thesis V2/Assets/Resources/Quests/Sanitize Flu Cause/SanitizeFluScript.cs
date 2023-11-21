@@ -16,8 +16,10 @@ public class SanitizeFluScript : QuestStep
         sanitizeCue = VisualCueManager.instnace.sanitizeCue;
 
         objectiveOut.GetComponent<TextMeshProUGUI>().text = "Head to ventilations at 3rd Floor";
-        
+
         sanitizeCue.SetActive(false);
+
+        DialogueManager.instance.EnterDialogueMode(InkManager.instance.sanitizeRootInks[0]);
     }
 
     private void OnTriggerStay(Collider other) {

@@ -40,6 +40,12 @@ public class InkManager : MonoBehaviour
     [Header("Find Sick Students Quest Dialogues")]
     public TextAsset[] findSickInks;
 
+    [Header("Search For Root Cause Dialogues")]
+    public TextAsset[] searchRootInks;
+
+    [Header("Sanitize Root Dialogues")]
+    public TextAsset[] sanitizeRootInks;
+
     public TextAsset getWalkingSickInk()
     {
         return walkingSickInks[Random.Range(0, walkingSickInks.Length)];

@@ -26,7 +26,7 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
         {
             if (numberOfSickStudents > 4) break;
 
-            if (Random.Range(0, 30) < 13 && student.GetComponent<Unit>().floor == 1)
+            if (Random.Range(0, 30) < 13 && student.GetComponent<Unit>().floor == 1 && student.gameObject.activeInHierarchy)
             {
                 student.GetComponent<NPCAnimScript>().isSick = true;
                 student.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(student.GetComponent<Unit>().floor, student.gameObject);

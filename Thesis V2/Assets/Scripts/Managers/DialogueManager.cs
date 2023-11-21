@@ -5,7 +5,7 @@ using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
 
-public class DialogueManagaer : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -19,7 +19,7 @@ public class DialogueManagaer : MonoBehaviour
 
     private Story currentStory;
 
-    public static DialogueManagaer instance { get; private set; }
+    public static DialogueManager instance { get; private set; }
 
     private InkExternalFunctions inkExternalFunctions;
 

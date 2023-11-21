@@ -25,7 +25,7 @@ public class PlayerAnim : MonoBehaviour
 
         maxSpeed = InputManager.getInstance().GetRunPressed() ? 2 : 1;
 
-        if (movement.moveDirection != Vector2.zero && !DialogueManagaer.instance.dialogueIsPlaying) {
+        if (movement.moveDirection != Vector2.zero && !DialogueManager.instance.dialogueIsPlaying) {
             MovingBlend();
         } else {
             StoppingBlend();

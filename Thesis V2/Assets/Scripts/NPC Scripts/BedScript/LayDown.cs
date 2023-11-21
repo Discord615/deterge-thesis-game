@@ -90,6 +90,8 @@ public class LayDown : MonoBehaviour, IDataPersistence
 
         npc.GetComponent<CapsuleCollider>().enabled = true;
 
+        playerHasMeds = false;
+        sampleTaken = false;
         occupantName = "";
         occupied = false;
 
@@ -124,7 +126,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
 
         visualCue.SetActive(false);
 
-        DialogueManagaer.instance.EnterDialogueMode(playerHasMeds ? InkManager.instance.getGiveMedsInk() : InkManager.instance.getDNASampleAcquisitionInk());
+        DialogueManager.instance.EnterDialogueMode(playerHasMeds ? InkManager.instance.getGiveMedsInk() : InkManager.instance.getDNASampleAcquisitionInk());
 
         if (!playerHasMeds) sampleTaken = true;
     }

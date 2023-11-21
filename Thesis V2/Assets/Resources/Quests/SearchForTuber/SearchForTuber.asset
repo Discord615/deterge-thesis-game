@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: SearchForTuber
   displayName: Search Virus Root
-  questPrerequisites: []
+  questPrerequisites:
+  - {fileID: 11400000, guid: c58b7c4441d9f564188d2060ce20cfc4, type: 2}
   questStepPrefabs:
   - {fileID: 2684403586861118628, guid: 2dbfbc4a4aea80044bb34b7561a2e463, type: 3}
