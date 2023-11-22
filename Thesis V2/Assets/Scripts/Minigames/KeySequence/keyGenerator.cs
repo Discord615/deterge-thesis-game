@@ -5,6 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class keyGenerator : MonoBehaviour{
+    public static keyGenerator instance { get; private set; }
+
+    private void Awake() {
+        if (instance != null){
+            Debug.LogError("More than one instance of Key Generator in current scene");
+        }
+        instance = this;
+    }
+
     [SerializeField] private TextMeshProUGUI keySequenceOutput;
     [SerializeField] private TextMeshProUGUI winsLeftOutput;
     [SerializeField] private Timer timer;
@@ -36,12 +45,14 @@ public class keyGenerator : MonoBehaviour{
 
         if (win) {
             timer.stopTimer = true;
+            timer.startTimer = false;
             keySequenceOutput.text = "Treatment Successful";
             GameEventsManager.instance.miscEvents.sequenceCompleted();
             return;
         }
 
         if (timer.timeOut){
+            timer.startTimer = false;
             keySequenceOutput.text = "Treatment Unsuccessful";
             GameEventsManager.instance.miscEvents.sequenceFailed();
             return;
@@ -92,7 +103,7 @@ public class keyGenerator : MonoBehaviour{
         keySequenceOutput.text = result;
     }
 
-    private void resetVariables(){
+    public void resetVariables(){
         combination = generateRandomKeys();
         slider.value = slider.maxValue;
         win = false;

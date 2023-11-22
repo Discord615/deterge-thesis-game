@@ -24,6 +24,7 @@ public class ProcessSamplesScript : QuestStep
         objectiveOut = GameObject.Find("Objective");
         visualCue = VisualCueManager.instnace.questPointCue;
 
+        keyGenerator.instance.resetVariables();
         MinigameManager.instance.playerHud.SetActive(false);
         MinigameManager.instance.sequenceGame.SetActive(true);
     }
@@ -52,6 +53,7 @@ public class ProcessSamplesScript : QuestStep
     }
 
     private void processFailed(){
+        keyGenerator.instance.resetVariables();
         MinigameManager.instance.playerHud.SetActive(true);
         MinigameManager.instance.sequenceGame.SetActive(false);
         objectiveOut.GetComponent<TextMeshProUGUI>().text = "Try Again";
