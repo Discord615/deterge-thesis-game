@@ -37,6 +37,18 @@ public class InkManager : MonoBehaviour
     public TextAsset tuberResult;
     public TextAsset rabiesResult;
 
+    [Header("Find Sick Students Quest Dialogues")]
+    public TextAsset[] findSickInks;
+
+    [Header("Search For Root Cause Dialogues")]
+    public TextAsset[] searchRootInks;
+
+    [Header("Sanitize Root Dialogues")]
+    public TextAsset[] sanitizeRootInks;
+
+    [Header("Misc")]
+    public TextAsset firstTimeGettingDamaged;
+
     public TextAsset getWalkingSickInk()
     {
         return walkingSickInks[Random.Range(0, walkingSickInks.Length)];

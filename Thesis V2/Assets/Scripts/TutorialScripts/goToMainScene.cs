@@ -12,7 +12,7 @@ public class goToMainScene : MonoBehaviour
 
         if (TutorialManager.instance.tutorialIndex <= 0) return;
 
-        if (DialogueManagaer.instance.dialogueIsPlaying) return;
+        if (DialogueManager.instance.dialogueIsPlaying) return;
 
         if (stop) return;
 

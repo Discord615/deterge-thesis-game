@@ -77,7 +77,7 @@ public class SyringeBehaviour : MonoBehaviour
         float dosageValue = AssigningBottleWithMeds.instance.dosageValue;
         float marginOfError = 15f;
         
-        if (!((Mathf.Abs(syringeValue - dosageValue) < marginOfError) || (Mathf.Abs(syringeValue + dosageValue) > marginOfError)))
+        if (!((Mathf.Abs(syringeValue - dosageValue) < marginOfError) && (Mathf.Abs(syringeValue + dosageValue) > marginOfError)))
         {
             Lose();
             return;
@@ -89,6 +89,7 @@ public class SyringeBehaviour : MonoBehaviour
             return;
         }
 
+        PlayerHealthManager.instance.reduceHealth();
         GameEventsManager.instance.miscEvents.patientSaved();
 
     }
@@ -111,7 +112,6 @@ public class SyringeBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.GetComponent<BottleBehavior>().medLabel);
         medBottleLabel = other.GetComponent<BottleBehavior>().medLabel;
     }
 

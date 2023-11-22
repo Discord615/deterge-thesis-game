@@ -42,7 +42,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 
 	private void Update()
 	{
-		if ((target == Vector3.zero || (animScript.stopped && !DialogueManagaer.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
+		if ((target == Vector3.zero || (animScript.stopped && !DialogueManager.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
 		{
 			if (animScript.isSick && animScript.goingToBed)
 			{
@@ -209,7 +209,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 				}
 			}
 
-			if (followingPath && !animScript.isLayingDown && !animScript.isSitting) // TODO: Test if sitting and laying down condition works properly
+			if (followingPath && !animScript.isLayingDown && !animScript.isSitting)
 			{
 
 				animScript.slowDown = false;
@@ -225,18 +225,18 @@ public class Unit : MonoBehaviour, IDataPersistence
 					{
 						if (oldTarget != target) oldTarget = target;
 						followingPath = false;
-						// Debug.Log("Completed path");
+
 						animScript.stopped = true;
 					}
 				}
 
-				if (!animScript.isSitting && !((gameObject == PlayerInteracting.instance.NPC) && DialogueManagaer.instance.dialogueIsPlaying))
+				if (!animScript.isSitting && !((gameObject == PlayerInteracting.instance.NPC) && DialogueManager.instance.dialogueIsPlaying))
 				{
 					Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
 					unitRB.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed));
 				}
 
-				if (!((gameObject == PlayerInteracting.instance.NPC) && DialogueManagaer.instance.dialogueIsPlaying))
+				if (!((gameObject == PlayerInteracting.instance.NPC) && DialogueManager.instance.dialogueIsPlaying))
 					unitRB.MovePosition(transform.position + (transform.forward * speed * speedPercent * Time.deltaTime));
 				else
 				{
@@ -244,7 +244,6 @@ public class Unit : MonoBehaviour, IDataPersistence
 					transform.position = transform.position;
 					transform.LookAt(GameObject.Find("Player").transform);
 				}
-				// transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
 			}
 
 			yield return null;

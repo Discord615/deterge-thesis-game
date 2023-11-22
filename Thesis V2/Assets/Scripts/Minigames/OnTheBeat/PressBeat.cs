@@ -24,7 +24,7 @@ public class PressBeat : MonoBehaviour
             reset = true;
         }
 
-        if (onBeatCount >= 10){
+        if (onBeatCount >= 5){
             reset = false;
             MinigameManager.instance.playerHud.SetActive(true);
             MinigameManager.instance.onBeatGame.SetActive(false);

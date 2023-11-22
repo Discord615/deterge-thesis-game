@@ -20,12 +20,12 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        DialogueManagaer.instance.EnterDialogueMode(tutorialDialogue[tutorialIndex]);
+        DialogueManager.instance.EnterDialogueMode(tutorialDialogue[tutorialIndex]);
     }
 
     public void continueTutorial()
     {
         tutorialIndex++;
-        DialogueManagaer.instance.EnterDialogueMode(tutorialDialogue[tutorialIndex]);
+        DialogueManager.instance.EnterDialogueMode(tutorialDialogue[tutorialIndex]);
     }
 }

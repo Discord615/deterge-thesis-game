@@ -16,9 +16,16 @@ public class PauseScript : MonoBehaviour
     }
 
     private void Update() {
-        if (InputManager.getInstance().GetEscapedPressed()){
-            togglePauseMenu();
+        if (!InputManager.getInstance().GetEscapedPressed()) return;
+        
+        if (DialogueManager.instance.dialogueIsPlaying){
+            // Action Invalid Prompt
+            return;
         }
+
+        if (MinigameManager.instance.sequenceGame.activeInHierarchy || MinigameManager.instance.syringeGame.activeInHierarchy || MinigameManager.instance.onBeatGame.activeInHierarchy) return;
+
+        togglePauseMenu();
     }
 
     // TODO: Add settings and return to main menu
@@ -31,7 +38,7 @@ public class PauseScript : MonoBehaviour
         Application.Quit();
     }
 
-    private void togglePauseMenu(){
+    public void togglePauseMenu(){
         if (!overlayBool){
             pauseOverlay.SetActive(true);
             Time.timeScale = 0;

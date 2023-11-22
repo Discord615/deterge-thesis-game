@@ -15,7 +15,7 @@ public class StartMainQuest : MonoBehaviour
         
         if (MenuToGamplayPass.instance.startNewGame)
         {
-            DialogueManagaer.instance.EnterDialogueMode(firstMainQuestDialogue);
+            DialogueManager.instance.EnterDialogueMode(firstMainQuestDialogue);
         }
 
         Destroy(gameObject);

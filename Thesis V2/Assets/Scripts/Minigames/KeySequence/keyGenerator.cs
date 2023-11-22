@@ -14,6 +14,8 @@ public class keyGenerator : MonoBehaviour{
     private bool win = false;
     public bool reset = false;
 
+    [SerializeField] private int maxNumberOfKeys;
+
     // * Win Counter
     int winsLeft = 3;
 
@@ -71,7 +73,7 @@ public class keyGenerator : MonoBehaviour{
     }
 
     private List<string> generateRandomKeys(){
-        float numberOfKeys = Random.Range(4, 10);
+        float numberOfKeys = Random.Range(4, maxNumberOfKeys);
         List<string> resultArr = new List<string>();
         
         for (int i = 0; i < numberOfKeys; i++){

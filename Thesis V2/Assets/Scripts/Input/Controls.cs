@@ -116,6 +116,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""d3f3e136-29fc-4a52-9dd6-948a0ef7c1df"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Mouse Left Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""f077d025-4630-49ea-a66e-a4dbad1bd147"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mouse Scroll"",
+                    ""type"": ""Value"",
+                    ""id"": ""611c7f8e-a2be-4c40-8cfa-0430dc13b7e3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -327,6 +354,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Encyclopedia"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aaafa9e3-b3eb-4976-9602-0e8bb4d3b162"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""117bce1a-53b4-488d-8524-6dfe7d885060"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Left Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4712486-b433-4a47-a401-4000b77696c6"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -345,6 +405,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_MaskBind = m_Player.FindAction("MaskBind", throwIfNotFound: true);
         m_Player_Space = m_Player.FindAction("Space", throwIfNotFound: true);
         m_Player_Encyclopedia = m_Player.FindAction("Encyclopedia", throwIfNotFound: true);
+        m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
+        m_Player_MouseLeftClick = m_Player.FindAction("Mouse Left Click", throwIfNotFound: true);
+        m_Player_MouseScroll = m_Player.FindAction("Mouse Scroll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -416,6 +479,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MaskBind;
     private readonly InputAction m_Player_Space;
     private readonly InputAction m_Player_Encyclopedia;
+    private readonly InputAction m_Player_Mouse;
+    private readonly InputAction m_Player_MouseLeftClick;
+    private readonly InputAction m_Player_MouseScroll;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -430,6 +496,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @MaskBind => m_Wrapper.m_Player_MaskBind;
         public InputAction @Space => m_Wrapper.m_Player_Space;
         public InputAction @Encyclopedia => m_Wrapper.m_Player_Encyclopedia;
+        public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
+        public InputAction @MouseLeftClick => m_Wrapper.m_Player_MouseLeftClick;
+        public InputAction @MouseScroll => m_Wrapper.m_Player_MouseScroll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -469,6 +538,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Encyclopedia.started += instance.OnEncyclopedia;
             @Encyclopedia.performed += instance.OnEncyclopedia;
             @Encyclopedia.canceled += instance.OnEncyclopedia;
+            @Mouse.started += instance.OnMouse;
+            @Mouse.performed += instance.OnMouse;
+            @Mouse.canceled += instance.OnMouse;
+            @MouseLeftClick.started += instance.OnMouseLeftClick;
+            @MouseLeftClick.performed += instance.OnMouseLeftClick;
+            @MouseLeftClick.canceled += instance.OnMouseLeftClick;
+            @MouseScroll.started += instance.OnMouseScroll;
+            @MouseScroll.performed += instance.OnMouseScroll;
+            @MouseScroll.canceled += instance.OnMouseScroll;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -503,6 +581,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Encyclopedia.started -= instance.OnEncyclopedia;
             @Encyclopedia.performed -= instance.OnEncyclopedia;
             @Encyclopedia.canceled -= instance.OnEncyclopedia;
+            @Mouse.started -= instance.OnMouse;
+            @Mouse.performed -= instance.OnMouse;
+            @Mouse.canceled -= instance.OnMouse;
+            @MouseLeftClick.started -= instance.OnMouseLeftClick;
+            @MouseLeftClick.performed -= instance.OnMouseLeftClick;
+            @MouseLeftClick.canceled -= instance.OnMouseLeftClick;
+            @MouseScroll.started -= instance.OnMouseScroll;
+            @MouseScroll.performed -= instance.OnMouseScroll;
+            @MouseScroll.canceled -= instance.OnMouseScroll;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -532,5 +619,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMaskBind(InputAction.CallbackContext context);
         void OnSpace(InputAction.CallbackContext context);
         void OnEncyclopedia(InputAction.CallbackContext context);
+        void OnMouse(InputAction.CallbackContext context);
+        void OnMouseLeftClick(InputAction.CallbackContext context);
+        void OnMouseScroll(InputAction.CallbackContext context);
     }
 }

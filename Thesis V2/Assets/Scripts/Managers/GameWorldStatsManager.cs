@@ -17,12 +17,16 @@ public class GameWorldStatsManager : MonoBehaviour, IDataPersistence
     public string activeVirusName;
     public int patientsKilled = 0;
 
+    public GameObject winPanel;
+
     public bool hasFaceMask = false;
+    public bool hasGlove = false;
 
     public void LoadData(GameData data)
     {
         this.activeVirusName = data.activeVirusData;
         this.hasFaceMask = data.hasFaceMaskData;
+        this.hasGlove = data.hasGloveData;
         this.patientsKilled = data.patientsKilledData;
     }
 
@@ -30,6 +34,7 @@ public class GameWorldStatsManager : MonoBehaviour, IDataPersistence
     {
         data.activeVirusData = this.activeVirusName;
         data.hasFaceMaskData = this.hasFaceMask;
+        data.hasGloveData = this.hasGlove;
         data.patientsKilledData = this.patientsKilled;
     }
 

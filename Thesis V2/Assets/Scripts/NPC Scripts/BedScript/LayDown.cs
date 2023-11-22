@@ -15,12 +15,13 @@ public class LayDown : MonoBehaviour, IDataPersistence
     string occupantName;
     Vector3 previousPosition;
     public bool reverseBeds = false;
-    public bool playerHasMeds = false; // ! Call when med labs send back results
+    public bool playerHasMeds = false;
 
     public bool sampleTaken = false;
-    [SerializeField] private GameObject visualCue;
+    private GameObject visualCue;
 
     private void Start() {
+        visualCue = VisualCueManager.instnace.bedCue;
         visualCue.SetActive(false);
     }
 
@@ -70,7 +71,6 @@ public class LayDown : MonoBehaviour, IDataPersistence
         npc.GetComponent<NPCAnimScript>().isLayingDown = true;
         npc.GetComponent<NPCAnimScript>().goingToBed = false;
 
-        npc.GetComponent<BoxCollider>().enabled = false;
         previousPosition = new Vector3(0, npc.transform.position.y, 0);
         npc.transform.position = new Vector3(transform.position.x, 1, transform.position.z + (reverseBeds ? -2 : 2));
         npc.transform.forward = transform.forward;
@@ -90,6 +90,8 @@ public class LayDown : MonoBehaviour, IDataPersistence
 
         npc.GetComponent<CapsuleCollider>().enabled = true;
 
+        playerHasMeds = false;
+        sampleTaken = false;
         occupantName = "";
         occupied = false;
 
@@ -124,7 +126,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
 
         visualCue.SetActive(false);
 
-        DialogueManagaer.instance.EnterDialogueMode(playerHasMeds ? InkManager.instance.getGiveMedsInk() : InkManager.instance.getDNASampleAcquisitionInk());
+        DialogueManager.instance.EnterDialogueMode(playerHasMeds ? InkManager.instance.getGiveMedsInk() : InkManager.instance.getDNASampleAcquisitionInk());
 
         if (!playerHasMeds) sampleTaken = true;
     }

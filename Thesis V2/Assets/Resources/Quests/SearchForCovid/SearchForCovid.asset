@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: SearchForCovid
   displayName: Search Virus Root
-  questPrerequisites: []
+  questPrerequisites:
+  - {fileID: 11400000, guid: bef4498278bfc6d49b6721f8b0eb75c4, type: 2}
   questStepPrefabs:
   - {fileID: 2684403586861118628, guid: 564e3285f31754f4f8081d1cf0e464eb, type: 3}

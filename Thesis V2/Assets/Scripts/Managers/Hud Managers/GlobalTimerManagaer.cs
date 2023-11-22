@@ -5,11 +5,26 @@ using TMPro;
 
 public class GlobalTimerManagaer : MonoBehaviour, IDataPersistence
 {
+    public static GlobalTimerManagaer instance { get; private set; }
+
+    private void Awake() {
+        if (instance != null){
+            Debug.LogError("More than one instance of Global Timer Manager in current scene");
+        }
+        instance = this;
+    }
+
+
+    [SerializeField] private GameObject losePanel;
     [SerializeField] private TextMeshProUGUI globalTimer;
-    private float initialTime;
+    public float initialTime;
     private bool timeOut = false;
 
+    public bool pauseTimer = false;
+
     private void Update() {
+        if (pauseTimer) return;
+
         if (!timeOut){
             UpdateTimerText(initialTime);
 
@@ -18,6 +33,7 @@ public class GlobalTimerManagaer : MonoBehaviour, IDataPersistence
             if (initialTime <= 0) {
                 initialTime = 0;
                 timeOut = true;
+                losePanel.SetActive(true);
             }
         }
     }

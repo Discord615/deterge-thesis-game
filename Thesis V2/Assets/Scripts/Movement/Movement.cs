@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour, IDataPersistence
     {
         moveDirection = InputManager.getInstance().GetMovePressed();
 
-        if (DialogueManagaer.instance.dialogueIsPlaying)
+        if (DialogueManager.instance.dialogueIsPlaying)
         {
             playerBody.isKinematic = true;
             playerBody.velocity = Vector3.zero;
@@ -35,7 +35,7 @@ public class Movement : MonoBehaviour, IDataPersistence
         if (MinigameManager.instance.onBeatGame.activeInHierarchy) return;
         if (MinigameManager.instance.sequenceGame.activeInHierarchy) return;
 
-        if (DialogueManagaer.instance.dialogueIsPlaying) return;
+        if (DialogueManager.instance.dialogueIsPlaying) return;
 
         rotate();
         playerBody.velocity = MoveRelativeToCamera() * ((InputManager.getInstance().GetRunPressed() ? 2.5f : 1) * moveSpeed);
