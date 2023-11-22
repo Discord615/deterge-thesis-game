@@ -209,7 +209,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 				}
 			}
 
-			if (followingPath && !animScript.isLayingDown && !animScript.isSitting) // TODO: Test if sitting and laying down condition works properly
+			if (followingPath && !animScript.isLayingDown && !animScript.isSitting)
 			{
 
 				animScript.slowDown = false;
@@ -225,7 +225,7 @@ public class Unit : MonoBehaviour, IDataPersistence
 					{
 						if (oldTarget != target) oldTarget = target;
 						followingPath = false;
-						// Debug.Log("Completed path");
+
 						animScript.stopped = true;
 					}
 				}
@@ -244,7 +244,6 @@ public class Unit : MonoBehaviour, IDataPersistence
 					transform.position = transform.position;
 					transform.LookAt(GameObject.Find("Player").transform);
 				}
-				// transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
 			}
 
 			yield return null;

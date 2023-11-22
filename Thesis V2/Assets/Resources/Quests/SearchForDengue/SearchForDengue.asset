@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: SearchForDengue
   displayName: Search Virus Root
-  questPrerequisites: []
+  questPrerequisites:
+  - {fileID: 11400000, guid: 590944a313bd5ea45907483ff8767da1, type: 2}
   questStepPrefabs:
   - {fileID: 2684403586861118628, guid: cb860859e7bac8545beb0734f5094200, type: 3}

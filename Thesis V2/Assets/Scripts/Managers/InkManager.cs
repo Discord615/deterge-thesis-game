@@ -46,6 +46,9 @@ public class InkManager : MonoBehaviour
     [Header("Sanitize Root Dialogues")]
     public TextAsset[] sanitizeRootInks;
 
+    [Header("Misc")]
+    public TextAsset firstTimeGettingDamaged;
+
     public TextAsset getWalkingSickInk()
     {
         return walkingSickInks[Random.Range(0, walkingSickInks.Length)];

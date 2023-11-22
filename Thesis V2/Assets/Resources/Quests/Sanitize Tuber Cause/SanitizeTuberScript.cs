@@ -31,6 +31,10 @@ public class SanitizeTuberScript : QuestStep
         objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to Med Lab";
         ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
 
+        SicknessManager.instance.resetAllBeds();
+
+        faceMaskScript.instance.removeFaceMask();
+
         FinishQuestStep();
     }
 

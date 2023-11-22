@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealthManager : MonoBehaviour
+public class PlayerHealthManager : MonoBehaviour, IDataPersistence
 {
     public static PlayerHealthManager instance { get; private set; }
 
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject loseScreen;
+    private bool experiencedDamage = false;
 
     private void Awake()
     {
@@ -25,13 +26,36 @@ public class PlayerHealthManager : MonoBehaviour
         }
     }
 
-    private void reduceHealth(float reductionValue)
+    public void reduceHealth(float reductionValue)
     {
-        healthBar.value -= reductionValue;
+        if (!experiencedDamage){
+            DialogueManager.instance.EnterDialogueMode(InkManager.instance.firstTimeGettingDamaged);
+            experiencedDamage = true;
+        }
+        healthBar.value -= (GameWorldStatsManager.instance.hasFaceMask  ? (reductionValue / 2f) : reductionValue) * Time.deltaTime;
+    }
+
+    public void reduceHealth(){
+        if (!experiencedDamage){
+            DialogueManager.instance.EnterDialogueMode(InkManager.instance.firstTimeGettingDamaged);
+            experiencedDamage = true;
+        }
+        healthBar.value -= GameWorldStatsManager.instance.hasGlove ? 0f : 4f;
+        GloveBehavior.instance.removeGlove();
     }
 
     public void healthRestore()
     {
         healthBar.value = healthBar.maxValue;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.experiencedDamage = data.experienceDamageData;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.experienceDamageData = this.experiencedDamage;
     }
 }

@@ -6,16 +6,35 @@ using UnityEngine.EventSystems;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] choices;
+    [SerializeField] private GameObject[] settingsChoices;
+    [SerializeField] private GameObject settingsPanel;
 
     private void Start() {
         Cursor.visible = false;
-        StartCoroutine(SelectFirstChoice());
+        Cursor.lockState = CursorLockMode.Locked;
+        StartCoroutine(SelectFirstChoice(choices));
     }
 
-    private IEnumerator SelectFirstChoice()
+    private IEnumerator SelectFirstChoice(GameObject[] selectables)
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+        EventSystem.current.SetSelectedGameObject(selectables[0].gameObject);
+    }
+
+    public void toggleSettings(){
+        settingsPanel.SetActive(!settingsPanel.activeInHierarchy);
+        Cursor.visible = settingsPanel.activeInHierarchy;
+
+        if (settingsPanel.activeInHierarchy) {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            StopAllCoroutines();
+        }
+        else {
+            StartCoroutine(SelectFirstChoice(choices));
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }

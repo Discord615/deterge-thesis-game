@@ -19,6 +19,7 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
     public int numberOfSickStudents = 0;
 
     [SerializeField] private GameObject studentsObject;
+    [SerializeField] private GameObject[] beds;
 
     public void spreadSickness()
     {
@@ -32,6 +33,15 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
             }
 
             if (numberOfSickStudents > 4) break;
+        }
+    }
+
+    public void resetAllBeds(){
+        foreach (GameObject bed in beds)
+        {
+            bed.GetComponent<LayDown>().playerHasMeds = false;
+
+            bed.GetComponent<LayDown>().sampleTaken = false;
         }
     }
 

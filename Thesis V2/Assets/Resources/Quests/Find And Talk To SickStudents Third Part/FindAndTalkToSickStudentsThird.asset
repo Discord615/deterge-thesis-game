@@ -15,6 +15,6 @@ MonoBehaviour:
   <id>k__BackingField: FindAndTalkToSickStudentsThird
   displayName: Find and talk to sick students
   questPrerequisites:
-  - {fileID: 11400000, guid: 176b892dc03bd12449b1c28b2af89ca3, type: 2}
+  - {fileID: 11400000, guid: b5457be32ffb88b40bce38045b4d9fb2, type: 2}
   questStepPrefabs:
   - {fileID: 577240837290175056, guid: 2e8c10a88563dcf468e7430620ea405a, type: 3}

@@ -89,6 +89,7 @@ public class SyringeBehaviour : MonoBehaviour
             return;
         }
 
+        PlayerHealthManager.instance.reduceHealth();
         GameEventsManager.instance.miscEvents.patientSaved();
 
     }
