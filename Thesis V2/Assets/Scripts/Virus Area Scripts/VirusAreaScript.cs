@@ -14,7 +14,7 @@ public class VirusAreaScript : MonoBehaviour
 
         if (!dangerourArea()) return;
 
-        PlayerHealthManager.instance.reduceHealth(7f);
+        PlayerHealthManager.instance.reduceHealth(3f);
     }
 
     private bool dangerourArea(){

@@ -9,7 +9,6 @@ public class Timer : MonoBehaviour
     [SerializeField] private float timerAccel = 4f;
     public bool timeOut = false;
     public bool stopTimer = false;
-
     public bool startTimer = false;
 
     private void Start() {

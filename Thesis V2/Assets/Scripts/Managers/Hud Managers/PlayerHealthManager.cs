@@ -7,7 +7,6 @@ public class PlayerHealthManager : MonoBehaviour, IDataPersistence
 
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject loseScreen;
-    private bool experiencedDamage = false;
 
     private void Awake()
     {
@@ -28,18 +27,10 @@ public class PlayerHealthManager : MonoBehaviour, IDataPersistence
 
     public void reduceHealth(float reductionValue)
     {
-        if (!experiencedDamage){
-            DialogueManager.instance.EnterDialogueMode(InkManager.instance.firstTimeGettingDamaged);
-            experiencedDamage = true;
-        }
         healthBar.value -= (GameWorldStatsManager.instance.hasFaceMask  ? (reductionValue / 2f) : reductionValue) * Time.deltaTime;
     }
 
     public void reduceHealth(){
-        if (!experiencedDamage){
-            DialogueManager.instance.EnterDialogueMode(InkManager.instance.firstTimeGettingDamaged);
-            experiencedDamage = true;
-        }
         healthBar.value -= GameWorldStatsManager.instance.hasGlove ? 0f : 4f;
         GloveBehavior.instance.removeGlove();
     }
@@ -51,11 +42,11 @@ public class PlayerHealthManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        this.experiencedDamage = data.experienceDamageData;
+        this.healthBar.value = data.playerHealth;
     }
 
     public void SaveData(ref GameData data)
     {
-        data.experienceDamageData = this.experiencedDamage;
+        data.playerHealth = this.healthBar.value;
     }
 }
