@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] choices;
-    [SerializeField] private GameObject[] settingsChoices;
     [SerializeField] private GameObject settingsPanel;
 
     private void Start() {

@@ -529,10 +529,6 @@ MonoBehaviour:
   - {fileID: 1679764461}
   - {fileID: 31777779}
   - {fileID: 225902127}
-  settingsChoices:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1890765416}
   settingsPanel: {fileID: 1059375826}
 --- !u!1 &413431779 stripped
 GameObject:
@@ -877,7 +873,7 @@ MonoBehaviour:
     type: 3}
   m_TrackedDevicePositionAction: {fileID: 0}
   m_TrackedDeviceOrientationAction: {fileID: 0}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
 --- !u!1 &1035788357
@@ -1754,12 +1750,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1890765416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8537318857307906571, guid: c6a5317813bcb9348ab7da63fe70f516,
-    type: 3}
-  m_PrefabInstance: {fileID: 8537318858122733667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1892023172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2239,7 +2229,7 @@ PrefabInstance:
     - target: {fileID: 5931692337554056781, guid: 000c865ed93b47347bc8433f2c58aa1f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5931692337554056781, guid: 000c865ed93b47347bc8433f2c58aa1f,
         type: 3}
@@ -2457,7 +2447,7 @@ PrefabInstance:
     - target: {fileID: 8537318858640515760, guid: c6a5317813bcb9348ab7da63fe70f516,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8537318858640515760, guid: c6a5317813bcb9348ab7da63fe70f516,
         type: 3}
