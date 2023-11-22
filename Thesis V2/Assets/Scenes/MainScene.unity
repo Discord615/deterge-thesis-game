@@ -2720,7 +2720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: f57f81b0-0287-4779-9b0f-fbafd00bc694
+  id: d5688c35-15a7-4368-8152-2186275d94d1
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -2744,7 +2744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 9ca0205b-e566-46fc-a309-be3a08123b7e
+  id: e0391218-a16d-4d2c-80ef-bb0eec035c48
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -2765,7 +2765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 1
-  id: 1066f30f-8757-4b00-a2cd-5e8752376db2
+  id: de693d4a-919e-4879-9116-f6e9f8627869
 --- !u!65 &193981438
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3177,6 +3177,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teenage Girl Model with Clothes (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a63d4111bb3d804e97239b2fb6b9808,
+        type: 3}
+      propertyPath: m_TagString
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6a63d4111bb3d804e97239b2fb6b9808,
         type: 3}
@@ -7309,7 +7314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 0
-  id: 3c00707f-5827-4379-a0c1-b46a26b3c5f1
+  id: c89001fe-790c-46f0-bf46-cde2f68c2d2a
 --- !u!114 &234794435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7322,7 +7327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: caa92cc2-e9f9-4e60-9141-644dcb293221
+  id: e8397c9d-7de0-4580-8245-534734441cc0
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -7342,7 +7347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 356fbe89-007e-41ef-ad97-05c301702c17
+  id: dc20d78e-6f69-47fa-88c4-976e21ac0337
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -7350,7 +7355,7 @@ MonoBehaviour:
   goingToBed: 0
   isLayingDown: 0
   slowDown: 0
-  stopped: 0
+  stopped: 1
   wantToSit: 0
   isSitting: 0
   skinColor: {fileID: 2100000, guid: 9a4ef6b6361c3b14dbc1ed76ffd7d164, type: 2}
@@ -12570,7 +12575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 71c0295f-3ff7-4a82-a9b0-bea4c8789a74
+  id: 2d5ed649-0619-4094-9fa2-b10367a165c0
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -12594,7 +12599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: d348e3d5-6db8-4089-a3ac-f60ba89df09a
+  id: 24f73ded-634c-4050-86fa-7f3c8ace9aba
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -12615,7 +12620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 1
-  id: 8015888f-f450-45de-befc-09c8e753a590
+  id: 51cee91e-f67c-44fa-9522-3025a4c0e61e
 --- !u!65 &586800139
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16077,6 +16082,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teenage Girl Model with Clothes (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a63d4111bb3d804e97239b2fb6b9808,
+        type: 3}
+      propertyPath: m_TagString
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6a63d4111bb3d804e97239b2fb6b9808,
         type: 3}
@@ -20209,7 +20219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 0
-  id: 3c00707f-5827-4379-a0c1-b46a26b3c5f1
+  id: ca253cdc-cd19-4caf-b477-c4a425478eca
 --- !u!114 &788241873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20222,7 +20232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: caa92cc2-e9f9-4e60-9141-644dcb293221
+  id: ac6ea8c6-b302-428f-9a84-543e9d5151d1
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -20242,7 +20252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 356fbe89-007e-41ef-ad97-05c301702c17
+  id: 9b154844-2809-4816-9cb0-f1bbe6acde35
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -20250,7 +20260,7 @@ MonoBehaviour:
   goingToBed: 0
   isLayingDown: 0
   slowDown: 0
-  stopped: 0
+  stopped: 1
   wantToSit: 0
   isSitting: 0
   skinColor: {fileID: 2100000, guid: ed52a4dd99ed5b9479b145d35a3d8249, type: 2}
@@ -20681,7 +20691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: bc851f7b-45c3-4b8c-8dc8-64f93cc5321d
+  id: aa811b6d-b807-4b8e-8b8f-63e74926da39
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -20705,7 +20715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 07c2afe8-d74a-4332-a058-93a69b481c5b
+  id: e2ec2397-ea89-46d2-b071-d85f8d747537
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -20726,7 +20736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 1
-  id: 80acb612-4e82-4643-bdd6-6605b2106608
+  id: 3b2a4f10-f6ed-4666-930e-830d6582ff28
 --- !u!65 &836906558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20853,7 +20863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: c7d81c08-8d2c-415d-bd9b-e65cb15e8edd
+  id: eff34636-b687-4254-b7a8-cf9ce3d1c662
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -20877,7 +20887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: ed7ff913-f3e8-44f4-a341-97b731362c55
+  id: 910307e6-2636-448a-a077-03cc5d71c03e
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -20898,7 +20908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 1
-  id: 4e1e06af-aa51-4c05-b5fa-220d1648726b
+  id: 8ca97d40-7008-449d-af5e-c87d3ca8f506
 --- !u!65 &853393460
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23780,7 +23790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 886c63e2-2b19-4a49-b8c5-60cc45d4ae3e
+  id: ca1cf346-dcb1-4ffe-9d5e-1f746af06ba0
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -23804,7 +23814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 871cb086-5f5f-4ee0-a9ac-881ccdf5b518
+  id: b6e12b55-9adc-44a4-b7e4-0ee636f6f299
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -23825,7 +23835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 1
-  id: 49e440cb-2cd4-4537-9c0c-b462f702bc6e
+  id: 4045a762-b689-4c13-ac0f-76aa90b7b839
 --- !u!65 &960679190
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24133,6 +24143,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teenage Girl Model with Clothes (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a63d4111bb3d804e97239b2fb6b9808,
+        type: 3}
+      propertyPath: m_TagString
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6a63d4111bb3d804e97239b2fb6b9808,
         type: 3}
@@ -28265,7 +28280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 0
-  id: 3c00707f-5827-4379-a0c1-b46a26b3c5f1
+  id: 4f9bc657-a54b-4d66-9607-ebd48b3e970a
 --- !u!114 &962843090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28278,7 +28293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: caa92cc2-e9f9-4e60-9141-644dcb293221
+  id: 3e8c8f8a-16f4-4e99-ae26-b03abee02442
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -28298,7 +28313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 356fbe89-007e-41ef-ad97-05c301702c17
+  id: 2aff2a21-5109-4b1d-8010-e83861f30ce8
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -28306,7 +28321,7 @@ MonoBehaviour:
   goingToBed: 0
   isLayingDown: 0
   slowDown: 0
-  stopped: 0
+  stopped: 1
   wantToSit: 0
   isSitting: 0
   skinColor: {fileID: 2100000, guid: f5682aef2061d6f4fa052397bfc1e977, type: 2}
@@ -29110,6 +29125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teenage Girl Model with Clothes (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a63d4111bb3d804e97239b2fb6b9808,
+        type: 3}
+      propertyPath: m_TagString
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6a63d4111bb3d804e97239b2fb6b9808,
         type: 3}
@@ -33242,7 +33262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 0
-  id: 3c00707f-5827-4379-a0c1-b46a26b3c5f1
+  id: 3f4add46-d33c-4e5d-a015-4c1ddee7cb1c
 --- !u!114 &1005857811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33255,7 +33275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: caa92cc2-e9f9-4e60-9141-644dcb293221
+  id: eb2ca7e9-0b39-40b6-8f66-f66c0ca7bfd0
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -33275,7 +33295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 356fbe89-007e-41ef-ad97-05c301702c17
+  id: 0fcda443-abba-48ad-a894-a1104ac9f74c
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -33283,7 +33303,7 @@ MonoBehaviour:
   goingToBed: 0
   isLayingDown: 0
   slowDown: 0
-  stopped: 0
+  stopped: 1
   wantToSit: 0
   isSitting: 0
   skinColor: {fileID: 2100000, guid: a76c5bdb0d1622f44a6b980e0140b225, type: 2}
@@ -34298,7 +34318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 75d9f556-419f-4d4a-87a5-6168832d70c3
+  id: d5b79444-881d-4c7f-adc1-d2a693a901ab
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -34322,7 +34342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: af2a7333-dcec-45ed-9b49-151c32a5e030
+  id: cda04aea-e727-450d-87c5-16ba9550f2f5
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -34343,7 +34363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 1
-  id: e5ffc0ef-fb22-4efb-814d-2d1d97fe7b19
+  id: 88a14b89-53ac-4b36-a846-855872e9857e
 --- !u!65 &1090953088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38885,6 +38905,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teenage Girl Model with Clothes (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a63d4111bb3d804e97239b2fb6b9808,
+        type: 3}
+      propertyPath: m_TagString
+      value: npc
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6a63d4111bb3d804e97239b2fb6b9808,
         type: 3}
       propertyPath: m_Controller
@@ -43016,7 +43041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 0
-  id: 3c00707f-5827-4379-a0c1-b46a26b3c5f1
+  id: 9af25b8b-fe99-41c9-97e1-a54cf08de669
 --- !u!114 &1443894963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43029,7 +43054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: caa92cc2-e9f9-4e60-9141-644dcb293221
+  id: ca421236-56de-4ec5-b94b-553cbf869521
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -43049,7 +43074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 356fbe89-007e-41ef-ad97-05c301702c17
+  id: 24e23057-5768-4f6a-bc11-b26c629bc183
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -43057,7 +43082,7 @@ MonoBehaviour:
   goingToBed: 0
   isLayingDown: 0
   slowDown: 0
-  stopped: 0
+  stopped: 1
   wantToSit: 0
   isSitting: 0
   skinColor: {fileID: 2100000, guid: 37c19983a057965498332c7b5084093b, type: 2}
@@ -45443,6 +45468,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teenage Girl Model with Clothes (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a63d4111bb3d804e97239b2fb6b9808,
+        type: 3}
+      propertyPath: m_TagString
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6a63d4111bb3d804e97239b2fb6b9808,
         type: 3}
@@ -49575,7 +49605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 0
-  id: 3c00707f-5827-4379-a0c1-b46a26b3c5f1
+  id: 61ca3fe2-fbc1-4086-bb7a-d3eb68de6960
 --- !u!114 &1644072099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49588,7 +49618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: caa92cc2-e9f9-4e60-9141-644dcb293221
+  id: 54ee4358-4763-41e4-8ab0-7a4a7277f785
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -49608,7 +49638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 356fbe89-007e-41ef-ad97-05c301702c17
+  id: 7f299c2b-4f65-4f43-9071-13abe2e05e67
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -49616,7 +49646,7 @@ MonoBehaviour:
   goingToBed: 0
   isLayingDown: 0
   slowDown: 0
-  stopped: 0
+  stopped: 1
   wantToSit: 0
   isSitting: 0
   skinColor: {fileID: 2100000, guid: 3d85a1f7662316e42aa94359687de6b5, type: 2}
@@ -51550,6 +51580,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teenage Girl Model with Clothes (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a63d4111bb3d804e97239b2fb6b9808,
+        type: 3}
+      propertyPath: m_TagString
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6a63d4111bb3d804e97239b2fb6b9808,
         type: 3}
@@ -55682,7 +55717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 0
-  id: 3c00707f-5827-4379-a0c1-b46a26b3c5f1
+  id: 2fd05c1a-2682-4196-8a23-8f378ec9cd7d
 --- !u!114 &1760386851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55695,7 +55730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: caa92cc2-e9f9-4e60-9141-644dcb293221
+  id: d751c60c-4305-42ba-ac54-1f1cef445974
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -55715,7 +55750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 356fbe89-007e-41ef-ad97-05c301702c17
+  id: e85c055f-a0cf-46e7-b288-c1660c4e9915
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -55723,7 +55758,7 @@ MonoBehaviour:
   goingToBed: 0
   isLayingDown: 0
   slowDown: 0
-  stopped: 0
+  stopped: 1
   wantToSit: 0
   isSitting: 0
   skinColor: {fileID: 2100000, guid: 5612021d2f540314798d0d6a9343bb69, type: 2}
@@ -56551,7 +56586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 1
-  id: 8015888f-f450-45de-befc-09c8e753a590
+  id: 176d6909-3e02-4087-83f7-8c0e5dbd79d7
 --- !u!114 &1800715860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56564,7 +56599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: d348e3d5-6db8-4089-a3ac-f60ba89df09a
+  id: 9ab1b5c8-0f69-4a9a-9e50-c01bc3f44b4b
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -56584,7 +56619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 71c0295f-3ff7-4a82-a9b0-bea4c8789a74
+  id: d3fde9c8-0b03-4f7d-ae7f-14cd475171f6
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -57750,7 +57785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 1
-  id: 8015888f-f450-45de-befc-09c8e753a590
+  id: 68f9f06a-ed30-4f98-8dfe-6cf9d42678e7
 --- !u!114 &1901734001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57763,7 +57798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: d348e3d5-6db8-4089-a3ac-f60ba89df09a
+  id: bf69b3c1-c09b-4207-a11b-0db06dd7f42c
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -57783,7 +57818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 71c0295f-3ff7-4a82-a9b0-bea4c8789a74
+  id: 1f5eb543-2f02-48c3-99b0-9c5d6ed8f1a5
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -59056,6 +59091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teenage Girl Model with Clothes (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a63d4111bb3d804e97239b2fb6b9808,
+        type: 3}
+      propertyPath: m_TagString
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6a63d4111bb3d804e97239b2fb6b9808,
         type: 3}
@@ -63175,7 +63215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 356fbe89-007e-41ef-ad97-05c301702c17
+  id: 8ef7c67b-cca1-4e50-a632-e94a343333f5
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -63183,7 +63223,7 @@ MonoBehaviour:
   goingToBed: 0
   isLayingDown: 0
   slowDown: 0
-  stopped: 0
+  stopped: 1
   wantToSit: 0
   isSitting: 0
   skinColor: {fileID: 2100000, guid: ea05f0d1d9c459f4b97be2e9abd2763e, type: 2}
@@ -63199,7 +63239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: caa92cc2-e9f9-4e60-9141-644dcb293221
+  id: b20bf635-c49d-4918-a1a8-c0d25538c77b
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -63220,7 +63260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 0
-  id: 3c00707f-5827-4379-a0c1-b46a26b3c5f1
+  id: db9b063a-ae9c-4f3b-a21f-251088a0fb5b
 --- !u!114 &2024212800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63431,6 +63471,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teenage Girl Model with Clothes (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a63d4111bb3d804e97239b2fb6b9808,
+        type: 3}
+      propertyPath: m_TagString
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6a63d4111bb3d804e97239b2fb6b9808,
         type: 3}
@@ -67563,7 +67608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 0
-  id: 3c00707f-5827-4379-a0c1-b46a26b3c5f1
+  id: b56b1c78-4e29-45fb-a1d3-51a4ea675ce6
 --- !u!114 &2039063579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67576,7 +67621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: caa92cc2-e9f9-4e60-9141-644dcb293221
+  id: f4e6ce7a-03d1-4475-998c-9e926019f30d
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -67596,7 +67641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 356fbe89-007e-41ef-ad97-05c301702c17
+  id: ac871b3e-36fc-41da-8019-2e4e6ff31bc6
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -67604,7 +67649,7 @@ MonoBehaviour:
   goingToBed: 0
   isLayingDown: 0
   slowDown: 0
-  stopped: 0
+  stopped: 1
   wantToSit: 0
   isSitting: 0
   skinColor: {fileID: 2100000, guid: 42f2214f04d21be4db0261ef3fb4c657, type: 2}
@@ -68351,7 +68396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 922fa859-f91d-49ad-a24f-76039143ab0d
+  id: 97a9e9c7-6a9f-495d-8031-e2d66731c6bb
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -68375,7 +68420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 135bbaa6-e444-4aca-9521-4d2e54919eb9
+  id: bba0942c-cdeb-4bd8-8b3a-fa01a9964dc2
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -68396,7 +68441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 1
-  id: f052b75f-e782-41d5-b132-e121373a2765
+  id: d27aa2d1-5c1c-491a-bc45-9cca714caab4
 --- !u!65 &2088292570
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68696,6 +68741,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teenage Girl Model with Clothes (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a63d4111bb3d804e97239b2fb6b9808,
+        type: 3}
+      propertyPath: m_TagString
+      value: npc
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 6a63d4111bb3d804e97239b2fb6b9808,
         type: 3}
@@ -72828,7 +72878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMale: 0
-  id: 3c00707f-5827-4379-a0c1-b46a26b3c5f1
+  id: 32283947-d8c7-4d6f-bd9d-2ae2868a9e69
 --- !u!114 &2103587309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72841,7 +72891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405937fb69e244198911aebaac9bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: caa92cc2-e9f9-4e60-9141-644dcb293221
+  id: e2825f6d-0977-4395-a179-5ebce2148cc8
   target: {x: 0, y: 0, z: 0}
   speed: 10
   turnSpeed: 10
@@ -72861,7 +72911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd472aad2c84f24abb35a1b2932393d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 356fbe89-007e-41ef-ad97-05c301702c17
+  id: faea32f4-ed77-42d8-ae6f-19564112ff1b
   speed: 0
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
@@ -72869,7 +72919,7 @@ MonoBehaviour:
   goingToBed: 0
   isLayingDown: 0
   slowDown: 0
-  stopped: 0
+  stopped: 1
   wantToSit: 0
   isSitting: 0
   skinColor: {fileID: 2100000, guid: 7728af4971bb3e9449348a47fbfd68d4, type: 2}
@@ -73698,6 +73748,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907519037}
     m_Modifications:
+    - target: {fileID: 746785852, guid: f95098a417ffcf742b51ae8f7e8b3caf, type: 3}
+      propertyPath: id
+      value: b61c2f3d-16ac-4051-a22c-9bcd77611084
+      objectReference: {fileID: 0}
+    - target: {fileID: 746785853, guid: f95098a417ffcf742b51ae8f7e8b3caf, type: 3}
+      propertyPath: id
+      value: fbc0bbad-1a7d-4e06-8eb3-9f92f5066734
+      objectReference: {fileID: 0}
+    - target: {fileID: 746785854, guid: f95098a417ffcf742b51ae8f7e8b3caf, type: 3}
+      propertyPath: id
+      value: 5c48d1a2-8fce-4458-bafc-1aa90b5cdfe5
+      objectReference: {fileID: 0}
     - target: {fileID: 1461305102265132887, guid: f95098a417ffcf742b51ae8f7e8b3caf,
         type: 3}
       propertyPath: m_Name

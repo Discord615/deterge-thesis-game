@@ -155,6 +155,5 @@ public class QuestManager : MonoBehaviour
         {
             fileDataHandler.save(questItem);
         }
-
     }
 }

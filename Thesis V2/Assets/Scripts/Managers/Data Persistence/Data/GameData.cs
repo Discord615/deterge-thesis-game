@@ -31,7 +31,7 @@ public class GameData
 
     public bool hasFaceMaskData;
     public bool hasGloveData;
-    public bool experienceDamageData;
+    public float playerHealth;
 
     // * SitDown Variables
     public SerializableDictionary<string, Transform> occupantData;
@@ -67,7 +67,7 @@ public class GameData
         this.activeVirusData = "tuber";
         this.hasFaceMaskData = false;
         this.hasGloveData = false;
-        this.experienceDamageData = false;
+        this.playerHealth = 30f;
 
         this.occupantData = new SerializableDictionary<string, Transform>();
         this.occupiedData = new SerializableDictionary<string, bool>();

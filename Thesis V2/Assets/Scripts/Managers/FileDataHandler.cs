@@ -17,35 +17,22 @@ public class FileDataHandler
 
     public Quest loadQuests(QuestInfoSO questInfo)
     {
-        string fullPath = System.IO.Path.Combine(filePath, fileName);
-
         Quest quest = null;
 
-        if (File.Exists(fullPath) && !MenuToGamplayPass.instance.startNewGame)
+        try
         {
-            try
-            {
-                string dataToLoad = "";
-
-                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        dataToLoad = reader.ReadToEnd();
-                    }
-                }
-                QuestData questData = JsonUtility.FromJson<QuestData>(dataToLoad);
+            if (PlayerPrefs.HasKey(questInfo.id) && !MenuToGamplayPass.instance.startNewGame){
+                string serializedData = PlayerPrefs.GetString(questInfo.id);
+                QuestData questData = JsonUtility.FromJson<QuestData>(serializedData);
                 quest = new Quest(questInfo, questData.state, questData.currentQuestStepIndex, questData.questStepStates);
-
             }
-            catch (System.Exception)
-            {
-                Debug.LogError("Failed to load save file");
+            else {
+                quest = new Quest(questInfo);
             }
         }
-        else
+        catch (System.Exception)
         {
-            quest = new Quest(questInfo);
+            Debug.LogError("Error occured while loading");
         }
 
         return quest;
@@ -53,23 +40,17 @@ public class FileDataHandler
 
     public void save(Quest quest)
     {
-        string fullPath = System.IO.Path.Combine(filePath, fileName);
         try
         {
-            Directory.CreateDirectory(System.IO.Path.GetDirectoryName(fullPath));
             QuestData questData = quest.getQuestData();
-            string serializedData = JsonUtility.ToJson(questData, true);
-            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
-            {
-                using (StreamWriter writer = new StreamWriter(stream))
-                {
-                    writer.Write(serializedData);
-                }
-            }
+
+            string serializedData = JsonUtility.ToJson(questData);
+
+            PlayerPrefs.SetString(quest.info.id, serializedData);
         }
-        catch (System.Exception e)
+        catch (System.Exception)
         {
-            Debug.LogError("Failed to save quest: " + e);
+            Debug.LogError("Failed To Save Quest Data");
         }
     }
 
