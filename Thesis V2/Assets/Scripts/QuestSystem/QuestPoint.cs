@@ -41,6 +41,13 @@ public class QuestPoint : MonoBehaviour
         GameEventsManager.instance.questEvents.onQuestStateChange -= questStateChange;
     }
 
+    private void Update() {
+        if (currentQuestState.Equals(QuestState.REQUIREMENTS_NOT_MET) || currentQuestState.Equals(QuestState.IN_PROGRESS))
+            GetComponent<BoxCollider>().enabled = false;
+        else 
+            GetComponent<BoxCollider>().enabled = true;
+    }
+
     private void OnTriggerStay(Collider other) {
         if (!other.tag.Equals("Player")) return;
 

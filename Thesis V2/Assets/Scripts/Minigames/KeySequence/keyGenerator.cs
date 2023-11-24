@@ -104,10 +104,10 @@ public class keyGenerator : MonoBehaviour{
     }
 
     public void resetVariables(){
-        combination = generateRandomKeys();
-        slider.value = slider.maxValue;
-        win = false;
         timer.timeOut = false;
         timer.stopTimer = false;
+        win = false;
+        combination = generateRandomKeys();
+        slider.value = slider.maxValue;
     }
 }
