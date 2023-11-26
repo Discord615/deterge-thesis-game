@@ -17,7 +17,7 @@ public class goToMainScene : MonoBehaviour
         if (stop) return;
 
         stop = true;
-        LoadingScreen.instance.LoadScene(2);
+        LoadingScreen.instance.LoadScene(3);
         Destroy(this);
     }
 }
