@@ -16,4 +16,10 @@ public class HealthBarReference : MonoBehaviour
     }
 
     public GameObject healthPanel;
+
+    private void Update() {
+        if (DialogueManager.instance.dialogueIsPlaying) {
+            healthPanel.GetComponent<CanvasGroup>().alpha = 0;
+        } else healthPanel.GetComponent<CanvasGroup>().alpha = 1;
+    }
 }

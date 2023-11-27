@@ -59,12 +59,15 @@ public class InkExternalFunctions
         story.BindExternalFunction("sinkAndItems", () =>
         {
             TutorialManager.instance.endDummyTraining();
+            TutorialManager.instance.toggleSinkAndItems();
             TutorialManager.instance.changeToDo("Collect items and Use Sink");
         });
 
         story.BindExternalFunction("kioskTutorial", () =>
         {
-
+            TutorialManager.instance.toggleSinkAndItems();
+            TutorialManager.instance.toggleKiosk();
+            TutorialManager.instance.changeToDo("Interact with the kiosk");
         });
 
         story.BindExternalFunction("endTutorial", () =>

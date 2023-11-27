@@ -27,7 +27,6 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Slider progress;
     [SerializeField] private GameObject dummy;
     [SerializeField] private GameObject sinkAndItems;
-    [SerializeField] private GameObject healthHud;
     [SerializeField] private GameObject kiosk;
 
     private void Update()
@@ -40,6 +39,8 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         dummy.SetActive(false);
+        sinkAndItems.SetActive(false);
+        kiosk.SetActive(false);
         continueTutorial();
     }
 
@@ -70,5 +71,13 @@ public class TutorialManager : MonoBehaviour
     public void endDummyTraining()
     {
         dummy.SetActive(false);
+    }
+
+    public void toggleSinkAndItems(){
+        sinkAndItems.SetActive(!sinkAndItems.activeInHierarchy);
+    }
+
+    public void toggleKiosk(){
+        kiosk.SetActive(!kiosk.activeInHierarchy);
     }
 }
