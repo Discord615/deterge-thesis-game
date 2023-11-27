@@ -49,30 +49,30 @@ public class AssigningBottleWithMeds : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    medicineBottles[shuffledMedIndexes[i]].GetComponent<BottleBehavior>().medLabel = mainVirusMeds[Random.Range(0, mainVirusMeds.Length)];
+                    medicineBottles[shuffledMedIndexes[0]].GetComponent<BottleBehavior>().medLabel = mainVirusMeds[Random.Range(0, mainVirusMeds.Length)];
                     break;
 
                 case 1:
-                    medicineBottles[shuffledMedIndexes[i]].GetComponent<BottleBehavior>().medLabel = secondVirusMeds[Random.Range(0, secondVirusMeds.Length)];
+                    medicineBottles[shuffledMedIndexes[1]].GetComponent<BottleBehavior>().medLabel = secondVirusMeds[Random.Range(0, secondVirusMeds.Length)];
                     break;
 
                 case 2:
-                    medicineBottles[shuffledMedIndexes[i]].GetComponent<BottleBehavior>().medLabel = thirdVirusMeds[Random.Range(0, thirdVirusMeds.Length)];
+                    medicineBottles[shuffledMedIndexes[2]].GetComponent<BottleBehavior>().medLabel = thirdVirusMeds[Random.Range(0, thirdVirusMeds.Length)];
                     break;
             }
         }
     }
 
     public List<int> ShuffleIntList(List<int> list)
-{
-    List<int> newShuffledList = new List<int>();
-    int listcCount = list.Count;
-    for (int i = 0; i < listcCount; i++)
     {
-        int randomElementInList = Random.Range(0, list.Count);
-        newShuffledList.Add(list[randomElementInList]);
-        list.Remove(list[randomElementInList]);
+        List<int> newShuffledList = new List<int>();
+        int listcCount = list.Count;
+        for (int i = 0; i < listcCount; i++)
+        {
+            int randomElementInList = Random.Range(0, list.Count);
+            newShuffledList.Add(list[randomElementInList]);
+            list.Remove(list[randomElementInList]);
+        }
+        return newShuffledList;
     }
-    return newShuffledList;
-}
 }

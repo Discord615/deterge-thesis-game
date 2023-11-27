@@ -76,7 +76,7 @@ public class SyringeBehaviour : MonoBehaviour
     {
         float dosageValue = AssigningBottleWithMeds.instance.dosageValue;
         float marginOfError = 15f;
-        
+
         if (!((Mathf.Abs(syringeValue - dosageValue) < marginOfError) && (Mathf.Abs(syringeValue + dosageValue) > marginOfError)))
         {
             Lose();
@@ -91,7 +91,6 @@ public class SyringeBehaviour : MonoBehaviour
 
         PlayerHealthManager.instance.reduceHealth();
         GameEventsManager.instance.miscEvents.patientSaved();
-
     }
 
     private bool isMedCorrect()

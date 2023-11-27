@@ -73,7 +73,8 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EndDialogue(){
+    public void EndDialogue()
+    {
         StartCoroutine(ExitDialogueMode());
     }
 

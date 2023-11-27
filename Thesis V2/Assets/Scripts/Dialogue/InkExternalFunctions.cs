@@ -5,7 +5,8 @@ public class InkExternalFunctions
 {
     public void Bind(Story story)
     {
-        story.BindExternalFunction("startTutorial", () => {
+        story.BindExternalFunction("startTutorial", () =>
+        {
             IntroSceneDialogueStart.instance.sceneIndex = 2;
         });
 
@@ -18,13 +19,57 @@ public class InkExternalFunctions
             AssigningBottleWithMeds.instance.setBottleNames(GameWorldStatsManager.instance.activeVirusName);
         });
 
-        story.BindExternalFunction("spreadSickness", (string virusName) => {
+        story.BindExternalFunction("spreadSickness", (string virusName) =>
+        {
             GameWorldStatsManager.instance.activeVirusName = virusName;
             SicknessManager.instance.spreadSickness();
         });
 
-        story.BindExternalFunction("getSample", () => {
+        story.BindExternalFunction("getSample", () =>
+        {
             GameEventsManager.instance.miscEvents.sampleCollected();
+        });
+
+
+        // Tutorial Functions
+        story.BindExternalFunction("startMovementTutorial", () =>
+        {
+            TutorialManager.instance.changeToDo("Use WASD or Arrow Keys to move");
+        });
+
+        story.BindExternalFunction("startRunningTutorial", () =>
+        {
+            TutorialManager.instance.changeToDo("Press and Hold the Left Shift while moving");
+        });
+
+        story.BindExternalFunction("startConvoWithDummy", () =>
+        {
+            TutorialManager.instance.finishMovementTest();
+            TutorialManager.instance.startDummyTraining(false);
+            TutorialManager.instance.changeToDo("Walk up to the dummy and interact with it");
+        });
+
+        story.BindExternalFunction("administerMedsTutorial", () =>
+        {
+            TutorialManager.instance.startDummyTraining(true);
+            HealthBarReference.instance.healthPanel.SetActive(true);
+            TutorialManager.instance.changeToDo("Interact with the dummy again to administer meds");
+        });
+
+        story.BindExternalFunction("sinkAndItems", () =>
+        {
+            TutorialManager.instance.endDummyTraining();
+            TutorialManager.instance.changeToDo("Collect items and Use Sink");
+        });
+
+        story.BindExternalFunction("kioskTutorial", () =>
+        {
+
+        });
+
+        story.BindExternalFunction("endTutorial", () =>
+        {
+            LoadingScreen.instance.LoadScene(3);
         });
     }
 
@@ -34,5 +79,13 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("administerMeds");
         story.UnbindExternalFunction("spreadSickness");
         story.UnbindExternalFunction("getSample");
+
+        story.UnbindExternalFunction("startMovementTutorial");
+        story.UnbindExternalFunction("startRunningTutorial");
+        story.UnbindExternalFunction("startConvoWithDummy");
+        story.UnbindExternalFunction("administerMedsTutorial");
+        story.UnbindExternalFunction("sinkAndItems");
+        story.UnbindExternalFunction("kioskTutorial");
+        story.UnbindExternalFunction("endTutorial");
     }
 }

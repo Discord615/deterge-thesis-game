@@ -27,10 +27,11 @@ public class PlayerHealthManager : MonoBehaviour, IDataPersistence
 
     public void reduceHealth(float reductionValue)
     {
-        healthBar.value -= (GameWorldStatsManager.instance.hasFaceMask  ? (reductionValue / 2f) : reductionValue) * Time.deltaTime;
+        healthBar.value -= (GameWorldStatsManager.instance.hasFaceMask ? (reductionValue / 2f) : reductionValue) * Time.deltaTime;
     }
 
-    public void reduceHealth(){
+    public void reduceHealth()
+    {
         healthBar.value -= GameWorldStatsManager.instance.hasGlove ? 0f : 4f;
         GloveBehavior.instance.removeGlove();
     }

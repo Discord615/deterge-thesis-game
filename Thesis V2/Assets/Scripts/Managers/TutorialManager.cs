@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -15,17 +17,58 @@ public class TutorialManager : MonoBehaviour
         instance = this;
     }
 
+    [Header("Tutorial General Variables")]
     public TextAsset[] tutorialDialogue;
     public int tutorialIndex = 0;
 
+    [Header("Tutorial Objects")]
+    [SerializeField] private GameObject tutorialPanel;
+    [SerializeField] private TextMeshProUGUI tutorialTodo;
+    [SerializeField] private Slider progress;
+    [SerializeField] private GameObject dummy;
+    [SerializeField] private GameObject sinkAndItems;
+    [SerializeField] private GameObject healthHud;
+    [SerializeField] private GameObject kiosk;
+
+    private void Update()
+    {
+        if (DialogueManager.instance.dialogueIsPlaying || MinigameManager.instance.syringeGame.activeInHierarchy)
+            tutorialPanel.SetActive(false);
+        else tutorialPanel.SetActive(true);
+    }
+
     private void Start()
     {
-        DialogueManager.instance.EnterDialogueMode(tutorialDialogue[tutorialIndex]);
+        dummy.SetActive(false);
+        continueTutorial();
     }
 
     public void continueTutorial()
     {
-        tutorialIndex++;
         DialogueManager.instance.EnterDialogueMode(tutorialDialogue[tutorialIndex]);
+        tutorialIndex++;
+    }
+
+    public void changeToDo(string text)
+    {
+        tutorialTodo.text = text;
+    }
+
+    public void finishMovementTest()
+    {
+        if (progress.gameObject.activeInHierarchy) progress.gameObject.SetActive(false);
+    }
+
+    public void startDummyTraining(bool isAdminister)
+    {
+        if (!dummy.activeInHierarchy) dummy.SetActive(true);
+
+        dummy.GetComponent<InteractDummy>().enabled = !isAdminister;
+        dummy.GetComponent<AdministeringPractice>().enabled = isAdminister;
+    }
+
+    public void endDummyTraining()
+    {
+        dummy.SetActive(false);
     }
 }
