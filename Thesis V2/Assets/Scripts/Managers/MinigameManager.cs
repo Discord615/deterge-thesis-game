@@ -17,6 +17,7 @@ public class MinigameManager : MonoBehaviour
     public GameObject syringeGame;
     public GameObject onBeatGame;
     public GameObject sequenceGame;
+    public GameObject wordSearch;
 
     [Header("Game HUD")]
     public GameObject playerHud;
@@ -25,5 +26,6 @@ public class MinigameManager : MonoBehaviour
         syringeGame.SetActive(false);
         onBeatGame.SetActive(false);
         sequenceGame.SetActive(false);
+        wordSearch.SetActive(false);
     }
 }

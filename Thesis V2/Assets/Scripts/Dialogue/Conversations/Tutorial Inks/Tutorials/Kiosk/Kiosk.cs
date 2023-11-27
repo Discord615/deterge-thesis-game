@@ -19,8 +19,12 @@ public class Kiosk : MonoBehaviour
         if (!other.tag.Equals("Player")) return;
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
-        // ! Add Minigame
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
-        TutorialManager.instance.toggleKiosk(); // This should be in the minigame completion
+        MinigameManager.instance.playerHud.SetActive(false);
+        MinigameManager.instance.wordSearch.SetActive(true);
+
+        // TutorialManager.instance.toggleKiosk(); // This should be in the minigame completion
     }
 }

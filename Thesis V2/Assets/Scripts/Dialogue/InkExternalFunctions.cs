@@ -7,6 +7,7 @@ public class InkExternalFunctions
     {
         story.BindExternalFunction("startTutorial", () =>
         {
+            Debug.Log("HOTDOGS");
             IntroSceneDialogueStart.instance.sceneIndex = 2;
         });
 

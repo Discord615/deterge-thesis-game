@@ -37,7 +37,7 @@ what about typhoid would you like to know?
             -> END
 
     ++ [Severe]
-        Diarrhoea
+        Diarrhea
 		Constipation
 		Nausea
         +++ [Return]

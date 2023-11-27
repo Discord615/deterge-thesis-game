@@ -13,6 +13,7 @@ public class PressBeat : MonoBehaviour
     [SerializeField] private int notOnBeatCount;
 
     bool reset = false;
+    [SerializeField] private bool Tutorial;
 
     private void Start() {
         resetValues();
@@ -28,9 +29,9 @@ public class PressBeat : MonoBehaviour
             reset = false;
             MinigameManager.instance.playerHud.SetActive(true);
             MinigameManager.instance.onBeatGame.SetActive(false);
-        } 
+        }
 
-        if (notOnBeatCount >= 5){
+        if (notOnBeatCount >= 5 && !Tutorial){
             reset = false;
             GameObject.Find(AssigningBottleWithMeds.instance.npcPatient).GetComponent<NPCAnimScript>().isSick = false;
             AssigningBottleWithMeds.instance.bed.GetComponent<LayDown>().occupied = false;

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class IntroSceneDialogueStart : MonoBehaviour
@@ -44,9 +43,8 @@ public class IntroSceneDialogueStart : MonoBehaviour
 
         if (DialogueManager.instance.dialogueIsPlaying || blindGroup.alpha > 0) return;
 
-        Debug.Log("TEST");
-
         if (isEndCall){
+            Debug.Log("ENDCALLEDED");
             isEndCall = false;
             StartCoroutine(playSound(callEnd));
         } else if (!hasSetEndCall) {
