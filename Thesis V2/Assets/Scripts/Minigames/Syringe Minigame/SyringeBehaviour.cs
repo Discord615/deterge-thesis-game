@@ -54,7 +54,13 @@ public class SyringeBehaviour : MonoBehaviour
 
         if (syringeValue >= maxSyringeValue - 0.05f) syringeValue = maxSyringeValue;
 
-        textValue.text = Mathf.CeilToInt(syringeValue).ToString() + " mg";
+        string suffix = "";
+
+        if (AssigningBottleWithMeds.instance.dosageValue >= 1000) suffix = "00 mg";
+        if (AssigningBottleWithMeds.instance.dosageValue >= 100 && AssigningBottleWithMeds.instance.dosageValue < 999) suffix = "0 mg";
+        else suffix = " mg";
+
+        textValue.text = Mathf.CeilToInt(syringeValue).ToString() + suffix;
         syringe.value = syringeValue;
 
         if (!press && stop)
@@ -74,8 +80,13 @@ public class SyringeBehaviour : MonoBehaviour
 
     private void checkCorrection()
     {
-        float dosageValue = AssigningBottleWithMeds.instance.dosageValue;
-        float marginOfError = 15f;
+        float rawDosageValue = AssigningBottleWithMeds.instance.dosageValue;
+        float dosageValue;
+        if (rawDosageValue >= 1000) dosageValue = Mathf.Ceil(rawDosageValue * 0.01f);
+        if (rawDosageValue >= 100 && rawDosageValue < 999) dosageValue = Mathf.Ceil(rawDosageValue * 0.1f);
+        else dosageValue = rawDosageValue;
+
+        float marginOfError = 10f;
 
         if (!((Mathf.Abs(syringeValue - dosageValue) < marginOfError) && (Mathf.Abs(syringeValue + dosageValue) > marginOfError)))
         {

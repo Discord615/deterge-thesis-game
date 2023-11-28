@@ -26,21 +26,51 @@ public class AssigningBottleWithMeds : MonoBehaviour
     private string[] secondVirusMeds;
     private string[] thirdVirusMeds;
 
+    private string outputMainMed;
+    Dictionary<string, int> dosageDictionary;
+
+    private void Start()
+    {
+        initializeDosageDict();
+    }
+
+    private void initializeDosageDict()
+    {
+        dosageDictionary = new Dictionary<string, int>() {
+            {"Fluoroquinolones", 500},
+            {"Cephalosporins", 300},
+            {"Macrolides", 500},
+            {"Carbapenems", 600},
+            {"Isoniazid", 300},
+            {"Rifampin", 600},
+            {"Pyrazinamide", 1750},
+            {"Ethambutol", 1400},
+            {"Streptomycin", 1050},
+            {"Anti-Zoonotic", 1000},
+            {"Paracetamol", 500},
+            {"Molnupiravir", 800},
+            {"Remdesivir", 200},
+            {"Oseltamivir Phosphate", 75},
+            {"Zanamivir", 10},
+            {"Peramivir", 600},
+            {"Baloxavir Marboxil", 40}
+        };
+    }
+
     private void getMeds(string virus)
     {
         MedicineManager.instance.getBottleNames(virus, out mainVirusMeds, out secondVirusMeds, out thirdVirusMeds);
     }
 
-    private void randomDosage()
+    private void setDosage()
     {
-        dosageValue = Random.Range(10, 101);
+        dosageValue = dosageDictionary[outputMainMed];
         dosage.text = dosageValue.ToString();
     }
 
     public void setBottleNames(string virus)
     {
         getMeds(virus);
-        randomDosage();
 
         List<int> medIndexes = new List<int>() { 0, 1, 2 };
         List<int> shuffledMedIndexes = ShuffleIntList(medIndexes);
@@ -49,7 +79,8 @@ public class AssigningBottleWithMeds : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    medicineBottles[shuffledMedIndexes[0]].GetComponent<BottleBehavior>().medLabel = mainVirusMeds[Random.Range(0, mainVirusMeds.Length)];
+                    outputMainMed = mainVirusMeds[Random.Range(0, mainVirusMeds.Length)];
+                    medicineBottles[shuffledMedIndexes[0]].GetComponent<BottleBehavior>().medLabel = outputMainMed;
                     break;
 
                 case 1:
@@ -61,6 +92,8 @@ public class AssigningBottleWithMeds : MonoBehaviour
                     break;
             }
         }
+
+        setDosage();
     }
 
     public List<int> ShuffleIntList(List<int> list)

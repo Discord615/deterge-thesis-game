@@ -17,7 +17,8 @@ public class MedicineManager : MonoBehaviour
 
     private Dictionary<string, string[]> medsDictionary = new Dictionary<string, string[]>();
 
-    private void Start() {
+    private void Start()
+    {
         medsDictionary.Add("typhoid", new string[] {
             "Fluoroquinolones",
             "Cephalosporins",
@@ -34,17 +35,16 @@ public class MedicineManager : MonoBehaviour
         });
 
         medsDictionary.Add("rabies", new string[] {
-            "Imovax",
-            "Rabavert"
+            "Anti-Zoonotic"
         });
 
         medsDictionary.Add("dengue", new string[] {
-            "Paracetamol" // ? Add more?
+            "Paracetamol"
         });
 
         medsDictionary.Add("covid", new string[] {
-            "molnupiravir",
-            "remdesivir"
+            "Molnupiravir",
+            "Remdesivir"
         });
 
         medsDictionary.Add("flu", new string[] {
@@ -55,29 +55,29 @@ public class MedicineManager : MonoBehaviour
         });
     }
 
-public void getBottleNames(string mainVirus, out string[] mainVirusMeds, out string[] secondVirusMeds, out string[] thirdVirusMeds)
-{
-
-    mainVirusMeds = medsDictionary[mainVirus];
-
-    while (true)
+    public void getBottleNames(string mainVirus, out string[] mainVirusMeds, out string[] secondVirusMeds, out string[] thirdVirusMeds)
     {
-        int dictionaryIndex = Random.Range(0, medsDictionary.Count);
 
-        if (mainVirus.Equals(medsDictionary.ElementAt(dictionaryIndex).Key)) continue;
+        mainVirusMeds = medsDictionary[mainVirus];
 
-        secondVirusMeds = medsDictionary.ElementAt(dictionaryIndex).Value;
-        break;
+        while (true)
+        {
+            int dictionaryIndex = Random.Range(0, medsDictionary.Count);
+
+            if (mainVirus.Equals(medsDictionary.ElementAt(dictionaryIndex).Key)) continue;
+
+            secondVirusMeds = medsDictionary.ElementAt(dictionaryIndex).Value;
+            break;
+        }
+
+        while (true)
+        {
+            int dictionaryIndex = Random.Range(0, medsDictionary.Count);
+
+            if (mainVirus.Equals(medsDictionary.ElementAt(dictionaryIndex).Key)) continue;
+
+            thirdVirusMeds = medsDictionary.ElementAt(dictionaryIndex).Value;
+            break;
+        }
     }
-
-    while (true)
-    {
-        int dictionaryIndex = Random.Range(0, medsDictionary.Count);
-
-        if (mainVirus.Equals(medsDictionary.ElementAt(dictionaryIndex).Key)) continue;
-
-        thirdVirusMeds = medsDictionary.ElementAt(dictionaryIndex).Value;
-        break;
-    }
-}
 }
