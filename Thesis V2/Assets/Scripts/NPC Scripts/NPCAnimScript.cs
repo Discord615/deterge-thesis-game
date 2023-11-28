@@ -20,7 +20,6 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
 
     [Header("Bed Variables")]
     public bool isSick = false;
-    public bool goingToBed = false;
     public bool isLayingDown = false;
     public bool slowDown = false;
     public bool stopped = false;

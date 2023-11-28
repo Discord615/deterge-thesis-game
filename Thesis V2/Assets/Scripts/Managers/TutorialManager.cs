@@ -73,11 +73,13 @@ public class TutorialManager : MonoBehaviour
         dummy.SetActive(false);
     }
 
-    public void toggleSinkAndItems(){
+    public void toggleSinkAndItems()
+    {
         sinkAndItems.SetActive(!sinkAndItems.activeInHierarchy);
     }
 
-    public void toggleKiosk(){
+    public void toggleKiosk()
+    {
         kiosk.SetActive(!kiosk.activeInHierarchy);
     }
 }

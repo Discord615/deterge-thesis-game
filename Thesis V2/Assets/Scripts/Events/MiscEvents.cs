@@ -12,25 +12,29 @@ public class MiscEvents
 
     public event Action onPatientKilled;
 
-    public void patientKilled(){
+    public void patientKilled()
+    {
         onPatientKilled?.Invoke();
     }
 
     public event Action onSampleCollected;
 
-    public void sampleCollected(){
+    public void sampleCollected()
+    {
         onSampleCollected?.Invoke();
     }
 
     public event Action onTalkToSickStudent;
 
-    public void talkToStudent(){
+    public void talkToStudent()
+    {
         onTalkToSickStudent?.Invoke();
     }
 
     public event Action onPlayerGetMeds;
 
-    public void playerGetsMeds(){
+    public void playerGetsMeds()
+    {
         onPlayerGetMeds?.Invoke();
     }
 
@@ -46,5 +50,19 @@ public class MiscEvents
     public void sequenceFailed()
     {
         onSequenceFailed?.Invoke();
+    }
+
+    public event Action onWordSearchComplete;
+
+    public void wordSearchCompleted()
+    {
+        onWordSearchComplete?.Invoke();
+    }
+
+    public event Action onWordFound;
+
+    public void wordFound()
+    {
+        onWordFound?.Invoke();
     }
 }

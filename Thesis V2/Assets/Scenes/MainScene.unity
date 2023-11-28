@@ -163,70 +163,6 @@ Transform:
   m_Father: {fileID: 1184647936}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5276838
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5276839}
-  - component: {fileID: 5276841}
-  - component: {fileID: 5276840}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudent (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5276839
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276838}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -63.59469, y: -1.1145859, z: 101.18609}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 838929344}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5276840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: c5f806bf71489e449826c6d5e0a2ebd9, type: 2}
-  startPoint: 0
-  finishPoint: 1
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &5276841
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276838}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 43.19, y: 1, z: 40.11}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5957620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,7 +2609,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -7301,7 +7236,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -8276,70 +8210,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5901541391012934051, guid: d1ab6c965cbb2c64ca07edc4da69d338, type: 3}
---- !u!1 &307479780
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 307479781}
-  - component: {fileID: 307479783}
-  - component: {fileID: 307479782}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudentThird
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &307479781
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307479780}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -97.08, y: 2.5, z: 22.72}
-  m_LocalScale: {x: 3.05, y: 3.05, z: 3.05}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 916349009}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &307479782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307479780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: d4716a3db2f6b6e4d8e723597be0d7dc, type: 2}
-  startPoint: 1
-  finishPoint: 0
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &307479783
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307479780}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.54, y: 1.84, z: 1.57}
-  m_Center: {x: 1.29, y: 0.44, z: 0}
 --- !u!1 &311375053 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4384081284459742824, guid: 8a9df8bb331783d45a6feb5102376513,
@@ -8358,70 +8228,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1960885638}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &325706738
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 325706739}
-  - component: {fileID: 325706741}
-  - component: {fileID: 325706740}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &325706739
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325706738}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.8153143, y: -1.1145859, z: 4.816092}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 838929344}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &325706740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325706738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: c5f806bf71489e449826c6d5e0a2ebd9, type: 2}
-  startPoint: 1
-  finishPoint: 0
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &325706741
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325706738}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 46.599735, y: 9.39, z: 33.31957}
-  m_Center: {x: 5.4520664, y: 0, z: -1.8498058}
 --- !u!1 &328969025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8836059538648263477, guid: 170c07212ce13274db6ab223852bee3a,
@@ -9375,7 +9181,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 838929344}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &380495356
 MonoBehaviour:
@@ -11818,70 +11624,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1650665708}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &535766673
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 535766674}
-  - component: {fileID: 535766676}
-  - component: {fileID: 535766675}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudentSecond
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &535766674
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535766673}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -97.08, y: 2.5, z: 22.72}
-  m_LocalScale: {x: 3.05, y: 3.05, z: 3.05}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1800000322}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &535766675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535766673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 66107a72c0d39f148865b381e320cfe3, type: 2}
-  startPoint: 1
-  finishPoint: 0
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &535766676
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535766673}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.54, y: 1.84, z: 1.57}
-  m_Center: {x: 1.29, y: 0.44, z: 0}
 --- !u!1 &538022668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1518832311100444611, guid: 2f90c14ea9afb744c85c9fedbc4f9ed3,
@@ -12575,70 +12317,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 170c07212ce13274db6ab223852bee3a, type: 3}
---- !u!1 &579064524
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 579064525}
-  - component: {fileID: 579064527}
-  - component: {fileID: 579064526}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudentSecond (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &579064525
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579064524}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80.8, y: 2.5, z: 94.9}
-  m_LocalScale: {x: 3.05, y: 3.05, z: 3.05}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1800000322}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &579064526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579064524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 66107a72c0d39f148865b381e320cfe3, type: 2}
-  startPoint: 0
-  finishPoint: 1
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &579064527
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579064524}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.597816, y: 1.8399998, z: 13.239045}
-  m_Center: {x: 1.3177816, y: 0.44, z: 0.7223736}
 --- !u!4 &579263866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8202231369454367119, guid: 170c07212ce13274db6ab223852bee3a,
@@ -12694,7 +12372,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -13201,70 +12878,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1766487988384104184}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &608703993
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 608703994}
-  - component: {fileID: 608703996}
-  - component: {fileID: 608703995}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudentLast(1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &608703994
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608703993}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80.8, y: 2.5, z: 94.9}
-  m_LocalScale: {x: 3.05, y: 3.05, z: 3.05}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1198208357}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &608703995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608703993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 991a8ae827935254888a44dfde2f4038, type: 2}
-  startPoint: 0
-  finishPoint: 1
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &608703996
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608703993}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.597816, y: 1.8399998, z: 13.239045}
-  m_Center: {x: 1.3177816, y: 0.44, z: 0.7223736}
 --- !u!1 &612245396 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 34ec8ff0adada03488ad5d9a99541417,
@@ -14660,7 +14273,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1800000322}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &716205944
 MonoBehaviour:
@@ -15369,7 +14982,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1198208357}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &764966591
 MonoBehaviour:
@@ -20284,7 +19897,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -20723,7 +20335,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -20853,8 +20464,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 325706739}
-  - {fileID: 5276839}
   - {fileID: 380495355}
   m_Father: {fileID: 253548192}
   m_RootOrder: 1
@@ -20894,7 +20503,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -21152,7 +20760,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 891137941}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &868082669
 MonoBehaviour:
@@ -22620,8 +22228,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1321208518}
-  - {fileID: 1784532512}
   - {fileID: 868082668}
   m_Father: {fileID: 253548192}
   m_RootOrder: 4
@@ -22831,8 +22437,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 307479781}
-  - {fileID: 1300895822}
   - {fileID: 1794135225}
   m_Father: {fileID: 253548192}
   m_RootOrder: 3
@@ -23737,7 +23341,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -28260,7 +27863,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -33242,7 +32844,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -34265,7 +33866,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -34756,7 +34356,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1996686168}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1155314961
 MonoBehaviour:
@@ -36001,8 +35601,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2037258692}
-  - {fileID: 608703994}
   - {fileID: 764966590}
   m_Father: {fileID: 253548192}
   m_RootOrder: 6
@@ -36983,70 +36581,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294705083}
   m_CullTransparentMesh: 1
---- !u!1 &1296493783
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1296493784}
-  - component: {fileID: 1296493786}
-  - component: {fileID: 1296493785}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudentFifth
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1296493784
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296493783}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -97.08, y: 2.5, z: 22.72}
-  m_LocalScale: {x: 3.05, y: 3.05, z: 3.05}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1996686168}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1296493785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296493783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 0a07c268c7585f6479c2cd07b6ab728b, type: 2}
-  startPoint: 1
-  finishPoint: 0
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &1296493786
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296493783}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.54, y: 1.84, z: 1.57}
-  m_Center: {x: 1.29, y: 0.44, z: 0}
 --- !u!1001 &1300396819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37151,70 +36685,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 170c07212ce13274db6ab223852bee3a, type: 3}
---- !u!1 &1300895821
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1300895822}
-  - component: {fileID: 1300895824}
-  - component: {fileID: 1300895823}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudentThird(1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1300895822
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300895821}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80.8, y: 2.5, z: 94.9}
-  m_LocalScale: {x: 3.05, y: 3.05, z: 3.05}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 916349009}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1300895823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300895821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: d4716a3db2f6b6e4d8e723597be0d7dc, type: 2}
-  startPoint: 0
-  finishPoint: 1
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &1300895824
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300895821}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.597816, y: 1.8399998, z: 13.239045}
-  m_Center: {x: 1.3177816, y: 0.44, z: 0.7223736}
 --- !u!1 &1301730904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7029948723529949830, guid: b2b1b97cf9a6a3f4aafaa4df471c760a,
@@ -37573,70 +37043,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1334226372108339203, guid: 3c90e49ad3f3e33458b065db0d15bf29, type: 3}
---- !u!1 &1321208517
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1321208518}
-  - component: {fileID: 1321208520}
-  - component: {fileID: 1321208519}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudentFourth
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1321208518
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321208517}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -97.08, y: 2.5, z: 22.72}
-  m_LocalScale: {x: 3.05, y: 3.05, z: 3.05}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 891137941}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1321208519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321208517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 570afe9ff43477e42aab24482de5c380, type: 2}
-  startPoint: 1
-  finishPoint: 0
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &1321208520
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321208517}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.54, y: 1.84, z: 1.57}
-  m_Center: {x: 1.29, y: 0.44, z: 0}
 --- !u!1001 &1324040360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43055,7 +42461,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -49654,7 +49059,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -50078,70 +49482,6 @@ Transform:
   m_Father: {fileID: 1184647936}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1668129038
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1668129039}
-  - component: {fileID: 1668129041}
-  - component: {fileID: 1668129040}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudentFifth(1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1668129039
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668129038}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80.8, y: 2.5, z: 94.9}
-  m_LocalScale: {x: 3.05, y: 3.05, z: 3.05}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1996686168}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1668129040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668129038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 0a07c268c7585f6479c2cd07b6ab728b, type: 2}
-  startPoint: 0
-  finishPoint: 1
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &1668129041
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668129038}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.597816, y: 1.8399998, z: 13.239045}
-  m_Center: {x: 1.3177816, y: 0.44, z: 0.7223736}
 --- !u!1 &1671254683 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3987402237749839555, guid: 3c90e49ad3f3e33458b065db0d15bf29,
@@ -55876,7 +55216,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -56076,70 +55415,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 170c07212ce13274db6ab223852bee3a, type: 3}
---- !u!1 &1784532511
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1784532512}
-  - component: {fileID: 1784532514}
-  - component: {fileID: 1784532513}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudentFourth(1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1784532512
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784532511}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80.8, y: 2.5, z: 94.9}
-  m_LocalScale: {x: 3.05, y: 3.05, z: 3.05}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 891137941}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1784532513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784532511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 570afe9ff43477e42aab24482de5c380, type: 2}
-  startPoint: 0
-  finishPoint: 1
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &1784532514
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784532511}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.597816, y: 1.8399998, z: 13.239045}
-  m_Center: {x: 1.3177816, y: 0.44, z: 0.7223736}
 --- !u!1001 &1788074880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56255,7 +55530,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 916349009}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1794135226
 MonoBehaviour:
@@ -56380,8 +55655,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 535766674}
-  - {fileID: 579064525}
   - {fileID: 716205943}
   m_Father: {fileID: 253548192}
   m_RootOrder: 2
@@ -56570,7 +55843,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -57769,7 +57041,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -58690,8 +57961,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1296493784}
-  - {fileID: 1668129039}
   - {fileID: 1155314960}
   m_Father: {fileID: 253548192}
   m_RootOrder: 5
@@ -63198,7 +62467,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -63294,70 +62562,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!1 &2037258691
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2037258692}
-  - component: {fileID: 2037258694}
-  - component: {fileID: 2037258693}
-  m_Layer: 0
-  m_Name: FindAndTalkSickStudentLast
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2037258692
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037258691}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -97.08, y: 2.5, z: 22.72}
-  m_LocalScale: {x: 3.05, y: 3.05, z: 3.05}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1198208357}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2037258693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037258691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51261adbbd22a4843b1ce8d7d8121085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 991a8ae827935254888a44dfde2f4038, type: 2}
-  startPoint: 1
-  finishPoint: 0
-  BypassDialogue: 1
-  needInteract: 0
-  iconIsDestroyed: 0
---- !u!65 &2037258694
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037258691}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.54, y: 1.84, z: 1.57}
-  m_Center: {x: 1.29, y: 0.44, z: 0}
 --- !u!1001 &2039063564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67624,7 +66828,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -68379,7 +67582,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1
@@ -72894,7 +72096,6 @@ MonoBehaviour:
   deccelarationSpeed: 0.5
   accelarationSpeed: 1
   isSick: 0
-  goingToBed: 0
   isLayingDown: 0
   slowDown: 0
   stopped: 1

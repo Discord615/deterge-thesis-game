@@ -24,7 +24,8 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
     private bool tookWalkingSickInk;
 
-    private void Start() {
+    private void Start()
+    {
         interactCue = VisualCueManager.instnace.npcCue;
         interactCue.SetActive(false);
     }
@@ -55,13 +56,6 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
         DialogueManager.instance.EnterDialogueMode(inkJson);
-
-        if (GetComponent<NPCAnimScript>().isSick)
-        {
-            GetComponent<NPCAnimScript>().goingToBed = true;
-
-            GameEventsManager.instance.miscEvents.talkToStudent();
-        }
     }
 
     public void getNewInk()
@@ -74,7 +68,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
         if (!other.tag.Equals("Player")) return;
         if (GetComponent<NPCAnimScript>().isLayingDown) return;
 
-        interactCue.SetActive(!GetComponent<NPCAnimScript>().goingToBed);
+        interactCue.SetActive(!GetComponent<NPCAnimScript>().isSick);
     }
 
     private void OnTriggerExit(Collider other)
