@@ -7,8 +7,10 @@ public class HeartTempo : MonoBehaviour
 {
     public static HeartTempo instance { get; private set; }
 
-    private void Awake() {
-        if (instance != null){
+    private void Awake()
+    {
+        if (instance != null)
+        {
             Debug.LogError("More than one instance of Heart Tempo in current scene");
         }
         instance = this;
@@ -23,16 +25,27 @@ public class HeartTempo : MonoBehaviour
 
     public float heartZScale;
 
-    private void Update() {
+    private AudioSource heartBeat;
+
+    private void Start()
+    {
+        heartBeat = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
         heartZScale = heart.transform.localScale.z;
 
-        if (!updateBeat) {
+        if (!updateBeat)
+        {
+            heartBeat.Stop();
+            heartBeat.Play();
             heart.transform.localScale = new Vector3(maxScale, maxScale, maxScale);
             updateBeat = true;
             beat = true;
             return;
         }
-        
-        heart.transform.localScale -= new Vector3(scaleChange, scaleChange, scaleChange);
+
+        heart.transform.localScale -= new Vector3(scaleChange, scaleChange, scaleChange) * Time.deltaTime;
     }
 }
