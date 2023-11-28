@@ -39,7 +39,7 @@ public class CurePatientsQuestStepLast : QuestStep
         if (patientsSaved >= patientsToBeSaved)
         {
             GlobalTimerManagaer.instance.pauseTimer = true;
-            GameWorldStatsManager.instance.winPanel.SetActive(true);
+            GameWorldStatsManager.instance.winPanel.SetActive(true); // ! Change with office scene and start assessment
             FinishQuestStep();
         }
     }

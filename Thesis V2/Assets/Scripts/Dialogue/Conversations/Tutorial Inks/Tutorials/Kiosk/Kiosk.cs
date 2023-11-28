@@ -30,10 +30,15 @@ public class Kiosk : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (!other.tag.Equals("Player")) return;
+        if (!VisualCueManager.instnace.sinkCue.activeInHierarchy) return;
         if (!InputManager.getInstance().GetInteractPressed()) return;
+
+        VisualCueManager.instnace.sinkCue.SetActive(false);
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        WordsearchManager.Instance.populateWSGrid();
 
         MinigameManager.instance.playerHud.SetActive(false);
         MinigameManager.instance.wordSearch.SetActive(true);

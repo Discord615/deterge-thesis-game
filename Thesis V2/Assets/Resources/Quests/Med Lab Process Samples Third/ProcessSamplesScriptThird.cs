@@ -11,13 +11,11 @@ public class ProcessSamplesScriptThird : QuestStep
     private GameObject visualCue;
 
     private void OnEnable() {
-        GameEventsManager.instance.miscEvents.onSequenceCompleted += processSuccess;
-        GameEventsManager.instance.miscEvents.onSequenceFailed += processFailed;
+        GameEventsManager.instance.miscEvents.onWordSearchComplete += wordSearchComplete;
     }
 
     private void OnDisable() {
-        GameEventsManager.instance.miscEvents.onSequenceCompleted -= processSuccess;
-        GameEventsManager.instance.miscEvents.onSequenceFailed -= processFailed;
+        GameEventsManager.instance.miscEvents.onWordSearchComplete -= wordSearchComplete;
     }
 
     private void Start() {
@@ -25,9 +23,8 @@ public class ProcessSamplesScriptThird : QuestStep
         visualCue = VisualCueManager.instnace.questPointCue;
 
         keyGenerator.instance.resetVariables();
-
         MinigameManager.instance.playerHud.SetActive(false);
-        MinigameManager.instance.sequenceGame.SetActive(true);
+        MinigameManager.instance.wordSearch.SetActive(true);
     }
 
     private void OnTriggerStay(Collider other) {
@@ -37,8 +34,12 @@ public class ProcessSamplesScriptThird : QuestStep
 
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
+        WordsearchManager.Instance.wordsearchData = WordSearchSOManager.instance.CovidSymptoms;
+        WordsearchManager.Instance.populateWSGrid();
+        MinigameManager.instance.wordSearchQuestion.text = string.Format("Search for the symptoms of {0}", "Covid");
+
         MinigameManager.instance.playerHud.SetActive(false);
-        MinigameManager.instance.sequenceGame.SetActive(true);
+        MinigameManager.instance.wordSearch.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other) {
@@ -47,19 +48,11 @@ public class ProcessSamplesScriptThird : QuestStep
         visualCue.SetActive(false);
     }
 
-    private void processSuccess(){
+    private void wordSearchComplete(){
         MinigameManager.instance.playerHud.SetActive(true);
-        MinigameManager.instance.sequenceGame.SetActive(false);
+        MinigameManager.instance.wordSearch.SetActive(false);
         FinishQuestStep();
     }
-
-    private void processFailed(){
-        keyGenerator.instance.resetVariables();
-        MinigameManager.instance.playerHud.SetActive(true);
-        MinigameManager.instance.sequenceGame.SetActive(false);
-        objectiveOut.GetComponent<TextMeshProUGUI>().text = "Try Again";
-    }
-
 
     protected override void setQuestStepState(string state)
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MinigameManager : MonoBehaviour
@@ -21,6 +22,9 @@ public class MinigameManager : MonoBehaviour
 
     [Header("Game HUD")]
     public GameObject playerHud;
+
+    [Header("WordSearch")]
+    public TextMeshProUGUI wordSearchQuestion;
 
     private void Start() {
         syringeGame.SetActive(false);

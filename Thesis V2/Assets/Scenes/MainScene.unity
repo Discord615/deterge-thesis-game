@@ -1945,6 +1945,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 454535173}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &139314292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5092897811253939342, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4576899593313605677}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &140449203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27950,6 +27962,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4576899593313605677}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &977778325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3838315406601622058, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4576899593313605677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &983190054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34608,6 +34626,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c2fbe264-98e9-4a2a-9d83-866ae78d563c
     m_ActionName: Player/Encyclopedia[/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d3f3e136-29fc-4a52-9dd6-948a0ef7c1df
+    m_ActionName: Player/Mouse[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f077d025-4630-49ea-a66e-a4dbad1bd147
+    m_ActionName: Player/Mouse Left Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 611c7f8e-a2be-4c40-8cfa-0430dc13b7e3
+    m_ActionName: Player/Mouse Scroll[/Mouse/scroll]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -72505,7 +72535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee898013dbf28a42b57b3e0687452c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wordsearchData: {fileID: 0}
+  wordsearchData: {fileID: 11400000, guid: 3359c9091fb272f4bba804614f2957d9, type: 2}
   baseColor: {r: 1, g: 1, b: 1, a: 1}
   activeColor: {r: 0, g: 1, b: 0.015245676, a: 1}
   searchColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
@@ -72515,7 +72545,28 @@ MonoBehaviour:
   wordsearchGrid: {fileID: 2145071440}
   container: {fileID: 6342091470502491906, guid: 237af413e440083429d16591d0ccdd16,
     type: 3}
-  validWords: []
+  totalNumOfValidWords: 0
+  fontSize: 30
+  cellSize: {x: 40, y: 40}
+  spacing: {x: 20, y: 20}
+--- !u!114 &2145071443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145071441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4e4ff307606ff4299493fd0e3cabee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FluSymptoms: {fileID: 11400000, guid: cacaf8df3548dd248b754a77c1e15b96, type: 2}
+  TuberSymptoms: {fileID: 11400000, guid: b2f737b7783341c43b65a3a4cd683b8a, type: 2}
+  DengueSymptoms: {fileID: 11400000, guid: 2c62e28c4b9cbf84ca0b6139f2e5edbd, type: 2}
+  CovidSymptoms: {fileID: 11400000, guid: 035e487a8f98ad743b90842836c99139, type: 2}
+  RabiesSymptoms: {fileID: 11400000, guid: 2f6b4e88c6250c147b44e41608dc9cbf, type: 2}
+  TyphoidSymptoms: {fileID: 11400000, guid: 3359c9091fb272f4bba804614f2957d9, type: 2}
 --- !u!4 &543450651600945717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8202231369454367119, guid: 170c07212ce13274db6ab223852bee3a,
@@ -73982,6 +74033,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1121134837406069630, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -169
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121134837406069630, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660312636107825001, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660312636107825001, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fde856965f50a2149a23bf161b30a4b9,
+        type: 3}
+    - target: {fileID: 1660312636107825001, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1755516626230306399, guid: 0b68cdf92c5f20d4e9692a79393005a8,
         type: 3}
       propertyPath: maxNumberOfKeys
@@ -74069,9 +74146,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4576899592642681890, guid: 0b68cdf92c5f20d4e9692a79393005a8,
         type: 3}
+      propertyPath: wordSearch
+      value: 
+      objectReference: {fileID: 977778325}
+    - target: {fileID: 4576899592642681890, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
       propertyPath: sequenceGame
       value: 
       objectReference: {fileID: 655615107}
+    - target: {fileID: 4576899592642681890, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: wordSearchQuestion
+      value: 
+      objectReference: {fileID: 139314292}
     - target: {fileID: 4576899592642681894, guid: 0b68cdf92c5f20d4e9692a79393005a8,
         type: 3}
       propertyPath: m_IsActive
@@ -74482,6 +74569,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5949628687790866766, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6119152472276885165, guid: 0b68cdf92c5f20d4e9692a79393005a8,
         type: 3}
       propertyPath: m_Color.a
@@ -74501,6 +74593,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226847220551531345, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_ChildAlignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8449470943562806202, guid: 0b68cdf92c5f20d4e9692a79393005a8,
         type: 3}
