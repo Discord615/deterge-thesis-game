@@ -9,7 +9,8 @@ public class SanitizeFluScript : QuestStep
     private GameObject sanitizeCue;
     private GameObject objectiveOut;
 
-    private void Start() {
+    private void Start()
+    {
         ArrowManager.instance.target = Vector3.zero;
         objectiveOut = GameObject.Find("Objective");
 
@@ -22,14 +23,15 @@ public class SanitizeFluScript : QuestStep
         DialogueManager.instance.EnterDialogueMode(InkManager.instance.sanitizeRootInks[0]);
     }
 
-    private void OnTriggerStay(Collider other) {
+    private void OnTriggerStay(Collider other)
+    {
         if (!other.tag.Equals("Player")) return;
 
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
         sanitizeCue.SetActive(false);
 
-        objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to Med Lab";
+        GameWorldStatsManager.instance.winPanel.SetActive(true);
         ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
 
         SicknessManager.instance.resetAllBeds();
@@ -39,12 +41,14 @@ public class SanitizeFluScript : QuestStep
         FinishQuestStep();
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
         if (!other.tag.Equals("Player")) return;
         sanitizeCue.SetActive(true);
     }
 
-    private void OnTriggerExit(Collider other) {
+    private void OnTriggerExit(Collider other)
+    {
         if (!other.tag.Equals("Player")) return;
         sanitizeCue.SetActive(false);
     }
