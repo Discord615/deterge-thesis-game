@@ -23,6 +23,8 @@ public class GetDNAScriptFourth : QuestStep
 
     private void Start()
     {
+        GameWorldStatsManager.instance.activeVirusName = "dengue";
+        SicknessManager.instance.spreadSickness();
         ArrowManager.instance.target = Vector3.zero;
         samplesToCollect = getNumberOfSickStudents();
         objectiveOut = GameObject.Find("Objective");
@@ -55,7 +57,7 @@ public class GetDNAScriptFourth : QuestStep
         if (samplesCollected >= samplesToCollect)
         {
             objectiveOut.GetComponent<TextMeshProUGUI>().text = "Send samples to Med Lab";
-            ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
+            ArrowManager.instance.target = new Vector3(-76.2900009f, 1.05999994f, 21.6200008f);
             FinishQuestStep();
         }
     }

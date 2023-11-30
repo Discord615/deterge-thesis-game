@@ -77,11 +77,14 @@ public class CurePatientsQuestStepFourth : QuestStep
     {
         if (patientsSaved < patientsToBeSaved)
         {
+            GameObject patient = GameObject.Find(AssigningBottleWithMeds.instance.npcPatient);
             patientsSaved++;
 
             MinigameManager.instance.syringeGame.SetActive(false);
             MinigameManager.instance.playerHud.SetActive(true);
-            GameObject.Find(AssigningBottleWithMeds.instance.npcPatient).GetComponent<NPCAnimScript>().isSick = false;
+
+            patient.GetComponent<NPCAnimScript>().isSick = false;
+            patient.GetComponent<MiscScript>().isPatientZero = false;
 
             updateState();
         }

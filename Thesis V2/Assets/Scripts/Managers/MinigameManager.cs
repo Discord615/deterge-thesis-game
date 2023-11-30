@@ -19,6 +19,7 @@ public class MinigameManager : MonoBehaviour
     public GameObject onBeatGame;
     public GameObject sequenceGame;
     public GameObject wordSearch;
+    public GameObject assessment;
 
     [Header("Game HUD")]
     public GameObject playerHud;
@@ -31,5 +32,6 @@ public class MinigameManager : MonoBehaviour
         onBeatGame.SetActive(false);
         sequenceGame.SetActive(false);
         wordSearch.SetActive(false);
+        assessment.SetActive(false);
     }
 }

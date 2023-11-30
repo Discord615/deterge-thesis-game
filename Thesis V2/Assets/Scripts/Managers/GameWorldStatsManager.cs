@@ -9,8 +9,10 @@ public class GameWorldStatsManager : MonoBehaviour, IDataPersistence
         if (instance != null)
         {
             Debug.LogError("More than one instance of Game World Stats Manager exists in the current scene");
+            Destroy(instance);
         }
         instance = this;
+        DontDestroyOnLoad(instance);
     }
 
     public bool isNewGame;

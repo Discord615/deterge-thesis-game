@@ -22,35 +22,24 @@ public class ProcessSamplesScriptThird : QuestStep
         objectiveOut = GameObject.Find("Objective");
         visualCue = VisualCueManager.instnace.questPointCue;
 
-        keyGenerator.instance.resetVariables();
-        MinigameManager.instance.playerHud.SetActive(false);
-        MinigameManager.instance.wordSearch.SetActive(true);
-    }
-
-    private void OnTriggerStay(Collider other) {
-        if (!other.tag.Equals("Player")) return;
-
-        visualCue.SetActive(true);
-
-        if (!InputManager.getInstance().GetInteractPressed()) return;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         WordsearchManager.Instance.wordsearchData = WordSearchSOManager.instance.CovidSymptoms;
         WordsearchManager.Instance.populateWSGrid();
         MinigameManager.instance.wordSearchQuestion.text = string.Format("Search for the symptoms of {0}", "Covid");
-
+        
         MinigameManager.instance.playerHud.SetActive(false);
         MinigameManager.instance.wordSearch.SetActive(true);
-    }
-
-    private void OnTriggerExit(Collider other) {
-        if (!other.tag.Equals("Player")) return;
-
-        visualCue.SetActive(false);
     }
 
     private void wordSearchComplete(){
         MinigameManager.instance.playerHud.SetActive(true);
         MinigameManager.instance.wordSearch.SetActive(false);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         FinishQuestStep();
     }
 

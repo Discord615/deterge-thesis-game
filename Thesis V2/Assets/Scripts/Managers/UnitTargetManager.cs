@@ -71,7 +71,7 @@ public class UnitTargetManager : MonoBehaviour
                 break;
 
             case 2:
-                if (npc.GetComponent<NPCAnimScript>().isSick)
+                if (npc.GetComponent<NPCAnimScript>().isSick || npc.GetComponent<MiscScript>().isPatientZero)
                 {
                     result = FirstFloorRandomTargets[Random.Range(0, FirstFloorRandomTargets.Length)].transform.position;
                     break;
@@ -125,9 +125,7 @@ public class UnitTargetManager : MonoBehaviour
 
         foreach (GameObject bed in beds)
         {
-            if (bed.GetComponent<LayDown>().occupied || bed.GetComponent<LayDown>().targeted) continue;
-
-            bed.GetComponent<LayDown>().targeted = true;
+            if (bed.GetComponent<LayDown>().occupied) continue;
             target = bed.transform.position;
             break;
         }

@@ -22,17 +22,8 @@ public class ProcessSamplesScriptFifth : QuestStep
         objectiveOut = GameObject.Find("Objective");
         visualCue = VisualCueManager.instnace.questPointCue;
 
-        keyGenerator.instance.resetVariables();
-        MinigameManager.instance.playerHud.SetActive(false);
-        MinigameManager.instance.wordSearch.SetActive(true);
-    }
-
-    private void OnTriggerStay(Collider other) {
-        if (!other.tag.Equals("Player")) return;
-
-        visualCue.SetActive(true);
-
-        if (!InputManager.getInstance().GetInteractPressed()) return;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         WordsearchManager.Instance.wordsearchData = WordSearchSOManager.instance.TyphoidSymptoms;
         WordsearchManager.Instance.populateWSGrid();
@@ -42,15 +33,13 @@ public class ProcessSamplesScriptFifth : QuestStep
         MinigameManager.instance.wordSearch.SetActive(true);
     }
 
-    private void OnTriggerExit(Collider other) {
-        if (!other.tag.Equals("Player")) return;
-
-        visualCue.SetActive(false);
-    }
-
     private void wordSearchComplete(){
         MinigameManager.instance.playerHud.SetActive(true);
         MinigameManager.instance.wordSearch.SetActive(false);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         FinishQuestStep();
     }
 

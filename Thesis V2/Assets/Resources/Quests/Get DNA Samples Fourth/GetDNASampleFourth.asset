@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: GetDNASampleFourth
   displayName: Get DNA Samples
-  questPrerequisites: []
+  questPrerequisites:
+  - {fileID: 11400000, guid: 636f4cbcd46113642a0da7977a438be6, type: 2}
   questStepPrefabs:
   - {fileID: 6195038306265539366, guid: 371d89011e061c14bb6f0fc521ba9e7a, type: 3}

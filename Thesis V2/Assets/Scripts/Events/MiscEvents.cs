@@ -65,4 +65,10 @@ public class MiscEvents
     {
         onWordFound?.Invoke();
     }
+
+    public event Action onPatientZeroFound;
+
+    public void patientZeroFound(){
+        onPatientZeroFound?.Invoke();
+    }
 }

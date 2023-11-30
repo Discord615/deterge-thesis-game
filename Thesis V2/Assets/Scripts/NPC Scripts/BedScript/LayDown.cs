@@ -12,7 +12,6 @@ public class LayDown : MonoBehaviour, IDataPersistence
     }
 
     public bool occupied = false;
-    public bool targeted = false;
     string occupantName;
     Vector3 previousPosition;
     public bool reverseBeds = false;
@@ -74,6 +73,7 @@ public class LayDown : MonoBehaviour, IDataPersistence
     {
         animator.SetTrigger("LayDown");
         npc.GetComponent<NPCAnimScript>().isLayingDown = true;
+        npc.GetComponent<MiscScript>().isGoingToBed = false;
 
         previousPosition = new Vector3(0, npc.transform.position.y, 0);
         npc.transform.position = new Vector3(transform.position.x, 1, transform.position.z + (reverseBeds ? -2 : 2));
@@ -81,7 +81,6 @@ public class LayDown : MonoBehaviour, IDataPersistence
 
         occupantName = npc.name;
         occupied = true;
-        targeted = false;
     }
 
     private void standUpTrigger(Animator animator, GameObject npc)

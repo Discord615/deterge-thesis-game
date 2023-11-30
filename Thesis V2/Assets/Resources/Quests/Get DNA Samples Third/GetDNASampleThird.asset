@@ -15,6 +15,6 @@ MonoBehaviour:
   <id>k__BackingField: GetDNASampleThird
   displayName: Get DNA Samples
   questPrerequisites:
-  - {fileID: 11400000, guid: d4716a3db2f6b6e4d8e723597be0d7dc, type: 2}
+  - {fileID: 11400000, guid: ddc005da3d8c8bb4ea9491f4341ffadc, type: 2}
   questStepPrefabs:
   - {fileID: 6195038306265539366, guid: 94cae09c10ccedd48bd1d52d156732d3, type: 3}

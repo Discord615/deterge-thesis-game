@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -39,7 +36,7 @@ public class CurePatientsQuestStepLast : QuestStep
         if (patientsSaved >= patientsToBeSaved)
         {
             GlobalTimerManagaer.instance.pauseTimer = true;
-            GameWorldStatsManager.instance.winPanel.SetActive(true); // ! Change with office scene and start assessment
+            LoadingScreen.instance.LoadScene(1);
             FinishQuestStep();
         }
     }
@@ -77,11 +74,14 @@ public class CurePatientsQuestStepLast : QuestStep
     {
         if (patientsSaved < patientsToBeSaved)
         {
+            GameObject patient = GameObject.Find(AssigningBottleWithMeds.instance.npcPatient);
             patientsSaved++;
 
             MinigameManager.instance.syringeGame.SetActive(false);
             MinigameManager.instance.playerHud.SetActive(true);
-            GameObject.Find(AssigningBottleWithMeds.instance.npcPatient).GetComponent<NPCAnimScript>().isSick = false;
+
+            patient.GetComponent<NPCAnimScript>().isSick = false;
+            patient.GetComponent<MiscScript>().isPatientZero = false;
 
             updateState();
         }

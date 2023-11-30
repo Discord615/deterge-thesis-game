@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IntroSceneDialogueStart : MonoBehaviour
 {
-    [SerializeField] private TextAsset dialogue;
+    [SerializeField] private TextAsset[] dialogues;
     [SerializeField] private AudioClip phoneVibes;
     [SerializeField] private AudioClip callPickUp;
     [SerializeField] private AudioClip callEnd;
@@ -35,9 +35,45 @@ public class IntroSceneDialogueStart : MonoBehaviour
         StartCoroutine(playSound());
     }
 
+    private TextAsset getProperInk(){
+        string activeVirus = "none";
+
+        try
+        {
+            activeVirus = GameWorldStatsManager.instance.activeVirusName;
+        }
+        catch (System.Exception)
+        {
+            activeVirus = "null";
+        }
+
+        if (MenuToGamplayPass.instance.startNewGame) return dialogues[0];
+
+        switch (activeVirus)
+        {
+            case "flu":
+                return dialogues[1];
+
+            case "tuber":
+                return dialogues[2];
+
+            case "covid":
+                return dialogues[3];
+
+            case "dengue":
+                return dialogues[4];
+
+            case "typhoid":
+                return dialogues[5];
+
+            default:
+                return dialogues[0];
+        }
+    }
+
     private void Update() {
         if (blindGroup.alpha <= 0 && !DialogueManager.instance.dialogueIsPlaying && !dialogueStarted) {
-            DialogueManager.instance.EnterDialogueMode(dialogue);
+            DialogueManager.instance.EnterDialogueMode(getProperInk());
             dialogueStarted = true;
         }
 

@@ -55,7 +55,11 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
 
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
-        DialogueManager.instance.EnterDialogueMode(inkJson);
+        DialogueManager.instance.EnterDialogueMode(GetComponent<MiscScript>().isPatientZero ? GetComponent<MiscScript>().patientZeroConvo : inkJson);
+
+        if (GetComponent<MiscScript>().isPatientZero) {
+            GetComponent<MiscScript>().isGoingToBed = true;
+        }
     }
 
     public void getNewInk()
@@ -68,7 +72,7 @@ public class DialogueAction : MonoBehaviour, IDataPersistence
         if (!other.tag.Equals("Player")) return;
         if (GetComponent<NPCAnimScript>().isLayingDown) return;
 
-        interactCue.SetActive(!GetComponent<NPCAnimScript>().isSick);
+        interactCue.SetActive(!GetComponent<NPCAnimScript>().isSick || (GetComponent<MiscScript>().isPatientZero && !GetComponent<MiscScript>().isGoingToBed));
     }
 
     private void OnTriggerExit(Collider other)

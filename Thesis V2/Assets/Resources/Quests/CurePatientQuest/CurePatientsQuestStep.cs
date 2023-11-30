@@ -40,7 +40,6 @@ public class CurePatientsQuestStep : QuestStep
         {
             objectiveOut.GetComponent<TextMeshProUGUI>().text = "Report to Med Lab";
             ArrowManager.instance.target = new Vector3(-97.7900009f, 2.5f, 22.7199993f);
-            DialogueManager.instance.EnterDialogueMode(InkManager.instance.firstTimeGettingDamaged);
             FinishQuestStep();
         }
     }
@@ -78,11 +77,14 @@ public class CurePatientsQuestStep : QuestStep
     {
         if (patientsSaved < patientsToBeSaved)
         {
+            GameObject patient = GameObject.Find(AssigningBottleWithMeds.instance.npcPatient);
             patientsSaved++;
 
             MinigameManager.instance.syringeGame.SetActive(false);
             MinigameManager.instance.playerHud.SetActive(true);
-            GameObject.Find(AssigningBottleWithMeds.instance.npcPatient).GetComponent<NPCAnimScript>().isSick = false;
+
+            patient.GetComponent<NPCAnimScript>().isSick = false;
+            patient.GetComponent<MiscScript>().isPatientZero = false;
 
             updateState();
         }

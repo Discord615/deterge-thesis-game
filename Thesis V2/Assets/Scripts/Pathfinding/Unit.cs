@@ -44,31 +44,37 @@ public class Unit : MonoBehaviour, IDataPersistence
 	{
 		if ((target == Vector3.zero || (animScript.stopped && !DialogueManager.instance.dialogueIsPlaying) || unitRB.IsSleeping()) && !animScript.isSitting && !animScript.isLayingDown)
 		{
-			if (animScript.isSick)
-			{
-				if (floor == 1)
-				{
-					try
-					{
-						target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject);
-					}
-					catch (System.Exception)
-					{
-						target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
-					}
-				}
-				else
-				{
-					wantToTeleport = true;
-					target = UnitTargetManager.GetInstance().getTeleportTarget(floor);
-				}
-				animScript.stopped = false;
-			}
-			else
+			if (!animScript.isSick) 
 			{
 				target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
 				animScript.stopped = false;
+				return;
 			}
+
+			if (GetComponent<MiscScript>().isPatientZero && !GetComponent<MiscScript>().isGoingToBed)
+			{
+				target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
+				animScript.stopped = false;
+				return;
+			}
+
+			if (floor == 1)
+			{
+				try
+				{
+					target = UnitTargetManager.GetInstance().getBedTarget(floor, gameObject);
+				}
+				catch (System.Exception)
+				{
+					target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
+				}
+			}
+			else
+			{
+				wantToTeleport = true;
+				target = UnitTargetManager.GetInstance().getTeleportTarget(floor);
+			}
+			animScript.stopped = false;
 		}
 
 		target = new Vector3(target.x, 0, target.z);

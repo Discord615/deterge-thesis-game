@@ -125,6 +125,11 @@ public class QuestManager : MonoBehaviour
     {
         QuestInfoSO[] allQuest = Resources.LoadAll<QuestInfoSO>("Quests");
 
+        foreach (QuestInfoSO item in allQuest)
+        {
+            Debug.Log(item.id);
+        }
+
         Dictionary<string, Quest> idToQuestMap = new Dictionary<string, Quest>();
 
         foreach (QuestInfoSO questInfo in allQuest)

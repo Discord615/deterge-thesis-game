@@ -20,15 +20,13 @@ public class InkExternalFunctions
             AssigningBottleWithMeds.instance.setBottleNames(GameWorldStatsManager.instance.activeVirusName);
         });
 
-        story.BindExternalFunction("spreadSickness", (string virusName) =>
-        {
-            GameWorldStatsManager.instance.activeVirusName = virusName;
-            SicknessManager.instance.spreadSickness();
-        });
-
         story.BindExternalFunction("getSample", () =>
         {
             GameEventsManager.instance.miscEvents.sampleCollected();
+        });
+
+        story.BindExternalFunction("patientZeroFound", () => {
+            GameEventsManager.instance.miscEvents.patientZeroFound();
         });
 
 
@@ -81,8 +79,8 @@ public class InkExternalFunctions
     {
         story.UnbindExternalFunction("startTutorial");
         story.UnbindExternalFunction("administerMeds");
-        story.UnbindExternalFunction("spreadSickness");
         story.UnbindExternalFunction("getSample");
+        story.UnbindExternalFunction("patientZeroFound");
 
         story.UnbindExternalFunction("startMovementTutorial");
         story.UnbindExternalFunction("startRunningTutorial");

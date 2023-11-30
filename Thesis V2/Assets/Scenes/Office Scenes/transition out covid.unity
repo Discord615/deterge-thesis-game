@@ -955,6 +955,7 @@ MonoBehaviour:
   sequenceGame: {fileID: 300558697}
   wordSearch: {fileID: 0}
   playerHud: {fileID: 300558697}
+  wordSearchQuestion: {fileID: 0}
 --- !u!1 &575144967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1158,8 @@ AudioSource:
   m_GameObject: {fileID: 653168882}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3634015416426696449, guid: 9d6b01a7cf8a48d4e84018138f98845e,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1619,7 +1621,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb9ecd9235815d4ab109b54788f9e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 4900000, guid: 5618ad35f7805024b8ccd0817110b6b0, type: 3}
+  dialogues:
+  - {fileID: 4900000, guid: 5618ad35f7805024b8ccd0817110b6b0, type: 3}
+  - {fileID: 4900000, guid: e0f18c1a767a4d341b37eeeb3babbda4, type: 3}
+  - {fileID: 4900000, guid: e4505ae529d17ea4eaa90b1519ffca7d, type: 3}
+  - {fileID: 4900000, guid: 65ee90e8c43a51e4286c30df5d1b926d, type: 3}
+  - {fileID: 4900000, guid: e5b530066b135114fb7d2ab185cec685, type: 3}
+  - {fileID: 4900000, guid: a5f2e9fa1fdddbd4fbd04aca5a6aefc8, type: 3}
   phoneVibes: {fileID: 8300000, guid: c5a2fa441662f144eab2df2003168a42, type: 3}
   callPickUp: {fileID: 8300000, guid: a578ddb20da881a4597bd8f2050e6af4, type: 3}
   callEnd: {fileID: 8300000, guid: 7a6218c0ec04bac4cb84117c83c27bd3, type: 3}
@@ -5228,7 +5236,8 @@ AudioSource:
   m_GameObject: {fileID: 1800316767}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4501571746941746485, guid: 9d6b01a7cf8a48d4e84018138f98845e,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 37bda22710eb2d749a7bafc3306d0f4a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1

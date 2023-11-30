@@ -29,18 +29,24 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
     public bool isSitting = false;
 
     [SerializeField] private Material skinColor;
-    private Color originalSkinColor;
+    private Color originalSkinColor, sickSkinColor, patientZeroSkinColor;
 
 
     private void Start()
     {
         originalSkinColor = new Color(0.772549f, 0.6980392f, 0.5529411f);
+        sickSkinColor = new Color(0.6552206f, 0.7169812f, 0.4430402f);
+        patientZeroSkinColor = Color.red;
         animator = gameObject.GetComponent<Animator>();
     }
 
     private void Update()
     {
-        skinColor.color = isSick ? new Color(0.6552206f, 0.7169812f, 0.4430402f) : originalSkinColor;
+        Color color;
+        color = originalSkinColor;
+        if (isSick) color = GetComponent<MiscScript>().isPatientZero ? patientZeroSkinColor : sickSkinColor;
+
+        skinColor.color = color;
 
         updateSpeed();
 

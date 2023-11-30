@@ -1,0 +1,2 @@
+//root_cause
+It seems that the patients have come into contact with the same common student. That person might be the carrier of the virus who started the spread. Best we search for this student and ask them to head over to the infirmary to avoid any future infections.

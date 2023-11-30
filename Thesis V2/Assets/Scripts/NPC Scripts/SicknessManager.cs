@@ -36,6 +36,34 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
         }
     }
 
+    public void showPatientZero(){
+        Transform student = studentsObject.transform.GetChild(Random.Range(0, studentsObject.transform.childCount));
+
+        while (true){
+                student = studentsObject.transform.GetChild(Random.Range(0, studentsObject.transform.childCount));
+            if (student.GetComponent<Unit>().floor == 1 && student.gameObject.activeInHierarchy) {
+                break;
+            }
+        }
+
+        student.GetComponent<MiscScript>().isPatientZero = true;
+        student.GetComponent<NPCAnimScript>().isSick = true;
+        student.GetComponent<Unit>().target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(student.GetComponent<Unit>().floor, student.gameObject);
+    }
+
+    public Transform getPatientZero(){
+        Transform student = null;
+
+        foreach (Transform item in studentsObject.transform)
+        {
+            if (!item.GetComponent<MiscScript>().isPatientZero) continue;
+            student = item;
+            break;
+        }
+
+        return student;
+    }
+
     public void resetAllBeds(){
         foreach (GameObject bed in beds)
         {
