@@ -25,8 +25,14 @@ public class InkExternalFunctions
             GameEventsManager.instance.miscEvents.sampleCollected();
         });
 
-        story.BindExternalFunction("patientZeroFound", () => {
+        story.BindExternalFunction("patientZeroFound", () =>
+        {
             GameEventsManager.instance.miscEvents.patientZeroFound();
+        });
+
+        story.BindExternalFunction("startAssessment", () =>
+        {
+            IntroSceneDialogueStart.instance.startFinalAssess = true;
         });
 
 

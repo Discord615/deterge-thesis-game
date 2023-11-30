@@ -14,8 +14,10 @@ public class IntroSceneDialogueStart : MonoBehaviour
 
     public static IntroSceneDialogueStart instance { get; private set; }
 
-    private void Awake() {
-        if (instance != null) {
+    private void Awake()
+    {
+        if (instance != null)
+        {
             Debug.LogError("More than one instance of Intro Scene Dialogue Start exists in the current scene");
         }
         instance = this;
@@ -29,13 +31,19 @@ public class IntroSceneDialogueStart : MonoBehaviour
 
     public int sceneIndex = 3;
 
+    public bool startFinalAssess = false;
 
-    private void Start() {
+    [SerializeField] private GameObject crossword;
+
+
+    private void Start()
+    {
         blindGroup = blinder.GetComponent<CanvasGroup>();
         StartCoroutine(playSound());
     }
 
-    private TextAsset getProperInk(){
+    private TextAsset getProperInk()
+    {
         string activeVirus = "none";
 
         try
@@ -66,30 +74,39 @@ public class IntroSceneDialogueStart : MonoBehaviour
             case "typhoid":
                 return dialogues[5];
 
+            case "rabies":
+                return dialogues[6];
+
             default:
                 return dialogues[0];
         }
     }
 
-    private void Update() {
-        if (blindGroup.alpha <= 0 && !DialogueManager.instance.dialogueIsPlaying && !dialogueStarted) {
+    private void Update()
+    {
+        if (blindGroup.alpha <= 0 && !DialogueManager.instance.dialogueIsPlaying && !dialogueStarted)
+        {
             DialogueManager.instance.EnterDialogueMode(getProperInk());
             dialogueStarted = true;
         }
 
         if (DialogueManager.instance.dialogueIsPlaying || blindGroup.alpha > 0) return;
 
-        if (isEndCall){
+        if (isEndCall)
+        {
             Debug.Log("ENDCALLEDED");
             isEndCall = false;
             StartCoroutine(playSound(callEnd));
-        } else if (!hasSetEndCall) {
+        }
+        else if (!hasSetEndCall)
+        {
             isEndCall = true;
             hasSetEndCall = true;
         }
     }
 
-    IEnumerator playSound(AudioClip clip){
+    IEnumerator playSound(AudioClip clip)
+    {
         SFX.clip = clip;
 
         SFX.Play();
@@ -102,7 +119,8 @@ public class IntroSceneDialogueStart : MonoBehaviour
         fadeBlinder();
     }
 
-    IEnumerator playSound(){
+    IEnumerator playSound()
+    {
         SFX.clip = phoneVibes;
 
         SFX.Play();
@@ -124,23 +142,30 @@ public class IntroSceneDialogueStart : MonoBehaviour
         fadeBlinder();
     }
 
-    private void fadeBlinder(){
+    private void fadeBlinder()
+    {
         StartCoroutine(fade(blindGroup, blindGroup.alpha, Faded ? 1 : 0));
 
         Faded = !Faded;
     }
 
-    IEnumerator fade(CanvasGroup group, float start, float end){
+    IEnumerator fade(CanvasGroup group, float start, float end)
+    {
         float counter = 0f;
 
-        while (counter < 0.4f){
+        while (counter < 0.4f)
+        {
             counter += Time.deltaTime;
-            group.alpha = Mathf.Lerp(start, end, counter/0.4f);
+            group.alpha = Mathf.Lerp(start, end, counter / 0.4f);
 
             yield return null;
         }
 
         if (Faded) BGM.Play();
-        else LoadingScreen.instance.LoadScene(sceneIndex); // TODO: Should be changed based on the dialogue option
+        else if (startFinalAssess)
+        {
+            crossword.SetActive(true);
+        }
+        else LoadingScreen.instance.LoadScene(sceneIndex);
     }
 }
