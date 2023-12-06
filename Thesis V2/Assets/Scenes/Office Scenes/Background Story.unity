@@ -454,6 +454,7 @@ MonoBehaviour:
   - {fileID: 905416576}
   - {fileID: 113547934}
   objectivePanel: {fileID: 300558701}
+  continueHint: {fileID: 1262599261}
 --- !u!1 &202765832 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6638964522896245632, guid: 2ac103b175c33a34cb7e2b7796d0482a,
@@ -5885,6 +5886,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f9c90535e1abb54087ba8d2325bf11e, type: 3}
+--- !u!1 &1262599261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7019887926518546905, guid: 4f9c90535e1abb54087ba8d2325bf11e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1262599260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1265524461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9147519717020640960, guid: 2ac103b175c33a34cb7e2b7796d0482a,

@@ -32,6 +32,8 @@ public class SearchForPatientZero : QuestStep
     }
 
     private void patientZeroFound(){
+        objectiveOut.GetComponent<TextMeshProUGUI>().text = "Go to the infirmary to cure patient zero";
+        ArrowManager.instance.target = new Vector3(-63.0946884f, -6.36458588f, 100.786087f);
         SicknessManager.instance.getPatientZero().GetComponent<MiscScript>().isGoingToBed = true;
         FinishQuestStep();
     }

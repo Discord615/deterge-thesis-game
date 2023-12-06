@@ -25,6 +25,7 @@ public class DialogueManager : MonoBehaviour
 
     public CanvasGroup objectivePanel;
     public bool dialogueIsPlaying { get; private set; }
+    public GameObject continueHint;
 
     private void Awake()
     {
@@ -53,6 +54,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+
         dialogueIsPlaying = dialoguePanel.activeInHierarchy;
 
         if (!dialogueIsPlaying && objectiveOutput.GetComponent<TextMeshProUGUI>().text != "")
@@ -108,6 +110,7 @@ public class DialogueManager : MonoBehaviour
                 StartCoroutine(ExitDialogueMode());
             else
             {
+                continueHint.SetActive(true);
                 dialogueText.text = nextLine;
                 DisplayChoices();
             }
@@ -126,6 +129,8 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogError("Too Many Choices Given");
         }
+
+        if (currentChoices.Count > 0) continueHint.SetActive(false);
 
         int index = 0;
 

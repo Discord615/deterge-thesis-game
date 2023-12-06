@@ -470,6 +470,7 @@ MonoBehaviour:
   - {fileID: 905416576}
   - {fileID: 113547934}
   objectivePanel: {fileID: 300558701}
+  continueHint: {fileID: 1262599261}
 --- !u!1 &202765832 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6638964522896245632, guid: 2ac103b175c33a34cb7e2b7796d0482a,
@@ -839,6 +840,7 @@ MonoBehaviour:
   onBeatGame: {fileID: 300558697}
   sequenceGame: {fileID: 300558697}
   wordSearch: {fileID: 0}
+  assessment: {fileID: 0}
   playerHud: {fileID: 300558697}
   wordSearchQuestion: {fileID: 0}
 --- !u!1 &575144967
@@ -1187,7 +1189,7 @@ MonoBehaviour:
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0.64, b: 0, a: 1}
+      m_TextColor: {r: 0, g: 0.32, b: 0, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1520,6 +1522,8 @@ MonoBehaviour:
   BGM: {fileID: 1800316769}
   blinder: {fileID: 1175752613}
   sceneIndex: 3
+  startFinalAssess: 0
+  crossword: {fileID: 0}
 --- !u!4 &884071516
 Transform:
   m_ObjectHideFlags: 0
@@ -4318,6 +4322,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f9c90535e1abb54087ba8d2325bf11e, type: 3}
+--- !u!1 &1262599261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7019887926518546905, guid: 4f9c90535e1abb54087ba8d2325bf11e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1262599260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1265524461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9147519717020640960, guid: 2ac103b175c33a34cb7e2b7796d0482a,

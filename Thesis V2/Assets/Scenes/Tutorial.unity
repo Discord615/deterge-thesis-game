@@ -1192,6 +1192,7 @@ MonoBehaviour:
   - {fileID: 1080770146}
   - {fileID: 1557713999}
   objectivePanel: {fileID: 846837266}
+  continueHint: {fileID: 1641304959}
 --- !u!1 &394980858
 GameObject:
   m_ObjectHideFlags: 0
@@ -4582,6 +4583,12 @@ PrefabInstance:
 --- !u!1 &1641304958 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2840021251116253258, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1641304957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1641304959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3436462344683538084, guid: 0b68cdf92c5f20d4e9692a79393005a8,
     type: 3}
   m_PrefabInstance: {fileID: 1641304957}
   m_PrefabAsset: {fileID: 0}
