@@ -22,6 +22,10 @@ public class GlobalTimerManagaer : MonoBehaviour, IDataPersistence
 
     public bool pauseTimer = false;
 
+    private void Start() {
+        pauseTimer = false;
+    }
+
     private void Update() {
         if (pauseTimer) return;
 

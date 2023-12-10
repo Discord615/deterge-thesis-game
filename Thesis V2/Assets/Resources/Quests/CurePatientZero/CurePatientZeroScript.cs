@@ -39,9 +39,7 @@ public class CurePatientZeroScript : QuestStep
         patient.GetComponent<NPCAnimScript>().isSick = false;
         patient.GetComponent<MiscScript>().isPatientZero = false;
 
-        LoadingScreen.instance.LoadScene(Random.Range(4, 7));
-
-        FinishQuestStep();
+        Finish();
     }
 
     private void patientKilled(){
@@ -52,7 +50,18 @@ public class CurePatientZeroScript : QuestStep
 
         patient.GetComponent<NPCAnimScript>().isSick = false;
         patient.GetComponent<MiscScript>().isPatientZero = false;
+
+        // TODO: Lose? What do?
         
+        Debug.LogError("Killing Patient Zero Is not implemented yet");
+    }
+
+    public void Finish(){
+        GlobalTimerManagaer.instance.pauseTimer = true;
+        GlobalTimerManagaer.instance.initialTime = 900;
+
+        LoadingScreen.instance.LoadScene(Random.Range(4, 7));
+
         FinishQuestStep();
     }
 
