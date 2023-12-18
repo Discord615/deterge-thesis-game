@@ -37467,6 +37467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 181763630}
   loseScreen: {fileID: 779331165}
+  player: {fileID: 919132149535118259}
 --- !u!136 &1338031070
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -60,6 +60,8 @@ public class CurePatientZeroScript : QuestStep
         GlobalTimerManagaer.instance.pauseTimer = true;
         GlobalTimerManagaer.instance.initialTime = 900;
 
+        PlayerHealthManager.instance.player.transform.position = new Vector3(0, PlayerHealthManager.instance.player.transform.position.y, 0);
+
         LoadingScreen.instance.LoadScene(Random.Range(4, 7));
 
         FinishQuestStep();

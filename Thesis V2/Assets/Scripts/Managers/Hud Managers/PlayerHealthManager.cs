@@ -7,6 +7,7 @@ public class PlayerHealthManager : MonoBehaviour, IDataPersistence
 
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject loseScreen;
+    public GameObject player;
 
     private void Awake()
     {
