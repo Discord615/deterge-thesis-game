@@ -39,13 +39,14 @@ public class CurePatientZeroScript : QuestStep
         patient.GetComponent<NPCAnimScript>().isSick = false;
         patient.GetComponent<MiscScript>().isPatientZero = false;
 
+        FinishQuestStepToDiffScene(Random.Range(4, 7));
         Finish();
     }
 
     private void patientKilled(){
         GameObject patient = GameObject.Find(AssigningBottleWithMeds.instance.npcPatient);
 
-        MinigameManager.instance.syringeGame.SetActive(false);
+        MinigameManager.instance.onBeatGame.SetActive(false);
         MinigameManager.instance.playerHud.SetActive(true);
 
         patient.GetComponent<NPCAnimScript>().isSick = false;
@@ -53,20 +54,19 @@ public class CurePatientZeroScript : QuestStep
 
         // TODO: Lose? What do?
         Debug.LogError("Killing Patient Zero Is not implemented yet");
+        FinishQuestStepToDiffScene(Random.Range(4, 7));
         Finish();
     }
 
     public void Finish(){
+        
         GlobalTimerManagaer.instance.pauseTimer = true;
         GlobalTimerManagaer.instance.initialTime = 900;
 
         PlayerHealthManager.instance.player.transform.position = new Vector3(0, PlayerHealthManager.instance.player.transform.position.y, 0);
 
         DataPersistenceManager.instance.SaveGame();
-
-        LoadingScreen.instance.LoadScene(Random.Range(4, 7));
-
-        FinishQuestStep();
+        QuestManager.instance.saveQuests();
     }
 
 

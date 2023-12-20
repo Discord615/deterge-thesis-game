@@ -25,7 +25,7 @@ public class GetDNAScriptLast : QuestStep
     {
         GameWorldStatsManager.instance.activeVirusName = "rabies";
         SicknessManager.instance.spreadSickness();
-        ArrowManager.instance.target = Vector3.zero;
+        ArrowManager.instance.target = new Vector3(-63.0946884f, -6.36458588f, 100.786087f);
         samplesToCollect = getNumberOfSickStudents();
         objectiveOut = GameObject.Find("Objective");
     }

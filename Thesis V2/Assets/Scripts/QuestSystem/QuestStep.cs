@@ -28,6 +28,16 @@ public abstract class QuestStep : MonoBehaviour
         }
     }
 
+    protected void FinishQuestStepToDiffScene(int sceneNum){
+        if (!isFinished)
+        {
+            isFinished = true;
+            GameEventsManager.instance.questEvents.advanceQuest(questId);
+            Destroy(this.gameObject);
+            LoadingScreen.instance.LoadScene(sceneNum);
+        }
+    }
+
     protected void changeState(string newState)
     {
         GameEventsManager.instance.questEvents.questStepStateChange(questId, stepIndex, new QuestStepState(newState));
