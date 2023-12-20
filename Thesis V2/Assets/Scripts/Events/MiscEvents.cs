@@ -38,6 +38,18 @@ public class MiscEvents
         onPlayerGetMeds?.Invoke();
     }
 
+    public event Action onPlayerLosesMeds;
+
+    public void playerLostMeds(){
+        onPlayerLosesMeds?.Invoke();
+    }
+
+    public event Action onPlayerZeroMeds;
+
+    public void playerZeroMeds(){
+        onPlayerZeroMeds?.Invoke();
+    }
+
     public event Action onSequenceCompleted;
 
     public void sequenceCompleted()
@@ -70,5 +82,11 @@ public class MiscEvents
 
     public void patientZeroFound(){
         onPatientZeroFound?.Invoke();
+    }
+
+    public event Action LetterFound;
+
+    public void onLetterFound(){
+        onWordFound?.Invoke();
     }
 }

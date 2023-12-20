@@ -29,16 +29,30 @@ public class LayDown : MonoBehaviour, IDataPersistence
     private void OnEnable()
     {
         GameEventsManager.instance.miscEvents.onPlayerGetMeds += playerGetsMeds;
+        GameEventsManager.instance.miscEvents.onPlayerLosesMeds += playerLostMeds;
+        GameEventsManager.instance.miscEvents.onPlayerZeroMeds += playerZeroMeds;
     }
 
     private void OnDisable()
     {
         GameEventsManager.instance.miscEvents.onPlayerGetMeds -= playerGetsMeds;
+        GameEventsManager.instance.miscEvents.onPlayerLosesMeds -= playerLostMeds;
+        GameEventsManager.instance.miscEvents.onPlayerZeroMeds -= playerZeroMeds;
     }
 
     private void playerGetsMeds()
     {
         if (occupied) playerHasMeds = true;
+    }
+
+    private void playerLostMeds(){
+        if (!occupied) playerHasMeds = false;
+        sampleTaken = false;
+    }
+
+    private void playerZeroMeds(){
+        playerHasMeds = true;
+        sampleTaken = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -127,6 +141,8 @@ public class LayDown : MonoBehaviour, IDataPersistence
         if (!InputManager.getInstance().GetInteractPressed()) return;
 
         if (!visualCue.activeInHierarchy) return;
+
+        if (DialogueManager.instance.dialogueIsPlaying) return;
 
         visualCue.SetActive(false);
 

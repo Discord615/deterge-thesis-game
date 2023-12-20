@@ -11,7 +11,7 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
 
-    public DataPersistenceManager instance { get; private set; }
+    public static DataPersistenceManager instance { get; private set; }
 
 
     private void Awake()
@@ -34,6 +34,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void NewGame()
     {
         GameWorldStatsManager.instance.isNewGame = true;
+        MenuToGamplayPass.instance.startNewGame = false;
         this.gameData = new GameData();
     }
 

@@ -52,8 +52,8 @@ public class CurePatientZeroScript : QuestStep
         patient.GetComponent<MiscScript>().isPatientZero = false;
 
         // TODO: Lose? What do?
-        
         Debug.LogError("Killing Patient Zero Is not implemented yet");
+        Finish();
     }
 
     public void Finish(){
@@ -61,6 +61,8 @@ public class CurePatientZeroScript : QuestStep
         GlobalTimerManagaer.instance.initialTime = 900;
 
         PlayerHealthManager.instance.player.transform.position = new Vector3(0, PlayerHealthManager.instance.player.transform.position.y, 0);
+
+        DataPersistenceManager.instance.SaveGame();
 
         LoadingScreen.instance.LoadScene(Random.Range(4, 7));
 

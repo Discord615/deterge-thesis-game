@@ -55,6 +55,8 @@ public class IntroSceneDialogueStart : MonoBehaviour
             activeVirus = "null";
         }
 
+        Debug.Log("Active Virus: " + activeVirus);
+
         if (MenuToGamplayPass.instance.startNewGame) return dialogues[0];
 
         switch (activeVirus)
