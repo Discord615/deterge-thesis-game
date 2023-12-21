@@ -87,6 +87,6 @@ public class MiscEvents
     public event Action LetterFound;
 
     public void onLetterFound(){
-        onWordFound?.Invoke();
+        LetterFound?.Invoke();
     }
 }

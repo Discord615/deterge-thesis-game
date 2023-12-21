@@ -17,6 +17,7 @@ public class CrosswordManager : MonoBehaviour
     const int NumberOfLetters = 59;
     int lettersFound = 0;
     [SerializeField] GameObject gameCompletePanel;
+    [SerializeField] private GameObject minigamePanel;
 
     private void OnEnable() {
         GameEventsManager.instance.miscEvents.LetterFound += onLetterFound;
@@ -26,10 +27,17 @@ public class CrosswordManager : MonoBehaviour
         GameEventsManager.instance.miscEvents.LetterFound -= onLetterFound;
     }
 
+    private void Update() {
+        if (minigamePanel.activeInHierarchy) {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
     public void onLetterFound(){
         lettersFound++;
 
-        if (lettersFound >= (NumberOfLetters - (NumberOfLetters * 0.85))){
+        if (lettersFound >= (NumberOfLetters - 10)){
             gameCompletePanel.SetActive(true);
         }
     }

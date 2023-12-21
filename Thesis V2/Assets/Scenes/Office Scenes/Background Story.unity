@@ -2759,7 +2759,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1282969946}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3912,13 +3912,15 @@ MonoBehaviour:
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 4ee186e023b1df24a94ca56633ce3230,
     type: 3}
-  m_PointAction: {fileID: 0}
+  m_PointAction: {fileID: -6415045021225869505, guid: 4ee186e023b1df24a94ca56633ce3230,
+    type: 3}
   m_MoveAction: {fileID: -7919707521239875781, guid: 4ee186e023b1df24a94ca56633ce3230,
     type: 3}
   m_SubmitAction: {fileID: 7980543061984156911, guid: 4ee186e023b1df24a94ca56633ce3230,
     type: 3}
   m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
+  m_LeftClickAction: {fileID: -4284487846570152336, guid: 4ee186e023b1df24a94ca56633ce3230,
+    type: 3}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
   m_ScrollWheelAction: {fileID: 0}
@@ -4958,6 +4960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCompletePanel: {fileID: 1592883905}
+  minigamePanel: {fileID: 274698579}
 --- !u!1 &1206807206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4736970024380979821, guid: 2ac103b175c33a34cb7e2b7796d0482a,
@@ -6218,8 +6221,8 @@ RectTransform:
   - {fileID: 497208287}
   - {fileID: 1175752614}
   - {fileID: 274698578}
-  - {fileID: 1017657692}
   - {fileID: 300558698}
+  - {fileID: 1017657692}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

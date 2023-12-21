@@ -22,6 +22,7 @@ namespace desiredWord
             if (arg0 == word.UpperCase || arg0 == word.LowerCase)
             {
                 img.color = Color.green;
+                input.interactable = false;
                 GameEventsManager.instance.miscEvents.onLetterFound();
                 return;
             }
