@@ -119,6 +119,8 @@ public class WordsearchManager : MonoBehaviour{
         wordsearchGrid.GetComponent<GridLayoutGroup>().cellSize = cellSize;
         wordsearchGrid.GetComponent<GridLayoutGroup>().spacing = spacing;
 
+        if (matrix == null) return;
+
         foreach(WordsearchLetter letter in matrix){
             letter.GetComponent<TMPro.TMP_Text>().fontSize = fontSize;
         }

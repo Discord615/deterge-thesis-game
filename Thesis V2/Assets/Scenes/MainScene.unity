@@ -72062,6 +72062,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 302736371513154942, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35712823
+      objectReference: {fileID: 0}
+    - target: {fileID: 302736371513154942, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35712823
+      objectReference: {fileID: 0}
+    - target: {fileID: 302736371513154942, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35712823
+      objectReference: {fileID: 0}
     - target: {fileID: 1121134837406069630, guid: 0b68cdf92c5f20d4e9692a79393005a8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -72647,6 +72662,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Health Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935353015356655294, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935353015356655294, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935353015356655294, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935353015356655294, guid: 0b68cdf92c5f20d4e9692a79393005a8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -172
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b68cdf92c5f20d4e9692a79393005a8, type: 3}

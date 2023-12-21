@@ -2926,6 +2926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1218045570}
   loseScreen: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1349967214
 GameObject:
   m_ObjectHideFlags: 0
