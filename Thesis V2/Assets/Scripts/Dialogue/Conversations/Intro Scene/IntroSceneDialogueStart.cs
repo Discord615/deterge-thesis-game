@@ -29,7 +29,7 @@ public class IntroSceneDialogueStart : MonoBehaviour
     bool dialogueStarted = false;
     CanvasGroup blindGroup;
 
-    public int sceneIndex = 3;
+    [SerializeField] int sceneIndex = 3;
 
     public bool startFinalAssess = false;
 

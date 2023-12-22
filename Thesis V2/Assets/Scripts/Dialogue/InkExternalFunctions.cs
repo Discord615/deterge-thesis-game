@@ -5,12 +5,6 @@ public class InkExternalFunctions
 {
     public void Bind(Story story)
     {
-        story.BindExternalFunction("startTutorial", () =>
-        {
-            Debug.Log("HOTDOGS");
-            IntroSceneDialogueStart.instance.sceneIndex = 2;
-        });
-
         story.BindExternalFunction("administerMeds", () =>
         {
             SyringeBehaviour.instance.resetValues();
@@ -83,7 +77,6 @@ public class InkExternalFunctions
 
     public void Unbind(Story story)
     {
-        story.UnbindExternalFunction("startTutorial");
         story.UnbindExternalFunction("administerMeds");
         story.UnbindExternalFunction("getSample");
         story.UnbindExternalFunction("patientZeroFound");

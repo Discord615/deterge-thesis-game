@@ -12,21 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: ebc8ae16c91495944a07b5c87395cc27
   - enabled: 1
-    path: Assets/Scenes/Levels/Fifth Level/First Level Start.unity
-    guid: 5bf15389f0c59604494b51890f8206f5
-  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: af598c98e76b23c49b35df01671df1f6
   - enabled: 1
+    path: Assets/Scenes/Levels/First Level/First Level Start.unity
+    guid: 5bf15389f0c59604494b51890f8206f5
+  - enabled: 1
     path: Assets/Scenes/Levels/First Level/First Level.unity
     guid: feaba73c115c3b34497edb0d0b8261a8
-  - enabled: 1
-    path: Assets/Scenes/Office Scenes/transition out covid.unity
-    guid: bf89ec9b1b2f96a45adb7f0ce94042c2
-  - enabled: 1
-    path: Assets/Scenes/Office Scenes/transition out flu.unity
-    guid: 61512706e9f954a4f90bf30dcb110881
-  - enabled: 1
-    path: Assets/Scenes/Office Scenes/transition out tuber.unity
-    guid: b015a5c3b0ab1624c9265219ef9561d1
   m_configObjects: {}
