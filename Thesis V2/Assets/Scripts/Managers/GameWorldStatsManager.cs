@@ -12,7 +12,6 @@ public class GameWorldStatsManager : MonoBehaviour, IDataPersistence
             Destroy(instance);
         }
         instance = this;
-        DontDestroyOnLoad(instance);
     }
 
     public bool isNewGame;

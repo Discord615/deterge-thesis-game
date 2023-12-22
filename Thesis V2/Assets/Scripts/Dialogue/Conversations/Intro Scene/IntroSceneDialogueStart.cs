@@ -33,6 +33,8 @@ public class IntroSceneDialogueStart : MonoBehaviour
 
     public bool startFinalAssess = false;
 
+    [SerializeField] string virus;
+
     [SerializeField] private GameObject crossword;
 
 
@@ -42,24 +44,12 @@ public class IntroSceneDialogueStart : MonoBehaviour
         StartCoroutine(playSound());
     }
 
-    private TextAsset getProperInk()
+    private TextAsset getProperInk(string virusName)
     {
-        string activeVirus = "none";
+        // ! Not sure if i need this still
+        // if (MenuToGamplayPass.instance.startNewGame) return dialogues[0]; 
 
-        try
-        {
-            activeVirus = GameWorldStatsManager.instance.activeVirusName;
-        }
-        catch (System.Exception)
-        {
-            activeVirus = "null";
-        }
-
-        Debug.Log("Active Virus: " + activeVirus);
-
-        if (MenuToGamplayPass.instance.startNewGame) return dialogues[0];
-
-        switch (activeVirus)
+        switch (virusName)
         {
             case "flu":
                 return dialogues[1];
@@ -80,7 +70,7 @@ public class IntroSceneDialogueStart : MonoBehaviour
                 return dialogues[6];
 
             default:
-                return dialogues[0];
+                return dialogues[0]; // * Tutorial Ink
         }
     }
 
@@ -88,7 +78,7 @@ public class IntroSceneDialogueStart : MonoBehaviour
     {
         if (blindGroup.alpha <= 0 && !DialogueManager.instance.dialogueIsPlaying && !dialogueStarted)
         {
-            DialogueManager.instance.EnterDialogueMode(getProperInk());
+            DialogueManager.instance.EnterDialogueMode(getProperInk(virus));
             dialogueStarted = true;
         }
 
