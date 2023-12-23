@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: ebc8ae16c91495944a07b5c87395cc27
@@ -25,25 +22,25 @@ EditorBuildSettings:
     guid: 61512706e9f954a4f90bf30dcb110881
   - enabled: 1
     path: Assets/Scenes/Levels/Second Level/Second Level.unity
-    guid: ffd8dc5b191db964fb3a714f9ccfea6f
+    guid: 5f8b288b12ef5ee4a8bf2aeee1103ba6
   - enabled: 1
     path: Assets/Scenes/Levels/Third Level/Stressed Transition.unity
     guid: b015a5c3b0ab1624c9265219ef9561d1
   - enabled: 1
     path: Assets/Scenes/Levels/Third Level/Third Level.unity
-    guid: df639aefd2f4d5f47960c7705893e87f
+    guid: cf846344d5d56c44d8377022f86c2c3c
   - enabled: 1
     path: Assets/Scenes/Levels/Fourth Level/Laid Back Transition.unity
     guid: bf89ec9b1b2f96a45adb7f0ce94042c2
   - enabled: 1
     path: Assets/Scenes/Levels/Fourth Level/Fourth Level.unity
-    guid: 0e16c09de1445ce459e1df6a87143770
+    guid: 07e5da97941199542a2b1a85e431bcdb
   - enabled: 1
     path: Assets/Scenes/Levels/Fifth Level/Stressed Transition.unity
     guid: b1489f646b3412d43b50a22a24131f56
   - enabled: 1
     path: Assets/Scenes/Levels/Fifth Level/Fifth Level.unity
-    guid: c6ed66799da7a854baa5501a24a8f979
+    guid: d9c6bea08112c1d4baf5cea8ce40b890
   - enabled: 1
     path: Assets/Scenes/Levels/Sixth Level/Laid Back Transition.unity
     guid: a97249620e916e245a75d9e35f358cb9

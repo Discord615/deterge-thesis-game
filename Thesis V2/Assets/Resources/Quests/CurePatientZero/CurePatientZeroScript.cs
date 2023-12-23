@@ -58,13 +58,7 @@ public class CurePatientZeroScript : QuestStep
         Finish();
     }
 
-    public void Finish(){
-        
-        GlobalTimerManagaer.instance.pauseTimer = true;
-        GlobalTimerManagaer.instance.initialTime = 900;
-
-        PlayerHealthManager.instance.player.transform.position = new Vector3(0, PlayerHealthManager.instance.player.transform.position.y, 0);
-
+    public void Finish(){ // ! Needs Changing
         DataPersistenceManager.instance.SaveGame();
         QuestManager.instance.saveQuests();
     }

@@ -14,7 +14,7 @@ public class GameWorldStatsManager : MonoBehaviour, IDataPersistence
         instance = this;
     }
 
-    public bool isNewGame;
+    public bool isNewGame; // ! To be removed
     public string activeVirusName;
     public int patientsKilled = 0;
 

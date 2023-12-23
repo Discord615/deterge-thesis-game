@@ -17,7 +17,7 @@ public class GlobalTimerManagaer : MonoBehaviour, IDataPersistence
 
     [SerializeField] private GameObject losePanel;
     [SerializeField] private TextMeshProUGUI globalTimer;
-    public float initialTime;
+    private float initialTime = 900; // * 15 Minutes
     private bool timeOut = false;
 
     public bool pauseTimer = false;
