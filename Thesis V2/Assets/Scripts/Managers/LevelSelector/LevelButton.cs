@@ -9,7 +9,6 @@ public class LevelButton
     public int sceneId;
     public bool isAvailable = false;
     public void goToScene(){
-        // ! Implement
-        // ! Call loadscene in loadSceneManager passing the sceneID
+        LoadingScreen.instance.LoadScene(sceneId);
     }
 }

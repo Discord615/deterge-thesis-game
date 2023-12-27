@@ -1,9 +1,11 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelSelectorManager : MonoBehaviour, IDataPersistence
 {
-    public static LevelSelectorManager instance;
+    public static LevelSelectorManager instance { get; private set; }
 
     private void Awake() {
         if (instance != null){
@@ -16,8 +18,13 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistence
     [SerializeField] private Button[] LevelButtons;
     SerializableDictionary<int, LevelButton> LevelButtonDict;
 
+    [SerializeField] TMP_InputField bypassCodeInput;
+
     private void Start() {
         setAvailabilityOfButtons();
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void setAvailabilityOfButtons(){
@@ -27,8 +34,36 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistence
         }
     }
 
+    public void returnToMenu(){
+        LoadingScreen.instance.LoadSceneInstant(0);
+    }
+
     public void selectLevel(int buttonId){
         LevelButtonDict[buttonId].goToScene();
+    }
+
+    public void bypass(){
+        StartCoroutine(bypassLevels());
+    }
+
+    public IEnumerator bypassLevels(){
+        string input = bypassCodeInput.text;
+
+        if (!input.ToUpper().Equals("THESIS")){
+            bypassCodeInput.image.color = Color.red;
+            yield return new WaitForSeconds(0.5f);
+            bypassCodeInput.image.color = Color.white;
+            yield break;
+        }
+
+        foreach (var levelButton in LevelButtons)
+        {
+            levelButton.interactable = true;
+        }
+
+        bypassCodeInput.image.color = Color.green;
+        yield return new WaitForSeconds(0.5f);
+        bypassCodeInput.image.color = Color.white;
     }
 
     public void LoadData(GameData data)

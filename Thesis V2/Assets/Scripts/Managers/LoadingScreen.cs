@@ -20,13 +20,17 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private GameObject loadingScreenPanel;
     [SerializeField] private Slider loadingBarFill;
 
-    [SerializeField] private bool testing;
-
     public void LoadScene(int sceneId)
     {
         Time.timeScale = 1;
 
-        StartCoroutine(LoadSceneAsync(testing && sceneId == 1 ? 2 : sceneId));
+        StartCoroutine(LoadSceneAsync(sceneId));
+    }
+
+    public void LoadSceneInstant(int sceneId){
+        Time.timeScale = 1;
+
+        SceneManager.LoadSceneAsync(sceneId, LoadSceneMode.Single);
     }
 
     IEnumerator LoadSceneAsync(int sceneId)

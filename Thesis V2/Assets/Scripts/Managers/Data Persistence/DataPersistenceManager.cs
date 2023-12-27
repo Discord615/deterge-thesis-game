@@ -33,16 +33,17 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
-        MenuToGamplayPass.instance.startNewGame = false;
+        // MenuToGamplayPass.instance.startNewGame = false;
         this.gameData = new GameData();
     }
 
     public void LoadGame()
     {
         // ? forTestingNewGame - for testing game boolean
-        if (!MenuToGamplayPass.instance.startNewGame) this.gameData = dataHandler.Load();
+        // if (!MenuToGamplayPass.instance.startNewGame) this.gameData = dataHandler.Load();
         // ? forTestingNewGame
-        if (this.gameData == null || MenuToGamplayPass.instance.startNewGame) NewGame();
+        // || MenuToGamplayPass.instance.startNewGame
+        if (this.gameData == null) NewGame();
 
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
