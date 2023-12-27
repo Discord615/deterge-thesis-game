@@ -33,14 +33,12 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
-        GameWorldStatsManager.instance.isNewGame = true;
         MenuToGamplayPass.instance.startNewGame = false;
         this.gameData = new GameData();
     }
 
     public void LoadGame()
     {
-        GameWorldStatsManager.instance.isNewGame = false;
         // ? forTestingNewGame - for testing game boolean
         if (!MenuToGamplayPass.instance.startNewGame) this.gameData = dataHandler.Load();
         // ? forTestingNewGame

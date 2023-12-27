@@ -1,7 +1,7 @@
 ﻿﻿using UnityEngine;
 using System.Collections;
 
-public class Unit : MonoBehaviour, IDataPersistence
+public class Unit : MonoBehaviour
 {
 
 	[SerializeField] private string id;
@@ -89,48 +89,6 @@ public class Unit : MonoBehaviour, IDataPersistence
 		unitRotation.eulerAngles = new Vector3(0, unitRotation.eulerAngles.y, 0);
 
 		transform.rotation = unitRotation;
-	}
-
-	public void LoadData(GameData data) // ? Subject to change because I can't tell what TryGetValue returns if id does not exist
-	{
-		// Load Unit Floor
-		if (!data.NPCFloorMap.TryGetValue(id, out floor)) floor = 1;
-
-		// Load Unit Target
-		Vector3 targetOut;
-		if (data.NPCTargetMap.TryGetValue(id, out targetOut))
-		{
-			if (targetOut == Vector3.zero) target = UnitTargetManager.GetInstance().getAnyGameObjectTarget(floor, gameObject);
-			else target = targetOut;
-		}
-
-		// Load NPC position
-		Vector3 position;
-		if (data.NPCposition.TryGetValue(id, out position)) this.transform.position = position;
-	}
-
-	public void SaveData(ref GameData data)
-	{
-		// Store Floor Number of Unit/NPC
-		if (data.NPCFloorMap.ContainsKey(id))
-		{
-			data.NPCFloorMap.Remove(id);
-		}
-		data.NPCFloorMap.Add(id, floor);
-
-		// Store Target of Unit/NPC
-		if (data.NPCTargetMap.ContainsKey(id))
-		{
-			data.NPCTargetMap.Remove(id);
-		}
-		data.NPCTargetMap.Add(id, target);
-
-		// Store NPC position
-		if (data.NPCposition.ContainsKey(id))
-		{
-			data.NPCposition.Remove(id);
-		}
-		data.NPCposition.Add(id, this.transform.position);
 	}
 
 	public void OnPathFound(Vector3[] waypoints, bool pathSuccessful)

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class LayDown : MonoBehaviour, IDataPersistence
+public class LayDown : MonoBehaviour
 {
     [SerializeField] private string id;
 
@@ -149,25 +149,5 @@ public class LayDown : MonoBehaviour, IDataPersistence
         DialogueManager.instance.EnterDialogueMode(playerHasMeds ? InkManager.instance.getGiveMedsInk() : InkManager.instance.getDNASampleAcquisitionInk());
 
         if (!playerHasMeds) sampleTaken = true;
-    }
-
-    public void LoadData(GameData data)
-    {
-        string occupantOutPut;
-        if (data.occupantLDNameData.TryGetValue(id, out occupantOutPut))
-        {
-            if (occupantOutPut == "") return;
-            GameObject.Find(occupantOutPut).GetComponent<NPCAnimScript>().isLayingDown = false;
-            layDownTrigger(GameObject.Find(occupantOutPut).GetComponent<Animator>(), GameObject.Find(occupantOutPut));
-        }
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        if (data.occupantLDNameData.ContainsKey(id))
-        {
-            data.occupantLDNameData.Remove(id);
-        }
-        data.occupantLDNameData.Add(id, occupantName);
     }
 }

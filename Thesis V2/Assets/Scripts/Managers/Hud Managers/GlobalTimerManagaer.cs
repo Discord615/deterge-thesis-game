@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GlobalTimerManagaer : MonoBehaviour, IDataPersistence
+public class GlobalTimerManagaer : MonoBehaviour
 {
     public static GlobalTimerManagaer instance { get; private set; }
 
@@ -47,15 +47,5 @@ public class GlobalTimerManagaer : MonoBehaviour, IDataPersistence
         float seconds = Mathf.FloorToInt(time % 60);
 
         globalTimer.text = string.Format("{0:00} : {1:00}", minutes, seconds);
-    }
-
-    public void LoadData(GameData data)
-    {
-        this.initialTime = data.timerData;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.timerData = this.initialTime;
     }
 }

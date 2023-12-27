@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class SitDown : MonoBehaviour, IDataPersistence
+public class SitDown : MonoBehaviour
 {
     [SerializeField] private string id;
 
@@ -98,33 +98,5 @@ public class SitDown : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(Random.Range(3, 10));
         npc.GetComponent<NPCAnimScript>().wantToSit = false;
         standUpTrigger(npc.GetComponent<Animator>(), npc);
-    }
-
-    public void LoadData(GameData data)
-    {
-        Transform occupantTransform;
-        data.occupantData.TryGetValue(id, out occupantTransform);
-        if (occupantTransform != null)
-        {
-            occupant = occupantTransform.gameObject;
-        }
-
-        data.occupiedData.TryGetValue(id, out occupied);
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        if (data.occupantData.ContainsKey(id))
-        {
-            data.occupantData.Remove(id);
-        }
-        if (occupant != null)
-            data.occupantData.Add(id, occupant.transform);
-
-        if (data.occupiedData.ContainsKey(id))
-        {
-            data.occupiedData.Remove(id);
-        }
-        data.occupiedData.Add(id, occupied);
     }
 }

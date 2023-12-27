@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealthManager : MonoBehaviour, IDataPersistence
+public class PlayerHealthManager : MonoBehaviour
 {
     public static PlayerHealthManager instance { get; private set; }
 
@@ -40,15 +40,5 @@ public class PlayerHealthManager : MonoBehaviour, IDataPersistence
     public void healthRestore()
     {
         healthBar.value = healthBar.maxValue;
-    }
-
-    public void LoadData(GameData data)
-    {
-        this.healthBar.value = data.playerHealth;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.playerHealth = this.healthBar.value;
     }
 }

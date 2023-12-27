@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class SicknessManager : MonoBehaviour, IDataPersistence
+public class SicknessManager : MonoBehaviour
 {
     public static SicknessManager instance { get; private set; }
 
@@ -71,15 +71,5 @@ public class SicknessManager : MonoBehaviour, IDataPersistence
 
             bed.GetComponent<LayDown>().sampleTaken = false;
         }
-    }
-
-    public void LoadData(GameData data)
-    {
-        numberOfSickStudents = data.numberOfSickStudentsData;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.numberOfSickStudentsData = numberOfSickStudents;
     }
 }

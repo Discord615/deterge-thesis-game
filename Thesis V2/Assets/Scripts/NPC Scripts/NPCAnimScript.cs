@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCAnimScript : MonoBehaviour, IDataPersistence
+public class NPCAnimScript : MonoBehaviour
 {
     [SerializeField] private string id;
 
@@ -77,43 +77,5 @@ public class NPCAnimScript : MonoBehaviour, IDataPersistence
             stopped = true;
             slowDown = false;
         }
-    }
-
-    public void LoadData(GameData data)
-    {
-        data.NPCIsLayingDownMap.TryGetValue(id, out isLayingDown);
-
-        data.NPCIsSickMap.TryGetValue(id, out isSick);
-
-        data.NPCIsSittingMap.TryGetValue(id, out isSitting);
-
-        data.NPCWantToSitMap.TryGetValue(id, out wantToSit);
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        if (data.NPCIsLayingDownMap.ContainsKey(id))
-        {
-            data.NPCIsLayingDownMap.Remove(id);
-        }
-        data.NPCIsLayingDownMap.Add(id, isLayingDown);
-
-        if (data.NPCIsSickMap.ContainsKey(id))
-        {
-            data.NPCIsSickMap.Remove(id);
-        }
-        data.NPCIsSickMap.Add(id, isSick);
-
-        if (data.NPCIsSittingMap.ContainsKey(id))
-        {
-            data.NPCIsSittingMap.Remove(id);
-        }
-        data.NPCIsSittingMap.Add(id, isSitting);
-
-        if (data.NPCWantToSitMap.ContainsKey(id))
-        {
-            data.NPCWantToSitMap.Remove(id);
-        }
-        data.NPCWantToSitMap.Add(id, wantToSit);
     }
 }

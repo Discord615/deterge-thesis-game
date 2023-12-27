@@ -81,27 +81,4 @@ public class DialogueAction : MonoBehaviour
 
         interactCue.SetActive(false);
     }
-
-    public void LoadData(GameData data)
-    {
-        TextAsset inkJsonOut;
-        if (!data.inkJsonData.TryGetValue(id, out inkJsonOut))
-        {
-            if (inkJson != null) return;
-            this.inkJson = InkManager.instance.getRandomInk(isMale);
-        }
-        else
-        {
-            inkJson = inkJsonOut;
-        }
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        if (data.inkJsonData.ContainsKey(id))
-        {
-            data.inkJsonData.Remove(id);
-        }
-        data.inkJsonData.Add(id, inkJson);
-    }
 }

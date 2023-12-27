@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 
-public class Movement : MonoBehaviour, IDataPersistence
+public class Movement : MonoBehaviour
 {
     [Header("Variables")]
     [SerializeField] private float moveSpeed = 5f;
@@ -39,16 +39,6 @@ public class Movement : MonoBehaviour, IDataPersistence
 
         rotate();
         playerBody.velocity = MoveRelativeToCamera() * ((InputManager.getInstance().GetRunPressed() ? 2.5f : 1) * moveSpeed);
-    }
-
-    public void LoadData(GameData data)
-    {
-        this.transform.position = data.playerPosition;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.playerPosition = this.transform.position;
     }
 
     private void rotate()
