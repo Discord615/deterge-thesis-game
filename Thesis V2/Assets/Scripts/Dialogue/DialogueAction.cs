@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class DialogueAction : MonoBehaviour, IDataPersistence
+public class DialogueAction : MonoBehaviour
 {
     private GameObject interactCue;
 
