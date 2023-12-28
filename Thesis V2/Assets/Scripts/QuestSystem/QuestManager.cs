@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    [Header("Config")]
-    [SerializeField] private string fileName;
-
     public static QuestManager instance { get; private set; }
     private Dictionary<string, Quest> questMap;
-    private FileDataHandler fileDataHandler;
 
     private void Awake()
     {
@@ -19,7 +15,6 @@ public class QuestManager : MonoBehaviour
         }
         instance = this;
 
-        fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         questMap = createQuestMap();
     }
 
@@ -136,7 +131,8 @@ public class QuestManager : MonoBehaviour
         {
             if (idToQuestMap.ContainsKey(questInfo.id)) Debug.LogWarning("Duplicate ID for " + questInfo.id + " exists");
 
-            idToQuestMap.Add(questInfo.id, fileDataHandler.loadQuests(questInfo));
+            // idToQuestMap.Add(questInfo.id, fileDataHandler.loadQuests(questInfo));
+            idToQuestMap.Add(questInfo.id, new Quest(questInfo));
         }
 
         return idToQuestMap;
@@ -147,18 +143,5 @@ public class QuestManager : MonoBehaviour
         Quest quest = questMap[id];
         if (quest == null) Debug.LogError("ID not found in quest map: " + id);
         return quest;
-    }
-
-    private void OnApplicationQuit()
-    {
-        saveQuests();
-    }
-
-    public void saveQuests()
-    {
-        foreach (Quest questItem in questMap.Values)
-        {
-            fileDataHandler.save(questItem);
-        }
     }
 }

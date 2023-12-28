@@ -59,8 +59,9 @@ public class CurePatientZeroScript : QuestStep
     }
 
     public void Finish(){ // ! Needs Changing
-        DataPersistenceManager.instance.SaveGame();
-        QuestManager.instance.saveQuests();
+        DataPersistenceManager.instance.SaveGame(); // ! Needs to flow into the next level
+                                                    // ! And save/notify levelSelectManager
+                                                    // ! that current level is completed
     }
 
 

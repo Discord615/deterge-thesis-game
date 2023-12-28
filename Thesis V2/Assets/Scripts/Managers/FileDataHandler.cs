@@ -15,44 +15,46 @@ public class FileDataHandler
         this.fileName = fileName;
     }
 
-    public Quest loadQuests(QuestInfoSO questInfo)
-    {
-        Quest quest = null;
+    #region Not needed anymore
+    // public Quest loadQuests(QuestInfoSO questInfo)
+    // {
+    //     Quest quest = null;
 
-        try
-        {
-            if (PlayerPrefs.HasKey(questInfo.id) && !MenuToGamplayPass.instance.startNewGame){
-                string serializedData = PlayerPrefs.GetString(questInfo.id);
-                QuestData questData = JsonUtility.FromJson<QuestData>(serializedData);
-                quest = new Quest(questInfo, questData.state, questData.currentQuestStepIndex, questData.questStepStates);
-            }
-            else {
-                quest = new Quest(questInfo);
-            }
-        }
-        catch (System.Exception)
-        {
-            Debug.LogError("Error occured while loading");
-        }
+    //     try
+    //     {
+    //         if (PlayerPrefs.HasKey(questInfo.id) && !MenuToGamplayPass.instance.startNewGame){
+    //             string serializedData = PlayerPrefs.GetString(questInfo.id);
+    //             QuestData questData = JsonUtility.FromJson<QuestData>(serializedData);
+    //             quest = new Quest(questInfo, questData.state, questData.currentQuestStepIndex, questData.questStepStates);
+    //         }
+    //         else {
+    //             quest = new Quest(questInfo);
+    //         }
+    //     }
+    //     catch (System.Exception)
+    //     {
+    //         Debug.LogError("Error occured while loading");
+    //     }
 
-        return quest;
-    }
+    //     return quest;
+    // }
 
-    public void save(Quest quest)
-    {
-        try
-        {
-            QuestData questData = quest.getQuestData();
+    // public void save(Quest quest)
+    // {
+    //     try
+    //     {
+    //         QuestData questData = quest.getQuestData();
 
-            string serializedData = JsonUtility.ToJson(questData);
+    //         string serializedData = JsonUtility.ToJson(questData);
 
-            PlayerPrefs.SetString(quest.info.id, serializedData);
-        }
-        catch (System.Exception)
-        {
-            Debug.LogError("Failed To Save Quest Data");
-        }
-    }
+    //         PlayerPrefs.SetString(quest.info.id, serializedData);
+    //     }
+    //     catch (System.Exception)
+    //     {
+    //         Debug.LogError("Failed To Save Quest Data");
+    //     }
+    // }
+    #endregion
 
     public GameData Load()
     {
