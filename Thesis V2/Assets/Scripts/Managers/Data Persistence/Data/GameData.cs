@@ -92,14 +92,14 @@ public class GameData
         #endregion
 
         LevelButtonDict = new SerializableDictionary<int, LevelButton>(){
-            {0, new LevelButton(1, true)},
-            {1, new LevelButton(2, false)},
-            {2, new LevelButton(4, false)},
-            {3, new LevelButton(6, false)},
-            {4, new LevelButton(8, false)},
-            {5, new LevelButton(10, false)},
-            {6, new LevelButton(12, false)},
-            {7, new LevelButton(14, false)},
+            {0, new LevelButton(2, true)}, // * Tutorial Level
+            {1, new LevelButton(3, false)},
+            {2, new LevelButton(5, false)},
+            {3, new LevelButton(7, false)},
+            {4, new LevelButton(9, false)},
+            {5, new LevelButton(11, false)},
+            {6, new LevelButton(13, false)},
+            {7, new LevelButton(15, false)} // * Assessment Level
         };
     }
 }
