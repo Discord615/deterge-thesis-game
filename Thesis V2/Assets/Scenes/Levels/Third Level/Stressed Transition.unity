@@ -169,7 +169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreenPanel: {fileID: 1017657694}
   loadingBarFill: {fileID: 1017657693}
-  testing: 0
 --- !u!1 &11815607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,7 +1520,7 @@ MonoBehaviour:
   SFX: {fileID: 653168883}
   BGM: {fileID: 1800316769}
   blinder: {fileID: 1175752613}
-  sceneIndex: 7
+  sceneIndex: 8
   startFinalAssess: 0
   virus: tuber
   crossword: {fileID: 0}

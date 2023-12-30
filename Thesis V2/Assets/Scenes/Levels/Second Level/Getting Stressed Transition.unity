@@ -169,7 +169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreenPanel: {fileID: 1017657694}
   loadingBarFill: {fileID: 1017657693}
-  testing: 0
 --- !u!1 &11815607
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +904,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575144967}
-  m_LocalRotation: {x: -0.008957492, y: 0.5551979, z: 0.0059799044, w: 0.8316486}
+  m_LocalRotation: {x: -0.008957492, y: 0.5551979, z: 0.005979906, w: 0.8316486}
   m_LocalPosition: {x: -22.2, y: 8.1, z: -1.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1505,7 +1504,7 @@ MonoBehaviour:
   SFX: {fileID: 653168883}
   BGM: {fileID: 1800316769}
   blinder: {fileID: 1175752613}
-  sceneIndex: 5
+  sceneIndex: 6
   startFinalAssess: 0
   virus: flu
   crossword: {fileID: 0}
@@ -4093,7 +4092,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778007783}
-  m_LocalRotation: {x: -0.008957492, y: 0.5551979, z: 0.0059799044, w: 0.8316486}
+  m_LocalRotation: {x: -0.008957492, y: 0.5551979, z: 0.005979906, w: 0.8316486}
   m_LocalPosition: {x: -22.2, y: 8.1, z: -1.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

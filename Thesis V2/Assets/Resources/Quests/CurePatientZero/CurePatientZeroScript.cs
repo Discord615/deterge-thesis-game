@@ -39,7 +39,6 @@ public class CurePatientZeroScript : QuestStep
         patient.GetComponent<NPCAnimScript>().isSick = false;
         patient.GetComponent<MiscScript>().isPatientZero = false;
 
-        FinishQuestStepToDiffScene(Random.Range(4, 7));
         Finish();
     }
 
@@ -54,14 +53,13 @@ public class CurePatientZeroScript : QuestStep
 
         // TODO: Lose? What do?
         Debug.LogError("Killing Patient Zero Is not implemented yet");
-        FinishQuestStepToDiffScene(Random.Range(4, 7));
         Finish();
     }
 
     public void Finish(){ // ! Needs Changing
-        DataPersistenceManager.instance.SaveGame(); // ! Needs to flow into the next level
-                                                    // ! And save/notify levelSelectManager
-                                                    // ! that current level is completed
+        GlobalTimerManagaer.instance.transitionPanel.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
 

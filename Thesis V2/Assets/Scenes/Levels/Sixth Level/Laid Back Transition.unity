@@ -169,7 +169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreenPanel: {fileID: 1017657694}
   loadingBarFill: {fileID: 1017657693}
-  testing: 0
 --- !u!1 &11815607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,7 +1035,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575144967}
-  m_LocalRotation: {x: 0.14975159, y: 0.17767715, z: -0.027367063, w: 0.97224295}
+  m_LocalRotation: {x: 0.14975157, y: 0.17767717, z: -0.027367065, w: 0.97224295}
   m_LocalPosition: {x: -15.59, y: 8.7, z: -7.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1636,7 +1635,7 @@ MonoBehaviour:
   SFX: {fileID: 653168883}
   BGM: {fileID: 1800316769}
   blinder: {fileID: 1175752613}
-  sceneIndex: 13
+  sceneIndex: 14
   startFinalAssess: 0
   virus: typhoid
   crossword: {fileID: 0}
@@ -5174,7 +5173,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778007783}
-  m_LocalRotation: {x: 0.14975159, y: 0.17767715, z: -0.027367063, w: 0.97224295}
+  m_LocalRotation: {x: 0.14975157, y: 0.17767717, z: -0.027367065, w: 0.97224295}
   m_LocalPosition: {x: -15.59, y: 8.7, z: -7.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

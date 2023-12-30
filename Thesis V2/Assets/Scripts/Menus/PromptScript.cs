@@ -4,5 +4,29 @@ using UnityEngine;
 
 public class PromptScript : MonoBehaviour
 {
-    // ! Add event where if triggered, shows Prompt Screen.
+    [SerializeField] private int levelNum;
+
+    private void Start() {
+        if (levelNum >= LevelButtonDictScript.instance.LevelButtonDict.Count)
+            return;
+
+        LevelButtonDictScript.instance.LevelButtonDict[levelNum + 1].isAvailable = true;
+
+        DataPersistenceManager.instance.SaveGame();
+    }
+
+    public void goBackToLevelSelect(){
+        DataPersistenceManager.instance.SaveGame();
+
+        LoadingScreen.instance.LoadSceneInstant(1);
+    }
+
+    public void goToNextLevel(){
+        if (levelNum >= LevelButtonDictScript.instance.LevelButtonDict.Count)
+            return; // ! This would mean that it is the last level
+
+        DataPersistenceManager.instance.SaveGame();
+
+        LoadingScreen.instance.LoadScene(levelNum + 1);
+    }
 }

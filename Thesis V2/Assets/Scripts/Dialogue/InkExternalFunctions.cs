@@ -71,7 +71,8 @@ public class InkExternalFunctions
 
         story.BindExternalFunction("endTutorial", () =>
         {
-            LoadingScreen.instance.LoadScene(3);
+            promptHolder.instance.transitionPrompt.SetActive(true);
+            DataPersistenceManager.instance.SaveGame();
         });
     }
 

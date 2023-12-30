@@ -3,24 +3,24 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelectorManager : MonoBehaviour, IDataPersistence
+public class LevelSelectorManager : MonoBehaviour
 {
     public static LevelSelectorManager instance { get; private set; }
 
     private void Awake() {
         if (instance != null){
             Debug.LogError("More than one instance of Level Selector Manager in current scene");
-            Destroy(instance);
         }
         instance = this;
     }
 
     [SerializeField] private Button[] LevelButtons;
-    SerializableDictionary<int, LevelButton> LevelButtonDict;
 
     [SerializeField] TMP_InputField bypassCodeInput;
 
     private void Start() {
+        DataPersistenceManager.instance.LoadGame();
+
         setAvailabilityOfButtons();
 
         Cursor.visible = true;
@@ -28,8 +28,9 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistence
     }
 
     void setAvailabilityOfButtons(){
-        foreach (var levelButton in LevelButtonDict)
+        foreach (var levelButton in LevelButtonDictScript.instance.LevelButtonDict)
         {
+            Debug.Log(string.Format("KEY: {0}\nAVAILABILITY: {1}", levelButton.Key, levelButton.Value.isAvailable));
             LevelButtons[levelButton.Key].interactable = levelButton.Value.isAvailable;
         }
     }
@@ -39,7 +40,7 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistence
     }
 
     public void selectLevel(int buttonId){
-        LevelButtonDict[buttonId].goToScene();
+        LevelButtonDictScript.instance.LevelButtonDict[buttonId].goToScene();
     }
 
     public void bypass(){
@@ -64,15 +65,5 @@ public class LevelSelectorManager : MonoBehaviour, IDataPersistence
         bypassCodeInput.image.color = Color.green;
         yield return new WaitForSeconds(0.5f);
         bypassCodeInput.image.color = Color.white;
-    }
-
-    public void LoadData(GameData data)
-    {
-        this.LevelButtonDict = data.LevelButtonDict;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.LevelButtonDict = this.LevelButtonDict;
     }
 }

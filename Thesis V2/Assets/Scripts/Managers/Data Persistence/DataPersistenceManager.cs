@@ -43,6 +43,8 @@ public class DataPersistenceManager : MonoBehaviour
         // if (!MenuToGamplayPass.instance.startNewGame) this.gameData = dataHandler.Load();
         // ? forTestingNewGame
         // || MenuToGamplayPass.instance.startNewGame
+        this.gameData = dataHandler.Load();
+
         if (this.gameData == null) NewGame();
 
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
