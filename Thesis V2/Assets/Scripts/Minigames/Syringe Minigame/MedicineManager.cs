@@ -20,18 +20,11 @@ public class MedicineManager : MonoBehaviour
     private void Start()
     {
         medsDictionary.Add("typhoid", new string[] {
-            "Fluoroquinolones",
-            "Cephalosporins",
-            "Macrolides",
-            "Carbapenems"
+            "Cipro"
         });
 
         medsDictionary.Add("tuber", new string[] {
-            "Isoniazid",
-            "Rifampin",
-            "Pyrazinamide",
-            "Ethambutol",
-            "Streptomycin"
+            "Antibiotics"
         });
 
         medsDictionary.Add("rabies", new string[] {
@@ -39,19 +32,21 @@ public class MedicineManager : MonoBehaviour
         });
 
         medsDictionary.Add("dengue", new string[] {
-            "Paracetamol"
+            "Paracetamol",
+            "Tylenol"
         });
 
         medsDictionary.Add("covid", new string[] {
-            "Molnupiravir",
-            "Remdesivir"
+            "Advil",
+            "Aleve",
+            "Tylenol"
         });
 
         medsDictionary.Add("flu", new string[] {
-            "Oseltamivir Phosphate",
-            "Zanamivir",
-            "Peramivir",
-            "Baloxavir Marboxil"
+            "Tylenol",
+            "Advil",
+            "Bioflu",
+            "Paracetamol"
         });
     }
 
