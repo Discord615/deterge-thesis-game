@@ -36,24 +36,22 @@ public class AssigningBottleWithMeds : MonoBehaviour
 
     private void initializeDosageDict()
     {
-        dosageDictionary = new Dictionary<string, int>() {
-            {"Fluoroquinolones", 500},
-            {"Cephalosporins", 300},
-            {"Macrolides", 500},
-            {"Carbapenems", 600},
-            {"Isoniazid", 300},
-            {"Rifampin", 600},
-            {"Pyrazinamide", 1750},
-            {"Ethambutol", 1400},
-            {"Streptomycin", 1050},
-            {"Anti-Zoonotic", 1000},
-            {"Paracetamol", 500},
-            {"Molnupiravir", 800},
-            {"Remdesivir", 200},
-            {"Oseltamivir Phosphate", 75},
-            {"Zanamivir", 10},
-            {"Peramivir", 600},
-            {"Baloxavir Marboxil", 40}
+        dosageDictionary = new Dictionary<string, int>() { // ! Change to reflect the new meds
+            {"Cipro", 500}, // https://reference.medscape.com/drug/cipro-xr-ciprofloxacin-342530
+
+            {"Antibiotics", 300}, // https://www.mayoclinic.org/drugs-supplements/amoxicillin-oral-route/proper-use/drg-20075356
+
+            {"Anti-Zoonotic", 1000}, // https://www.cdc.gov/rabies/medical_care/vaccine.html
+
+            {"Paracetamol", 500}, // https://www.nhs.uk/medicines/paracetamol-for-adults/how-and-when-to-take-paracetamol-for-adults/
+
+            {"Tylenol", 20}, // https://www.tylenol.com/safety-dosing/dosage-for-adults
+
+            {"Advil", 200}, // https://www.advil.com/our-products/advil-pain/advil-tablets/
+
+            {"Aleve", 220}, // https://www.aleve.com/products/aleve/aleve-tablets
+
+            {"Bioflu", 500} // https://www.mims.com/philippines/drug/info/bioflu?type=full
         };
     }
 
