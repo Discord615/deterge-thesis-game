@@ -4,5 +4,5 @@
 === MEDS_OFFERED ===
 The laboratory results suggest that the sample shows signs that are indicative of COVID.
 
-Molnupiravir and remdesivir are antiviral medications that inhibit the growth and spread of the virus responsible for COVID-19 in the body.
+Here are some medicines you can give to the patients: Advil, ALeve, and Tylenol. Keep in mind that this does not cure the virus but only reduces the symptoms.
 -> END

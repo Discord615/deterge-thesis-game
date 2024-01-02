@@ -4,5 +4,5 @@
 === MEDS_OFFERED ===
 The findings from the laboratory indicate that the sample demonstrates signs indicative of dengue.
 
-Paracetamol is a prescribed medication used to control fever and alleviate pain caused by dengue.
+The most common medicine to take when one has Dengue are Paracetamol and Tylenol. These two should alleviate the pain the patient is experiencing.
 -> END
