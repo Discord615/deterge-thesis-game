@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CrosswordManager : MonoBehaviour
@@ -14,10 +15,12 @@ public class CrosswordManager : MonoBehaviour
         instance = this;
     }
     
-    const int NumberOfLetters = 59;
+    const int NumberOfLetters = 57;
     int lettersFound = 0;
     [SerializeField] GameObject gameCompletePanel;
     [SerializeField] private GameObject minigamePanel;
+
+    [SerializeField] private TextMeshProUGUI finalScoreOutput;
 
     private void OnEnable() {
         GameEventsManager.instance.miscEvents.LetterFound += onLetterFound;
@@ -25,6 +28,10 @@ public class CrosswordManager : MonoBehaviour
 
     private void OnDisable() {
         GameEventsManager.instance.miscEvents.LetterFound -= onLetterFound;
+    }
+
+    public void checkCrossWord(){
+        GameEventsManager.instance.miscEvents.onCompleteCrossword();
     }
 
     private void Update() {
@@ -37,8 +44,8 @@ public class CrosswordManager : MonoBehaviour
     public void onLetterFound(){
         lettersFound++;
 
-        if (lettersFound >= (NumberOfLetters - 10)){
-            gameCompletePanel.SetActive(true);
-        }
+        finalScoreOutput.text = string.Format("Final Score: {0}/57", lettersFound - 9);
+
+        gameCompletePanel.SetActive(true);
     }
 }

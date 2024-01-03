@@ -89,4 +89,10 @@ public class MiscEvents
     public void onLetterFound(){
         LetterFound?.Invoke();
     }
+
+    public event Action completeCrossWord;
+
+    public void onCompleteCrossword(){
+        completeCrossWord?.Invoke();
+    }
 }

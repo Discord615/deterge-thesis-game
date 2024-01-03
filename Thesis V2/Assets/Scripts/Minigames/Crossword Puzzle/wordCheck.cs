@@ -14,12 +14,15 @@ namespace desiredWord
         private void Awake()
         {
             input.characterLimit = 1;
-            input.onValueChanged.AddListener(TextCheckHandler);
         }
 
-        private void TextCheckHandler(string arg0)
+        private void OnEnable() {
+            GameEventsManager.instance.miscEvents.completeCrossWord += TextCheckHandler;
+        }
+
+        private void TextCheckHandler()
         {
-            if (arg0 == word.UpperCase || arg0 == word.LowerCase)
+            if (input.text == word.UpperCase || input.text == word.LowerCase)
             {
                 img.color = Color.green;
                 input.interactable = false;
@@ -27,7 +30,7 @@ namespace desiredWord
                 return;
             }
 
-            if (arg0 == "")
+            if (input.text == "")
             {
                 img.color = Color.white;
                 return;
