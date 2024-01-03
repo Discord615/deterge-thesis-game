@@ -33,12 +33,12 @@ public class InkExternalFunctions
         // Tutorial Functions
         story.BindExternalFunction("startMovementTutorial", () =>
         {
-            TutorialManager.instance.changeToDo("Use WASD or Arrow Keys to move");
+            TutorialManager.instance.changeToDo("Use <sprite=\"Newer\" name=\"Keys_WASD\"> or <sprite=\"Newer\" name=\"Keys_Arrows\"> to move");
         });
 
         story.BindExternalFunction("startRunningTutorial", () =>
         {
-            TutorialManager.instance.changeToDo("Press and Hold the Left Shift while moving");
+            TutorialManager.instance.changeToDo("Press and Hold the <sprite=\"Newer\" name=\"Key_Shift\"> while moving");
         });
 
         story.BindExternalFunction("startConvoWithDummy", () =>

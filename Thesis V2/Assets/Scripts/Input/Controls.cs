@@ -291,6 +291,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""35a96ea7-2b3b-46b2-a77d-2ae62da6ca94"",
+                    ""path"": ""<Keyboard>/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a0f0f8dd-b348-44b3-a686-608cd03e5808"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",

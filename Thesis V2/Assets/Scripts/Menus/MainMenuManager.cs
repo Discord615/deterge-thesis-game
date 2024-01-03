@@ -16,4 +16,8 @@ public class MainMenuManager : MonoBehaviour
     public void toggleSettings(){
         settingsPanel.SetActive(!settingsPanel.activeInHierarchy);
     }
+
+    public void exit(){
+        Application.Quit();
+    }
 }

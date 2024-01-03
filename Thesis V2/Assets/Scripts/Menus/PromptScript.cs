@@ -6,7 +6,7 @@ public class PromptScript : MonoBehaviour
 {
     [SerializeField] private int levelNum;
 
-    private void Start() {
+    private void OnEnable() {
         if (levelNum >= LevelButtonDictScript.instance.LevelButtonDict.Count)
             return;
 
@@ -27,6 +27,6 @@ public class PromptScript : MonoBehaviour
 
         DataPersistenceManager.instance.SaveGame();
 
-        LoadingScreen.instance.LoadScene(levelNum + 1);
+        LoadingScreen.instance.LoadScene(LevelButtonDictScript.instance.LevelButtonDict[levelNum + 1].sceneId);
     }
 }

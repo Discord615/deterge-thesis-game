@@ -551,8 +551,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuToGamplayPass, Assembly-CSharp
+      - m_Target: {fileID: 360816970}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: exit
         m_Mode: 1
         m_Arguments:
