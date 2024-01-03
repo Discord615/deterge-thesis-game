@@ -17,6 +17,7 @@ public class SicknessManager : MonoBehaviour
     }
 
     public int numberOfSickStudents = 0;
+    [SerializeField] private int targetSickStudents = 5;
 
     [SerializeField] private GameObject studentsObject;
     [SerializeField] private GameObject[] beds;
@@ -32,7 +33,7 @@ public class SicknessManager : MonoBehaviour
                 numberOfSickStudents++;
             }
 
-            if (numberOfSickStudents > 4) break;
+            if (numberOfSickStudents > targetSickStudents) break;
         }
     }
 

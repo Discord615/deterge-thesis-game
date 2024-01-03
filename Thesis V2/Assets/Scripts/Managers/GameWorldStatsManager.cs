@@ -17,8 +17,6 @@ public class GameWorldStatsManager : MonoBehaviour
     public string activeVirusName;
     public int patientsKilled = 0;
 
-    public GameObject winPanel;
-
     public bool hasFaceMask = false;
     public bool hasGlove = false;
 }

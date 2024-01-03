@@ -253,7 +253,7 @@ Transform:
   m_Children:
   - {fileID: 1907519037}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &15434687
 PrefabInstance:
@@ -7155,7 +7155,7 @@ Transform:
   - {fileID: 1741358403}
   - {fileID: 1198208357}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &254149160
 PrefabInstance:
@@ -9768,7 +9768,7 @@ Transform:
   - {fileID: 390518255}
   - {fileID: 15663581}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &399310323 stripped
 GameObject:
@@ -9953,7 +9953,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
@@ -10220,7 +10220,7 @@ Transform:
   - {fileID: 260107966}
   - {fileID: 1182033343}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &443961637 stripped
 GameObject:
@@ -11687,7 +11687,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &561584471
 CapsuleCollider:
@@ -19202,6 +19202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfSickStudents: 0
+  targetSickStudents: 5
   studentsObject: {fileID: 1907519036}
   beds:
   - {fileID: 1582865679}
@@ -19619,7 +19620,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &834628324
 GameObject:
@@ -34384,8 +34385,9 @@ Transform:
   - {fileID: 2081950233}
   - {fileID: 791767405}
   - {fileID: 1533770205}
+  - {fileID: 1503788815}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1188505458
 PrefabInstance:
@@ -41976,12 +41978,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503788814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.9828253, z: -0.22691989}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1185823042}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1503788816
 MonoBehaviour:
@@ -41995,9 +41997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf4645a9b7b6e046af0100b27f76c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeVirusName: 
+  activeVirusName: rabies
   patientsKilled: 0
-  winPanel: {fileID: 0}
   hasFaceMask: 0
   hasGlove: 0
 --- !u!1001 &1507706155
@@ -42162,6 +42163,7 @@ MonoBehaviour:
   losePanel: {fileID: 779331165}
   transitionPanel: {fileID: 804352332}
   globalTimer: {fileID: 1534871055}
+  initialTime: 600
   pauseTimer: 0
 --- !u!1 &1517742075 stripped
 GameObject:
@@ -66552,7 +66554,7 @@ PrefabInstance:
     - target: {fileID: 748009594805594983, guid: 2ac103b175c33a34cb7e2b7796d0482a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 748009594805594983, guid: 2ac103b175c33a34cb7e2b7796d0482a,
         type: 3}
@@ -69523,7 +69525,7 @@ PrefabInstance:
     - target: {fileID: 4131795028619456026, guid: 05029dc37fbd8dd458111b3aa870d503,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4131795028619456026, guid: 05029dc37fbd8dd458111b3aa870d503,
         type: 3}
@@ -70096,7 +70098,7 @@ PrefabInstance:
     - target: {fileID: 4576899594318208225, guid: 0b68cdf92c5f20d4e9692a79393005a8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4576899594318208225, guid: 0b68cdf92c5f20d4e9692a79393005a8,
         type: 3}
@@ -70419,7 +70421,7 @@ PrefabInstance:
     - target: {fileID: 5017765156881532119, guid: 50e9939fcb22f1e4aa8ef726cf064368,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5017765156881532119, guid: 50e9939fcb22f1e4aa8ef726cf064368,
         type: 3}

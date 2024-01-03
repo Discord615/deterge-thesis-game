@@ -19302,6 +19302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfSickStudents: 0
+  targetSickStudents: 3
   studentsObject: {fileID: 1907519036}
   beds:
   - {fileID: 1582865679}
@@ -42025,9 +42026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf4645a9b7b6e046af0100b27f76c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeVirusName: flu
+  activeVirusName: dengue
   patientsKilled: 0
-  winPanel: {fileID: 0}
   hasFaceMask: 0
   hasGlove: 0
 --- !u!1001 &1507706155
@@ -42192,6 +42192,7 @@ MonoBehaviour:
   losePanel: {fileID: 779331165}
   transitionPanel: {fileID: 1992892237}
   globalTimer: {fileID: 1534871055}
+  initialTime: 1200
   pauseTimer: 0
 --- !u!1 &1517742075 stripped
 GameObject:
