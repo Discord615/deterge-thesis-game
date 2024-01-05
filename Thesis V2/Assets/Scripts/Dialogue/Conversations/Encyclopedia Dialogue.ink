@@ -1,260 +1,77 @@
--> main
-
-=== main ===
-What virus would you like to know more about?
-+ [Typhoid]
-    -> typhoid
-
-+ [Dengue]
-    -> dengue
-	
-+ [Tuberculosis]
-	-> tuberculosis
-
-+ [Influenza]
-	-> flu
-
-+ [Coronavirus]
-	-> covid
-
-+ [Rabies]
-	-> rabies
-
-+ [Close Encyclopedia]
-    -> END
-
-=== typhoid ===
-what about typhoid would you like to know?
-+ [Symptoms]
-    Mild or Severe?
-    ++ [Mild]
-        Prolonged Fevers at 39-40C, usually with headaches
-		Stomach pain
-		Rashes
-        +++ [Return]
-            -> typhoid
-        +++ [Close Encyclopedia]
-            -> END
-
-    ++ [Severe]
-        Diarrhea
-		Constipation
-		Nausea
-        +++ [Return]
-            -> typhoid
-        +++ [Close Encyclopedia]
-            -> END
-			
-+ [Medication]
-    Fluoroquinolones, Cephalosporins, Macrolides, Carbapenems
-    ++ [Return]
-        -> typhoid
-    ++ [Close Encyclopedia]
-        -> END
-    
-+ [Causes]
-    Usual causes of typhoid is ingestion of infected food or drinks.
-    ++ [Return]
-        -> typhoid
-    ++ [Close Encyclopedia]
-        -> END
-
-+ [Return]
-    -> main
-
-+ [Close Encyclopedia]
-    -> END
-    
-=== dengue ===
-What would you like to know about dengue?
-+ [Symptoms]
-    Mild or Severe?
-    ++ [Mild]
-        High fever, headaches
-			Pains in eyes, muscles, joints, Nausea, Swollen glands, rashes
-		+++ [Return]
-		    -> dengue
-		+++ [Close Encyclopedia]
-		    ->END
-		
-	++ [Severe]
-	    Weakness, restlessness, fatigue, Rapid breathing, feeling of thirst, Blood in stool, vomit, gums or nose
-		+++ [Return]
-		    -> dengue
-		+++ [Close Encyclopedia]
-		    ->END
-			
-+ [Medication]
-    Mild symptoms can be treated with pain medicine, especially Paracetamol.
-	If Severe, hospitalization and close observation is needed.
-	Intravenous fluid therapy is recommended for plasma leakage.
-	
-	++ [Return]
-	    -> dengue
-	++ [Close Encyclopedia]
-	    ->END
-
-+ [Causes]
-    spread through mosquito bites
-    ++ [Return]
-	    -> dengue
-	++ [Close Encyclopedia]
-	    ->END
-	    
-+ [Return]
-    -> main
-+ [Close Encyclopedia]
-    ->END
-
-=== tuberculosis ===
-What would you like to know about tuberculosis?
+Welcome to your personal Encyclopedia. What would you like to know?
 
 + [Symptoms]
-	Mild or Severe?
-	++ [Mild]
-		Prolonged coughing, chest pains
-		Weakness, fatigue
-		Fevers, night sweats
-		Weight loss
-		+++ [Return]
-			-> tuberculosis
-		+++ [Close Encyclopedia]
-			-> END
-		
-	++ [Severe]
-		// Be more specific
-		May affect other parts of the body
-		+++ [Return]
-			-> tuberculosis
-		+++ [Close Encyclopedia]
-			-> END
-			
-+ [Medicine]
-	The prescribed antibiotics are isoniazid, rifampin, pyrazinamide, ethambutol, streptomycin.
-	Need to be taken daily for 4 to 6 months
-	++ [Return]
-		-> tuberculosis
-	++ [Close Encyclopedia]
-		-> END
+    What virus do you want to know about?
+    ++ [Flu]
+        symptoms of Flu consists of fevers, headaches, coughs, sore throat, runny nose, muscle aches, and fatigue.
+        These symptoms usually appear 2 - 3 days after infection. If any symptoms occur then it is adviced to take a rest and drink a lot of water.
+        Would you like to know the medication and procedure for the virus?
+        +++ [Yes] 
+            -> Medication.fluMeds
+        +++ [No]
+            -> DONE
+    ++ [Dengue]
+        symptoms of Dengue consists of joint pain, eye pain, swollen glands, weakness, thirst, vomit, and rapid breathing.
+        Most people with Dengue who have mild or no symptoms usually get better after 1 - 2 weeks. Although rare, severe cases of dengue may often lead to death. It is important however to stay calm and confront a medical professional for advice.
+        Would you like to know the medication and procedure for the virus?
+        +++ [Yes]
+            -> Medication.dengMeds
+        +++ [No]
+            -> DONE
+    ++ [Covid]
+        symptoms of Covid consists of loss of smell and/or taste, pale skin, chest pain, sore throat, fevers, coughing, sleeplessness, and fatigue.
+        These symptoms may show itself after only 2 to 14 days after being exposed to a covid positive person. If the symptoms show then it is important to isolate oneself from their loved ones and try to stay at home as much as possible.
+        Would you like to know the medication and procedure for the virus?
+        +++ [Yes]
+            -> Medication.covidMeds
+        +++ [No]
+            -> DONE
+    ++ [Tuberculosis]
+        symptoms of TB consists of night sweats, weight loss, fevers, prolonged coughing, chest pain, and fatigue.
+        Though there have been cases where Tuberculosis infected people do not show any symptoms even if they have Tuberculosis. Only a small portion of people ever get both the disease and symptoms.
+        Would you like to know the medication and procedure for the virus?
+        +++ [Yes]
+            -> Medication.tuberMeds
+        +++ [No]
+            -> DONE
+    ++ [Typhoid]
+        symptoms of Typhoid consists of diarhea, constipation, prolonged fever, rashes, nausea, and stomach pain.
+        The symptoms mentioned may not show during the first 1 - 2 weeks. However, a person infected may still be able to infect others during this first few days. This is what people call asymptomatic.
+        Would you like to know the medication and procedure for the virus?
+        +++ [Yes]
+            -> Medication.typhoidMeds
+        +++ [No]
+            -> DONE
+    ++ [Rabies]
+        symptoms of Rabies consists of agitation, aggression, anxiety, confusion, fear of water, fever, and headaches.
+        Keep in mind that if any of these symptoms are present if a person is infected with rabies. There is almost no chance of recovery and it could lead to immediate death. It is best to get vaccinated as soon as possible.
+        Would you like to know the medication and procedure for the virus?
+        +++ [Yes]
+            -> Medication.rabiesMeds
+        +++ [No]
+            -> DONE
 
-+ [Causes]
-	spreads through the air when an infected person coughs or sneezes.
-	++ [Return]
-		-> tuberculosis
-	++ [Close Encyclopedia]
-		-> END
-
-+ [Return]
-	-> main
-+ [Close Encyclopedia]
-	-> END
-
-=== flu ===
-What would you like to know about flu?
-
-+ [Symptoms]
-	Mild or Severe?
-	++ [Mild]
-		Fevers, headaches, Coughs, Sore throat, Runny nose, Muscle aches, fatigue, Nausea, Diarrhoea
-		+++ [Return]
-			-> flu
-		+++ [Close Encyclopedia]
-			-> END
-			
-	++ [Severe]
-		Inflammation of the heart, brain, or muscle tissues, Pneumonia, Sepsis
-		+++ [Return]
-			-> flu
-		+++ [Close Encyclopedia]
-			-> END
-
-+ [Medication]
-	Antiviral medications such as: oseltamivir phosphate, zanamivir, peramivir, baloxavir marboxil.
-	++ [Return]
-		-> flu
-	++ [Close Encyclopedia]
-		-> END
-		
-+ [Causes]
-	transmitted through contaminated objects such as stainless steel, plate and other hard surfaces.
-	++ [Return]
-		-> flu
-	++ [Close Encyclopedia]
-		-> END
-
-+ [Return]
-	-> main
-+ [Close Encyclopedia]
-	-> END
-	
-=== covid ===
-What would you like to know about Coronavirus?
-
-+ [Symptoms]
-	Mild or Severe?
-	++ [Mild]
-		Fevers, headaches, Coughing, difficulty of breathing, Sore throat, Runny nose, Fatigue, Muscle aches, Loss of sense of smell/taste, Nausea, Diarrhoea
-		+++ [Return]
-			-> covid
-		+++ [Close Encyclopedia]
-			-> END
-			
-	++ [Severe]
-		Breathing troubles, Chest pressures, Confusions, sleeplessness, Pale, gray, or blue skin
-		+++ [Return]
-			-> covid
-		+++ [Close Encyclopedia]
-			-> END
-			
-+ [Medication]
-	molnupiravir for oral meds
-	and remdesivir for IV meds.
-	++ [Return]
-		-> covid
-	++ [Close Encyclopedia]
-		-> END
-
-+ [Causes]
-	transmitted through contaminated objects.
-	++ [Return]
-		-> covid
-	++ [Close Encyclopedia]
-		-> END
-
-+ [Return]
-	-> main
-+ [Close Encyclopedia]
-	-> END
-	
-=== rabies ===
-What would you like to know about rabies?
-+ [Symptoms]
-	Mild or Severe?
-		++ [Mild]
-			Similar to flu, including weakness or discomfort, fever, or headache.
-			+++ [Return]
-				-> rabies
-			+++ [Close Encyclopedia]
-				-> END
-		++ [Severe]
-			Cerebral dysfunction, anxiety, confusion, and agitation.
-			+++ [Return]
-				-> rabies
-			+++ [Close Encyclopedia]
-				-> END
-+ [Medication]
-	Postexposure Prophylaxis (PEP) consists of a dose of human rabies immune globulin(HRIG)
-	++ [Return]
-		-> rabies
-	++ [Close Encyclopedia]
-		-> END
-+ [Causes]
-	Transmitted through the saliva of infected animals.
-	++ [Return]
-		-> rabies
-	++ [Close Encyclopedia]
-		-> END
-+ [Return]
-	-> main
-+ [Close Encyclopedia]
-	-> END
+=== Medication ===
+    = fluMeds
+        Flu medication are usually Antiviral drugs that are meant to reduce the symptoms of flu. 
+        Specific over the counter medications are as follows: Tylenol, Advil, Bioflu, and Paracetamol.
+        A lot of rest, drinking fluids, and general hygienic practices will also help in curing the Flu.
+        -> DONE
+        
+    = dengMeds
+        The over the counter medicine Tylenol and Paracetamol can help reduce muscle pain and fever. However, if you are experiencing dengue fever, it is adviced to avoid any for of over the counter pain relievers.
+        Taking over the counter pain relievers when you have dengue fever can increase the risk of bleeding complications.
+        -> DONE
+    = covidMeds
+        There is no specific medicine for covid. It helps to intake medicine that targets the specific symptoms of covid.
+        Over the counter medication that could help with the symptoms include Advil, Aleve, and Tylenol. Medication and a good amount of rest should help relieve the symptoms.
+        -> DONE
+    = tuberMeds
+        Antibiotics are the most helpful medication for those that have Tuberculosis.
+        -> DONE
+    = typhoidMeds
+        The first choice of medication is the antibiotics called Cipro. This can help stop bacteria from multiplying.
+        -> DONE
+    = rabiesMeds
+        There are no over the counter medication available for rabies, but there is a way to cure it. This is through a vaccine, called Anti-zoonotic vaccines.
+        -> DONE

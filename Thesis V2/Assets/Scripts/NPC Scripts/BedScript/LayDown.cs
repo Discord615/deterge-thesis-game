@@ -19,6 +19,7 @@ public class LayDown : MonoBehaviour
 
     public bool sampleTaken = false;
     private GameObject visualCue;
+    private bool interacted = false;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class LayDown : MonoBehaviour
         GameEventsManager.instance.miscEvents.onPlayerGetMeds += playerGetsMeds;
         GameEventsManager.instance.miscEvents.onPlayerLosesMeds += playerLostMeds;
         GameEventsManager.instance.miscEvents.onPlayerZeroMeds += playerZeroMeds;
+        GameEventsManager.instance.miscEvents.onSampleCollected += sampleTook;
     }
 
     private void OnDisable()
@@ -38,6 +40,7 @@ public class LayDown : MonoBehaviour
         GameEventsManager.instance.miscEvents.onPlayerGetMeds -= playerGetsMeds;
         GameEventsManager.instance.miscEvents.onPlayerLosesMeds -= playerLostMeds;
         GameEventsManager.instance.miscEvents.onPlayerZeroMeds -= playerZeroMeds;
+        GameEventsManager.instance.miscEvents.onSampleCollected -= sampleTook;
     }
 
     private void playerGetsMeds()
@@ -78,6 +81,9 @@ public class LayDown : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (!other.tag.Equals("Player")) return;
+
+        if (DialogueManager.instance.dialogueIsPlaying) DialogueManager.instance.EndDialogue();
+        interacted = false;
 
         visualCue.SetActive(false);
     }
@@ -144,10 +150,15 @@ public class LayDown : MonoBehaviour
 
         if (DialogueManager.instance.dialogueIsPlaying) return;
 
+        interacted = true;
+
         visualCue.SetActive(false);
 
         DialogueManager.instance.EnterDialogueMode(playerHasMeds ? InkManager.instance.getGiveMedsInk() : InkManager.instance.getDNASampleAcquisitionInk());
+    }
 
-        if (!playerHasMeds) sampleTaken = true;
+    void sampleTook(){
+        if (playerHasMeds) return;
+        if (interacted) sampleTaken = true;
     }
 }

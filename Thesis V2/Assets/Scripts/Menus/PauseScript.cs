@@ -19,7 +19,7 @@ public class PauseScript : MonoBehaviour
         if (!InputManager.getInstance().GetEscapedPressed()) return;
         
         if (DialogueManager.instance.dialogueIsPlaying){
-            // Action Invalid Prompt
+            DialogueManager.instance.EndDialogue();
             return;
         }
 
