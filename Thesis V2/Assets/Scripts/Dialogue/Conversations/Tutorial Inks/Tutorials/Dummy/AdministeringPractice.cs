@@ -52,6 +52,6 @@ public class AdministeringPractice : MonoBehaviour
         DialogueManager.instance.EndDialogue();
         MinigameManager.instance.playerHud.SetActive(false);
         MinigameManager.instance.syringeGame.SetActive(true);
-        AssigningBottleWithMeds.instance.setBottleNames(GameWorldStatsManager.instance.activeVirusName);
+        AssigningBottleWithMeds.instance.setBottleNames(GameWorldStatsManager.instance.activeVirusName, true);
     }
 }

@@ -24,7 +24,6 @@ public class Movement : MonoBehaviour
 
         if (DialogueManager.instance.dialogueIsPlaying)
         {
-            playerBody.isKinematic = true;
             playerBody.velocity = Vector3.zero;
         }
         else playerBody.isKinematic = false;

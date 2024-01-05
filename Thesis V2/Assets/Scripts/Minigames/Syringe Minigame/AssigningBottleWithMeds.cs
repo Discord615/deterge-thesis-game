@@ -66,7 +66,7 @@ public class AssigningBottleWithMeds : MonoBehaviour
         dosage.text = dosageValue.ToString();
     }
 
-    public void setBottleNames(string virus)
+    public void setBottleNames(string virus, bool Tutorial)
     {
         getMeds(virus);
 
@@ -77,7 +77,7 @@ public class AssigningBottleWithMeds : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    outputMainMed = mainVirusMeds[Random.Range(0, mainVirusMeds.Length)];
+                    outputMainMed = mainVirusMeds[Tutorial ? 0 : Random.Range(0, mainVirusMeds.Length)];
                     medicineBottles[shuffledMedIndexes[0]].GetComponent<BottleBehavior>().medLabel = outputMainMed;
                     break;
 
