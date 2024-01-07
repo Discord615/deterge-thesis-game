@@ -4961,6 +4961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCompletePanel: {fileID: 1592883905}
   minigamePanel: {fileID: 274698579}
+  finalScoreOutput: {fileID: 0}
 --- !u!1 &1206807206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4736970024380979821, guid: 2ac103b175c33a34cb7e2b7796d0482a,
@@ -6718,7 +6719,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 37bda22710eb2d749a7bafc3306d0f4a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
