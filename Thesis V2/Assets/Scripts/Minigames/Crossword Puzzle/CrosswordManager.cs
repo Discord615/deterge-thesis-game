@@ -7,14 +7,16 @@ public class CrosswordManager : MonoBehaviour
 {
     public static CrosswordManager instance { get; private set; }
 
-    private void Awake() {
-        if (instance != null){
+    private void Awake()
+    {
+        if (instance != null)
+        {
             Debug.LogError("There are more than one instance of Crossword Manager in current scene");
             Destroy(instance);
         }
         instance = this;
     }
-    
+
     const int NumberOfLetters = 57;
     int lettersFound = 0;
     [SerializeField] GameObject gameCompletePanel;
@@ -22,29 +24,35 @@ public class CrosswordManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI finalScoreOutput;
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         GameEventsManager.instance.miscEvents.LetterFound += onLetterFound;
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         GameEventsManager.instance.miscEvents.LetterFound -= onLetterFound;
     }
 
-    public void checkCrossWord(){
+    public void checkCrossWord()
+    {
         GameEventsManager.instance.miscEvents.onCompleteCrossword();
     }
 
-    private void Update() {
-        if (minigamePanel.activeInHierarchy) {
+    private void Update()
+    {
+        if (minigamePanel.activeInHierarchy)
+        {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
     }
 
-    public void onLetterFound(){
+    public void onLetterFound()
+    {
         lettersFound++;
 
-        finalScoreOutput.text = string.Format("Final Score: {0}/57", lettersFound - 9);
+        finalScoreOutput.text = string.Format("Final Score: {0}/55", lettersFound - 9);
 
         gameCompletePanel.SetActive(true);
     }

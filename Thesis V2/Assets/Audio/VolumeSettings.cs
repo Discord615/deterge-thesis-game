@@ -17,35 +17,47 @@ public class VolumeSettings : MonoBehaviour
     public const string mixerSFX = "SFX";
     public const string mixerMaster = "Master";
 
-    private void Awake() {
+    private void Awake()
+    {
         BGM.onValueChanged.AddListener(setBGMVolume);
         SFX.onValueChanged.AddListener(setSFXVolume);
         Master.onValueChanged.AddListener(setMasterVolume);
     }
 
-    private void Start() {
+    private void Start()
+    {
         BGM.value = PlayerPrefs.GetFloat(AudioManager.bgmKey, 0f);
         SFX.value = PlayerPrefs.GetFloat(AudioManager.sfxKey, 0f);
         Master.value = PlayerPrefs.GetFloat(AudioManager.masterKey, 0f);
+
+        MainMenuManager.instance.toggleSettings();
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         PlayerPrefs.SetFloat(AudioManager.bgmKey, BGM.value);
         PlayerPrefs.SetFloat(AudioManager.sfxKey, SFX.value);
         PlayerPrefs.SetFloat(AudioManager.masterKey, Master.value);
     }
 
-    private void setBGMVolume(float value){
-        mixer.SetFloat(mixerBGM, value);
+    private void setBGMVolume(float value)
+    {
+        if (value <= BGM.minValue + 0.05f) mixer.SetFloat(mixerBGM, -100f);
+        else mixer.SetFloat(mixerBGM, value);
     }
 
-    private void setSFXVolume(float value){
-        mixer.SetFloat(mixerSFX, value);
+    private void setSFXVolume(float value)
+    {
+        if (value <= SFX.minValue + 0.05f) mixer.SetFloat(mixerSFX, -100f);
+        else mixer.SetFloat(mixerSFX, value);
+
         volumeTester.Stop();
         volumeTester.Play();
     }
 
-    private void setMasterVolume(float value){
-        mixer.SetFloat(mixerMaster, value);
+    private void setMasterVolume(float value)
+    {
+        if (value <= Master.minValue + 0.05f) mixer.SetFloat(mixerMaster, -100f);
+        else mixer.SetFloat(mixerMaster, value);
     }
 }

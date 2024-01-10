@@ -57,7 +57,7 @@ public class SyringeBehaviour : MonoBehaviour
         string suffix = "";
 
         if (AssigningBottleWithMeds.instance.dosageValue >= 1000) suffix = "00 mg";
-        if (AssigningBottleWithMeds.instance.dosageValue >= 100 && AssigningBottleWithMeds.instance.dosageValue < 999) suffix = "0 mg";
+        else if (AssigningBottleWithMeds.instance.dosageValue >= 100 && AssigningBottleWithMeds.instance.dosageValue < 999) suffix = "0 mg";
         else suffix = " mg";
 
         textValue.text = Mathf.CeilToInt(syringeValue).ToString() + suffix;

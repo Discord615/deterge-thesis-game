@@ -39,7 +39,8 @@ public class MedicineManager : MonoBehaviour
         medsDictionary.Add("covid", new string[] {
             "Advil",
             "Aleve",
-            "Tylenol"
+            "Tylenol",
+            "Paracetamol"
         });
 
         medsDictionary.Add("flu", new string[] {

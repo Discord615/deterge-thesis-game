@@ -82,11 +82,21 @@ public class AssigningBottleWithMeds : MonoBehaviour
                     break;
 
                 case 1:
-                    medicineBottles[shuffledMedIndexes[1]].GetComponent<BottleBehavior>().medLabel = secondVirusMeds[Random.Range(0, secondVirusMeds.Length)];
+                    while (true)
+                    {
+                        string medName = secondVirusMeds[Random.Range(0, secondVirusMeds.Length)];
+                        medicineBottles[shuffledMedIndexes[1]].GetComponent<BottleBehavior>().medLabel = medName;
+                        if (medName != outputMainMed) break;
+                    }
                     break;
 
                 case 2:
-                    medicineBottles[shuffledMedIndexes[2]].GetComponent<BottleBehavior>().medLabel = thirdVirusMeds[Random.Range(0, thirdVirusMeds.Length)];
+                    while (true)
+                    {
+                        string medName = thirdVirusMeds[Random.Range(0, thirdVirusMeds.Length)];
+                        medicineBottles[shuffledMedIndexes[2]].GetComponent<BottleBehavior>().medLabel = medName;
+                        if (medName != outputMainMed) break;
+                    }
                     break;
             }
         }
